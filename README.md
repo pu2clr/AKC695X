@@ -1,11 +1,35 @@
 # AKC695X
 
-__ATTENTION__: this library is under construction..... 
+__ATTENTION__: this library is under construction..... Waiting for the hardware circuit. Do no try use it! 
 
 This is an Arduino Library to control the AKC695X / M695X DSP radio devices. 
 
 
-Author: Ricardo Lima Caratti, 2020. 
+This library can be freely distributed using the MIT Free Software model. 
+
+[Copyright (c) 2020 Ricardo Lima Caratti](https://pu2clr.github.io/AKC695X/#mit-license). 
+
+Contact: __pu2clr@gmail.com__.
+
+
+# Contents
+
+1. [Preface]() 
+2. [MIT License](https://pu2clr.github.io/AKC695X/#mit-license)
+3. [About AKC695X / M695X DSP radio](https://github.com/pu2clr/AKC695X#about-akc695x--m695x-dsp-radio)
+4. [Schematic]()
+5. [API Documentation]()
+
+## MIT License 
+
+Copyright (c) 2019 Ricardo Lima Caratti
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE ARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 
 
 ## About AKC695X / M695X DSP radio 
