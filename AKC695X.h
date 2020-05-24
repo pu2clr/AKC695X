@@ -40,8 +40,6 @@
  * | integrated LDO                                                            |   X     |    X    |    X    |
  * | According to the battery voltage, automatically adjust the volume         |   X     |    X    |    X    |
  * | Pb-free / RoHS complian                                                   |   X     |    X    |    X    |
- * 
- * 
  */
 
 /**

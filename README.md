@@ -2,7 +2,10 @@
 
 __ATTENTION__: this library is under construction..... 
 
-This is an Arduino Library to control the AKC695X / M695X DSP radio devices
+This is an Arduino Library to control the AKC695X / M695X DSP radio devices. 
+
+
+Author: Ricardo Lima Caratti, 2020. 
 
 
 ## About AKC695X / M695X DSP radio 
@@ -112,7 +115,7 @@ Band seek logic chip only valid for tune logic, frequency can be adjusted at any
 * [AM-SW-FM radio by DSP radio chip version 2](https://www.tindie.com/products/microwavemont/am-sw-fm-radio-by-dsp-radio-chip-version-2/)
 * [Radio, yes AM-SW-FM radio by DSP radio chip](https://hackaday.io/project/12944-radio-yes-am-sw-fm-radio-by-dsp-radio-chip)
 *
-*
+
 
 
 
