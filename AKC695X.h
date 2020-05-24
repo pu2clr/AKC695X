@@ -43,52 +43,118 @@
  */
 
 /**
- * @brief Reg0: configure register 0 (default: 0x4c) Address
- * 
+ * @brief Reg0 (type 0x00 / RW): configures register 0 (default: 0x4c) Address
+ * @see  AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 11
  */
-typedef union {
 
-    struct {
-        uint8_t rsv : 2;        //!< Debug use, do not change this value using
-        uint8_t mute: 1;        //!< 1 - Mute L / R channel 0 - Normal operation
-        uint8_t seekup : 1;     //!< Seek direction control bit. 0 = Seek down;  1 = Seek up
-        uint8_t seek : 1;       //!< 0-> 1 Trigger tune process The STC bit is set high when the tune operation completes
-        uint8_t tune : 1;       //!< 0-> 1 Trigger tune process The STC bit is set high when the tune operation completes.
-        uint8_t fm_en : 1;      //!< 1 = FM mode;  0 = AM mode
-        uint8_t power_on : 1;   //!< 1 = Chip on; 0 = Chip off
-    } refined;
-
-    uint8_t raw; 
-
+typedef struct {
+    uint8_t rsv : 2;      //!< Reserved - Debug use, do not change this value using
+    uint8_t mute : 1;     //!< 1 - Mute L / R channel 0 - Normal operation
+    uint8_t seekup : 1;   //!< Seek direction control bit. 0 = Seek down;  1 = Seek up
+    uint8_t seek : 1;     //!< 0-> 1 Trigger tune process The STC bit is set high when the tune operation completes
+    uint8_t tune : 1;     //!< 0-> 1 Trigger tune process The STC bit is set high when the tune operation completes.
+    uint8_t fm_en : 1;    //!< 1 = FM mode;  0 = AM mode
+    uint8_t power_on : 1; //!< 1 = Chip on; 0 = Chip off
 } akc595x_reg0;
 
 /**
- * @brief Reg1: configure register 1 (default: 0x10) Address
+ * @brief Reg1 (type 0x01 / RW): configures register 1 (default: 0x10) Address
  * 
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 12
  * 
  */
 typedef struct
 {
-    struct
-    {
-        uint8_t fmband : 3;   //!< 
-        uint8_t amband : 4;   //!<  
-    } refined;
+    uint8_t fmband : 3;   //!< 
+    uint8_t amband : 4;   //!<  
+}  akc595x_reg1;
 
-    uint8_t raw;
-
-} akc595x_reg1;
-
+/**
+ * @brief Reg2 (type 0x02 / RW): configure register 2 (default: 0x4A) Address
+ * 
+ * @details High channel number 5, the channel number and frequencies related as follows: 
+ * @details FM mode: Channel Freq = 25kHz * CHAN + 30MHz AM mode, when 5K channel number pattern:. 
+ * @details Channel Freq = 5kHz * CHAN AM mode, 3K channel number pattern. when: Channel Freq = 3kHz * CHAN.
+ * 
+ * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 12
+ * 
+ */
 typedef struct
 {
-
+    uint8_t channel : 5;      //!< (0:4) - 5 most significant bits that represents the channel (see reg3)
+    uint8_t mode3k : 1;       //!< (5)   - 1 = 3K; 0 = 5K
+    uint8_t ref_37k_mode : 1; //!< (6)   - 1 = 32K ref. crystal clock; 0 = 12MHz ref crystal clock
+    uint8_t rsv : 1;          //!< (7)   - Reserved - Debug use, do not change this value using
 } akc595x_reg2;
 
-typedef struct
-{
+/**
+ * @brief Reg3 (type 0x03 / RW): configures register 3 (default: 0xC8) Address
+ */
+typedef uint8_t akc595x_reg3; //!< 8 least significant bits representing the channel value (see reg2)
 
-} akc595x_reg3;
+typedef union {
+    struct {
+        akc595x_reg2 reg2;
+        akc595x_reg3 reg3;
+    } refined;
+    uint8_t  raw[2];
+    uint16_t word;
+} akc595x_reg2_reg3;
+
+
+/**
+ * @brief Reg4 (type 0x04 / RW): configures register 4 (default: 0x19) Address
+ */
+typedef uint8_t akc595x_reg4; //!< Custom channel band start number chan = 32 * usr_chan_start
+
+/**
+ * @brief Reg5 (type 0x05 / RW): configures register 5 (default: 0x32) Address
+ * 
+ */
+typedef uint8_t akc595x_reg5; //!< Custom end-band channel number chan = 32 * usr_chan_stop
+
+/**
+ * @brief Reg6 (type 0x06 / RW): configures register 0 (default: 0xA1) Address
+ */
+typedef union {
+    struct {
+        uint8_t phase_inv : 1;  //!< 0 = audio output inphase, 1 = speakers for audio output, push the two inverted for pushing a speaker
+        uint8_t line : 1;       //!< 0 = line input mode; 1 = radio mode
+        uint8_t volume : 6;     //!< Volume: 0 ~ 63 ( <24 =  mute; 24 ~ 63)
+    }
+} akc595x_reg6;
+
+/**
+ * @brief Reg7 (type 0x07 / RW): configures register 0 (default: 0xA1) Address
+ * @details stereo and mono: "00" the auto stereo, there Stereo_th control threshold ; "10" long as the pilot is forced stereo "x1" forced mono demodulator
+ */
+typedef union {
+    struct
+    {
+        uint8_t bw: 2;            //!< 00 = 150K; 01 = 200K; 10 = 50K; 11 = 100K
+        uint8_t stereo_mono : 2;  //!< "00" the auto stereo, there Stereo_th control threshold ; "10" long as the pilot is forced stereo "x1" forced mono demodulator
+        uint8_t bben : 1;         //!< Base boost enable 0; Close bass 1.
+        uint8_t de : 1;           //!< De-emphasis mode. 1 = 75 μ s (USA); 0 = 50 μ s (China)
+        uint8_t rsv : 2;          //!< Measured using, set to "0" during normal use
+    }
+} akc595x_reg7;
+
+/**
+ * @brief Reg8 (type 0x08 / RW):  configures register 8 (default: 0x58) Address
+ * @details 
+ * 
+ * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 14
+ */
+typedef union {
+    struct
+    {
+        uint8_t stereo_th : 2;  //!< FM stereo demodulation start CNR threshold - 00=4, 01=8, 10=12,11=16
+        uint8_t fd_th : 2;      //!<
+        uint8_t am_cnr_th : 2;  //!< When AM mode, chip sets and lighting sentence carrier to noise ratio threshold
+        uint8_t fm_cnr_th : 2;  //!< When the FM mode, chip sets and lighting sentence carrier to noise. Ratio limit 00-2dB 01-3dB 10-4dB 11-5dB door
+    }
+} akc595x_reg8;
+
 
 
 class AKC695X
