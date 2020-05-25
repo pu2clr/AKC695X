@@ -42,6 +42,30 @@
  * | Pb-free / RoHS complian                                                   |   X     |    X    |    X    |
  */
 
+
+// Read and Write (RW) AKC695X registers
+#define REG01 0x01
+#define REG02 0x02
+#define REG03 0x03
+#define REG04 0x04
+#define REG05 0x05
+#define REG06 0x06
+#define REG07 0x07
+#define REG08 0x08
+#define REG09 0x09
+#define REG11 0x0B
+#define REG12 0x0C
+#define REG13 0x0D
+// Read only AKC695X registers
+#define REG20 0x14
+#define REG21 0x15
+#define REG22 0x16
+#define REG23 0x17
+#define REG24 0x18
+#define REG25 0x19
+#define REG26 0x1A
+#define REG27 0x1B
+
 /**
  * @defgroup GA01 Defined Data Types  
  * @brief Defined Data Types
@@ -222,12 +246,31 @@ typedef union {
 typedef union {
     struct
     {
-        uint8_t pd_adc : 1; //!< Signal channel ADC signal path; 0 = Close; 1 =  Open
-        uint8_t res : 1;    //!< ?????
-        uint8_t pd_rx : 1;  //!< 0 = analog and RF analog and RF ??????
         uint8_t rsv2 : 5;   //!< Reserved. Measured using, do not change this value
+        uint8_t pd_rx : 1;  //!< 0 = analog and RF analog and RF ??????
+        uint8_t res : 1;    //!< ?????
+        uint8_t pd_adc : 1; //!< Signal channel ADC signal path; 0 = Close; 1 =  Open
+
     }
 } akc595x_reg12;
+
+/**
+ * @brief Reg13 (type 0x0D / RW):  configure register 11 (default: 0x??) Address
+ * @details 
+ * 
+ * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 15
+ */
+typedef union {
+    struct
+    {
+        uint8_t rsv1 : 2;       //!< Measured using, do not change this value
+        uint8_t vol_pre : 2;    //!< Adjusting the output volume of the entire values: 00: 0dB 01: 3.5dB
+        uint8_t rsv2 : 2;       //!< Measured using, do not change this value
+        uint8_t st_led : 1;     //!< 0 = tund pin is tuned lamp; When 1-FM and non wtmode, tund indicator pin is stereo demodulation, tuning lamp remainder
+        uint8_t rsv2 : 1;       //!< Measured using, do not change this value
+    }
+} akc595x_reg12;
+
 
 
 class AKC695X

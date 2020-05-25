@@ -17,8 +17,9 @@ Contact: __pu2clr@gmail.com__.
 1. [Preface]() 
 2. [MIT License](https://pu2clr.github.io/AKC695X/#mit-license)
 3. [About AKC695X / M695X DSP radio](https://github.com/pu2clr/AKC695X#about-akc695x--m695x-dsp-radio)
-4. [Schematic]()
-5. [API Documentation]()
+4. [AKC695X Pin definitions]()
+5. [Schematic]()
+6. [API Documentation]()
 
 
 
@@ -136,6 +137,41 @@ Band seek logic chip only valid for tune logic, frequency can be adjusted at any
 | 101          | TV1,56.25 ~ 91.75, station search space specified intervals |
 | 110          | TV2, 174.75 ~ 222.25, found |
 | 111          | sets predetermined space intervals, custom FM, station search space specified intervals |
+
+
+## Schematic 
+
+
+
+## AKC695X Pin definitions
+
+| Pin | Name      | Description  | 
+| --- | --------- | ------------ | 
+| 1   | oscin     | Bonding or passive 32.768K 12MHz crystal to ground, or receive an external clock reference signal |
+| 2   | oscout    | Passive other end connected to the crystal, when connected to an external clock, this pin floating |
+| 3   | gnd       | Close to ground | 
+| 4   | tund      | Radio lock indicator pin, connected directly to the light emitting diode; Tuning the MCU software when the pin may also be used as a stop sign | 
+| 5   | p_on      | On-chip power switch, high input power chip; the chip down in a low-power standby state, power consumption of approximately 10uA |
+| 6   | sclk      | 2C clock signal input | 
+| 7   | sdio      | I2C bidirectional data signal input / output | 
+| 8   | inl       | External audio signal input L, proposes to add blocking capacitor 1uF | 
+| 9   | inr       | External audio input signal R, proposes to add blocking capacitor 1uF |
+| 10  | vbat      | Then the power pins need to pay attention to the nearest ground 0.1uF decoupling capacitance to ground | 
+| 11  | lout      | Left channel audio output | 
+| 12  | gnd       | gnd | 
+| 13  | rout      | Right channel audio output | 
+| 14  | vref      | Precision 1.5V output pin, to provide a baseline volume potentiometer | 
+| 15  | vol       | Variable volume potentiometer connected end, the fixed end of a potentiometer directly connected to VREF, and the other end through a resistor to ground. The resistance ratio of the resistor and potentiometer as 1: 2 |
+| 16  | vbat      | Then the power pins need to pay attention to the nearest ground 0.1uF decoupling capacitance to ground |
+| 17  | gnd       | Close to ground | 
+| 18  | mwinN     | MW and LW differential input signal |
+| 19  | mwinP     | MW and LW differential input signal |
+| 20  | swin      | Shortwave signal input terminal, note add blocking capacitor recommended 3nF | 
+| 21  | gnd       | Close to ground | 
+| 22  | fmin      | FM radio frequency signal input terminal, note add blocking capacitor, 100pF recommendations | 
+| 23  | ldocap    | Internal LDO output pin, nearest the need decoupling capacitors, recommendations 47uF |      
+| 24  | gnd       | Close to ground | 
+
 
 
 # Receivers based on
