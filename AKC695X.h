@@ -155,7 +155,69 @@ typedef union {
     }
 } akc595x_reg8;
 
+/**
+ * @brief Reg9 (type 0x09 / RW):  configure register 9 (default: 0x07) Address
+ * @details 
+ * 
+ * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 14
+ */
+typedef union {
+    struct
+    {
+        uint8_t iv_en : 1;       //!< When low voltage power supply, whether to enter the low-voltage operation mode can
+        uint8_t rsv1 : 1;        //!< Reserved. Measured using, do not change this value
+        uint8_t osc_en : 1;      //!< Oscillator source selection. 0 = 0-External XO; 1 = 1-Crystal
+        uint8_t pd_adc_vol : 1;  //!< 0 = volume potentiometer mode
+        uint8_t rsv2 : 4;        //!< Reserved. Measured using, do not change this value
+    }
+} akc595x_reg9;
 
+/**
+ * @todo  Did not find in Datasheet.
+ * @brief Reg10 (type 0x0A / RW):  configure register 10 (default: 0x??) Address
+ * @details 
+ * 
+ * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 14
+ */
+typedef union {
+    struct
+    {
+        uint8_t todo1 : 4;       //!< ??????
+        uint8_t todo2 : 4;       //!< ??????
+    }
+} akc595x_reg10;
+
+/**
+ * @brief Reg11 (type 0x0B / RW):  configure register 9 (default: 0xE0) Address
+ * @details 
+ * 
+ * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 14
+ */
+typedef union {
+    struct
+    {
+        uint8_t rsv1 : 2;       //!< Reserved. Measured using, do not change this value
+        uint8_t space : 2;      //!< 00 = 25KHz; 01 = 50KHz; 10 = 100KHz; 11 = 200KHz 
+        uint8_t rsv2 : 4;       //!< Reserved. Measured using, do not change this value
+    }
+} akc595x_reg11;
+
+
+/**
+ * @brief Reg12 (type 0x0C / RW):  configure register 11 (default: 0x??) Address
+ * @details 
+ * 
+ * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 15
+ */
+typedef union {
+    struct
+    {
+        uint8_t pd_adc : 1; //!< Signal channel ADC signal path; 0 = Close; 1 =  Open
+        uint8_t res : 1;    //!< ?????
+        uint8_t pd_rx : 1;  //!< 0 = analog and RF analog and RF ??????
+        uint8_t rsv2 : 5;   //!< Reserved. Measured using, do not change this value
+    }
+} akc595x_reg12;
 
 class AKC695X
 {
