@@ -309,6 +309,28 @@ typedef struct
     uint8_t rsv : 2;    //!< Reserved
 } akc595x_reg25;
 
+/**
+ * @brief Reg26 (type 0x1A / R) 
+ * @details When the frequency offset indicated, complement format, greater than 127, 256 can be reduced to normal values, attention here to 1KHz units FM, AM in units of 100Hz
+ * 
+ * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 15
+ */
+typedef uint8_t akc595x_reg26; //!<   When the frequency offset indicated, complement format, greater than 127, 256 can be
+
+/**
+ * @brief Reg27 (type 0x1B / R) 
+ * @details Antenna aperture can be calculated using signal levels rssi, pgalevel_rf, pgalevel_if
+ * @details FM / SW : Pin (dBuV) = 103 - rssi - 6 * pgalevel_rf - 6 * pgalevel_if
+ * @details MW / LW : Pin (dBuV) = 123 - rssi - 6 * pgalevel_rf - 6 * pgalevel_if
+ * 
+ * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 15
+ */
+typedef struct
+{
+    uint8_t rssi : 7; //!< Antenna aperture can be calculated using signal levels rssi.
+    uint8_t rsv : 1;  //!< Reserved
+} akc595x_reg27;
+
 
 
 class AKC695X
