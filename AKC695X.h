@@ -43,7 +43,10 @@
  */
 
 
+#define AKC595X_I2C_ADRESS 0x10
+
 // Read and Write (RW) AKC695X registers
+#define REG00 0x00
 #define REG01 0x01
 #define REG02 0x02
 #define REG03 0x03
@@ -231,11 +234,11 @@ typedef  struct  {
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 15
  */
 typedef  struct  {
-        uint8_t rsv1 : 2;       //!< Measured using, do not change this value
+        uint8_t rsv3 : 2;       //!< Measured using, do not change this value
         uint8_t vol_pre : 2;    //!< Adjusting the output volume of the entire values: 00: 0dB 01: 3.5dB
         uint8_t rsv2 : 2;       //!< Measured using, do not change this value
         uint8_t st_led : 1;     //!< 0 = tund pin is tuned lamp; When 1-FM and non wtmode, tund indicator pin is stereo demodulation, tuning lamp remainder
-        uint8_t rsv2 : 1;       //!< Measured using, do not change this value
+        uint8_t rsv1 : 1;       //!< Measured using, do not change this value
 } akc595x_reg13;
 
 /**
@@ -269,7 +272,7 @@ typedef uint8_t akc595x_reg21;
 typedef struct
 {
     uint8_t cnram : 7;      //!< Carrier to noise ratio of the AM signal format, in dB
-    uint8_t mode3k_f : 1    //!< 1 = AM 3K channel spacing; 0 =  AM 5K channel spacing
+    uint8_t mode3k_f : 1;   //!< 1 = AM 3K channel spacing; 0 =  AM 5K channel spacing
 } akc595x_reg22;
 
 /**
@@ -338,23 +341,28 @@ class AKC695X
 {
 
 protected:
-    int deviceAddress = DEFAUL_I2C_ADDRESS;
-    int step;
-    uint8_t currentMode;
+    int deviceAddress = AKC595X_I2C_ADRESS;
+    int resetPin = -1;
+
+    uint16_t currentStep;
+    uint16_t currentFrequency; 
+    uint8_t  currentMode = 0;
+    uint8_t  amCurrentBand; 
 
 public:
 
-    void setup(uint8_t reset_pin);
-    uint8_t setRegister(uint8_t reg, uint8_t parameter);
+    // Low level functions 
+    void setI2CBusAddress(int deviceAddress);
+    void setup(int reset_pin);
+    void powerOn(uint8_t fm_en, uint8_t tune, uint8_t mute, uint8_t seek, uint8_t seekup);
+    void setRegister(uint8_t reg, uint8_t parameter);
     uint8_t getRegister(uint8_t reg);
 
+
     void setFM();
-    void setFM(uint16_t minimalFreq, uint16_t maximumFreq, uint16_t step);
     void setAM(uint8_t band);
-    void setAM(uint16_t minimalFreq, uint16_t maximumFreq, uint16_t step);
     void setStep(int step);
     void setFrequency(uint16_t frequency);
     void frequencyUp();
     void frequencyDown();
-    void powerUp(); 
 };
