@@ -20,6 +20,12 @@ Contact: __pu2clr@gmail.com__.
 4. [Schematic]()
 5. [API Documentation]()
 
+
+
+## Preface
+
+
+
 ## MIT License 
 
 Copyright (c) 2019 Ricardo Lima Caratti
@@ -72,6 +78,11 @@ The table below shows some features fo the AKC695X devices family.
 | Pb-free / RoHS complian                                                   |   X     |    X    |    X    |
 
 __Sources:__  AKC6951, AKC6955 and AKC6959 Datasheets.
+
+
+## Schematic
+
+
 
 
 ## Registers setup
