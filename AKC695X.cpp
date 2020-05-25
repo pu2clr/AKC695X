@@ -2,12 +2,23 @@
 
 
 /**
+ * @brief Receiver startup 
+ * @todo
+ * @param resetPin 
+ */
+AKC695X::setup(uint8_t resetPin) {
+
+}
+
+
+/**
  * @brief Sets a given register with a given value 
  * @details It is a basic function to deal with the AKC695X devices 
  * @param reg  register number to be written (only for RW type registers) 
  * @param parameter  value to be written in the register 
  */
-uint8_t AKC695X::setRegister(uint8_t reg, uint8_t parameter)
+    uint8_t
+    AKC695X::setRegister(uint8_t reg, uint8_t parameter)
 {
     Wire.beginTransmission(deviceAddress);
     Wire.write(reg);

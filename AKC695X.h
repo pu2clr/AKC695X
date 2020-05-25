@@ -68,7 +68,8 @@
 
 /**
  * @defgroup GA01 Defined Data Types  
- * @brief Defined Data Types
+ * @brief   AKC695X Defined Data Types 
+ * @details Defined Data Types is a way to represent the AKC695X registers information
  * @details Some information appears to be inaccurate due to translation problems from Chinese to English.
  * @details The information shown here was extracted from Datasheet:
  * @details AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation.
@@ -342,6 +343,8 @@ protected:
     uint8_t currentMode;
 
 public:
+
+    void setup(uint8_t reset_pin);
     uint8_t setRegister(uint8_t reg, uint8_t parameter);
     uint8_t getRegister(uint8_t reg);
 
