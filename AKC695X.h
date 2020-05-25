@@ -43,6 +43,16 @@
  */
 
 /**
+ * @defgroup GA01 Defined Data Types  
+ * @brief Defined Data Types
+ * @details Some information appears to be inaccurate due to translation problems from Chinese to English.
+ * @details The information shown here was extracted from Datasheet:
+ * @details AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation.
+ * @details Other information seems incomplete even in the original Chinese Datasheet. 
+ * @details For example: Reg 10 (0x0A). There is no information about it. The Reg11 and 12 seem wrong  
+ */
+
+/**
  * @brief Reg0 (type 0x00 / RW): configures register 0 (default: 0x4c) Address
  * @see  AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 11
  */
@@ -218,6 +228,7 @@ typedef union {
         uint8_t rsv2 : 5;   //!< Reserved. Measured using, do not change this value
     }
 } akc595x_reg12;
+
 
 class AKC695X
 {
