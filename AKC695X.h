@@ -1,3 +1,17 @@
+/**
+ * @mainpage SI47XX Arduino Library implementation 
+ * 
+ * This Library is under construction......
+ * 
+ * This is an Arduino library for the AKC695X, BROADCAST RECEIVER, IC family.  
+ * It works with I2C protocol and can provide an easier interface for controlling the AKC695X devices.<br>
+ * 
+ * This library was built based on [AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio](http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf) document. 
+ * It also intend to  be used on **all members of the AKC695X family** respecting, of course, the features available for each IC version. 
+ * 
+ * This library can be freely distributed using the MIT Free Software model. [Copyright (c) 2019 Ricardo Lima Caratti](https://pu2clr.github.io/AKC695X/#mit-license).  
+ * Contact: pu2clr@gmail.com
+ */
 
 #include <Arduino.h>
 #include <Wire.h>
@@ -42,7 +56,6 @@
  * | According to the battery voltage, automatically adjust the volume         |   X     |    X    |    X    |
  * | Pb-free / RoHS complian                                                   |   X     |    X    |    X    |
  */
-
 
 #define AKC595X_I2C_ADRESS 0x10
 
@@ -372,6 +385,7 @@ protected:
     void setStep(int step); 
 
     void setFrequency(uint16_t frequency);
+    uint16_t getFrequency();
     void frequencyUp();
     void frequencyDown();
 };

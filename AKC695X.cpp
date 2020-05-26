@@ -1,5 +1,9 @@
 #include <AKC695X.h>
 
+/**
+ * @brief 
+ * 
+ */
 
 
 /**
@@ -137,13 +141,24 @@ void AKC695X::setStep(int step) {
 void AKC695X::setFrequency(uint16_t frequency) {
 
     uint16_t channel; 
+    union {
+        akc595x_reg2 r;
+        uint8_t raw;
+    } reg2;
 
-    if ( this->currentMode == 0 ) {
-        channel = (this->amCurrentBandMaximumFrequency / this->currentStep) + (frequency / this->currentStep);
-        ch
-    } else {
-
+    if (this->currentMode == 0) // AM mode
+    { 
+        // TODO
+        channel =(frequency / this->currentStep);  
+    } else { // FM mode
+        // TODO
+        channel = ( frequency / (25 * this->currentStep) ) -  30;
     }
+    // Gets the current Reg2 value and change just the channel value
+    reg2.raw = getRegister(REG02);
+    reg2.r.channel = channel >> 8;
+    setRegister(REG02, reg2.raw);
+    setRegister(REG03, channel & 0b0000011111111);
 
     this->currentFrequency = frequency;
 }

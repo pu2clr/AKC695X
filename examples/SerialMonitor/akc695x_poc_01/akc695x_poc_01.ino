@@ -13,7 +13,7 @@ void setup() {
   
   
   radio.setup(RESET_PIN);
-  radio.setAM(0); 
+  radio.setAM(3, 520, 1710); 
 
 }
 
