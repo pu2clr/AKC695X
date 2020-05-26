@@ -104,6 +104,8 @@ Band seek logic chip only valid for tune logic, frequency can be adjusted at any
 
 #### Table Reg1 amband
 
+The table below can help you to select the right band and its frequency limits. You might need to use it in your Arduino sketch.
+
 | amband value | N#  |Description  |
 | ------------ | --- |------------ |
 | 00000        |  0  |LW, 0.15 ~ 0.285, 3K station search |
