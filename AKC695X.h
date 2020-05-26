@@ -337,7 +337,6 @@ typedef struct
 } akc595x_reg27;
 
 
-
 class AKC695X
 {
 
@@ -348,12 +347,20 @@ protected:
     uint16_t currentStep;
     uint16_t currentFrequency; 
     uint8_t  currentMode = 0;
-    uint8_t  amCurrentBand; 
 
-public:
+    // AM current band information
+    uint8_t  amCurrentBand = 0; 
+    uint16_t amCurrentBandMinimumFrequency;
+    uint16_t amCurrentBandMaximumFrequency;
 
-    // Low level functions 
-    void setI2CBusAddress(int deviceAddress);
+    // FM current band information
+    uint8_t  fmCurrentBand = 0;
+
+    public :
+
+        // Low level functions
+        void
+        setI2CBusAddress(int deviceAddress);
     void setup(int reset_pin);
     void powerOn(uint8_t fm_en, uint8_t tune, uint8_t mute, uint8_t seek, uint8_t seekup);
     void setRegister(uint8_t reg, uint8_t parameter);
@@ -361,8 +368,9 @@ public:
 
 
     void setFM();
-    void setAM(uint8_t band);
-    void setStep(int step);
+    void setAM(uint8_t akc695x_band, uint16_t minimum_freq, uint16_t maximum_freq);
+    void setStep(int step); 
+
     void setFrequency(uint16_t frequency);
     void frequencyUp();
     void frequencyDown();

@@ -102,27 +102,27 @@ Band seek logic chip only valid for tune logic, frequency can be adjusted at any
 
 #### Table Reg1 amband
 
-| amband value | Description  |
-| ------------ | ------------ |
-| 00000        | LW, 0.15 ~ 0.285, 3K station search |
-| 00001        | MW1, 0.52 ~ 1.71, 5K station search |
-| 00010        | MW2, 0.522 ~ 1.62, 9K station search |
-| 00011        | MW3, 0.52 ~ 1.71, 10K station search |
-| 00100        | SW1, 4.7 ~ 10, 5K station search |
-| 00101        | SW2, 3.2 ~ 4.1, 5K station search |
-| 00110        | SW3, 4.7 ~ 5.6, 5K station search |
-| 00111        | SW4, 5.7 ~ 6.4, 5K station search |
-| 01000        | SW5, 6.8 ~ 7.6, 5K station search |
-| 01001        | SW6, 9.2 ~ 10, 5K station search |
-| 01010        | SW7, 11.4 ~ 12.2, 5K station search |
-| 01011        | SW8, 13.5 ~ 14.3 |
-| 01100        | SW9, 15 ~ 15.9 |
-| 01101        | SW10, 17.4 ~ 17.9 |
-| 01110        | SW11, 18.9 ~ 19.7, 5K station search |
-| 01111        | SW12, 21.4 ~ 21.9, 5K station search |
-| 10000        | SW13, 11.4 ~ 17.9, 5K station search |
-| 10010        | MW4, 0.52 to 1.73, 5K station search |
-| Other        | custom band, station search interval = 3K |
+| amband value | N#  |Description  |
+| ------------ | --- |------------ |
+| 00000        |  0  |LW, 0.15 ~ 0.285, 3K station search |
+| 00001        |  1  |MW1, 0.52 ~ 1.71, 5K station search |
+| 00010        |  2  |MW2, 0.522 ~ 1.62, 9K station search |
+| 00011        |  3  |MW3, 0.52 ~ 1.71, 10K station search |
+| 00100        |  4  |SW1, 4.7 ~ 10, 5K station search |
+| 00101        |  5  |SW2, 3.2 ~ 4.1, 5K station search |
+| 00110        |  6  |SW3, 4.7 ~ 5.6, 5K station search |
+| 00111        |  7  |SW4, 5.7 ~ 6.4, 5K station search |
+| 01000        |  8  |SW5, 6.8 ~ 7.6, 5K station search |
+| 01001        |  9  |SW6, 9.2 ~ 10, 5K station search |
+| 01010        | 10  |SW7, 11.4 ~ 12.2, 5K station search |
+| 01011        | 11  |SW8, 13.5 ~ 14.3 |
+| 01100        | 12  |SW9, 15 ~ 15.9 |
+| 01101        | 13  |SW10, 17.4 ~ 17.9 |
+| 01110        | 14  |SW11, 18.9 ~ 19.7, 5K station search |
+| 01111        | 15  |SW12, 21.4 ~ 21.9, 5K station search |
+| 10000        | 16  |SW13, 11.4 ~ 17.9, 5K station search |
+| 10010        | 17  |MW4, 0.52 to 1.73, 5K station search |
+| Other        | 18+ |custom band, station search interval = 3K |
 
 
 #### Table Reg1 fmband
@@ -137,6 +137,38 @@ Band seek logic chip only valid for tune logic, frequency can be adjusted at any
 | 101          | TV1,56.25 ~ 91.75, station search space specified intervals |
 | 110          | TV2, 174.75 ~ 222.25, found |
 | 111          | sets predetermined space intervals, custom FM, station search space specified intervals |
+
+
+
+### Table Reg2  and Reg3
+
+The registers 2 and 3 are used together. The tuning frequency is obtained by calculation. The formula is described below.
+
+#### Reg2
+
+|  BIT  |  Label     |  Default | Function Description | 
+| ----- | ---------  | -------- | -------------------- |         
+| 7     |  rsv       |    0     | Reserved for internal use.      | 
+| 6     | ref_32k_mo |    1     | 1 = 32.768 crystal; 0 = 12MHz crystal  |
+| 5     | Mode3k     |    0     | 1 = 3K custom channel number as the AM mode; 0 = custom channel number pattern 5K |
+| 4:0   | Channel    |   0x0A   | The higher 5 bits of the channel number. See comments [ˆ1] and [ˆ2] |
+
+
+#### Reg3
+
+|  BIT  |  Label     |  Default | Function Description | 
+| ----- | ---------  | -------- | -------------------- |         
+| 7:0   |  rsv       |   0xC8   | The lower 8 bits of the channel number.  See comment [ˆ1]  | 
+
+
+
+[ˆ1]  
+1. __On FM mode: Channel Freq = 25kHz * CHAN + 30MHz__; 
+2. __On AM mode__: 
+   * when 5K channel number pattern, Channel Freq = 5kHz * CHAN 
+   * when 3K channel number pattern, Channel Freq = 3kHz * CHAN. 
+
+[ˆ2] __If the MCU is working with MW2 (see table Table Reg1 amband), the channel number has to be a multiple of three. Otherwise, the radio will be a mess.__  
 
 
 ## Schematic 

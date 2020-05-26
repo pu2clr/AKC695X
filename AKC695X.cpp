@@ -97,23 +97,34 @@ void AKC695X::setFM() {
 
 /**
  * @brief Sets the AKC695X to AM mode and selects the band
+ * @details This method configures the AM band you want to use. 
+ * @details You must respect the frequency limits defined by the AKC595X device documentation.
  * 
- * @param band 
+ * @param akc695x_band  AM band number (check the AM table band on AKC695X documentation).
+ * @param minimum_freq  AM band minimum frequency used for the band (check the AM table band on AKC695X documentation). 
+ * @param maximum_freq  AM band maximum frequency used for the band (check the AM table band on AKC695X documentation).
  */
-void AKC695X::setAM(uint8_t band)
+void AKC695X::setAM(uint8_t akc695x_band, uint16_t minimum_freq, uint16_t maximum_freq)
 {
     this->currentMode = 0;
-    this->amCurrentBand = band;
+    this->amCurrentBand = akc695x_band;
+    this->amCurrentBandMinimumFrequency = minimum_freq;
+    this->amCurrentBandMaximumFrequency = maximum_freq;
+    // TO DO
 }
+
 
 /**
  * @brief Sets the step that will be used to increment and decrement the current frequency
+ * @details The AKC695X has two possible steps (3KHz and 5KHz). The step value is important to calculate the frequenvy you want to set. 
  * 
- * @param step 
+ * @see setFrequency
+ * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 12
+ * 
+ * @param step  The valid values are 3 and 5. Other values will be ignored.
  */
 void AKC695X::setStep(int step) {
-
-    this->currentStep =  step;
+    if ( step == 3 || step == 5)  this->currentStep =  step;
 }
 
 /**
@@ -125,8 +136,11 @@ void AKC695X::setStep(int step) {
  */
 void AKC695X::setFrequency(uint16_t frequency) {
 
+    uint16_t channel; 
+
     if ( this->currentMode == 0 ) {
- 
+        channel = (this->amCurrentBandMaximumFrequency / this->currentStep) + (frequency / this->currentStep);
+        ch
     } else {
 
     }
@@ -135,20 +149,31 @@ void AKC695X::setFrequency(uint16_t frequency) {
 }
 
 /**
+ * @brief  Returns the current frequency value
+ * 
+ * @return uint16_t  Current frequency value.
+ */
+uint16_t AKC695X::getFrequency()
+{
+    return this->currentFrequency;
+}
+
+ /**
  * @brief Adds the current step to the current frequency and sets the new frequency
  * 
  */
-void AKC695X::frequencyUp() {
-    this->currentFrequency += this->currentStep;
-    setFrequency(this->currentFrequency);
-}
+    void AKC695X::frequencyUp()
+    {
+        this->currentFrequency += this->currentStep;
+        setFrequency(this->currentFrequency);
+    }
 
-/**
+    /**
  * @brief Subtracts the current step from the current frequency and assign the new frequency
  * 
  */
-void AKC695X::frequencyDown() {
-    this->currentFrequency -= this->currentStep;
-    setFrequency(this->currentFrequency);
-}
-
+    void AKC695X::frequencyDown()
+    {
+        this->currentFrequency -= this->currentStep;
+        setFrequency(this->currentFrequency);
+    }
