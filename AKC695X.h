@@ -1,4 +1,5 @@
 
+#include <Arduino.h>
 #include <Wire.h>
 
 #define DEFAUL_I2C_ADDRESS 0x10

@@ -20,6 +20,7 @@ void AKC695X::setI2CBusAddress(int deviceAddress)
  */
 void AKC695X::setup(int resetPin)
 {
+    digitalWrite(resetPin, HIGH);
     this->resetPin = resetPin;
 }
 
@@ -86,38 +87,68 @@ uint8_t AKC695X::getRegister(uint8_t reg)
     return  Wire.read();
 }
 
+/**
+ * @brief Sets the AKC695X to FM mode
+ * 
+ */
 void AKC695X::setFM() {
     this->currentMode = 1; 
-
 }
 
-
+/**
+ * @brief Sets the AKC695X to AM mode and selects the band
+ * 
+ * @param band 
+ */
 void AKC695X::setAM(uint8_t band)
 {
     this->currentMode = 0;
     this->amCurrentBand = band;
 }
 
-
+/**
+ * @brief Sets the step that will be used to increment and decrement the current frequency
+ * 
+ * @param step 
+ */
 void AKC695X::setStep(int step) {
 
     this->currentStep =  step;
 }
 
+/**
+ * @brief Sets the device to a given frequency
+ * 
+ * @details 
+ * 
+ * @param frequency frequency you want to set to 
+ */
 void AKC695X::setFrequency(uint16_t frequency) {
 
+    if ( this->currentMode == 0 ) {
+ 
+    } else {
+
+    }
+
     this->currentFrequency = frequency;
-
 }
 
+/**
+ * @brief Adds the current step to the current frequency and sets the new frequency
+ * 
+ */
 void AKC695X::frequencyUp() {
-
-
+    this->currentFrequency += this->currentStep;
+    setFrequency(this->currentFrequency);
 }
 
-
+/**
+ * @brief Subtracts the current step from the current frequency and assign the new frequency
+ * 
+ */
 void AKC695X::frequencyDown() {
-
-
+    this->currentFrequency -= this->currentStep;
+    setFrequency(this->currentFrequency);
 }
 
