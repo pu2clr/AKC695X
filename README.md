@@ -1,4 +1,4 @@
-# AKC695X
+# PU2CLR AKC695X Arduino Library
 
 ![this library is under construction.....](https://github.com/pu2clr/AKC695X/blob/master/extras/images/under_construction.png)
 
