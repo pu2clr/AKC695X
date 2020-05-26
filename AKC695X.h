@@ -6,7 +6,7 @@
  * This is an Arduino library for the AKC695X, BROADCAST RECEIVER, IC family.  
  * It works with I2C protocol and can provide an easier interface for controlling the AKC695X devices.<br>
  * 
- * This library was built based on [AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio](http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf) document. 
+ * This library was built based on [AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio](http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf) document from "AKC technology". 
  * It also intend to  be used on **all members of the AKC695X family** respecting, of course, the features available for each IC version. 
  * 
  * This library can be freely distributed using the MIT Free Software model. [Copyright (c) 2019 Ricardo Lima Caratti](https://pu2clr.github.io/AKC695X/#mit-license).  
@@ -98,7 +98,6 @@
  * @brief Reg0 (type 0x00 / RW): configures register 0 (default: 0x4c) Address
  * @see  AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 11
  */
-
 typedef struct {
     uint8_t rsv : 2;      //!< Reserved - Debug use, do not change this value using
     uint8_t mute : 1;     //!< 1 - Mute L / R channel 0 - Normal operation
