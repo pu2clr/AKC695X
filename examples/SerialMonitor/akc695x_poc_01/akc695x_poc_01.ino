@@ -11,9 +11,14 @@ void setup() {
   while(!Serial);
 
   
-  
   radio.setup(RESET_PIN);
-  radio.setAM(3, 520, 1710); 
+ 
+  
+  // radio.setAM(3, 520.0, 1710.0, 810.0); 
+  
+  radio.setFM(0, 87.0, 108.0, 95.5);
+ 
+
 
 }
 

@@ -50,7 +50,7 @@ void AKC695X::setup(int resetPin)
  */
 void AKC695X::powerOn(uint8_t fm_en, uint8_t tune, uint8_t mute, uint8_t seek, uint8_t seekup)
 {
-    union { 
+    union {
         akc595x_reg0 r;
         uint8_t raw;
     } p;
@@ -63,9 +63,8 @@ void AKC695X::powerOn(uint8_t fm_en, uint8_t tune, uint8_t mute, uint8_t seek, u
     p.r.seekup = seekup;
     p.r.tune = tune;
 
-    setRegister(REG00, p.raw );
-
-    this->currentMode = fm_en;  // Save the current mode (FM or AM)
+    setRegister(REG00, p.raw);
+    this->currentMode = fm_en; // Save the current mode (FM or AM)
 }
 
 /**
@@ -96,16 +95,50 @@ uint8_t AKC695X::getRegister(uint8_t reg)
     Wire.endTransmission();
     delayMicroseconds(3000);
     Wire.requestFrom(this->deviceAddress, 1);
-    
-    return  Wire.read();
+
+    return Wire.read();
 }
 
 /**
  * @brief Sets the AKC695X to FM mode
  * 
  */
-void AKC695X::setFM() {
-    this->currentMode = 1; 
+void AKC695X::setFM(uint8_t akc695x_fm_band, float minimum_freq, float maximum_freq,float default_frequency)
+{
+    uint16_t channel;
+    uint8_t high_bit, low_bit;
+
+    /* 
+    union {
+        akc595x_reg1 b;
+        uint8_t raw;
+    } reg1;
+
+    this->currentMode = 1;
+
+    this->amCurrentBand = akc695x_fm_band;
+    this->amCurrentBandMinimumFrequency = minimum_freq;
+    this->amCurrentBandMaximumFrequency = maximum_freq;
+
+    reg1.b.fmband = akc695x_fm_band;
+    setRegister(REG01, reg1.raw);
+    powerOn(1, 1, 0, 0, 0);
+    */
+
+    setRegister(REG00, 0b00010011); ///power_on,AM, tune0,seek0,seek_down,non_mute,00
+    setRegister(REG01, 0b11000000); ///AM-band
+    setRegister(REG04, 0x00);
+    setRegister(REG05, 0xff);
+
+    channel = (default_frequency - 30) * 40;
+    high_bit = channel / 256 | 0b01100000;
+    low_bit = channel & 0b0000011111111;
+
+    setRegister(REG03, low_bit);
+    setRegister(REG02, high_bit);
+    setRegister(REG00, 0b11100000);
+   // delay(5);
+    setRegister(REG00, 0b11000000);
 }
 
 /**
@@ -117,15 +150,42 @@ void AKC695X::setFM() {
  * @param minimum_freq  AM band minimum frequency used for the band (check the AM table band on AKC695X documentation). 
  * @param maximum_freq  AM band maximum frequency used for the band (check the AM table band on AKC695X documentation).
  */
-void AKC695X::setAM(uint8_t akc695x_band, uint16_t minimum_freq, uint16_t maximum_freq)
+void AKC695X::setAM(uint8_t akc695x_am_band, float minimum_freq, float maximum_freq, float default_frequency)
 {
+    uint16_t channel;
+    uint8_t  high_bit, low_bit;
+
+    /*
+    union {
+        akc595x_reg1 b;
+        uint8_t raw;
+    } reg1;
+
     this->currentMode = 0;
-    this->amCurrentBand = akc695x_band;
+    this->amCurrentBand = akc695x_am_band;
     this->amCurrentBandMinimumFrequency = minimum_freq;
     this->amCurrentBandMaximumFrequency = maximum_freq;
-    // TO DO
-}
 
+    reg1.b.amband = akc695x_am_band;
+    setRegister(REG01, reg1.raw);
+    powerOn(1,0,0,0,0);
+    */
+    setRegister(REG00, 0b10000000); ///power_on,AM, tune0,seek0,seek_down,non_mute,00
+    setRegister(REG01, 0b00010011); ///AM-band
+    setRegister(REG04, 0x00);
+    setRegister(REG05, 0xff);
+    
+    channel = default_frequency / 3;
+    high_bit = channel / 256 | 0b01100000;
+    low_bit  = channel & 0b0000011111111;
+    setRegister(REG03, low_bit);
+    setRegister(REG02, high_bit);
+    setRegister(REG00, 0b10100000);
+    delay(5);
+    setRegister(REG00, 0b10000000);
+
+
+}
 
 /**
  * @brief Sets the step that will be used to increment and decrement the current frequency
@@ -136,38 +196,47 @@ void AKC695X::setAM(uint8_t akc695x_band, uint16_t minimum_freq, uint16_t maximu
  * 
  * @param step  The valid values are 3 and 5. Other values will be ignored.
  */
-void AKC695X::setStep(int step) {
-    if ( step == 3 || step == 5)  this->currentStep =  step;
+void AKC695X::setStep(int step)
+{
+    if (step == 3 || step == 5)
+        this->currentStep = step;
 }
 
 /**
- * @brief Sets the device to a given frequency
+ * @brief Sets the the device to a given frequency
  * 
- * @details 
+ * @details This methods check the current mode (AM or FM), calculates the right channel to be setted.
+ * @details Sets to reg2 structure the 5 most significan bist of the channel.
+ * @details Sets to reg3 the 8 less significant bits of the channel.
+ * 
+ * @see akc595x_reg2, akc595x_reg3
  * 
  * @param frequency frequency you want to set to 
  */
-void AKC695X::setFrequency(uint16_t frequency) {
+void AKC695X::setFrequency(float frequency)
+{
 
-    uint16_t channel; 
+    uint16_t channel;
+
     union {
         akc595x_reg2 r;
         uint8_t raw;
     } reg2;
 
     if (this->currentMode == 0) // AM mode
-    { 
+    {
         // TODO
-        channel =(frequency / this->currentStep);  
-    } else { // FM mode
-        // TODO
-        channel = ( frequency / (25 * this->currentStep) ) -  30;
+        channel = (frequency / this->currentStep);
+    }
+    else
+    { // FM mode
+        channel = (frequency - 30) * 40;  
     }
     // Gets the current Reg2 value and change just the channel value
     reg2.raw = getRegister(REG02);
-    reg2.r.channel = channel >> 8;
-    setRegister(REG02, reg2.raw);
-    setRegister(REG03, channel & 0b0000011111111);
+    reg2.r.channel = channel >> 8; // Sets to reg2 structure the 5 most significan bist of the channel
+    setRegister(REG02, reg2.raw);  
+    setRegister(REG03, channel & 0b0000011111111); // Sets to reg3 the 8 less significant bits of the channel.
 
     this->currentFrequency = frequency;
 }
@@ -177,27 +246,27 @@ void AKC695X::setFrequency(uint16_t frequency) {
  * 
  * @return uint16_t  Current frequency value.
  */
-uint16_t AKC695X::getFrequency()
+float AKC695X::getFrequency()
 {
     return this->currentFrequency;
 }
 
- /**
+/**
  * @brief Adds the current step to the current frequency and sets the new frequency
  * 
  */
-    void AKC695X::frequencyUp()
-    {
-        this->currentFrequency += this->currentStep;
-        setFrequency(this->currentFrequency);
-    }
+void AKC695X::frequencyUp()
+{
+    this->currentFrequency += this->currentStep;
+    setFrequency(this->currentFrequency);
+}
 
-    /**
+/**
  * @brief Subtracts the current step from the current frequency and assign the new frequency
  * 
  */
-    void AKC695X::frequencyDown()
-    {
-        this->currentFrequency -= this->currentStep;
-        setFrequency(this->currentFrequency);
-    }
+void AKC695X::frequencyDown()
+{
+    this->currentFrequency -= this->currentStep;
+    setFrequency(this->currentFrequency);
+}

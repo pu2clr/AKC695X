@@ -357,7 +357,7 @@ protected:
     int resetPin = -1;
 
     uint16_t currentStep;
-    uint16_t currentFrequency; 
+    float currentFrequency; 
     uint8_t  currentMode = 0;
 
     // AM current band information
@@ -371,20 +371,18 @@ protected:
     public :
 
         // Low level functions
-        void
-        setI2CBusAddress(int deviceAddress);
+    void setI2CBusAddress(int deviceAddress);
     void setup(int reset_pin);
     void powerOn(uint8_t fm_en, uint8_t tune, uint8_t mute, uint8_t seek, uint8_t seekup);
     void setRegister(uint8_t reg, uint8_t parameter);
     uint8_t getRegister(uint8_t reg);
 
-
-    void setFM();
-    void setAM(uint8_t akc695x_band, uint16_t minimum_freq, uint16_t maximum_freq);
+    void setFM(uint8_t akc695x_fm_band, float minimum_freq, float maximum_freq, float default_frequency);
+    void setAM(uint8_t akc695x_am_band, float minimum_freq, float maximum_freq, float default_frequency);
     void setStep(int step); 
 
-    void setFrequency(uint16_t frequency);
-    uint16_t getFrequency();
+    void setFrequency(float frequency);
+    float getFrequency();
     void frequencyUp();
     void frequencyDown();
 };
