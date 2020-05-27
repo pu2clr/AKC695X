@@ -108,7 +108,13 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, float minimum_freq, float maximum_f
     uint16_t channel;
     uint8_t high_bit, low_bit;
 
-    /* 
+    this->currentMode = 1;
+    this->amCurrentBand = akc695x_fm_band;
+    this->amCurrentBandMinimumFrequency = minimum_freq;
+    this->amCurrentBandMaximumFrequency = maximum_freq;
+    this->currentFrequency = default_frequency;
+
+        /* 
     union {
         akc595x_reg1 b;
         uint8_t raw;
@@ -137,7 +143,6 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, float minimum_freq, float maximum_f
     setRegister(REG03, low_bit);
     setRegister(REG02, high_bit);
     setRegister(REG00, 0b11100000);
-   // delay(5);
     setRegister(REG00, 0b11000000);
 }
 
@@ -181,9 +186,7 @@ void AKC695X::setAM(uint8_t akc695x_am_band, float minimum_freq, float maximum_f
     setRegister(REG03, low_bit);
     setRegister(REG02, high_bit);
     setRegister(REG00, 0b10100000);
-    delay(5);
     setRegister(REG00, 0b10000000);
-
 
 }
 
@@ -215,8 +218,8 @@ void AKC695X::setStep(int step)
  */
 void AKC695X::setFrequency(float frequency)
 {
-
     uint16_t channel;
+    uint8_t high_bit, low_bit;
 
     union {
         akc595x_reg2 r;
@@ -230,7 +233,19 @@ void AKC695X::setFrequency(float frequency)
     }
     else
     { // FM mode
-        channel = (frequency - 30) * 40;  
+        setRegister(REG00, 0b00010011); ///power_on,AM, tune0,seek0,seek_down,non_mute,00
+        setRegister(REG01, 0b11000000); ///AM-band
+        setRegister(REG04, 0x00);
+        setRegister(REG05, 0xff);
+
+        channel = (frequency - 30) * 40;
+        high_bit = channel / 256 | 0b01100000;
+        low_bit = channel & 0b0000011111111;
+
+        setRegister(REG03, low_bit);
+        setRegister(REG02, high_bit);
+        setRegister(REG00, 0b11100000);
+        setRegister(REG00, 0b11000000);
     }
     // Gets the current Reg2 value and change just the channel value
     reg2.raw = getRegister(REG02);
@@ -269,4 +284,66 @@ void AKC695X::frequencyDown()
 {
     this->currentFrequency -= this->currentStep;
     setFrequency(this->currentFrequency);
+}
+
+
+/**
+ * @brief Sets the output audio volume
+ * @details Values less than 24 mute the audio output. 
+ * @details Values between 25 and 63 set the output audio volume.
+ * @param volume 
+ */
+void AKC695X::setVolume(uint8_t volume)
+{
+    union {
+        akc595x_reg6 v;
+        uint8_t raw;
+    } reg6;
+
+    reg6.raw = getRegister(REG06);          // gets the current register value;
+
+    if ( volume > 63 ) volume = 63;
+    this->volume = reg6.v.volume = volume;  // changes just the volume attribute 
+    setRegister(REG06, reg6.raw);           // writes the new reg9 value
+}
+
+/**
+ * @brief Increments the audio volume 
+ * @details The maximum volume is 63
+ */
+void AKC695X::setVolumeUp() {
+    this->volume = (this->volume > 63) ? 63 : (this->volume + 1);
+    setVolume(this->volume);
+}
+
+/**
+ * @brief Decrements the audio volume 
+ * @details The minimum volume is 25
+ */
+void AKC695X::setVolumeDown()
+{
+    this->volume = (this->volume < 25 ) ? 25 : (this->volume - 1);
+    setVolume(this->volume);
+}
+
+/**
+ * @brief  Sets the kind of audio volume control will be used.
+ * @details This method configures the kind of audio volume control will be used. 
+ * @details You can control the audio volume by potentiometer or by MCU (Arduino). 
+ * @details If you choose volume conttolled by Arduino (type 1), you can set the volume from 25 to 63 levels.
+ *  
+ * @see setVolume, akc595x_reg9
+ * 
+ * @param type  0 = controlled by poteciometer; 1 controlled by the MCU 
+ */
+    void AKC695X::setVolumeControl(uint8_t type)
+{
+    union {
+        akc595x_reg9 vc;
+        uint8_t raw;
+    } reg9;
+
+    reg9.raw = getRegister(REG09); // gets the current register value;
+    reg9.vc.pd_adc_vol = type;     // changes just the attribute pd_adc_vol
+    setRegister(REG09, reg9.raw);  // writes the new reg9 value 
 }

@@ -356,6 +356,8 @@ protected:
     int deviceAddress = AKC595X_I2C_ADRESS;
     int resetPin = -1;
 
+    uint8_t volume;
+
     uint16_t currentStep;
     float currentFrequency; 
     uint8_t  currentMode = 0;
@@ -385,4 +387,10 @@ protected:
     float getFrequency();
     void frequencyUp();
     void frequencyDown();
+
+    void setVolume(uint8_t volume);
+    void setVolumeControl(uint8_t type);
+    void setVolumeUp();
+    void setVolumeDown();
+
 };
