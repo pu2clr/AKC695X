@@ -226,6 +226,8 @@ void AKC695X::setFrequency(float frequency)
         uint8_t raw;
     } reg2;
 
+    uint8_t reg3;
+
     if (this->currentMode == 0) // AM mode
     {
         // TODO
@@ -233,19 +235,14 @@ void AKC695X::setFrequency(float frequency)
     }
     else
     { // FM mode
-        setRegister(REG00, 0b00010011); ///power_on,AM, tune0,seek0,seek_down,non_mute,00
-        setRegister(REG01, 0b11000000); ///AM-band
-        setRegister(REG04, 0x00);
-        setRegister(REG05, 0xff);
 
+        reg2.raw = getRegister(REG02);
         channel = (frequency - 30) * 40;
-        high_bit = channel / 256 | 0b01100000;
-        low_bit = channel & 0b0000011111111;
+        reg2.r.channel = channel >> 8;
+        reg3 = channel & 0b0000011111111;
+        setRegister(REG03, reg3);
+        setRegister(REG02, reg2.raw);
 
-        setRegister(REG03, low_bit);
-        setRegister(REG02, high_bit);
-        setRegister(REG00, 0b11100000);
-        setRegister(REG00, 0b11000000);
     }
     // Gets the current Reg2 value and change just the channel value
     reg2.raw = getRegister(REG02);
