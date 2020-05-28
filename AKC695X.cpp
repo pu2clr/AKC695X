@@ -116,6 +116,29 @@ uint8_t AKC695X::getRegister(uint8_t reg)
 }
 
 /**
+ * @brief Sets the STC bit to high when the tune operation completes
+ * 
+ */
+void AKC695X::commitTune()
+{
+    // I know! it can be simpler and faster than this.
+
+    union  {
+        akc595x_reg0 r;
+        uint8_t raw;
+    } reg0;
+
+    reg0.raw = 0; 
+    reg0.r.fm_en = this->currentMode;   // Sets to the current mode
+    reg0.r.power_on = 1;                
+    reg0.r.tune = 1;
+
+    setRegister(REG00, reg0.raw);
+    reg0.r.tune = 0;
+    setRegister(REG00, reg0.raw);
+};
+
+/**
  * @brief Sets the AKC695X to FM mode
  * 
  */
@@ -148,8 +171,9 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t max
 
     setRegister(REG03, low_bit);
     setRegister(REG02, high_bit);
-    setRegister(REG00, 0b11100000);
-    setRegister(REG00, 0b11000000);
+
+    commitTune(); 
+
 }
 
 /**
@@ -190,9 +214,8 @@ void AKC695X::setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t max
 
     setRegister(REG03, low_bit);
     setRegister(REG02, high_bit);
-    setRegister(REG00, 0b10100000);
-    setRegister(REG00, 0b10000000);
 
+    commitTune();
 }
 
 /**
@@ -231,32 +254,29 @@ void AKC695X::setFrequency(uint16_t frequency)
 
     uint8_t reg3;
 
-    reg2.raw = getRegister(REG02);
+    reg2.raw = getRegister(REG02);                      // Gets the current value of the REG02
 
-    if (this->currentMode == 0) // AM mode
+    if (this->currentMode == 0) 
     {
-        // TODO
-
+        // AM mode
         channel = frequency / this->currentStep;
-        reg2.r.channel = channel >> 8 | 0b100000;
-        reg3 = channel & 0b0000011111111;
+        reg2.r.channel = channel >> 8 | 0b100000;      // Changes just the 5 higher bits of the channel.
+        reg3 = channel & 0b0000011111111;              // Sets the 8 lower bits of the channel 
 
         setRegister(REG03, reg3);
         setRegister(REG02, reg2.raw);
-        setRegister(REG00, 0b10100000);
-        setRegister(REG00, 0b10000000);
     }
     else
-    { // FM mode
-
+    {
+        // FM mode
         channel = (frequency - 300) * 4;
         reg2.r.channel = channel >> 8 | 0b100000;
         reg3 = channel & 0b0000011111111;
         setRegister(REG03, reg3);
         setRegister(REG02, reg2.raw);
-        setRegister(REG00, 0b11100000);
-        setRegister(REG00, 0b11000000);
     }
+
+    commitTune();
 
     this->currentFrequency = frequency;
 }

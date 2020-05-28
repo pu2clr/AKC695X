@@ -370,6 +370,7 @@ protected:
     // FM current band information
     uint8_t  fmCurrentBand = 0;
 
+
     public :
 
     // Low level functions
@@ -402,5 +403,7 @@ protected:
     float getSupplyVoltage();
 
     inline uint8_t getCurrentMode() { return this->currentMode; };
+
+    void commitTune();    
 
 };
