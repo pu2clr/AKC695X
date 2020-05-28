@@ -6,8 +6,11 @@
 AKC695X radio;
 
 
+int lastMode = FM;
+
 uint16_t currentFM = 103;
 uint16_t currentAM = 810;
+
 uint16_t currentFrequency;
 
 void setup() {
@@ -77,7 +80,6 @@ void loop() {
       case 'a':
       case 'A':
         currentFM = currentFrequency;
-        radio.setStep(5); 
         radio.setAM(3,550, 1710, currentAM, 5);
         break;
       case 'f':
@@ -86,7 +88,6 @@ void loop() {
         radio.setFM(0, 87.0, 108.0,currentFM, 1);
         break;
       case '1':
-        radio.setStep(5); 
         radio.setAM(10,11400, 12200, 11940, 5);
         break;      
         break;
