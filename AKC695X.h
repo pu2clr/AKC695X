@@ -17,8 +17,8 @@
 #include <Wire.h>
 
 #define DEFAUL_I2C_ADDRESS 0x10
-#define FM_CURRENT_MODE 1
-#define AM_CURRENT_MODE 0
+#define CURRENT_MODE_FM 1
+#define CURRENT_MODE_AM 0
 
 /**
  * @brief AKC695X features
@@ -380,8 +380,8 @@ protected:
     void setRegister(uint8_t reg, uint8_t parameter);
     uint8_t getRegister(uint8_t reg);
 
-    void setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency);
-    void setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency);
+    void setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step);
+    void setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step);
     void setStep(uint8_t step);
 
     void setFrequency(uint16_t frequency);
@@ -401,6 +401,6 @@ protected:
     int getRSSI();
     float getSupplyVoltage();
 
-
+    inline uint8_t getCurrentMode() { return this->currentMode; };
 
 };

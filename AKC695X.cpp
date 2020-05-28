@@ -119,36 +119,28 @@ uint8_t AKC695X::getRegister(uint8_t reg)
  * @brief Sets the AKC695X to FM mode
  * 
  */
-void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency)
+void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step)
 {
     uint16_t channel;
     uint8_t high_bit, low_bit;
 
-    this->currentMode = 1;
-    this->amCurrentBand = akc695x_fm_band;
-    this->amCurrentBandMinimumFrequency = minimum_freq;
-    this->amCurrentBandMaximumFrequency = maximum_freq;
-    this->currentFrequency = default_frequency;
-
-        /* 
     union {
         akc595x_reg1 b;
         uint8_t raw;
     } reg1;
 
     this->currentMode = 1;
-
     this->amCurrentBand = akc695x_fm_band;
     this->amCurrentBandMinimumFrequency = minimum_freq;
     this->amCurrentBandMaximumFrequency = maximum_freq;
+    this->currentFrequency = default_frequency;
+    this->currentStep = default_step;
 
+    reg1.raw = 0;
     reg1.b.fmband = akc695x_fm_band;
-    setRegister(REG01, reg1.raw);
-    powerOn(1, 1, 0, 0, 0);
-    */
 
     setRegister(REG00, 0b00010011); ///power_on,AM, tune0,seek0,seek_down,non_mute,00
-    setRegister(REG01, 0b11000000); ///AM-band
+    setRegister(REG01, reg1.raw);   /// Sets the FM band
 
     channel = (default_frequency - 300) * 4;
     high_bit = channel / 256 | 0b01100000;
@@ -169,12 +161,11 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t max
  * @param minimum_freq  AM band minimum frequency used for the band (check the AM table band on AKC695X documentation). 
  * @param maximum_freq  AM band maximum frequency used for the band (check the AM table band on AKC695X documentation).
  */
-void AKC695X::setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency)
+void AKC695X::setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step)
 {
     uint16_t channel;
     uint8_t  high_bit, low_bit;
 
-    /*
     union {
         akc595x_reg1 b;
         uint8_t raw;
@@ -184,19 +175,19 @@ void AKC695X::setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t max
     this->amCurrentBand = akc695x_am_band;
     this->amCurrentBandMinimumFrequency = minimum_freq;
     this->amCurrentBandMaximumFrequency = maximum_freq;
+    this->currentFrequency = default_frequency;
+    this->currentStep = default_step;
 
+    reg1.raw = 0;
     reg1.b.amband = akc695x_am_band;
-    setRegister(REG01, reg1.raw);
-    powerOn(1,0,0,0,0);
-    */
-    setRegister(REG00, 0b10000000); ///power_on,AM, tune0,seek0,seek_down,non_mute,00
-    setRegister(REG01, 0b00010011); ///AM-band
-    setRegister(REG04, 0x00);
-    setRegister(REG05, 0xff);
+
+    setRegister(REG00, 0b10000000); // Sets to AM (Power On)   
+    setRegister(REG01, reg1.raw);   // Selects the AM band
     
-    channel = default_frequency / 3;
+    channel = default_frequency / this->currentStep;
     high_bit = channel / 256 | 0b01100000;
     low_bit  = channel & 0b0000011111111;
+
     setRegister(REG03, low_bit);
     setRegister(REG02, high_bit);
     setRegister(REG00, 0b10100000);
@@ -231,6 +222,7 @@ void AKC695X::setStep(uint8_t step)
  */
 void AKC695X::setFrequency(uint16_t frequency)
 {
+
     uint16_t channel;
     union {
         akc595x_reg2 r;
@@ -239,15 +231,24 @@ void AKC695X::setFrequency(uint16_t frequency)
 
     uint8_t reg3;
 
+    reg2.raw = getRegister(REG02);
+
     if (this->currentMode == 0) // AM mode
     {
         // TODO
-        channel = (frequency / this->currentStep);
+
+        channel = frequency / this->currentStep;
+        reg2.r.channel = channel >> 8 | 0b100000;
+        reg3 = channel & 0b0000011111111;
+
+        setRegister(REG03, reg3);
+        setRegister(REG02, reg2.raw);
+        setRegister(REG00, 0b10100000);
+        setRegister(REG00, 0b10000000);
     }
     else
     { // FM mode
 
-        reg2.raw = getRegister(REG02);
         channel = (frequency - 300) * 4;
         reg2.r.channel = channel >> 8 | 0b100000;
         reg3 = channel & 0b0000011111111;
@@ -318,10 +319,15 @@ void AKC695X::setAudio(uint8_t phase_inv, uint8_t line, uint8_t volume)
 /**
  * @brief Configures the audio output with default values
  * @details this method sets the audio phase_inv = 0; line = 1 and volume = 40;
+ * @details Also, this set the audio controlled by MCU (Arduino)
+ * 
+ * @see setVolumeControl
+ * 
  */
 void AKC695X::setAudio()
 {
-    setAudio(1, 0, 40);
+    setVolumeControl(1); // Audio controlled by MCU
+    setAudio(0, 0, 40);
 }
 
 /**
