@@ -38,18 +38,16 @@ void AKC695X::reset() {
 };
 
 /**
- * @brief Receiver startup 
- * @todo
- * @param resetPin 
+ * @brief   Receiver startup 
+ * @details 
+ * @param resetPin  if >= 0,  then you control the RESET. if -1, you are using ths MCU RST pin. 
  */
 void AKC695X::setup(int resetPin)
 {
     this->resetPin = resetPin;
-    reset();
-
+    if (resetPin >= 0) reset();
     Wire.begin();
-
-}
+    }
 
 /**
  * @brief Power the device on 
