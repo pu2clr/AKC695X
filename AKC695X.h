@@ -359,7 +359,7 @@ protected:
     uint8_t volume;
 
     uint16_t currentStep;
-    float currentFrequency; 
+    uint16_t currentFrequency;
     uint8_t  currentMode = 0;
 
     // AM current band information
@@ -372,25 +372,35 @@ protected:
 
     public :
 
-        // Low level functions
+    // Low level functions
+    void reset();
     void setI2CBusAddress(int deviceAddress);
     void setup(int reset_pin);
     void powerOn(uint8_t fm_en, uint8_t tune, uint8_t mute, uint8_t seek, uint8_t seekup);
     void setRegister(uint8_t reg, uint8_t parameter);
     uint8_t getRegister(uint8_t reg);
 
-    void setFM(uint8_t akc695x_fm_band, float minimum_freq, float maximum_freq, float default_frequency);
-    void setAM(uint8_t akc695x_am_band, float minimum_freq, float maximum_freq, float default_frequency);
-    void setStep(int step); 
+    void setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency);
+    void setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency);
+    void setStep(uint8_t step);
 
-    void setFrequency(float frequency);
-    float getFrequency();
+    void setFrequency(uint16_t frequency);
+    uint16_t getFrequency();
     void frequencyUp();
     void frequencyDown();
+
+    void setAudio(uint8_t phase_inv, uint8_t line, uint8_t volume);
+    void setAudio();
 
     void setVolume(uint8_t volume);
     void setVolumeControl(uint8_t type);
     void setVolumeUp();
     void setVolumeDown();
+    inline int  getVolume() {return this->volume;};
+
+    int getRSSI();
+    float getSupplyVoltage();
+
+
 
 };

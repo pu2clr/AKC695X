@@ -15,13 +15,24 @@
  * Contact: pu2clr@gmail.com
  */
 
+void AKC695X::reset() {
+    pinMode(this->resetPin, OUTPUT);
+    delay(10);
+    digitalWrite(this->resetPin, LOW);
+    delay(10);
+    digitalWrite(this->resetPin, HIGH);
+    delay(10);
+}
+
+
 /**
  * @brief Sets the I2C bus device address 
  * @details You do not need use this function if your i2c device address is 0x10 (default value)  
  * 
  * @param deviceAddress 
  */
-void AKC695X::setI2CBusAddress(int deviceAddress)
+    void
+    AKC695X::setI2CBusAddress(int deviceAddress)
 {
     this->deviceAddress = deviceAddress;
 };
@@ -33,8 +44,11 @@ void AKC695X::setI2CBusAddress(int deviceAddress)
  */
 void AKC695X::setup(int resetPin)
 {
-    digitalWrite(resetPin, HIGH);
     this->resetPin = resetPin;
+    reset();
+
+    Wire.begin();
+
 }
 
 /**
@@ -90,20 +104,22 @@ void AKC695X::setRegister(uint8_t reg, uint8_t parameter)
  */
 uint8_t AKC695X::getRegister(uint8_t reg)
 {
+    uint8_t result;    
     Wire.beginTransmission(this->deviceAddress);
     Wire.write(reg);
-    Wire.endTransmission();
-    delayMicroseconds(3000);
-    Wire.requestFrom(this->deviceAddress, 1);
-
-    return Wire.read();
+    Wire.endTransmission(false);
+    Wire.requestFrom(this->deviceAddress, 1, false);
+    result =  Wire.read();
+    Wire.endTransmission(true);
+    delay(3);
+    return result;
 }
 
 /**
  * @brief Sets the AKC695X to FM mode
  * 
  */
-void AKC695X::setFM(uint8_t akc695x_fm_band, float minimum_freq, float maximum_freq,float default_frequency)
+void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency)
 {
     uint16_t channel;
     uint8_t high_bit, low_bit;
@@ -133,10 +149,8 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, float minimum_freq, float maximum_f
 
     setRegister(REG00, 0b00010011); ///power_on,AM, tune0,seek0,seek_down,non_mute,00
     setRegister(REG01, 0b11000000); ///AM-band
-    setRegister(REG04, 0x00);
-    setRegister(REG05, 0xff);
 
-    channel = (default_frequency - 30) * 40;
+    channel = (default_frequency - 300) * 4;
     high_bit = channel / 256 | 0b01100000;
     low_bit = channel & 0b0000011111111;
 
@@ -155,7 +169,7 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, float minimum_freq, float maximum_f
  * @param minimum_freq  AM band minimum frequency used for the band (check the AM table band on AKC695X documentation). 
  * @param maximum_freq  AM band maximum frequency used for the band (check the AM table band on AKC695X documentation).
  */
-void AKC695X::setAM(uint8_t akc695x_am_band, float minimum_freq, float maximum_freq, float default_frequency)
+void AKC695X::setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency)
 {
     uint16_t channel;
     uint8_t  high_bit, low_bit;
@@ -199,10 +213,9 @@ void AKC695X::setAM(uint8_t akc695x_am_band, float minimum_freq, float maximum_f
  * 
  * @param step  The valid values are 3 and 5. Other values will be ignored.
  */
-void AKC695X::setStep(int step)
+void AKC695X::setStep(uint8_t step)
 {
-    if (step == 3 || step == 5)
-        this->currentStep = step;
+    this->currentStep = step;
 }
 
 /**
@@ -216,11 +229,9 @@ void AKC695X::setStep(int step)
  * 
  * @param frequency frequency you want to set to 
  */
-void AKC695X::setFrequency(float frequency)
+void AKC695X::setFrequency(uint16_t frequency)
 {
     uint16_t channel;
-    uint8_t high_bit, low_bit;
-
     union {
         akc595x_reg2 r;
         uint8_t raw;
@@ -237,18 +248,14 @@ void AKC695X::setFrequency(float frequency)
     { // FM mode
 
         reg2.raw = getRegister(REG02);
-        channel = (frequency - 30) * 40;
-        reg2.r.channel = channel >> 8;
+        channel = (frequency - 300) * 4;
+        reg2.r.channel = channel >> 8 | 0b100000;
         reg3 = channel & 0b0000011111111;
         setRegister(REG03, reg3);
         setRegister(REG02, reg2.raw);
-
+        setRegister(REG00, 0b11100000);
+        setRegister(REG00, 0b11000000);
     }
-    // Gets the current Reg2 value and change just the channel value
-    reg2.raw = getRegister(REG02);
-    reg2.r.channel = channel >> 8; // Sets to reg2 structure the 5 most significan bist of the channel
-    setRegister(REG02, reg2.raw);  
-    setRegister(REG03, channel & 0b0000011111111); // Sets to reg3 the 8 less significant bits of the channel.
 
     this->currentFrequency = frequency;
 }
@@ -258,7 +265,7 @@ void AKC695X::setFrequency(float frequency)
  * 
  * @return uint16_t  Current frequency value.
  */
-float AKC695X::getFrequency()
+uint16_t AKC695X::getFrequency()
 {
     return this->currentFrequency;
 }
@@ -284,12 +291,46 @@ void AKC695X::frequencyDown()
 }
 
 
+
+/**
+ * @brief Configures the audio output
+ * 
+ * @details This method sets the AKC695X device audio behaviour
+ * 
+ * @param phase_inv if 0, audio output inphase; if 1, audio output inverted
+ * @param line      if 0, audio input mode; if 1, radio mode.
+ * @param volume    if 25 a 63, audio volume; if <= 24 mute 
+ */
+void AKC695X::setAudio(uint8_t phase_inv, uint8_t line, uint8_t volume)
+{
+    union {
+        akc595x_reg6 a;
+        uint8_t raw;
+    } reg6;
+
+    this->volume = reg6.a.volume = (volume > 63) ? 63 : volume;
+    reg6.a.line = line;
+    reg6.a.phase_inv = phase_inv;
+    setRegister(REG06,reg6.raw);
+
+}
+
+/**
+ * @brief Configures the audio output with default values
+ * @details this method sets the audio phase_inv = 0; line = 1 and volume = 40;
+ */
+void AKC695X::setAudio()
+{
+    setAudio(1, 0, 40);
+}
+
 /**
  * @brief Sets the output audio volume
  * @details Values less than 24 mute the audio output. 
  * @details Values between 25 and 63 set the output audio volume.
  * @param volume 
  */
+
 void AKC695X::setVolume(uint8_t volume)
 {
     union {
@@ -343,4 +384,39 @@ void AKC695X::setVolumeDown()
     reg9.raw = getRegister(REG09); // gets the current register value;
     reg9.vc.pd_adc_vol = type;     // changes just the attribute pd_adc_vol
     setRegister(REG09, reg9.raw);  // writes the new reg9 value 
+}
+
+
+/**
+ * @brief Gets the current RSSI
+ * 
+ * @return int  RSSI value
+ */
+int AKC695X::getRSSI()
+{
+    union {
+        akc595x_reg27 r;
+        uint8_t raw;
+    } reg27;
+
+    reg27.raw = getRegister(REG27);
+
+    return reg27.r.rssi;
+}
+
+/**
+ * @brief Get the supply voltage 
+ * 
+ * @return float the supply voltage
+ */
+float AKC695X::getSupplyVoltage()
+{
+    union {
+        akc595x_reg25 r;
+        uint8_t raw;
+    } reg25;
+
+    reg25.raw = getRegister(REG25);
+
+    return (1.8 + 0.05 * reg25.r.vbat);
 }
