@@ -362,7 +362,8 @@ void useBand() {
   {
     radio.setAM(band[bandIdx].band, band[bandIdx].maximum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
   }
-  // currentFrequency = band[bandIdx].default_frequency;
+  delay(100);
+  currentFrequency = band[bandIdx].default_frequency;
   radio.setFrequency(currentFrequency);
 
   showStatus();
