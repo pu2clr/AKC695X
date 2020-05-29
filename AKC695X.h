@@ -364,7 +364,6 @@ typedef struct
 
 /**
  * @defgroup GA02 AKC695X Class  
- *  
  * @brief AKC695X Class 
  * @details This class implements all functions to help you to control the AKC695X devices. 
  * 

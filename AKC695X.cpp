@@ -131,7 +131,7 @@ uint8_t AKC695X::getRegister(uint8_t reg)
 /**
  * @ingroup GA04
  * @brief Sets the STC bit to high when the tune operation completes
- * 
+ * @details Tells the device that the tune process is over.
  */
 void AKC695X::commitTune()
 {
@@ -155,7 +155,13 @@ void AKC695X::commitTune()
 /**
  * @ingroup GA04
  * @brief Sets the AKC695X to FM mode
+ * @details Sets the device to FM mode.
  * 
+ * @param akc695x_fm_band       FM band (see manual FM band table)
+ * @param minimum_freq          Minimal frequency of the band 
+ * @param maximum_freq          Band maximum frequency
+ * @param default_frequency     default frequency
+ * @param default_step          increment and decrement step 
  */
 void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step)
 {
@@ -197,11 +203,13 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t max
  * @details This method configures the AM band you want to use. 
  * @details You must respect the frequency limits defined by the AKC595X device documentation.
  * 
- * @param akc695x_band  AM band number (check the AM table band on AKC695X documentation).
- * @param minimum_freq  AM band minimum frequency used for the band (check the AM table band on AKC695X documentation). 
- * @param maximum_freq  AM band maximum frequency used for the band (check the AM table band on AKC695X documentation).
+ * @param akc695x_am_band       AM band (see manual AM band table)
+ * @param minimum_freq          Minimal frequency of the band 
+ * @param maximum_freq          Band maximum frequency
+ * @param default_frequency     default frequency
+ * @param default_step          increment and decrement step 
  */
-void AKC695X::setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step)
+ void AKC695X::setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step)
 {
     uint16_t channel;
     uint8_t  high_bit, low_bit;
@@ -276,7 +284,7 @@ void AKC695X::setFmSeekStep(uint8_t space)
 /**
  * @ingroup GA04
  * @brief Seeks a FM station 
- * 
+ * @details Seek a FM Station
  * @param up_down  if 0, seek down; if 1, seek up.
  */
 void AKC695X::seekFmStation(uint8_t up_down)
@@ -352,7 +360,7 @@ void AKC695X::setFrequency(uint16_t frequency)
 /**
  * @ingroup GA04
  * @brief  Returns the current frequency value
- * 
+ * @details Gets the current frequency.
  * @return uint16_t  Current frequency value.
  */
 uint16_t AKC695X::getFrequency()
@@ -363,7 +371,7 @@ uint16_t AKC695X::getFrequency()
 /**
  * @ingroup GA04
  * @brief Adds the current step to the current frequency and sets the new frequency
- * 
+ * @details Goes to the next frequency channel  
  */
 void AKC695X::frequencyUp()
 {
@@ -374,7 +382,7 @@ void AKC695X::frequencyUp()
 /**
  * @ingroup GA04
  * @brief Subtracts the current step from the current frequency and assign the new frequency
- * 
+ * @details Goes to the previous frequency channel  
  */
 void AKC695X::frequencyDown()
 {
@@ -489,7 +497,7 @@ void AKC695X::setVolumeDown()
 /**
  * @ingroup GA04
  * @brief Gets the current RSSI
- * 
+ * @details Gets the current RSSI
  * @return int  RSSI value
  */
 int AKC695X::getRSSI()
@@ -506,8 +514,8 @@ int AKC695X::getRSSI()
 
 /**
  * @ingroup GA04
- * @brief Get the supply voltage 
- * 
+ * @brief Gets the supply voltage 
+ * @details Gets the current supply voltage 
  * @return float the supply voltage
  */
 float AKC695X::getSupplyVoltage()
