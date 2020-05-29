@@ -2,10 +2,9 @@
 
 ![this library is under construction.....](https://github.com/pu2clr/AKC695X/blob/master/extras/images/under_construction.png)
 
-__ATTENTION__: this library is under construction..... Waiting for the hardware circuit. Do no try use it! 
+__ATTENTION__: This library is under construction. Some functions may not work as expected! 
 
 This is an Arduino Library to control the AKC695X / M695X DSP radio devices. 
-
 
 This library can be freely distributed using the MIT Free Software model. 
 
