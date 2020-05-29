@@ -217,12 +217,12 @@ typedef struct  {
  * @brief Reg11 (type 0x0B / RW):  configure register 9 (default: 0xE0) Address
  * 
  * @details Sets FM seek step. 
- * @details | spece |  step   |
- * @details | ----- |  ------ | 
- * @details |  00   |  25 KHz |
- * @details |  01   |  50 KHz | 
- * @details |  10   | 100 KHz | 
- * @details |  11   | 200 KHz | 
+ * | spece |  step   |
+ * | ----- |  ------ | 
+ * |  00   |  25 KHz |
+ * |  01   |  50 KHz | 
+ * |  10   | 100 KHz | 
+ * |  11   | 200 KHz | 
  * 
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 14
  */

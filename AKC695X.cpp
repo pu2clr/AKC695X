@@ -157,7 +157,18 @@ void AKC695X::commitTune()
  * @brief Sets the AKC695X to FM mode
  * @details Sets the device to FM mode.
  * 
- * @param akc695x_fm_band       FM band (see manual FM band table)
+ * | FM band | N#  |Description  |
+ * | --------| --- |------------ |
+ * | 000     |  0  | FM1,87 ~ 108, station search space specified intervals |
+ * | 001     |  1  | FM2,76 ~ 108, station search space specified intervals |
+ * | 010     |  2  | FM3,70 ~ 93, with a space station search interval set |
+ * | 011     |  3  | FM4,76 ~ 90, Tuning predetermined space intervals |
+ * | 100     |  4  | FM5,64 ~ 88, with a space station search interval set | 
+ * | 101     |  5  | TV1,56.25 ~ 91.75, station search space specified intervals |
+ * | 110     |  6  | TV2, 174.75 ~ 222.25, found |
+ * | 111     |  7  | sets predetermined space intervals, custom FM, station search space specified intervals |
+ * 
+ * @param akc695x_fm_band       FM band (see manual FM band table above)
  * @param minimum_freq          Minimal frequency of the band 
  * @param maximum_freq          Band maximum frequency
  * @param default_frequency     default frequency
@@ -203,13 +214,35 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t max
  * @details This method configures the AM band you want to use. 
  * @details You must respect the frequency limits defined by the AKC595X device documentation.
  * 
- * @param akc695x_am_band       AM band (see manual AM band table)
+ * | AM band      | N#  |Description  |
+ * | ------------ | --- |------------ |
+ * | 00000        |  0  |LW, 0.15 ~ 0.285, 3K station search |
+ * | 00001        |  1  |MW1, 0.52 ~ 1.71, 5K station search |
+ * | 00010        |  2  |MW2, 0.522 ~ 1.62, 9K station search |
+ * | 00011        |  3  |MW3, 0.52 ~ 1.71, 10K station search |
+ * | 00100        |  4  |SW1, 4.7 ~ 10, 5K station search |
+ * | 00101        |  5  |SW2, 3.2 ~ 4.1, 5K station search |
+ * | 00110        |  6  |SW3, 4.7 ~ 5.6, 5K station search |
+ * | 00111        |  7  |SW4, 5.7 ~ 6.4, 5K station search |
+ * | 01000        |  8  |SW5, 6.8 ~ 7.6, 5K station search |
+ * | 01001        |  9  |SW6, 9.2 ~ 10, 5K station search |
+ * | 01010        | 10  |SW7, 11.4 ~ 12.2, 5K station search |
+ * | 01011        | 11  |SW8, 13.5 ~ 14.3 |
+ * | 01100        | 12  |SW9, 15 ~ 15.9 |
+ * | 01101        | 13  |SW10, 17.4 ~ 17.9 |
+ * | 01110        | 14  |SW11, 18.9 ~ 19.7, 5K station search |
+ * | 01111        | 15  |SW12, 21.4 ~ 21.9, 5K station search |
+ * | 10000        | 16  |SW13, 11.4 ~ 17.9, 5K station search |
+ * | 10010        | 17  |MW4, 0.52 to 1.73, 5K station search |
+ * | Other        | 18+ |custom band, station search interval = 3K |
+ * 
+ * @param akc695x_am_band       AM band (see manual AM band table above)
  * @param minimum_freq          Minimal frequency of the band 
  * @param maximum_freq          Band maximum frequency
  * @param default_frequency     default frequency
  * @param default_step          increment and decrement step 
  */
- void AKC695X::setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step)
+void AKC695X::setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step)
 {
     uint16_t channel;
     uint8_t  high_bit, low_bit;
