@@ -49,19 +49,21 @@ akc_band band[] = {
     {0, 12, 15000, 15900, 15300, 5},
     {0, 13, 17400, 17900, 17600, 5},  
     {0, 15, 21400, 21900, 21525, 5},
+    {1,  5,  562,   2222,   562, 1},
+    {1,  6,  1740,  2222,  1740, 1},
     {1,  7,  1444,  1480,  1450, 1} } ;
 
 const int lastBand = (sizeof band / sizeof(akc_band)) - 1;
 int bandIdx = 0; // FM
 
 char oldFreq[20];
-char oldMode[10];
-char oldUnit[10];
-char oldStep[10];
+char oldMode[20];
+char oldUnit[20];
+char oldStep[20];
 char oldExtraSignalInfo[15];
 char oldRssi[20];
-char oldVolume[10];
-char oldVbat[10];
+char oldVolume[20];
+char oldVbat[20];
 
 Rotary encoder = Rotary(ENCODER_PIN_A, ENCODER_PIN_B);
 // Encoder control variables
@@ -86,6 +88,7 @@ void setup()
   pinMode(BAND_MODE_SWITCH_DOWN, INPUT_PULLUP);
   pinMode(VOL_UP, INPUT_PULLUP);
   pinMode(VOL_DOWN, INPUT_PULLUP);
+  
 
   // Encoder interrupt
   attachInterrupt(digitalPinToInterrupt(ENCODER_PIN_A), rotaryEncoder, CHANGE);
@@ -295,9 +298,10 @@ void showStatus()
 */
 void showRSSI()
 {
+
   char sR[20];
 
-  sprintf(sR,"RSSI:%idBuV", radio.getRSSI());
+  sprintf(sR,"RSSI:%3.3idBuV", radio.getRSSI());
   printValue(0, 40, oldRssi, sR, 6, 1);
   oled.display();
 
@@ -308,7 +312,7 @@ void showRSSI()
 */
 void showVolume()
 {
-  char sVolume[10];
+  char sVolume[20];
   sprintf(sVolume, "Vol: %2.2u", radio.getVolume());
   printValue(80, 56, oldVolume, sVolume, 6, 1);
   oled.display();
@@ -319,7 +323,7 @@ void showVolume()
  */
 void showVbat()
 {
-  char sV[10];
+  char sV[20];
   float v = radio.getSupplyVoltage();
   dtostrf(v, 2, 1, sV); // This may not work on some architectures (for example: Arduino DUE). 
   strcat(sV,"V");
@@ -335,7 +339,7 @@ void showVbat()
  */
 void volumeButton(byte d)
 {
-
+  
   if (d == 1)
     radio.setVolumeUp();
   else

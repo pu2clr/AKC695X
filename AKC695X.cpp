@@ -120,11 +120,11 @@ uint8_t AKC695X::getRegister(uint8_t reg)
     Wire.requestFrom(this->deviceAddress, 1, false);
     result =  Wire.read();
     Wire.endTransmission(true);
-    delay(3);
+    delayMicroseconds(2000);
     return result;
 }
 
-/** @defgroup GA04 Receiver Operation  
+/** @defgroup GA04 Receiver Operation Methods 
  * @section   Receiver Operation 
  */
 
@@ -551,12 +551,13 @@ int AKC695X::getRSSI()
     int fator = (this->currentMode == 1) ? 103 : 123;
     int rssi;
 
-    reg24.raw = getRegister(REG24);
+    // reg24.raw = getRegister(REG24); // TO DO: bug??
+
     reg27.raw = getRegister(REG27);
 
-    rssi = fator - reg27.r.rssi - 6 * reg24.pg.pgalevel_rf -  6 * reg24.pg.pgalevel_if;
+    rssi = fator - reg27.r.rssi - 30; // - 6 * reg24.pg.pgalevel_rf -  6 * reg24.pg.pgalevel_if;
 
-    return rssi;
+    return  rssi;
 }
 
 /**
