@@ -61,6 +61,7 @@ char oldStep[10];
 char oldExtraSignalInfo[15];
 char oldRssi[20];
 char oldVolume[10];
+char oldVbat[10];
 
 Rotary encoder = Rotary(ENCODER_PIN_A, ENCODER_PIN_B);
 // Encoder control variables
@@ -100,8 +101,9 @@ void setup()
   radio.setup(RESET_PIN);
   radio.setFM(band[bandIdx].band, band[bandIdx].maximum_frequency, band[bandIdx].maximum_frequency,band[bandIdx].default_frequency, band[bandIdx].step);
   radio.setAudio(); // Sets the audio output behaviour (default configuration).
-
+  
   showStatus();
+
 }
 
 void rotaryEncoder()
@@ -142,6 +144,7 @@ void resetBuffer()
   clearBuffer(oldExtraSignalInfo);
   clearBuffer(oldRssi);
   clearBuffer(oldVolume);
+  clearBuffer(oldVbat);
 }
 
 /**
@@ -263,6 +266,7 @@ void showFrequency()
 
   printValue(0, 0, oldMode, bandMode, 7, 1);
   printValue(105, 0, oldUnit, unit, 7, 1);
+  showRSSI();
 
   oled.display();
 }
@@ -281,6 +285,7 @@ void showStatus()
 
   showVolume();
   showRSSI();
+  showVbat();
 
   oled.display();
 }
@@ -290,6 +295,12 @@ void showStatus()
 */
 void showRSSI()
 {
+  char sR[20];
+
+  sprintf(sR,"RSSI:%idBuV", radio.getRSSI());
+  printValue(0, 40, oldRssi, sR, 6, 1);
+  oled.display();
+
 }
 
 /*
@@ -298,10 +309,26 @@ void showRSSI()
 void showVolume()
 {
   char sVolume[10];
-  sprintf(sVolume, "V%2.2u", radio.getVolume());
-  printValue(105, 30, oldVolume, sVolume, 6, 1);
+  sprintf(sVolume, "Vol: %2.2u", radio.getVolume());
+  printValue(80, 56, oldVolume, sVolume, 6, 1);
   oled.display();
 }
+
+/*
+ * Shows the battery voltage 
+ */
+void showVbat()
+{
+  char sV[10];
+  float v = radio.getSupplyVoltage();
+  dtostrf(v, 2, 1, sV); // This may not work on some architectures (for example: Arduino DUE). 
+  strcat(sV,"V");
+  printValue(0, 56, oldVbat, sV, 6, 1);
+  oled.display();
+ 
+}
+
+/*********************************************************/
 
 /*
  * Button - Volume control

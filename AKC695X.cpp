@@ -305,7 +305,7 @@ void AKC695X::setStep(uint8_t step)
  * 
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 14
  * 
- * @param uint8_t space the value betwenn 0 and 3 (see table above). 
+ * @param space value betwenn 0 and 3 (see table above). 
  */
 void AKC695X::setFmSeekStep(uint8_t space)
 {
@@ -539,13 +539,24 @@ void AKC695X::setVolumeDown()
 int AKC695X::getRSSI()
 {
     union {
+        akc595x_reg24 pg;
+        uint8_t raw;
+    } reg24;
+
+    union {
         akc595x_reg27 r;
         uint8_t raw;
     } reg27;
 
+    int fator = (this->currentMode == 1) ? 103 : 123;
+    int rssi;
+
+    reg24.raw = getRegister(REG24);
     reg27.raw = getRegister(REG27);
 
-    return reg27.r.rssi;
+    rssi = fator - reg27.r.rssi - 6 * reg24.pg.pgalevel_rf -  6 * reg24.pg.pgalevel_if;
+
+    return rssi;
 }
 
 /**
