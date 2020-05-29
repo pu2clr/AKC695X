@@ -95,6 +95,7 @@
  */
 
 /**
+ * @ingroup GA01
  * @brief Reg0 (type 0x00 / RW): configures register 0 (default: 0x4c) Address
  * @see  AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 11
  */
@@ -109,6 +110,7 @@ typedef struct {
 } akc595x_reg0;
 
 /**
+ * @ingroup GA01
  * @brief Reg1 (type 0x01 / RW): configures register 1 (default: 0x10) Address
  * 
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 12
@@ -121,6 +123,7 @@ typedef struct
 }  akc595x_reg1;
 
 /**
+ * @ingroup GA01
  * @brief Reg2 (type 0x02 / RW): configure register 2 (default: 0x4A) Address
  * 
  * @details High channel number 5, the channel number and frequencies related as follows: 
@@ -139,22 +142,26 @@ typedef struct
 } akc595x_reg2;
 
 /**
+ * @ingroup GA01
  * @brief Reg3 (type 0x03 / RW): configures register 3 (default: 0xC8) Address
  */
 typedef uint8_t akc595x_reg3; //!< 8 least significant bits representing the channel value (see reg2)
 
 /**
+ * @ingroup GA01
  * @brief Reg4 (type 0x04 / RW): configures register 4 (default: 0x19) Address
  */
 typedef uint8_t akc595x_reg4; //!< Custom channel band start number chan = 32 * usr_chan_start
 
 /**
+ * @ingroup GA01
  * @brief Reg5 (type 0x05 / RW): configures register 5 (default: 0x32) Address
  * 
  */
 typedef uint8_t akc595x_reg5; //!< Custom end-band channel number chan = 32 * usr_chan_stop
 
 /**
+ * @ingroup GA01
  * @brief Reg6 (type 0x06 / RW): configures register 0 (default: 0xA1) Address
  */
 typedef struct {
@@ -164,6 +171,7 @@ typedef struct {
 } akc595x_reg6;
 
 /**
+ * @ingroup GA01
  * @brief Reg7 (type 0x07 / RW): configures register 0 (default: 0xA1) Address
  * @details stereo and mono: "00" the auto stereo, there Stereo_th control threshold ; "10" long as the pilot is forced stereo "x1" forced mono demodulator
  */
@@ -176,6 +184,7 @@ typedef struct {
 } akc595x_reg7;
 
 /**
+ * @ingroup GA01
  * @brief Reg8 (type 0x08 / RW):  configures register 8 (default: 0x58) Address
  * @details 
  * 
@@ -189,6 +198,7 @@ typedef struct  {
 } akc595x_reg8;
 
 /**
+ * @ingroup GA01
  * @brief Reg9 (type 0x09 / RW):  configure register 9 (default: 0x07) Address
  * @details 
  * 
@@ -203,18 +213,7 @@ typedef struct  {
 } akc595x_reg9;
 
 /**
- * @todo  Did not find in Datasheet.
- * @brief Reg10 (type 0x0A / RW):  configure register 10 (default: 0x??) Address
- * @details 
- * 
- * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 14
- */
-typedef  struct  {
-        uint8_t todo1 : 4;       //!< ??????
-        uint8_t todo2 : 4;       //!< ??????
-} akc595x_reg10;
-
-/**
+ * @ingroup GA01
  * @brief Reg11 (type 0x0B / RW):  configure register 9 (default: 0xE0) Address
  * 
  * @details Sets FM seek step. 
@@ -233,8 +232,8 @@ typedef struct  {
         uint8_t rsv2 : 4;       //!< Reserved. Measured using, do not change this value
 } akc595x_reg11;
 
-
 /**
+ * @ingroup GA01
  * @brief Reg12 (type 0x0C / RW):  configure register 11 (default: 0x??) Address
  * @details 
  * 
@@ -248,6 +247,7 @@ typedef  struct  {
 } akc595x_reg12;
 
 /**
+ * @ingroup GA01
  * @brief Reg13 (type 0x0D / RW):  configure register 11 (default: 0x??) Address
  * @details 
  * 
@@ -262,6 +262,7 @@ typedef  struct  {
 } akc595x_reg13;
 
 /**
+ * @ingroup GA01
  * @brief Reg20 (type 0x14 / R) 
  * @details 
  * 
@@ -276,14 +277,15 @@ typedef struct
 } akc595x_reg20;
 
 /**
+ * @ingroup GA01
  * @brief Reg21 (type 0x15 / R) 
  * @details Reg21 is the Current Channel number (low 8bit). See Reg 20.
  * 
  */
-typedef uint8_t akc595x_reg21; 
-
+typedef uint8_t akc595x_reg21;
 
 /**
+ * @ingroup GA01
  * @brief Reg22 (type 0x16 / R) 
  * @details 
  * 
@@ -296,6 +298,7 @@ typedef struct
 } akc595x_reg22;
 
 /**
+ * @ingroup GA01
  * @brief Reg23 (type 0x17 / R) 
  * @details 
  * 
@@ -308,6 +311,7 @@ typedef struct
 } akc595x_reg23;
 
 /**
+ * @ingroup GA01
  * @brief Reg24 (type 0x18 / R) 
  * @details 
  * 
@@ -322,6 +326,7 @@ typedef struct
 } akc595x_reg24;
 
 /**
+ * @ingroup GA01
  * @brief Reg25 (type 0x19 / R) 
  * @details 
  * 
@@ -334,6 +339,7 @@ typedef struct
 } akc595x_reg25;
 
 /**
+ * @ingroup GA01
  * @brief Reg26 (type 0x1A / R) 
  * @details When the frequency offset indicated, complement format, greater than 127, 256 can be reduced to normal values, attention here to 1KHz units FM, AM in units of 100Hz
  * 
@@ -342,6 +348,7 @@ typedef struct
 typedef uint8_t akc595x_reg26; //!<   When the frequency offset indicated, complement format, greater than 127, 256 can be
 
 /**
+ * @ingroup GA01
  * @brief Reg27 (type 0x1B / R) 
  * @details Antenna aperture can be calculated using signal levels rssi, pgalevel_rf, pgalevel_if
  * @details FM / SW : Pin (dBuV) = 103 - rssi - 6 * pgalevel_rf - 6 * pgalevel_if
@@ -355,6 +362,14 @@ typedef struct
     uint8_t rsv : 1;  //!< Reserved
 } akc595x_reg27;
 
+/**
+ * @defgroup GA02 AKC695X Class  
+ *  
+ * @brief AKC695X Class 
+ * @details This class implements all functions to help you to control the AKC695X devices. 
+ * 
+ * @author PU2CLR - Ricardo Lima Caratti 
+ */
 
 class AKC695X
 {

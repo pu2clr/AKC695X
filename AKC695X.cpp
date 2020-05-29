@@ -15,6 +15,14 @@
  * Contact: pu2clr@gmail.com
  */
 
+/** @defgroup GA03 Basic Methods 
+ * @section   GA03 Basic 
+ */
+
+/**
+ * @ingroup GA03
+ * @brief Resets the system. 
+ */
 void AKC695X::reset() {
     pinMode(this->resetPin, OUTPUT);
     delay(10);
@@ -24,20 +32,20 @@ void AKC695X::reset() {
     delay(10);
 }
 
-
 /**
+ * @ingroup GA03
  * @brief Sets the I2C bus device address 
  * @details You do not need use this function if your i2c device address is 0x10 (default value)  
  * 
  * @param deviceAddress 
  */
-    void
-    AKC695X::setI2CBusAddress(int deviceAddress)
+void AKC695X::setI2CBusAddress(int deviceAddress)
 {
     this->deviceAddress = deviceAddress;
 };
 
 /**
+ * @ingroup GA03
  * @brief   Receiver startup 
  * @details 
  * @param resetPin  if >= 0,  then you control the RESET. if -1, you are using ths MCU RST pin. 
@@ -49,7 +57,8 @@ void AKC695X::setup(int resetPin)
     Wire.begin();
     }
 
-/**
+    /**
+ * @ingroup GA03
  * @brief Power the device on 
  * 
  * @details  Starts the AKC695X with some parameters.
@@ -60,26 +69,27 @@ void AKC695X::setup(int resetPin)
  * @param seek      If 1 Trigger tune process. The STC bit is set high when the tune operation completes
  * @param seekup    Seek direction control bit. 0 = Seek down;  1 = Seek up
  */
-void AKC695X::powerOn(uint8_t fm_en, uint8_t tune, uint8_t mute, uint8_t seek, uint8_t seekup)
-{
-    union {
-        akc595x_reg0 r;
-        uint8_t raw;
-    } p;
+    void AKC695X::powerOn(uint8_t fm_en, uint8_t tune, uint8_t mute, uint8_t seek, uint8_t seekup)
+    {
+        union {
+            akc595x_reg0 r;
+            uint8_t raw;
+        } p;
 
-    p.r.power_on = 1;
-    p.r.rsv = 0;
-    p.r.fm_en = fm_en;
-    p.r.mute = mute;
-    p.r.seek = seek;
-    p.r.seekup = seekup;
-    p.r.tune = tune;
+        p.r.power_on = 1;
+        p.r.rsv = 0;
+        p.r.fm_en = fm_en;
+        p.r.mute = mute;
+        p.r.seek = seek;
+        p.r.seekup = seekup;
+        p.r.tune = tune;
 
-    setRegister(REG00, p.raw);
-    this->currentMode = fm_en; // Save the current mode (FM or AM)
+        setRegister(REG00, p.raw);
+        this->currentMode = fm_en; // Save the current mode (FM or AM)
 }
 
 /**
+ * @ingroup GA03
  * @brief Sets a given register with a given value 
  * @details It is a basic function to deal with the AKC695X devices 
  * @param reg  register number to be written (only for RW type registers) 
@@ -95,6 +105,7 @@ void AKC695X::setRegister(uint8_t reg, uint8_t parameter)
 }
 
 /**
+ * @ingroup GA03
  * @brief Gets a given register content 
  * @details It is a basic function to get a value from a given AKC695X device register
  * @param reg  register number to be read (0 ~ 26) 
@@ -113,7 +124,12 @@ uint8_t AKC695X::getRegister(uint8_t reg)
     return result;
 }
 
+/** @defgroup GA04 Receiver Operation  
+ * @section   Receiver Operation 
+ */
+
 /**
+ * @ingroup GA04
  * @brief Sets the STC bit to high when the tune operation completes
  * 
  */
@@ -137,6 +153,7 @@ void AKC695X::commitTune()
 };
 
 /**
+ * @ingroup GA04
  * @brief Sets the AKC695X to FM mode
  * 
  */
@@ -175,6 +192,7 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t max
 }
 
 /**
+ * @ingroup GA04
  * @brief Sets the AKC695X to AM mode and selects the band
  * @details This method configures the AM band you want to use. 
  * @details You must respect the frequency limits defined by the AKC595X device documentation.
@@ -217,6 +235,7 @@ void AKC695X::setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t max
 }
 
 /**
+ * @ingroup GA04
  * @brief Sets the step that will be used to increment and decrement the current frequency
  * @details The AKC695X has two possible steps (3KHz and 5KHz). The step value is important to calculate the frequenvy you want to set. 
  * 
@@ -231,6 +250,7 @@ void AKC695X::setStep(uint8_t step)
 }
 
 /**
+ * @ingroup GA04
  * @brief Sets FM step for seeking. 
  * 
  * @details Sets FM seek step. 
@@ -254,6 +274,7 @@ void AKC695X::setFmSeekStep(uint8_t space)
 }
 
 /**
+ * @ingroup GA04
  * @brief Seeks a FM station 
  * 
  * @param up_down  if 0, seek down; if 1, seek up.
@@ -279,6 +300,7 @@ void AKC695X::seekFmStation(uint8_t up_down)
 }
 
 /**
+ * @ingroup GA04
  * @brief Sets the the device to a given frequency
  * 
  * @details This methods check the current mode (AM or FM), calculates the right channel to be setted.
@@ -328,6 +350,7 @@ void AKC695X::setFrequency(uint16_t frequency)
 }
 
 /**
+ * @ingroup GA04
  * @brief  Returns the current frequency value
  * 
  * @return uint16_t  Current frequency value.
@@ -338,6 +361,7 @@ uint16_t AKC695X::getFrequency()
 }
 
 /**
+ * @ingroup GA04
  * @brief Adds the current step to the current frequency and sets the new frequency
  * 
  */
@@ -348,6 +372,7 @@ void AKC695X::frequencyUp()
 }
 
 /**
+ * @ingroup GA04
  * @brief Subtracts the current step from the current frequency and assign the new frequency
  * 
  */
@@ -357,9 +382,8 @@ void AKC695X::frequencyDown()
     setFrequency(this->currentFrequency);
 }
 
-
-
 /**
+ * @ingroup GA04
  * @brief Configures the audio output
  * 
  * @details This method sets the AKC695X device audio behaviour
@@ -383,6 +407,7 @@ void AKC695X::setAudio(uint8_t phase_inv, uint8_t line, uint8_t volume)
 }
 
 /**
+ * @ingroup GA04
  * @brief Configures the audio output with default values
  * @details this method sets the audio phase_inv = 0; line = 1 and volume = 40;
  * @details Also, this set the audio controlled by MCU (Arduino)
@@ -397,6 +422,7 @@ void AKC695X::setAudio()
 }
 
 /**
+ * @ingroup GA04
  * @brief Sets the output audio volume
  * @details Values less than 24 mute the audio output. 
  * @details Values between 25 and 63 set the output audio volume.
@@ -418,6 +444,7 @@ void AKC695X::setVolume(uint8_t volume)
 }
 
 /**
+ * @ingroup GA04
  * @brief Increments the audio volume 
  * @details The maximum volume is 63
  */
@@ -427,6 +454,7 @@ void AKC695X::setVolumeUp() {
 }
 
 /**
+ * @ingroup GA04
  * @brief Decrements the audio volume 
  * @details The minimum volume is 25
  */
@@ -458,8 +486,8 @@ void AKC695X::setVolumeDown()
     setRegister(REG09, reg9.raw);  // writes the new reg9 value 
 }
 
-
 /**
+ * @ingroup GA04
  * @brief Gets the current RSSI
  * 
  * @return int  RSSI value
@@ -477,6 +505,7 @@ int AKC695X::getRSSI()
 }
 
 /**
+ * @ingroup GA04
  * @brief Get the supply voltage 
  * 
  * @return float the supply voltage
