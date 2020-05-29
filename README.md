@@ -82,14 +82,6 @@ The table below shows some features fo the AKC695X devices family.
 __Sources:__  AKC6951, AKC6955 and AKC6959 Datasheets.
 
 
-## Schematic
-
-The figure below shows the basic schematic of the AKC695X and Arduino Pro Mini 3.3V, 8MHz.  
-
-![Basic Schematic](https://github.com/pu2clr/AKC695X/blob/master/extras/images/basic_schematic.png)
-
-
-
 ## Registers setup
 
 ### Table Reg1
@@ -180,7 +172,14 @@ The registers 2 and 3 are used together. The tuning frequency is obtained by cal
 ## Schematic 
 
 
-## AKC695X Pin definitions
+## Schematic
+
+The figure below shows the basic schematic of the AKC695X and Arduino Pro Mini 3.3V, 8MHz.  
+
+![Basic Schematic](https://github.com/pu2clr/AKC695X/blob/master/extras/images/basic_schematic.png)
+
+
+### AKC695X Pin definitions
 
 
 | Pin | Name      | Description  | 
