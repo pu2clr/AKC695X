@@ -171,9 +171,6 @@ The registers 2 and 3 are used together. The tuning frequency is obtained by cal
 
 ## Schematic 
 
-
-## Schematic
-
 The figure below shows the basic schematic of the AKC695X and Arduino Pro Mini 3.3V, 8MHz.  
 
 ![Basic Schematic](https://github.com/pu2clr/AKC695X/blob/master/extras/images/basic_schematic.png)
