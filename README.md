@@ -4,7 +4,9 @@
 
 __ATTENTION__: This library is under construction. Some functions may not work as expected! 
 
-This is an Arduino Library to control the AKC695X / M695X DSP radio devices. 
+This is an Arduino Library to control the AKC695X / M695X DSP radio devices.   
+
+
 
 This library can be freely distributed using the MIT Free Software model. 
 
@@ -41,6 +43,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
 ## About AKC695X / M695X DSP radio 
+
+The AKC695X is a family of IC DSP receiver from AKC technology. The AKC6955 and AKC6959 support AM and FM modes. On AM mode the AKC6955 and AKC6969 work on LW, MW and SW. On FM mode they work from 64MHz to 222MHz.
+
 
 ### AKC695X features
 
@@ -125,16 +130,16 @@ The table below can help you to select the right band and its frequency limits. 
 
 #### Table Reg1 fmband
 
-| fmband value | Description  |
-| ------------ | ------------ |
-| 000          | FM1,87 ~ 108, station search space specified intervals |
-| 001          | FM2,76 ~ 108, station search space specified intervals |
-| 010          | FM3,70 ~ 93, with a space station search interval set |
-| 011          | FM4,76 ~ 90, Tuning predetermined space intervals |
-| 100          | FM5,64 ~ 88, with a space station search interval set | 
-| 101          | TV1,56.25 ~ 91.75, station search space specified intervals |
-| 110          | TV2, 174.75 ~ 222.25, found |
-| 111          | sets predetermined space intervals, custom FM, station search space specified intervals |
+| fmband value | N#  |Description  |
+| ------------ | --- |------------ |
+| 000          |  0  | FM1,87 ~ 108, station search space specified intervals |
+| 001          |  1  | FM2,76 ~ 108, station search space specified intervals |
+| 010          |  2  | FM3,70 ~ 93, with a space station search interval set |
+| 011          |  3  | FM4,76 ~ 90, Tuning predetermined space intervals |
+| 100          |  4  | FM5,64 ~ 88, with a space station search interval set | 
+| 101          |  5  | TV1,56.25 ~ 91.75, station search space specified intervals |
+| 110          |  6  | TV2, 174.75 ~ 222.25, found |
+| 111          |  7  | sets predetermined space intervals, custom FM, station search space specified intervals |
 
 
 

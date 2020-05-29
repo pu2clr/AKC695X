@@ -40,9 +40,16 @@ typedef struct
 akc_band band[] = {
     {1, 1, 760, 1080, 1039, 1},
     {0, 3, 520, 1710, 810, 5},
+    {0, 6, 4700, 5600, 4885, 5}, 
+    {0, 7, 5700, 6400, 6100, 5},    
     {0, 8, 6800, 7600, 7205, 5},
     {0, 9, 9200, 10500, 9600, 5},
-    {0, 10, 11400, 12200, 11940, 5}};
+    {0, 10, 11400, 12200, 11940, 5},
+    {0, 11, 13500, 14300, 13600, 5},
+    {0, 12, 15000, 15900, 15300, 5},
+    {0, 13, 17400, 17900, 17600, 5},  
+    {0, 15, 21400, 21900, 21525, 5},
+    {1,  7,  1444,  1480,  1450, 1} } ;
 
 const int lastBand = (sizeof band / sizeof(akc_band)) - 1;
 int bandIdx = 0; // FM
@@ -223,8 +230,6 @@ void showFrequency()
   char *unit;
   char *bandMode;
 
-  byte textSize;
-
   currentFrequency = radio.getFrequency();
 
   sprintf(tmp, "%5u", currentFrequency);
@@ -238,8 +243,8 @@ void showFrequency()
     freq[4] = '.';
     freq[5] = tmp[4];    
     freq[6] = '\0';
-    unit = "MHz";
-    bandMode = "FM";
+    unit = (char *) "MHz";
+    bandMode =  (char *) "FM";
   }
   else // AM
   {
@@ -250,8 +255,8 @@ void showFrequency()
     freq[4] = tmp[3];
     freq[5] = tmp[4];
     freq[6] = '\0';
-    unit = "KHz";
-    bandMode = "AM";
+    unit = (char *) "KHz";
+    bandMode = (char *) "AM";
   }
 
   printValue(23, 0, oldFreq, freq, 12, 2);
@@ -265,7 +270,6 @@ void showFrequency()
 // Show current frequency
 void showStatus()
 {
-  char step[10];
 
   oled.clearDisplay();
   resetBuffer();

@@ -151,16 +151,16 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t max
     } reg1;
 
     this->currentMode = 1;
-    this->amCurrentBand = akc695x_fm_band;
-    this->amCurrentBandMinimumFrequency = minimum_freq;
-    this->amCurrentBandMaximumFrequency = maximum_freq;
+    this->currentBand = akc695x_fm_band;
+    this->currentBandMinimumFrequency = minimum_freq;
+    this->currentBandMaximumFrequency = maximum_freq;
     this->currentFrequency = default_frequency;
     this->currentStep = default_step;
 
     reg1.raw = 0;
     reg1.b.fmband = akc695x_fm_band;
 
-    setRegister(REG00, 0b00010011); ///power_on,AM, tune0,seek0,seek_down,non_mute,00
+    setRegister(REG00, 0b00010011); // Sets to FM (Power On)
     setRegister(REG01, reg1.raw);   /// Sets the FM band
 
     channel = (default_frequency - 300) * 4;
@@ -194,9 +194,9 @@ void AKC695X::setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t max
     } reg1;
 
     this->currentMode = 0;
-    this->amCurrentBand = akc695x_am_band;
-    this->amCurrentBandMinimumFrequency = minimum_freq;
-    this->amCurrentBandMaximumFrequency = maximum_freq;
+    this->currentBand = akc695x_am_band;
+    this->currentBandMinimumFrequency = minimum_freq;
+    this->currentBandMaximumFrequency = maximum_freq;
     this->currentFrequency = default_frequency;
     this->currentStep = default_step;
 
@@ -228,6 +228,29 @@ void AKC695X::setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t max
 void AKC695X::setStep(uint8_t step)
 {
     this->currentStep = step;
+}
+
+/**
+ * @brief Sets FM step for seeking. 
+ * 
+ * @details Sets FM seek step. 
+ * @details | spece |  step   |
+ * @details | ----- |  ------ | 
+ * @details |  00   |  25 KHz |
+ * @details |  01   |  50 KHz | 
+ * @details |  10   | 100 KHz | 
+ * @details |  11   | 200 KHz | 
+ * 
+ * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 14
+ */
+void AKC695X::setFmSeekStep(uint8_t space)
+{
+    union {
+        akc595x_reg11 r;
+        uint8_t raw;
+    } reg11; 
+    reg11.r.space = (space > 3)? 3 : space;
+    setRegister(REG11, reg11.raw);
 }
 
 /**

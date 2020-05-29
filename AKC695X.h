@@ -102,7 +102,7 @@ typedef struct {
     uint8_t rsv : 2;      //!< Reserved - Debug use, do not change this value using
     uint8_t mute : 1;     //!< 1 - Mute L / R channel 0 - Normal operation
     uint8_t seekup : 1;   //!< Seek direction control bit. 0 = Seek down;  1 = Seek up
-    uint8_t seek : 1;     //!< 0-> 1 Trigger tune process The STC bit is set high when the tune operation completes
+    uint8_t seek : 1;     //!< 0-> 1 Trigger tune process The STC bit is set high when the tune operation completes.
     uint8_t tune : 1;     //!< 0-> 1 Trigger tune process The STC bit is set high when the tune operation completes.
     uint8_t fm_en : 1;    //!< 1 = FM mode;  0 = AM mode
     uint8_t power_on : 1; //!< 1 = Chip on; 0 = Chip off
@@ -158,9 +158,9 @@ typedef uint8_t akc595x_reg5; //!< Custom end-band channel number chan = 32 * us
  * @brief Reg6 (type 0x06 / RW): configures register 0 (default: 0xA1) Address
  */
 typedef struct {
-        uint8_t phase_inv : 1;  //!< 0 = audio output inphase, 1 = speakers for audio output, push the two inverted for pushing a speaker
-        uint8_t line : 1;       //!< 0 = line input mode; 1 = radio mode
-        uint8_t volume : 6;     //!< Volume: 0 ~ 63 ( <24 =  mute; 24 ~ 63)
+    uint8_t phase_inv : 1; //!< 0 = audio output inphase, 1 = opposite phase, for single speaker
+    uint8_t line : 1;      //!< 0 = Radio mode; 1 = Line Mode
+    uint8_t volume : 6;    //!< Volume: 0 ~ 63 (<24 =  mute; 24 ~ 63)
 } akc595x_reg6;
 
 /**
@@ -216,7 +216,14 @@ typedef  struct  {
 
 /**
  * @brief Reg11 (type 0x0B / RW):  configure register 9 (default: 0xE0) Address
- * @details 
+ * 
+ * @details Sets FM seek step. 
+ * @details | spece |  step   |
+ * @details | ----- |  ------ | 
+ * @details |  00   |  25 KHz |
+ * @details |  01   |  50 KHz | 
+ * @details |  10   | 100 KHz | 
+ * @details |  11   | 200 KHz | 
  * 
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 14
  */
@@ -363,9 +370,9 @@ protected:
     uint8_t  currentMode = 0;
 
     // AM current band information
-    uint8_t  amCurrentBand = 0; 
-    uint16_t amCurrentBandMinimumFrequency;
-    uint16_t amCurrentBandMaximumFrequency;
+    uint8_t  currentBand = 0; 
+    uint16_t currentBandMinimumFrequency;
+    uint16_t currentBandMaximumFrequency;
 
     // FM current band information
     uint8_t  fmCurrentBand = 0;
@@ -384,6 +391,9 @@ protected:
     void setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step);
     void setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step);
     void setStep(uint8_t step);
+
+    void setFmSeekStep( uint8_t value );
+
 
     void setFrequency(uint16_t frequency);
     uint16_t getFrequency();
