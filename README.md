@@ -183,6 +183,10 @@ The figure below shows the basic schematic of the AKC695X and Arduino Pro Mini 3
 
 ### AKC695X Pin definitions
 
+The figure and table below show the pin description of the AKC6951 and AKC6955.
+
+![AKC6951(55) pin out](https://github.com/pu2clr/AKC695X/blob/master/extras/images/AKC695X_pinout.png)
+
 
 | Pin | Name      | Description  | 
 | --- | --------- | ------------ | 
