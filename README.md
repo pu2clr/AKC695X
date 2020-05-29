@@ -19,7 +19,7 @@ Contact: __pu2clr@gmail.com__.
 2. [MIT License](https://pu2clr.github.io/AKC695X/#mit-license)
 3. [About AKC695X / M695X DSP radio](https://github.com/pu2clr/AKC695X#about-akc695x--m695x-dsp-radio)
 4. [AKC695X Pin definitions](https://github.com/pu2clr/AKC695X#akc695x-pin-definitions)
-5. [Schematic]()
+5. [Schematic](https://github.com/pu2clr/AKC695X#schematic)
 6. [API Documentation]()
 
 
