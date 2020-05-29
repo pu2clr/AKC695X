@@ -116,10 +116,14 @@ uint8_t AKC695X::getRegister(uint8_t reg)
     uint8_t result;    
     Wire.beginTransmission(this->deviceAddress);
     Wire.write(reg);
-    Wire.endTransmission(false);
-    Wire.requestFrom(this->deviceAddress, 1, false);
+    
+    // Wire.endTransmission(false);
+    Wire.endTransmission();
+
+    delayMicroseconds(3000);
+    Wire.requestFrom(this->deviceAddress, 1);
     result =  Wire.read();
-    Wire.endTransmission(true);
+    // Wire.endTransmission(true);
     delayMicroseconds(2000);
     return result;
 }
@@ -143,12 +147,17 @@ void AKC695X::commitTune()
     } reg0;
 
     reg0.raw = 0; 
+
     reg0.r.fm_en = this->currentMode;   // Sets to the current mode
     reg0.r.power_on = 1;                
     reg0.r.tune = 1;
 
     setRegister(REG00, reg0.raw);
+
     reg0.r.tune = 0;
+    reg0.r.seek = 0;
+    reg0.r.seekup = 0;
+   
     setRegister(REG00, reg0.raw);
 };
 
@@ -551,11 +560,11 @@ int AKC695X::getRSSI()
     int fator = (this->currentMode == 1) ? 103 : 123;
     int rssi;
 
-    // reg24.raw = getRegister(REG24); // TO DO: bug??
-
+    reg24.raw = getRegister(REG24); 
     reg27.raw = getRegister(REG27);
 
-    rssi = fator - reg27.r.rssi - 30; // - 6 * reg24.pg.pgalevel_rf -  6 * reg24.pg.pgalevel_if;
+    // Calculates the RSSI
+    rssi = fator - reg27.r.rssi - 6 * reg24.pg.pgalevel_rf -  6 * reg24.pg.pgalevel_if;
 
     return  rssi;
 }

@@ -49,8 +49,6 @@ akc_band band[] = {
     {0, 12, 15000, 15900, 15300, 5},
     {0, 13, 17400, 17900, 17600, 5},  
     {0, 15, 21400, 21900, 21525, 5},
-    {1,  5,  562,   2222,   562, 1},
-    {1,  6,  1740,  2222,  1740, 1},
     {1,  7,  1444,  1480,  1450, 1} } ;
 
 const int lastBand = (sizeof band / sizeof(akc_band)) - 1;
@@ -60,7 +58,6 @@ char oldFreq[20];
 char oldMode[20];
 char oldUnit[20];
 char oldStep[20];
-char oldExtraSignalInfo[15];
 char oldRssi[20];
 char oldVolume[20];
 char oldVbat[20];
@@ -144,7 +141,6 @@ void resetBuffer()
   clearBuffer(oldMode);
   clearBuffer(oldUnit);
   clearBuffer(oldStep);
-  clearBuffer(oldExtraSignalInfo);
   clearBuffer(oldRssi);
   clearBuffer(oldVolume);
   clearBuffer(oldVbat);
@@ -287,7 +283,6 @@ void showStatus()
   showFrequency();
 
   showVolume();
-  showRSSI();
   showVbat();
 
   oled.display();
@@ -399,7 +394,6 @@ void useBand() {
   }
   delay(100);
   currentFrequency = band[bandIdx].default_frequency;
-  radio.setFrequency(currentFrequency);
 
   showStatus();
 }

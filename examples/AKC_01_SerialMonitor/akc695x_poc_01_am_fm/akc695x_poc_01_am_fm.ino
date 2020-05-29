@@ -5,9 +5,6 @@
 
 AKC695X radio;
 
-
-int lastMode = FM;
-
 uint16_t currentFM = 103;
 uint16_t currentAM = 810;
 
