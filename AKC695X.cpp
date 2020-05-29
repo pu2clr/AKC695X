@@ -304,6 +304,8 @@ void AKC695X::setStep(uint8_t step)
  * |  11   |  3  | 200 KHz | 
  * 
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 14
+ * 
+ * @param uint8_t space the value betwenn 0 and 3 (see table above). 
  */
 void AKC695X::setFmSeekStep(uint8_t space)
 {
