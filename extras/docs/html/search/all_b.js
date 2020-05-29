@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['receiver_20operation_57',['Receiver Operation',['../group___g_a04.html',1,'']]],
+  ['receiver_20operation_20methods_57',['Receiver Operation Methods',['../group___g_a04.html',1,'']]],
   ['readchan_58',['readchan',['../structakc595x__reg20.html#a7d2f0dd48f530b0e12c33fd0c683992f',1,'akc595x_reg20']]],
   ['ref_5f37k_5fmode_59',['ref_37k_mode',['../structakc595x__reg2.html#ada3eba2372b4d805fde63e047ff7523c',1,'akc595x_reg2']]],
   ['res_60',['res',['../structakc595x__reg12.html#af8e099a9e61c2bf94f5d34e5b493f993',1,'akc595x_reg12']]],
