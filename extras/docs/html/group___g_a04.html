@@ -349,9 +349,51 @@ Operation</h1>
 <p>Sets the <a class="el" href="class_a_k_c695_x.html">AKC695X</a> to AM mode and selects the band. </p>
 <p>This method configures the AM band you want to use.</p>
 <p>You must respect the frequency limits defined by the AKC595X device documentation.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">AM band </th><th class="markdownTableHeadNone">N# </th><th class="markdownTableHeadNone">Description  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">00000 </td><td class="markdownTableBodyNone">0 </td><td class="markdownTableBodyNone">LW, 0.15 ~ 0.285, 3K station search  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">00001 </td><td class="markdownTableBodyNone">1 </td><td class="markdownTableBodyNone">MW1, 0.52 ~ 1.71, 5K station search  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">00010 </td><td class="markdownTableBodyNone">2 </td><td class="markdownTableBodyNone">MW2, 0.522 ~ 1.62, 9K station search  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">00011 </td><td class="markdownTableBodyNone">3 </td><td class="markdownTableBodyNone">MW3, 0.52 ~ 1.71, 10K station search  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">00100 </td><td class="markdownTableBodyNone">4 </td><td class="markdownTableBodyNone">SW1, 4.7 ~ 10, 5K station search  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">00101 </td><td class="markdownTableBodyNone">5 </td><td class="markdownTableBodyNone">SW2, 3.2 ~ 4.1, 5K station search  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">00110 </td><td class="markdownTableBodyNone">6 </td><td class="markdownTableBodyNone">SW3, 4.7 ~ 5.6, 5K station search  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">00111 </td><td class="markdownTableBodyNone">7 </td><td class="markdownTableBodyNone">SW4, 5.7 ~ 6.4, 5K station search  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">01000 </td><td class="markdownTableBodyNone">8 </td><td class="markdownTableBodyNone">SW5, 6.8 ~ 7.6, 5K station search  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">01001 </td><td class="markdownTableBodyNone">9 </td><td class="markdownTableBodyNone">SW6, 9.2 ~ 10, 5K station search  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">01010 </td><td class="markdownTableBodyNone">10 </td><td class="markdownTableBodyNone">SW7, 11.4 ~ 12.2, 5K station search  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">01011 </td><td class="markdownTableBodyNone">11 </td><td class="markdownTableBodyNone">SW8, 13.5 ~ 14.3  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">01100 </td><td class="markdownTableBodyNone">12 </td><td class="markdownTableBodyNone">SW9, 15 ~ 15.9  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">01101 </td><td class="markdownTableBodyNone">13 </td><td class="markdownTableBodyNone">SW10, 17.4 ~ 17.9  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">01110 </td><td class="markdownTableBodyNone">14 </td><td class="markdownTableBodyNone">SW11, 18.9 ~ 19.7, 5K station search  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">01111 </td><td class="markdownTableBodyNone">15 </td><td class="markdownTableBodyNone">SW12, 21.4 ~ 21.9, 5K station search  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">10000 </td><td class="markdownTableBodyNone">16 </td><td class="markdownTableBodyNone">SW13, 11.4 ~ 17.9, 5K station search  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">10010 </td><td class="markdownTableBodyNone">17 </td><td class="markdownTableBodyNone">MW4, 0.52 to 1.73, 5K station search  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Other </td><td class="markdownTableBodyNone">18+ </td><td class="markdownTableBodyNone">custom band, station search interval = 3K  </td></tr>
+</table>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">akc695x_am_band</td><td>AM band (see manual AM band table) </td></tr>
+    <tr><td class="paramname">akc695x_am_band</td><td>AM band (see manual AM band table above) </td></tr>
     <tr><td class="paramname">minimum_freq</td><td>Minimal frequency of the band </td></tr>
     <tr><td class="paramname">maximum_freq</td><td>Band maximum frequency </td></tr>
     <tr><td class="paramname">default_frequency</td><td>default frequency </td></tr>
@@ -475,9 +517,29 @@ Operation</h1>
 
 <p>Sets the <a class="el" href="class_a_k_c695_x.html">AKC695X</a> to FM mode. </p>
 <p>Sets the device to FM mode.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">FM band </th><th class="markdownTableHeadNone">N# </th><th class="markdownTableHeadNone">Description  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">000 </td><td class="markdownTableBodyNone">0 </td><td class="markdownTableBodyNone">FM1,87 ~ 108, station search space specified intervals  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">001 </td><td class="markdownTableBodyNone">1 </td><td class="markdownTableBodyNone">FM2,76 ~ 108, station search space specified intervals  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">010 </td><td class="markdownTableBodyNone">2 </td><td class="markdownTableBodyNone">FM3,70 ~ 93, with a space station search interval set  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">011 </td><td class="markdownTableBodyNone">3 </td><td class="markdownTableBodyNone">FM4,76 ~ 90, Tuning predetermined space intervals  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">100 </td><td class="markdownTableBodyNone">4 </td><td class="markdownTableBodyNone">FM5,64 ~ 88, with a space station search interval set  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">101 </td><td class="markdownTableBodyNone">5 </td><td class="markdownTableBodyNone">TV1,56.25 ~ 91.75, station search space specified intervals  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">110 </td><td class="markdownTableBodyNone">6 </td><td class="markdownTableBodyNone">TV2, 174.75 ~ 222.25, found  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">111 </td><td class="markdownTableBodyNone">7 </td><td class="markdownTableBodyNone">sets predetermined space intervals, custom FM, station search space specified intervals  </td></tr>
+</table>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">akc695x_fm_band</td><td>FM band (see manual FM band table) </td></tr>
+    <tr><td class="paramname">akc695x_fm_band</td><td>FM band (see manual FM band table above) </td></tr>
     <tr><td class="paramname">minimum_freq</td><td>Minimal frequency of the band </td></tr>
     <tr><td class="paramname">maximum_freq</td><td>Band maximum frequency </td></tr>
     <tr><td class="paramname">default_frequency</td><td>default frequency </td></tr>
