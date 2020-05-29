@@ -393,6 +393,7 @@ protected:
     void setStep(uint8_t step);
 
     void setFmSeekStep( uint8_t value );
+    void seekFmStation(uint8_t up_down);
 
 
     void setFrequency(uint16_t frequency);

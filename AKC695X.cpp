@@ -254,6 +254,31 @@ void AKC695X::setFmSeekStep(uint8_t space)
 }
 
 /**
+ * @brief Seeks a FM station 
+ * 
+ * @param up_down  if 0, seek down; if 1, seek up.
+ */
+void AKC695X::seekFmStation(uint8_t up_down)
+{
+    union {
+        akc595x_reg0 r;
+        uint8_t raw;
+    } reg0;
+
+    reg0.raw = 0;
+
+    reg0.r.fm_en = 1;       // FM
+    reg0.r.mute = 0;        // Normal operation
+    reg0.r.power_on = 1;    // Power on
+    reg0.r.tune = 1;        // Trigger tune process
+    reg0.r.seek = 1;        // ? Trigger seeking process ?
+    reg0.r.seekup = up_down;
+
+    setRegister(REG00, reg0.raw);
+
+}
+
+/**
  * @brief Sets the the device to a given frequency
  * 
  * @details This methods check the current mode (AM or FM), calculates the right channel to be setted.
