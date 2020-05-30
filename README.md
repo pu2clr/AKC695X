@@ -19,9 +19,10 @@ Contact: __pu2clr@gmail.com__.
 6. [API Documentation](https://pu2clr.github.io/AKC695X/extras/docs/html/modules.html)
 
 
-
 ## Preface
 
+The AKC695X devices will surprise hobbyists and experimenters with its simplicity to build FM and AM receiver based on AKC695X. There are currently several receivers based on DSP technology. The KT0915 and SI4745 devices are some examples widely disseminated in the market. This library was developed with the purpose of expanding the alternatives to electronics hobbyists and radio listeners. 
+In this document you will see Arduino source codes, schematics, examples and tips to help you to build a receiver based on Arduino board and AKC695X devices. 
 
 
 ## MIT License 
@@ -33,7 +34,6 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE ARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
 
 
 ## About AKC695X / M695X DSP radio 
