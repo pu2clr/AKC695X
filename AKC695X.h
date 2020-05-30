@@ -463,6 +463,7 @@ public:
     bool isTuningComplete();
     uint8_t isCurrentModeFM();
     uint16_t getCurrentChannel();
+    uint16_t channelToFrequency();
 
 
     void setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step);

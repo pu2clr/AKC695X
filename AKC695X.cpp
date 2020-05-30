@@ -200,6 +200,32 @@ uint16_t AKC695X::getCurrentChannel() {
     return channel;
 }
 
+/**
+ * @ingroup GA03A
+ * @brief Converts the channel stored in the registers 20 and 21 to frequency
+ * @details Returns the calculated current frequency based on current channel
+ * 
+ * @see getCurrentChannel, akc595x_reg20, akc595x_reg21
+ * @return unit16_t current frequency
+ */
+uint16_t AKC695X::channelToFrequency()
+{
+    uint16_t frequency;
+    if (this->currentMode == CURRENT_MODE_FM)
+    {
+        // the FM tuned frequency = channel / 4 + 300.
+        frequency = (getCurrentChannel() >> 2) + 300;
+    }
+    else
+    {
+        // the AM tuned frequency is channel * current step.
+        frequency = getCurrentChannel() * this->currentStep;
+    }
+    return frequency;
+}
+
+
+
 
 /** 
  * @defgroup GA04 Receiver Operation Methods 
@@ -391,6 +417,9 @@ void AKC695X::setFmSeekStep(uint8_t space)
  * @ingroup GA04
  * @brief Seeks a FM station 
  * @details Seek a FM Station
+ * 
+ * @see akc595x_reg20, akc595x_reg21, channelToFrequency
+ * 
  * @param up_down  if 0, seek down; if 1, seek up.
  */
 void AKC695X::seekStation(uint8_t up_down)
@@ -400,11 +429,11 @@ void AKC695X::seekStation(uint8_t up_down)
 
     do {
         reg0.raw = 0;
-        reg0.refined.fm_en = this->currentMode;         // Sets the current mode
-        reg0.refined.mute = 0;          // Normal operation
-        reg0.refined.power_on = 1;      // Power on
+        reg0.refined.fm_en = this->currentMode;     // Sets the current mode
+        reg0.refined.mute = 0;                      // Normal operation
+        reg0.refined.power_on = 1;                  // Power on
         reg0.refined.tune = 0;      
-        reg0.refined.seek = 1;          // Trigger seeking process 
+        reg0.refined.seek = 1;                      // Trigger seeking process 
         reg0.refined.seekup = up_down;
         setRegister(REG00, reg0.raw);
     } while (!isTuningComplete() && (millis() - max_time) < MAX_SEEK_TIME);
@@ -418,14 +447,11 @@ void AKC695X::seekStation(uint8_t up_down)
    reg0.refined.seekup = up_down;
    setRegister(REG00, reg0.raw);
 
-   if ( this->currentMode == CURRENT_MODE_FM) { 
-        // the tuned frequency = channel / 4 + 300. 
-        this->currentFrequency = (getCurrentChannel() >> 2 ) + 300;
-   } else {
-       this->currentFrequency = getCurrentChannel() * this->currentStep;
-   }
+   // Updates the currentFrequency member variable to a calculated frequency based on the  channel 
+   // value stored in the registers 20 and 21
+   this->currentFrequency = channelToFrequency();
 
-}
+ }
 
 /**
  * @ingroup GA04
