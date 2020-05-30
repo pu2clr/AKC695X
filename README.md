@@ -11,12 +11,13 @@ Contact: __pu2clr@gmail.com__.
 
 # Contents
 
-1. [Preface]() 
+1. [Preface](https://github.com/pu2clr/AKC695X#preface) 
 2. [MIT License](https://pu2clr.github.io/AKC695X/#mit-license)
 3. [About AKC695X / M695X DSP radio](https://github.com/pu2clr/AKC695X#about-akc695x--m695x-dsp-radio)
 4. [AKC695X Pin definitions](https://github.com/pu2clr/AKC695X#akc695x-pin-definitions)
 5. [Schematic](https://github.com/pu2clr/AKC695X#schematic)
 6. [API Documentation](https://pu2clr.github.io/AKC695X/extras/docs/html/modules.html)
+7. [Videos](https://github.com/pu2clr/AKC695X#svideos)
 
 
 ## Preface
@@ -224,6 +225,11 @@ The figure and table below show the pin description of the AKC6951 and AKC6955.
 * [Radio, yes AM-SW-FM radio by DSP radio chip](https://hackaday.io/project/12944-radio-yes-am-sw-fm-radio-by-dsp-radio-chip)
 *
 
+
+# Videos
+
+* [https://youtu.be/BHW2wCZiTkU](https://youtu.be/BHW2wCZiTkU)
+* [PU2CLR AKC695X Arduino Library - SEEKING TEST](https://youtu.be/3OwnVBmOjAs)
 
 
 
