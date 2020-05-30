@@ -20,6 +20,8 @@
 #define CURRENT_MODE_FM 1
 #define CURRENT_MODE_AM 0
 
+#define MAX_SEEK_TIME   3000        // Maximum time have to be a seeking process (in ms). 
+ 
 /**
  * @brief AKC695X features
  * @details the table below shows some features fo the AKC695X devices family
@@ -468,7 +470,7 @@ public:
     void setStep(uint8_t step);
 
     void setFmSeekStep(uint8_t value);
-    void seekFmStation(uint8_t up_down);
+    void seekStation(uint8_t up_down);
 
     void setFrequency(uint16_t frequency);
     uint16_t getFrequency();

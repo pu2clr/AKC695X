@@ -393,34 +393,38 @@ void AKC695X::setFmSeekStep(uint8_t space)
  * @details Seek a FM Station
  * @param up_down  if 0, seek down; if 1, seek up.
  */
-void AKC695X::seekFmStation(uint8_t up_down)
+void AKC695X::seekStation(uint8_t up_down)
 {
     akc595x_reg0 reg0;
     long max_time = millis();
 
     do {
         reg0.raw = 0;
-        reg0.refined.fm_en = 1;    // FM
-        reg0.refined.mute = 0;     // Normal operation
-        reg0.refined.power_on = 1; // Power on
-        reg0.refined.tune = 0;     // Trigger tune process
-        reg0.refined.seek = 1;     // ? Trigger seeking process ?
+        reg0.refined.fm_en = this->currentMode;         // Sets the current mode
+        reg0.refined.mute = 0;          // Normal operation
+        reg0.refined.power_on = 1;      // Power on
+        reg0.refined.tune = 0;      
+        reg0.refined.seek = 1;          // Trigger seeking process 
         reg0.refined.seekup = up_down;
         setRegister(REG00, reg0.raw);
-        // delay(10);
-        // reg0.raw = getRegister(REG00);
-   } while ( !isTuningComplete() && (millis() - max_time) < 3000 );
+    } while (!isTuningComplete() && (millis() - max_time) < MAX_SEEK_TIME);
 
    reg0.raw = 0;
-   reg0.refined.fm_en = 1;    // FM
-   reg0.refined.mute = 0;     // Normal operation
-   reg0.refined.power_on = 1; // Power on
-   reg0.refined.tune = 0;     // Trigger tune process
-   reg0.refined.seek = 0;     // ? Trigger seeking process ?
+   reg0.refined.fm_en = this->currentMode;
+   reg0.refined.mute = 0;     
+   reg0.refined.power_on = 1; 
+   reg0.refined.tune = 0;     
+   reg0.refined.seek = 0;     
    reg0.refined.seekup = up_down;
    setRegister(REG00, reg0.raw);
 
-   this->currentFrequency = (getCurrentChannel() >> 2 ) + 300;
+   if ( this->currentMode == CURRENT_MODE_FM) { 
+        // the tuned frequency = channel / 4 + 300. 
+        this->currentFrequency = (getCurrentChannel() >> 2 ) + 300;
+   } else {
+       this->currentFrequency = getCurrentChannel() * this->currentStep;
+   }
+
 }
 
 /**

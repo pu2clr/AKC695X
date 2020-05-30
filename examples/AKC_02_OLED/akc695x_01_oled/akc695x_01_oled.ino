@@ -16,10 +16,12 @@
 #define ENCODER_PIN_B 3
 
 // Buttons controllers
-#define BAND_MODE_SWITCH_UP 4   // Switch to: FM -> MW(AM) -> SW1(AM) -> SW2(AM) etc
-#define BAND_MODE_SWITCH_DOWN 5 //
-#define VOL_UP 6                // Volume Up
-#define VOL_DOWN 7              // Volume Down
+#define BAND_MODE_SWITCH_UP 4     // Switch to: FM -> MW(AM) -> SW1(AM) -> SW2(AM) etc
+#define BAND_MODE_SWITCH_DOWN 5   //
+#define VOL_UP    6               // Volume Up
+#define VOL_DOWN  7               // Volume Down
+#define SEEK_UP   8               // Seek Station Up
+#define SEEK_DOWN 9               // Seek Station Down
 
 #define MIN_ELAPSED_TIME 100
 
@@ -84,7 +86,8 @@ void setup()
   pinMode(BAND_MODE_SWITCH_DOWN, INPUT_PULLUP);
   pinMode(VOL_UP, INPUT_PULLUP);
   pinMode(VOL_DOWN, INPUT_PULLUP);
-  
+  pinMode(SEEK_UP, INPUT_PULLUP);
+  pinMode(SEEK_DOWN, INPUT_PULLUP);  
 
   // Encoder interrupt
   attachInterrupt(digitalPinToInterrupt(ENCODER_PIN_A), rotaryEncoder, CHANGE);
@@ -343,6 +346,13 @@ void volumeButton(byte d)
   delay(MIN_ELAPSED_TIME); // waits a little more for releasing the button.
 }
 
+void seekButton( uint8_t up_down ) {
+
+    radio.seekStation(up_down);
+    showFrequency();
+    
+}
+
 
 void bandUp()
 {
@@ -424,6 +434,10 @@ void loop()
       volumeButton(1);
     else if (digitalRead(VOL_DOWN) == LOW)
       volumeButton(-1);
+    else if  (digitalRead(SEEK_UP) == LOW)
+      seekButton(1);
+    else if  (digitalRead(SEEK_DOWN) == LOW)
+      seekButton(0);
   }  
 
   delay(10);

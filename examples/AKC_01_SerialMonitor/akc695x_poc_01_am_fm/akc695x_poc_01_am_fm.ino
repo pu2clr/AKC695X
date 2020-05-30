@@ -1,7 +1,7 @@
 #include <AKC695X.h>
 
 
-#define RESET_PIN 12
+#define RESET_PIN 12   // set it to -1 if you want to use the RST pin of your MCU.
 
 AKC695X radio;
 
@@ -97,12 +97,10 @@ void loop() {
         radio.frequencyDown();
         break;
       case 'S':
-        radio.setFmSeekStep(0);
-        radio.seekFmStation(1);
+        radio.seekStation(1);
         break;      
       case 's':
-        radio.setFmSeekStep(0);
-        radio.seekFmStation(0);      
+        radio.seekStation(0);      
         break;
       case '0':
         showStatus();
