@@ -199,7 +199,7 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t max
     setRegister(REG01, reg1.raw);   // Sets the FM band
 
     channel = (default_frequency - 300) * 4;
-    high_bit = channel / 256 | 0b01100000;
+    high_bit = (channel >> 8) | 0b01100000;
     low_bit = channel & 0b0000011111111;
 
     setRegister(REG03, low_bit);
@@ -263,7 +263,7 @@ void AKC695X::setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t max
     setRegister(REG01, reg1.raw);   // Selects the AM band
 
     channel = default_frequency / this->currentStep;
-    high_bit = channel / 256 | 0b01100000;
+    high_bit = (channel >>  8) | 0b01100000;
     low_bit = channel & 0b0000011111111;
 
     setRegister(REG03, low_bit);
