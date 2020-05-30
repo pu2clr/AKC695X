@@ -394,6 +394,7 @@ void useBand() {
   }
   delay(100);
   currentFrequency = band[bandIdx].default_frequency;
+  radio.setFrequency(currentFrequency);
 
   showStatus();
 }
