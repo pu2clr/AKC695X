@@ -99,14 +99,19 @@
  * @brief Reg0 (type 0x00 / RW): configures register 0 (default: 0x4c) Address
  * @see  AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 11
  */
-typedef struct {
-    uint8_t rsv : 2;      //!< Reserved - Debug use, do not change this value using
-    uint8_t mute : 1;     //!< 1 - Mute L / R channel 0 - Normal operation
-    uint8_t seekup : 1;   //!< Seek direction control bit. 0 = Seek down;  1 = Seek up
-    uint8_t seek : 1;     //!< 0-> 1 Trigger tune process The STC bit is set high when the tune operation completes.
-    uint8_t tune : 1;     //!< 0-> 1 Trigger tune process The STC bit is set high when the tune operation completes.
-    uint8_t fm_en : 1;    //!< 1 = FM mode;  0 = AM mode
-    uint8_t power_on : 1; //!< 1 = Chip on; 0 = Chip off
+
+typedef union {
+    struct
+    {
+        uint8_t rsv : 2;      //!< Reserved - Debug use, do not change this value using
+        uint8_t mute : 1;     //!< 1 - Mute L / R channel 0 - Normal operation
+        uint8_t seekup : 1;   //!< Seek direction control bit. 0 = Seek down;  1 = Seek up
+        uint8_t seek : 1;     //!< 0-> 1 Trigger tune process The STC bit is set high when the tune operation completes.
+        uint8_t tune : 1;     //!< 0-> 1 Trigger tune process The STC bit is set high when the tune operation completes.
+        uint8_t fm_en : 1;    //!< 1 = FM mode;  0 = AM mode
+        uint8_t power_on : 1; //!< 1 = Chip on; 0 = Chip off
+    } refined;
+    uint8_t raw;
 } akc595x_reg0;
 
 /**
@@ -116,11 +121,14 @@ typedef struct {
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 12
  * 
  */
-typedef struct
-{
-    uint8_t fmband : 3;   //!< 
-    uint8_t amband : 4;   //!<  
-}  akc595x_reg1;
+typedef union {
+    struct
+    {
+        uint8_t fmband : 3; //!<
+        uint8_t amband : 4; //!<
+    } refined;
+    uint8_t raw;
+} akc595x_reg1;
 
 /**
  * @ingroup GA01
@@ -133,12 +141,15 @@ typedef struct
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 12
  * 
  */
-typedef struct
-{
-    uint8_t channel : 5;      //!< (0:4) - 5 most significant bits that represents the channel (see reg3)
-    uint8_t mode3k : 1;       //!< (5)   - 1 = 3K; 0 = 5K
-    uint8_t ref_37k_mode : 1; //!< (6)   - 1 = 32K ref. crystal clock; 0 = 12MHz ref crystal clock
-    uint8_t rsv : 1;          //!< (7)   - Reserved - Debug use, do not change this value using
+typedef union {
+    struct
+    {
+        uint8_t channel : 5;      //!< (0:4) - 5 most significant bits that represents the channel (see reg3)
+        uint8_t mode3k : 1;       //!< (5)   - 1 = 3K; 0 = 5K
+        uint8_t ref_37k_mode : 1; //!< (6)   - 1 = 32K ref. crystal clock; 0 = 12MHz ref crystal clock
+        uint8_t rsv : 1;          //!< (7)   - Reserved - Debug use, do not change this value using
+    } refined;
+    uint8_t raw;
 } akc595x_reg2;
 
 /**
@@ -164,10 +175,14 @@ typedef uint8_t akc595x_reg5; //!< Custom end-band channel number chan = 32 * us
  * @ingroup GA01
  * @brief Reg6 (type 0x06 / RW): configures register 0 (default: 0xA1) Address
  */
-typedef struct {
-    uint8_t phase_inv : 1; //!< 0 = audio output inphase, 1 = opposite phase, for single speaker
-    uint8_t line : 1;      //!< 0 = Radio mode; 1 = Line Mode
-    uint8_t volume : 6;    //!< Volume: 0 ~ 63 (<24 =  mute; 24 ~ 63)
+typedef union {
+    struct
+    {
+        uint8_t phase_inv : 1; //!< 0 = audio output inphase, 1 = opposite phase, for single speaker
+        uint8_t line : 1;      //!< 0 = Radio mode; 1 = Line Mode
+        uint8_t volume : 6;    //!< Volume: 0 ~ 63 (<24 =  mute; 24 ~ 63)
+    } refined;
+    uint8_t raw;
 } akc595x_reg6;
 
 /**
@@ -175,12 +190,16 @@ typedef struct {
  * @brief Reg7 (type 0x07 / RW): configures register 0 (default: 0xA1) Address
  * @details stereo and mono: "00" the auto stereo, there Stereo_th control threshold ; "10" long as the pilot is forced stereo "x1" forced mono demodulator
  */
-typedef struct {
-        uint8_t bw: 2;            //!< 00 = 150K; 01 = 200K; 10 = 50K; 11 = 100K
-        uint8_t stereo_mono : 2;  //!< "00" the auto stereo, there Stereo_th control threshold ; "10" long as the pilot is forced stereo "x1" forced mono demodulator
-        uint8_t bben : 1;         //!< Base boost enable 0; Close bass 1.
-        uint8_t de : 1;           //!< De-emphasis mode. 1 = 75 μ s (USA); 0 = 50 μ s (China)
-        uint8_t rsv : 2;          //!< Measured using, set to "0" during normal use
+typedef union {
+    struct
+    {
+        uint8_t bw : 2;          //!< 00 = 150K; 01 = 200K; 10 = 50K; 11 = 100K
+        uint8_t stereo_mono : 2; //!< "00" the auto stereo, there Stereo_th control threshold ; "10" long as the pilot is forced stereo "x1" forced mono demodulator
+        uint8_t bben : 1;        //!< Base boost enable 0; Close bass 1.
+        uint8_t de : 1;          //!< De-emphasis mode. 1 = 75 μ s (USA); 0 = 50 μ s (China)
+        uint8_t rsv : 2;         //!< Measured using, set to "0" during normal use
+    } refined;
+    uint8_t raw;
 } akc595x_reg7;
 
 /**
@@ -190,11 +209,15 @@ typedef struct {
  * 
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 14
  */
-typedef struct  {
-        uint8_t stereo_th : 2;  //!< FM stereo demodulation start CNR threshold - 00=4, 01=8, 10=12,11=16
-        uint8_t fd_th : 2;      //!<
-        uint8_t am_cnr_th : 2;  //!< When AM mode, chip sets and lighting sentence carrier to noise ratio threshold
-        uint8_t fm_cnr_th : 2;  //!< When the FM mode, chip sets and lighting sentence carrier to noise. Ratio limit 00-2dB 01-3dB 10-4dB 11-5dB door
+typedef union {
+    struct
+    {
+        uint8_t stereo_th : 2; //!< FM stereo demodulation start CNR threshold - 00=4, 01=8, 10=12,11=16
+        uint8_t fd_th : 2;     //!<
+        uint8_t am_cnr_th : 2; //!< When AM mode, chip sets and lighting sentence carrier to noise ratio threshold
+        uint8_t fm_cnr_th : 2; //!< When the FM mode, chip sets and lighting sentence carrier to noise. Ratio limit 00-2dB 01-3dB 10-4dB 11-5dB door
+    } refined;
+    uint8_t raw;
 } akc595x_reg8;
 
 /**
@@ -204,12 +227,16 @@ typedef struct  {
  * 
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 14
  */
-typedef struct  {
-        uint8_t iv_en : 1;       //!< When low voltage power supply, whether to enter the low-voltage operation mode can
-        uint8_t rsv1 : 1;        //!< Reserved. Measured using, do not change this value
-        uint8_t osc_en : 1;      //!< Oscillator source selection. 0 = 0-External XO; 1 = 1-Crystal
-        uint8_t pd_adc_vol : 1;  //!< 0 = volume potentiometer mode
-        uint8_t rsv2 : 4;        //!< Reserved. Measured using, do not change this value
+typedef union {
+    struct
+    {
+        uint8_t iv_en : 1;      //!< When low voltage power supply, whether to enter the low-voltage operation mode can
+        uint8_t rsv1 : 1;       //!< Reserved. Measured using, do not change this value
+        uint8_t osc_en : 1;     //!< Oscillator source selection. 0 = 0-External XO; 1 = 1-Crystal
+        uint8_t pd_adc_vol : 1; //!< 0 = volume potentiometer mode
+        uint8_t rsv2 : 4;       //!< Reserved. Measured using, do not change this value
+    } refined;
+    uint8_t raw;
 } akc595x_reg9;
 
 /**
@@ -226,10 +253,14 @@ typedef struct  {
  * 
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 14
  */
-typedef struct  {
-        uint8_t rsv1 : 2;       //!< Reserved. Measured using, do not change this value
-        uint8_t space : 2;      //!< 00 = 25KHz; 01 = 50KHz; 10 = 100KHz; 11 = 200KHz 
-        uint8_t rsv2 : 4;       //!< Reserved. Measured using, do not change this value
+typedef union {
+    struct
+    {
+        uint8_t rsv1 : 2;  //!< Reserved. Measured using, do not change this value
+        uint8_t space : 2; //!< 00 = 25KHz; 01 = 50KHz; 10 = 100KHz; 11 = 200KHz
+        uint8_t rsv2 : 4;  //!< Reserved. Measured using, do not change this value
+    } refined;
+    uint8_t raw;
 } akc595x_reg11;
 
 /**
@@ -239,11 +270,15 @@ typedef struct  {
  * 
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 15
  */
-typedef  struct  {
+typedef union {
+    struct
+    {
         uint8_t rsv2 : 5;   //!< Reserved. Measured using, do not change this value
         uint8_t pd_rx : 1;  //!< 0 = analog and RF analog and RF ??????
         uint8_t res : 1;    //!< ?????
         uint8_t pd_adc : 1; //!< Signal channel ADC signal path; 0 = Close; 1 =  Open
+    } refined;
+    uint8_t raw;
 } akc595x_reg12;
 
 /**
@@ -253,12 +288,16 @@ typedef  struct  {
  * 
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 15
  */
-typedef  struct  {
-        uint8_t rsv3 : 2;       //!< Measured using, do not change this value
-        uint8_t vol_pre : 2;    //!< Adjusting the output volume of the entire values: 00: 0dB 01: 3.5dB
-        uint8_t rsv2 : 2;       //!< Measured using, do not change this value
-        uint8_t st_led : 1;     //!< 0 = tund pin is tuned lamp; When 1-FM and non wtmode, tund indicator pin is stereo demodulation, tuning lamp remainder
-        uint8_t rsv1 : 1;       //!< Measured using, do not change this value
+typedef union {
+    struct
+    {
+        uint8_t rsv3 : 2;    //!< Measured using, do not change this value
+        uint8_t vol_pre : 2; //!< Adjusting the output volume of the entire values: 00: 0dB 01: 3.5dB
+        uint8_t rsv2 : 2;    //!< Measured using, do not change this value
+        uint8_t st_led : 1;  //!< 0 = tund pin is tuned lamp; When 1-FM and non wtmode, tund indicator pin is stereo demodulation, tuning lamp remainder
+        uint8_t rsv1 : 1;    //!< Measured using, do not change this value
+    } refined;
+    uint8_t raw;
 } akc595x_reg13;
 
 /**
@@ -268,12 +307,15 @@ typedef  struct  {
  * 
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 15
  */
-typedef struct
-{
-    uint8_t readchan : 5;   //!< Current Channel number (high 5bit). See Reg21
-    uint8_t tuned : 1;      //!< When transferred to station 1, station search software can use this determination bit table
-    uint8_t stc : 1;        //!< 0 = Not complete; 1 = Complete during Seek and Tune in the register 0.
-    uint8_t st : 1;         //!< ??? 0 to the current situation other FM stereo radio ????
+typedef union {
+    struct
+    {
+        uint8_t readchan : 5; //!< Current Channel number (high 5bit). See Reg21
+        uint8_t tuned : 1;    //!< When transferred to station 1, station search software can use this determination bit table
+        uint8_t stc : 1;      //!< 0 = Not complete; 1 = Complete during Seek and Tune in the register 0.
+        uint8_t st : 1;       //!< ??? 0 to the current situation other FM stereo radio ????
+    } refined;
+    uint8_t raw;
 } akc595x_reg20;
 
 /**
@@ -291,10 +333,13 @@ typedef uint8_t akc595x_reg21;
  * 
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 15
  */
-typedef struct
-{
-    uint8_t cnram : 7;      //!< Carrier to noise ratio of the AM signal format, in dB
-    uint8_t mode3k_f : 1;   //!< 1 = AM 3K channel spacing; 0 =  AM 5K channel spacing
+typedef union {
+    struct
+    {
+        uint8_t cnram : 7;    //!< Carrier to noise ratio of the AM signal format, in dB
+        uint8_t mode3k_f : 1; //!< 1 = AM 3K channel spacing; 0 =  AM 5K channel spacing
+    } refined;
+    uint8_t raw;
 } akc595x_reg22;
 
 /**
@@ -304,10 +349,13 @@ typedef struct
  * 
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 15
  */
-typedef struct
-{
-    uint8_t cnrfm : 7; //!< Carrier to noise ratio of the FM signal format, in dB
-    uint8_t st_dem : 1; //!< Only the demodulated FM stereo (Stereo ratio is greater than 30%) show only one
+typedef union {
+    struct
+    {
+        uint8_t cnrfm : 7;  //!< Carrier to noise ratio of the FM signal format, in dB
+        uint8_t st_dem : 1; //!< Only the demodulated FM stereo (Stereo ratio is greater than 30%) show only one
+    } refined;
+    uint8_t raw;
 } akc595x_reg23;
 
 /**
@@ -317,12 +365,15 @@ typedef struct
  * 
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 15
  */
-typedef struct
-{
-    uint8_t lvmode : 1;         //!< Low voltage maximum volume limit mode indication bit
-    uint8_t rsv : 1;            //!< Reserved.
-    uint8_t pgalevel_if : 3;    //!< ?? RF power control loop gain level, the greater the level, a high gain of approximately ??
-    uint8_t pgalevel_rf : 3;    //!< ?? RF power control loop gain level, the greater the level, a high gain of approximately ??
+typedef union {
+    struct
+    {
+        uint8_t lvmode : 1;      //!< Low voltage maximum volume limit mode indication bit
+        uint8_t rsv : 1;         //!< Reserved.
+        uint8_t pgalevel_if : 3; //!< ?? RF power control loop gain level, the greater the level, a high gain of approximately ??
+        uint8_t pgalevel_rf : 3; //!< ?? RF power control loop gain level, the greater the level, a high gain of approximately ??
+    } refined;
+    uint8_t raw;
 } akc595x_reg24;
 
 /**
@@ -332,10 +383,13 @@ typedef struct
  * 
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 15
  */
-typedef struct
-{
-    uint8_t vbat : 6;   //!< 6 bits indicating the supply voltage ( unsigned number )
-    uint8_t rsv : 2;    //!< Reserved
+typedef union {
+    struct
+    {
+        uint8_t vbat : 6; //!< 6 bits indicating the supply voltage ( unsigned number )
+        uint8_t rsv : 2;  //!< Reserved
+    } refined;
+    uint8_t raw;
 } akc595x_reg25;
 
 /**
@@ -356,10 +410,13 @@ typedef uint8_t akc595x_reg26; //!<   When the frequency offset indicated, compl
  * 
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 15
  */
-typedef struct
-{
-    uint8_t rssi : 7; //!< Antenna aperture can be calculated using signal levels rssi.
-    uint8_t rsv : 1;  //!< Reserved
+typedef union {
+    struct
+    {
+        uint8_t rssi : 7; //!< Antenna aperture can be calculated using signal levels rssi.
+        uint8_t rsv : 1;  //!< Reserved
+    } refined;
+    uint8_t raw;
 } akc595x_reg27;
 
 /**
@@ -381,19 +438,17 @@ protected:
 
     uint16_t currentStep;
     uint16_t currentFrequency;
-    uint8_t  currentMode = 0;
+    uint8_t currentMode = 0;
 
     // AM current band information
-    uint8_t  currentBand = 0; 
+    uint8_t currentBand = 0;
     uint16_t currentBandMinimumFrequency;
     uint16_t currentBandMaximumFrequency;
 
     // FM current band information
-    uint8_t  fmCurrentBand = 0;
+    uint8_t fmCurrentBand = 0;
 
-
-    public :
-
+public:
     // Low level functions
     void reset();
     void setI2CBusAddress(int deviceAddress);
@@ -406,9 +461,8 @@ protected:
     void setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step);
     void setStep(uint8_t step);
 
-    void setFmSeekStep( uint8_t value );
+    void setFmSeekStep(uint8_t value);
     void seekFmStation(uint8_t up_down);
-
 
     void setFrequency(uint16_t frequency);
     uint16_t getFrequency();
@@ -422,13 +476,12 @@ protected:
     void setVolumeControl(uint8_t type);
     void setVolumeUp();
     void setVolumeDown();
-    inline int  getVolume() {return this->volume;};
+    inline int getVolume() { return this->volume; };
 
     int getRSSI();
     float getSupplyVoltage();
 
     inline uint8_t getCurrentMode() { return this->currentMode; };
 
-    void commitTune();    
-
+    void commitTune();
 };

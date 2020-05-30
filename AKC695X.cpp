@@ -23,7 +23,8 @@
  * @ingroup GA03
  * @brief Resets the system. 
  */
-void AKC695X::reset() {
+void AKC695X::reset()
+{
     pinMode(this->resetPin, OUTPUT);
     delay(10);
     digitalWrite(this->resetPin, LOW);
@@ -53,11 +54,12 @@ void AKC695X::setI2CBusAddress(int deviceAddress)
 void AKC695X::setup(int resetPin)
 {
     this->resetPin = resetPin;
-    if (resetPin >= 0) reset();
+    if (resetPin >= 0)
+        reset();
     Wire.begin();
-    }
+}
 
-    /**
+/**
  * @ingroup GA03
  * @brief Power the device on 
  * 
@@ -69,23 +71,20 @@ void AKC695X::setup(int resetPin)
  * @param seek      If 1 Trigger tune process. The STC bit is set high when the tune operation completes
  * @param seekup    Seek direction control bit. 0 = Seek down;  1 = Seek up
  */
-    void AKC695X::powerOn(uint8_t fm_en, uint8_t tune, uint8_t mute, uint8_t seek, uint8_t seekup)
-    {
-        union {
-            akc595x_reg0 r;
-            uint8_t raw;
-        } p;
+void AKC695X::powerOn(uint8_t fm_en, uint8_t tune, uint8_t mute, uint8_t seek, uint8_t seekup)
+{
+    akc595x_reg0 reg0;
 
-        p.r.power_on = 1;
-        p.r.rsv = 0;
-        p.r.fm_en = fm_en;
-        p.r.mute = mute;
-        p.r.seek = seek;
-        p.r.seekup = seekup;
-        p.r.tune = tune;
+    reg0.refined.power_on = 1;
+    reg0.refined.rsv = 0;
+    reg0.refined.fm_en = fm_en;
+    reg0.refined.mute = mute;
+    reg0.refined.seek = seek;
+    reg0.refined.seekup = seekup;
+    reg0.refined.tune = tune;
 
-        setRegister(REG00, p.raw);
-        this->currentMode = fm_en; // Save the current mode (FM or AM)
+    setRegister(REG00, reg0.raw);
+    this->currentMode = fm_en; // Save the current mode (FM or AM)
 }
 
 /**
@@ -113,16 +112,16 @@ void AKC695X::setRegister(uint8_t reg, uint8_t parameter)
  */
 uint8_t AKC695X::getRegister(uint8_t reg)
 {
-    uint8_t result;    
+    uint8_t result;
     Wire.beginTransmission(this->deviceAddress);
     Wire.write(reg);
-    
+
     // Wire.endTransmission(false);
     Wire.endTransmission();
 
     delayMicroseconds(3000);
     Wire.requestFrom(this->deviceAddress, 1);
-    result =  Wire.read();
+    result = Wire.read();
     // Wire.endTransmission(true);
     delayMicroseconds(2000);
     return result;
@@ -139,25 +138,21 @@ uint8_t AKC695X::getRegister(uint8_t reg)
  */
 void AKC695X::commitTune()
 {
+    akc595x_reg0 reg0;
+
     // I know! it can be simpler and faster than this.
 
-    union  {
-        akc595x_reg0 r;
-        uint8_t raw;
-    } reg0;
-
-    reg0.raw = 0; 
-
-    reg0.r.fm_en = this->currentMode;   // Sets to the current mode
-    reg0.r.power_on = 1;                
-    reg0.r.tune = 1;
+    reg0.raw = 0;
+    reg0.refined.fm_en = this->currentMode; // Sets to the current mode
+    reg0.refined.power_on = 1;
+    reg0.refined.tune = 1;
 
     setRegister(REG00, reg0.raw);
 
-    reg0.r.tune = 0;
-    reg0.r.seek = 0;
-    reg0.r.seekup = 0;
-   
+    reg0.refined.tune = 0;
+    reg0.refined.seek = 0;
+    reg0.refined.seekup = 0;
+
     setRegister(REG00, reg0.raw);
 };
 
@@ -188,10 +183,7 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t max
     uint16_t channel;
     uint8_t high_bit, low_bit;
 
-    union {
-        akc595x_reg1 b;
-        uint8_t raw;
-    } reg1;
+    akc595x_reg1 reg1;
 
     this->currentMode = 1;
     this->currentBand = akc695x_fm_band;
@@ -201,10 +193,10 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t max
     this->currentStep = default_step;
 
     reg1.raw = 0;
-    reg1.b.fmband = akc695x_fm_band;
+    reg1.refined.fmband = akc695x_fm_band; // Selects the band will be used for FM (see fm band table)
 
     setRegister(REG00, 0b00010011); // Sets to FM (Power On)
-    setRegister(REG01, reg1.raw);   /// Sets the FM band
+    setRegister(REG01, reg1.raw);   // Sets the FM band
 
     channel = (default_frequency - 300) * 4;
     high_bit = channel / 256 | 0b01100000;
@@ -213,8 +205,7 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t max
     setRegister(REG03, low_bit);
     setRegister(REG02, high_bit);
 
-    commitTune(); 
-
+    commitTune();
 }
 
 /**
@@ -254,12 +245,9 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t max
 void AKC695X::setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step)
 {
     uint16_t channel;
-    uint8_t  high_bit, low_bit;
+    uint8_t high_bit, low_bit;
 
-    union {
-        akc595x_reg1 b;
-        uint8_t raw;
-    } reg1;
+    akc595x_reg1 reg1;
 
     this->currentMode = 0;
     this->currentBand = akc695x_am_band;
@@ -269,14 +257,14 @@ void AKC695X::setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t max
     this->currentStep = default_step;
 
     reg1.raw = 0;
-    reg1.b.amband = akc695x_am_band;
+    reg1.refined.amband = akc695x_am_band; // Selects the AM band will be used (see AM band table)
 
-    setRegister(REG00, 0b10000000); // Sets to AM (Power On)   
+    setRegister(REG00, 0b10000000); // Sets to AM (Power On)
     setRegister(REG01, reg1.raw);   // Selects the AM band
-    
+
     channel = default_frequency / this->currentStep;
     high_bit = channel / 256 | 0b01100000;
-    low_bit  = channel & 0b0000011111111;
+    low_bit = channel & 0b0000011111111;
 
     setRegister(REG03, low_bit);
     setRegister(REG02, high_bit);
@@ -318,11 +306,8 @@ void AKC695X::setStep(uint8_t step)
  */
 void AKC695X::setFmSeekStep(uint8_t space)
 {
-    union {
-        akc595x_reg11 r;
-        uint8_t raw;
-    } reg11; 
-    reg11.r.space = (space > 3)? 3 : space;
+    akc595x_reg11 reg11;
+    reg11.refined.space = (space > 3) ? 3 : space;
     setRegister(REG11, reg11.raw);
 }
 
@@ -334,22 +319,18 @@ void AKC695X::setFmSeekStep(uint8_t space)
  */
 void AKC695X::seekFmStation(uint8_t up_down)
 {
-    union {
-        akc595x_reg0 r;
-        uint8_t raw;
-    } reg0;
+    akc595x_reg0 reg0;
 
     reg0.raw = 0;
 
-    reg0.r.fm_en = 1;       // FM
-    reg0.r.mute = 0;        // Normal operation
-    reg0.r.power_on = 1;    // Power on
-    reg0.r.tune = 1;        // Trigger tune process
-    reg0.r.seek = 1;        // ? Trigger seeking process ?
-    reg0.r.seekup = up_down;
+    reg0.refined.fm_en = 1;    // FM
+    reg0.refined.mute = 0;     // Normal operation
+    reg0.refined.power_on = 1; // Power on
+    reg0.refined.tune = 1;     // Trigger tune process
+    reg0.refined.seek = 1;     // ? Trigger seeking process ?
+    reg0.refined.seekup = up_down;
 
     setRegister(REG00, reg0.raw);
-
 }
 
 /**
@@ -366,23 +347,18 @@ void AKC695X::seekFmStation(uint8_t up_down)
  */
 void AKC695X::setFrequency(uint16_t frequency)
 {
-
     uint16_t channel;
-    union {
-        akc595x_reg2 r;
-        uint8_t raw;
-    } reg2;
+    akc595x_reg2 reg2;
+    akc595x_reg3 reg3;
 
-    uint8_t reg3;
+    reg2.raw = getRegister(REG02); // Gets the current value of the REG02
 
-    reg2.raw = getRegister(REG02);                      // Gets the current value of the REG02
-
-    if (this->currentMode == 0) 
+    if (this->currentMode == 0)
     {
         // AM mode
         channel = frequency / this->currentStep;
-        reg2.r.channel = channel >> 8 | 0b100000;      // Changes just the 5 higher bits of the channel.
-        reg3 = channel & 0b0000011111111;              // Sets the 8 lower bits of the channel 
+        reg2.refined.channel = channel >> 8 | 0b100000; // Changes just the 5 higher bits of the channel.
+        reg3 = channel & 0b0000011111111;               // Sets the 8 lower bits of the channel
 
         setRegister(REG03, reg3);
         setRegister(REG02, reg2.raw);
@@ -391,7 +367,7 @@ void AKC695X::setFrequency(uint16_t frequency)
     {
         // FM mode
         channel = (frequency - 300) * 4;
-        reg2.r.channel = channel >> 8 | 0b100000;
+        reg2.refined.channel = channel >> 8 | 0b100000;
         reg3 = channel & 0b0000011111111;
         setRegister(REG03, reg3);
         setRegister(REG02, reg2.raw);
@@ -447,16 +423,12 @@ void AKC695X::frequencyDown()
  */
 void AKC695X::setAudio(uint8_t phase_inv, uint8_t line, uint8_t volume)
 {
-    union {
-        akc595x_reg6 a;
-        uint8_t raw;
-    } reg6;
+    akc595x_reg6 reg6;
 
-    this->volume = reg6.a.volume = (volume > 63) ? 63 : volume;
-    reg6.a.line = line;
-    reg6.a.phase_inv = phase_inv;
-    setRegister(REG06,reg6.raw);
-
+    this->volume = reg6.refined.volume = (volume > 63) ? 63 : volume;
+    reg6.refined.line = line;
+    reg6.refined.phase_inv = phase_inv;
+    setRegister(REG06, reg6.raw);
 }
 
 /**
@@ -484,16 +456,14 @@ void AKC695X::setAudio()
 
 void AKC695X::setVolume(uint8_t volume)
 {
-    union {
-        akc595x_reg6 v;
-        uint8_t raw;
-    } reg6;
+    akc595x_reg6 reg6;
 
-    reg6.raw = getRegister(REG06);          // gets the current register value;
+    reg6.raw = getRegister(REG06); // gets the current register value;
 
-    if ( volume > 63 ) volume = 63;
-    this->volume = reg6.v.volume = volume;  // changes just the volume attribute 
-    setRegister(REG06, reg6.raw);           // writes the new reg9 value
+    if (volume > 63)
+        volume = 63;
+    this->volume = reg6.refined.volume = volume; // changes just the volume attribute
+    setRegister(REG06, reg6.raw);                // writes the new reg9 value
 }
 
 /**
@@ -501,7 +471,8 @@ void AKC695X::setVolume(uint8_t volume)
  * @brief Increments the audio volume 
  * @details The maximum volume is 63
  */
-void AKC695X::setVolumeUp() {
+void AKC695X::setVolumeUp()
+{
     this->volume = (this->volume > 63) ? 63 : (this->volume + 1);
     setVolume(this->volume);
 }
@@ -513,7 +484,7 @@ void AKC695X::setVolumeUp() {
  */
 void AKC695X::setVolumeDown()
 {
-    this->volume = (this->volume < 25 ) ? 25 : (this->volume - 1);
+    this->volume = (this->volume < 25) ? 25 : (this->volume - 1);
     setVolume(this->volume);
 }
 
@@ -527,16 +498,13 @@ void AKC695X::setVolumeDown()
  * 
  * @param type  0 = controlled by poteciometer; 1 controlled by the MCU 
  */
-    void AKC695X::setVolumeControl(uint8_t type)
+void AKC695X::setVolumeControl(uint8_t type)
 {
-    union {
-        akc595x_reg9 vc;
-        uint8_t raw;
-    } reg9;
+    akc595x_reg9 reg9;
 
-    reg9.raw = getRegister(REG09); // gets the current register value;
-    reg9.vc.pd_adc_vol = type;     // changes just the attribute pd_adc_vol
-    setRegister(REG09, reg9.raw);  // writes the new reg9 value 
+    reg9.raw = getRegister(REG09);  // gets the current register value;
+    reg9.refined.pd_adc_vol = type; // changes just the attribute pd_adc_vol
+    setRegister(REG09, reg9.raw);   // writes the new reg9 value
 }
 
 /**
@@ -547,26 +515,19 @@ void AKC695X::setVolumeDown()
  */
 int AKC695X::getRSSI()
 {
-    union {
-        akc595x_reg24 pg;
-        uint8_t raw;
-    } reg24;
-
-    union {
-        akc595x_reg27 r;
-        uint8_t raw;
-    } reg27;
+    akc595x_reg24 reg24;
+    akc595x_reg27 reg27;
 
     int fator = (this->currentMode == 1) ? 103 : 123;
     int rssi;
 
-    reg24.raw = getRegister(REG24); 
+    reg24.raw = getRegister(REG24);
     reg27.raw = getRegister(REG27);
 
     // Calculates the RSSI
-    rssi = fator - reg27.r.rssi - 6 * reg24.pg.pgalevel_rf -  6 * reg24.pg.pgalevel_if;
+    rssi = fator - reg27.refined.rssi - 6 * reg24.refined.pgalevel_rf - 6 * reg24.refined.pgalevel_if;
 
-    return  rssi;
+    return rssi;
 }
 
 /**
@@ -577,12 +538,7 @@ int AKC695X::getRSSI()
  */
 float AKC695X::getSupplyVoltage()
 {
-    union {
-        akc595x_reg25 r;
-        uint8_t raw;
-    } reg25;
-
+    akc595x_reg25 reg25;
     reg25.raw = getRegister(REG25);
-
-    return (1.8 + 0.05 * reg25.r.vbat);
+    return (1.8 + 0.05 * reg25.refined.vbat);
 }

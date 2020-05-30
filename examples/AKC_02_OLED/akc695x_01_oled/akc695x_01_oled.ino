@@ -26,7 +26,6 @@
 long elapsedButton = millis();
 
 
-
 typedef struct
 {
   uint8_t mode;               // 0 = AM; 1 = FM
