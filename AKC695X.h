@@ -465,9 +465,16 @@ public:
     uint16_t getCurrentChannel();
     uint16_t channelToFrequency();
 
+    uint8_t getAmCurrentSpace();
+    uint8_t getAmCarrierNoiseRatio();
+    bool isFmStereo();
+    uint8_t getFmCarrierNoiseRatio();
 
     void setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step);
     void setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step);
+
+    void setCustomBand(uint8_t band, uint16_t minimum_frequency, uint16_t maximum_frequency);
+
     void setStep(uint8_t step);
 
     void setFmSeekStep(uint8_t value);

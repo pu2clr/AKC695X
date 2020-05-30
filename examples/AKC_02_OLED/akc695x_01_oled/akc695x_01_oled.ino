@@ -8,9 +8,9 @@
 #define RESET_PIN 12 // You can use the Arduino RST pin. In this case, set it to -1
 
 #define OLED_I2C_ADDRESS 0x3C
-#define SCREEN_WIDTH 128 // OLED display width, in pixels
-#define SCREEN_HEIGHT 64 // OLED display height, in pixels
-#define OLED_RESET 4     // Reset pin # (or -1 if sharing Arduino reset pin)
+#define SCREEN_WIDTH 128  // OLED display width, in pixels
+#define SCREEN_HEIGHT 64  // OLED display height, in pixels
+#define OLED_RESET -1     // Reset pin # (or -1 if sharing Arduino reset pin)
 
 #define ENCODER_PIN_A 2
 #define ENCODER_PIN_B 3
@@ -101,7 +101,7 @@ void setup()
   splash();
 
   radio.setup(RESET_PIN);
-  radio.setFM(band[bandIdx].band, band[bandIdx].maximum_frequency, band[bandIdx].maximum_frequency,band[bandIdx].default_frequency, band[bandIdx].step);
+  radio.setFM(band[bandIdx].band, band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency,band[bandIdx].default_frequency, band[bandIdx].step);
   radio.setAudio(); // Sets the audio output behaviour (default configuration).
   
   showStatus();
@@ -391,7 +391,7 @@ void bandDown()
 
 void useBand() {
 
-  radio.setFM(band[bandIdx].band, band[bandIdx].maximum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
+  radio.setFM(band[bandIdx].band, band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
 
   if (band[bandIdx].mode ==  1) 
   {
@@ -399,7 +399,7 @@ void useBand() {
   }
   else
   {
-    radio.setAM(band[bandIdx].band, band[bandIdx].maximum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
+    radio.setAM(band[bandIdx].band, band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
   }
   delay(100);
   currentFrequency = band[bandIdx].default_frequency;

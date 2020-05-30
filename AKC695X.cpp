@@ -226,19 +226,80 @@ uint16_t AKC695X::channelToFrequency()
 
 
 
+/**
+ * @ingroup GA03A
+ * @brief Gets the current AM carrier to noise ratio
+ * @details Return the current AM carrier to noise ratio in dB.
+ * 
+ * @see akc595x_reg22
+ * 
+ * @return uint8_t value in dB of carrier to noise ratio.
+ */
+uint8_t AKC695X::getAmCarrierNoiseRatio(){
+    akc595x_reg22 reg22;
+    reg22.raw = getRegister(REG22);
+    return reg22.refined.cnram;
+};
+
+/**
+ * @ingroup GA03A
+ * @brief Gets the current AM space
+ * @details Returns the AM current space stored in the register 22.
+ * 
+ * @see akc595x_reg22
+ * 
+ * @return uint8_t current space 3KHz or 5KHz
+ */
+uint8_t AKC695X::getAmCurrentSpace(){
+    akc595x_reg22 reg22;
+    reg22.raw = getRegister(REG22);
+    return reg22.refined.mode3k_f;
+};
+
+/**
+ * @ingroup GA03A
+ * @brief Gets the current FM stereo status
+ * @details Returns true when the FM stereo signal is more than 30% percent
+ * 
+ * @see akc595x_reg23
+ *
+ * @return true  if stereo is detected. 
+ */
+bool AKC695X::isFmStereo() {
+    akc595x_reg23 reg23;
+    reg23.raw = getRegister(REG23);
+    return reg23.refined.st_dem;
+}
+
+/**
+ * @ingroup GA03A
+ * @brief Gets the current FM carrier to noise ratio
+ * @details Return the current FM carrier to noise ratio in dB.
+ * 
+ * @see akc595x_reg23
+ * 
+ * @return uint8_t value in dB of carrier to noise ratio.
+ */
+uint8_t AKC695X::getFmCarrierNoiseRatio()
+{
+    akc595x_reg23 reg23;
+    reg23.raw = getRegister(REG23);
+    return reg23.refined.cnrfm;
+};
+
 
 /** 
  * @defgroup GA04 Receiver Operation Methods 
  * @section   Receiver Operation 
  */
 
-/**
+ /**
  * @ingroup GA04
  * @brief Sets the STC bit to high when the tune operation completes
  * @details Tells the device that the tune process is over.
  */
-    void
-    AKC695X::commitTune()
+
+void AKC695X::commitTune()
 {
     akc595x_reg0 reg0;
 
@@ -259,9 +320,46 @@ uint16_t AKC695X::channelToFrequency()
 };
 
 /**
+ * @brief Sets the start and end frequencies for a custom band
+ * @details This method is used by setAM and setFM methods.  
+ * @details This will called when you set a band greater than 17 on AM mode or greater than 7 on FM mode.
+ * @details You can use more than one band at a time.
+ * 
+ * @see akc595x_reg4, akc595x_reg5
+ * @param band                  if FM, a value greater than 7. If AM, a value greater than  17. You can use more than one.
+ * @param minimum_frequency     Start frequency      
+ * @param maximum_frequency     Final frequency
+ */
+void AKC695X::setCustomBand(uint8_t band, uint16_t minimum_frequency, uint16_t maximum_frequency) {
+
+    uint8_t start_channel, end_channel;
+    akc595x_reg4 reg4; // start channel for custom band
+    akc595x_reg5 reg5; // end channel for custom band
+    akc595x_reg1 reg1; // 
+
+    if (this->currentMode == CURRENT_MODE_FM)
+    {
+        start_channel = (minimum_frequency - 300) * 4;
+        end_channel = (maximum_frequency - 300) * 4;
+    }
+    else
+    {
+        start_channel = minimum_frequency / this->currentStep;
+        end_channel = maximum_frequency / this->currentStep;
+    }
+
+    reg4 = start_channel / 32;
+    reg5 = end_channel / 32;
+
+    setRegister(REG04, reg4);
+    setRegister(REG05, reg5);
+}
+
+
+/**
  * @ingroup GA04
  * @brief Sets the AKC695X to FM mode
- * @details Sets the device to FM mode.
+ * @details Sets the device to FM mode. You can configure a custom FM band by setting band number greater than 7.
  * 
  * | FM band | N#  |Description  |
  * | --------| --- |------------ |
@@ -274,13 +372,14 @@ uint16_t AKC695X::channelToFrequency()
  * | 110     |  6  | TV2, 174.75 ~ 222.25, found |
  * | 111     |  7  | sets predetermined space intervals, custom FM, station search space specified intervals |
  * 
- * @param akc695x_fm_band       FM band (see manual FM band table above)
+ * @param akc695x_fm_band       FM band (see manual FM band table above). Set to a number greater than 7 if you want a custom FM band.
  * @param minimum_freq          Minimal frequency of the band 
  * @param maximum_freq          Band maximum frequency
  * @param default_frequency     default frequency
  * @param default_step          increment and decrement step 
  */
-void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step)
+    void
+    AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step)
 {
     uint16_t channel;
     uint8_t high_bit, low_bit;
@@ -298,7 +397,11 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t max
     reg1.refined.fmband = akc695x_fm_band; // Selects the band will be used for FM (see fm band table)
 
     setRegister(REG00, 0b00010011); // Sets to FM (Power On)
-    setRegister(REG01, reg1.raw);   // Sets the FM band
+
+    if (akc695x_fm_band > 7 )
+        setCustomBand(akc695x_fm_band, minimum_freq, maximum_freq); // Sets a custom FM band 
+
+    setRegister(REG01, reg1.raw); // Sets the FM band
 
     channel = (default_frequency - 300) * 4;
     high_bit = (channel >> 8) | 0b01100000;
@@ -315,6 +418,7 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t max
  * @brief Sets the AKC695X to AM mode and selects the band
  * @details This method configures the AM band you want to use. 
  * @details You must respect the frequency limits defined by the AKC595X device documentation.
+ * @details You can configure a custom band by setting a band greater than 17 
  * 
  * | AM band      | N#  |Description  |
  * | ------------ | --- |------------ |
@@ -338,7 +442,7 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t max
  * | 10010        | 17  |MW4, 0.52 to 1.73, 5K station search |
  * | Other        | 18+ |custom band, station search interval = 3K |
  * 
- * @param akc695x_am_band       AM band (see manual AM band table above)
+ * @param akc695x_am_band       AM band. Set to a value greater than 17 if you want a custom AM band (see manual AM band table above)
  * @param minimum_freq          Minimal frequency of the band 
  * @param maximum_freq          Band maximum frequency
  * @param default_frequency     default frequency
@@ -362,7 +466,11 @@ void AKC695X::setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t max
     reg1.refined.amband = akc695x_am_band; // Selects the AM band will be used (see AM band table)
 
     setRegister(REG00, 0b10000000); // Sets to AM (Power On)
-    setRegister(REG01, reg1.raw);   // Selects the AM band
+
+    if (akc695x_am_band > 17)
+        setCustomBand(akc695x_am_band, minimum_freq, maximum_freq); // Sets a custom AM band
+
+    setRegister(REG01, reg1.raw); 
 
     channel = default_frequency / this->currentStep;
     high_bit = (channel >> 8) | 0b01100000;
@@ -467,16 +575,24 @@ void AKC695X::seekStation(uint8_t up_down)
  */
 void AKC695X::setFrequency(uint16_t frequency)
 {
-    uint16_t channel;
+    uint16_t channel, tmpFreq;
     akc595x_reg2 reg2;
     akc595x_reg3 reg3;
+
+    // Check the band limits
+    if (frequency > this->currentBandMaximumFrequency)
+        tmpFreq = this->currentBandMinimumFrequency;
+    else if (frequency < this->currentBandMinimumFrequency )
+        tmpFreq = this->currentBandMaximumFrequency;
+    else
+        tmpFreq = frequency; 
 
     reg2.raw = getRegister(REG02); // Gets the current value of the REG02
 
     if (this->currentMode == 0)
     {
         // AM mode
-        channel = frequency / this->currentStep;
+        channel = tmpFreq / this->currentStep;
         reg2.refined.channel = channel >> 8 | 0b100000; // Changes just the 5 higher bits of the channel.
         reg3 = channel & 0b0000011111111;               // Sets the 8 lower bits of the channel
 
@@ -486,7 +602,7 @@ void AKC695X::setFrequency(uint16_t frequency)
     else
     {
         // FM mode
-        channel = (frequency - 300) * 4;
+        channel = (tmpFreq - 300) * 4;
         reg2.refined.channel = channel >> 8 | 0b100000;
         reg3 = channel & 0b0000011111111;
         setRegister(REG03, reg3);
@@ -495,7 +611,7 @@ void AKC695X::setFrequency(uint16_t frequency)
 
     commitTune();
 
-    this->currentFrequency = frequency;
+    this->currentFrequency = tmpFreq;
 }
 
 /**
