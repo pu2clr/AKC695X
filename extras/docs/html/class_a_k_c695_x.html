@@ -113,6 +113,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 <tr class="memitem:ga771f5b0ed1750f9b221f5240d3301d5a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga771f5b0ed1750f9b221f5240d3301d5a">getRegister</a> (uint8_t reg)</td></tr>
 <tr class="memdesc:ga771f5b0ed1750f9b221f5240d3301d5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a given register content.  <a href="group___g_a03.html#ga771f5b0ed1750f9b221f5240d3301d5a">More...</a><br /></td></tr>
 <tr class="separator:ga771f5b0ed1750f9b221f5240d3301d5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0791915b409796aa2f0f9e4218ac732d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03_a.html#ga0791915b409796aa2f0f9e4218ac732d">isTuned</a> ()</td></tr>
+<tr class="memdesc:ga0791915b409796aa2f0f9e4218ac732d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the result of tune processing.  <a href="group___g_a03_a.html#ga0791915b409796aa2f0f9e4218ac732d">More...</a><br /></td></tr>
+<tr class="separator:ga0791915b409796aa2f0f9e4218ac732d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga47a2a79e7c68701c9eb100b1a48adb90"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03_a.html#ga47a2a79e7c68701c9eb100b1a48adb90">isTuningComplete</a> ()</td></tr>
+<tr class="memdesc:ga47a2a79e7c68701c9eb100b1a48adb90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the Status of seeking or tuning process.  <a href="group___g_a03_a.html#ga47a2a79e7c68701c9eb100b1a48adb90">More...</a><br /></td></tr>
+<tr class="separator:ga47a2a79e7c68701c9eb100b1a48adb90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab0f41f62d16a51c336d25324e4a9d08b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03_a.html#gab0f41f62d16a51c336d25324e4a9d08b">isCurrentModeFM</a> ()</td></tr>
+<tr class="memdesc:gab0f41f62d16a51c336d25324e4a9d08b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current operation mode;.  <a href="group___g_a03_a.html#gab0f41f62d16a51c336d25324e4a9d08b">More...</a><br /></td></tr>
+<tr class="separator:gab0f41f62d16a51c336d25324e4a9d08b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac0bb41042eb94f538a9d5d97f5a16648"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03_a.html#gac0bb41042eb94f538a9d5d97f5a16648">getCurrentChannel</a> ()</td></tr>
+<tr class="memdesc:gac0bb41042eb94f538a9d5d97f5a16648"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current channel.  <a href="group___g_a03_a.html#gac0bb41042eb94f538a9d5d97f5a16648">More...</a><br /></td></tr>
+<tr class="separator:gac0bb41042eb94f538a9d5d97f5a16648"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf77739f861a531dc4c7e6ac5a6cb2713"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#gaf77739f861a531dc4c7e6ac5a6cb2713">setFM</a> (uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step)</td></tr>
 <tr class="memdesc:gaf77739f861a531dc4c7e6ac5a6cb2713"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the <a class="el" href="class_a_k_c695_x.html">AKC695X</a> to FM mode.  <a href="group___g_a04.html#gaf77739f861a531dc4c7e6ac5a6cb2713">More...</a><br /></td></tr>
 <tr class="separator:gaf77739f861a531dc4c7e6ac5a6cb2713"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -228,7 +240,7 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>fmCurrentBand</b> 
 <p>This method configures the kind of audio volume control will be used.</p>
 <p>You can control the audio volume by potentiometer or by MCU (Arduino).</p>
 <p>If you choose volume conttolled by Arduino (type 1), you can set the volume from 25 to 63 levels.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a04.html#ga5c11dd6e97fe01ca7214676cb880e4a7" title="Sets the output audio volume.">setVolume</a>, <a class="el" href="structakc595x__reg9.html" title="Reg9 (type 0x09 / RW): configure register 9 (default: 0x07) Address.">akc595x_reg9</a></dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a04.html#ga5c11dd6e97fe01ca7214676cb880e4a7" title="Sets the output audio volume.">setVolume</a>, <a class="el" href="unionakc595x__reg9.html" title="Reg9 (type 0x09 / RW): configure register 9 (default: 0x07) Address.">akc595x_reg9</a></dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">type</td><td>0 = controlled by poteciometer; 1 controlled by the MCU </td></tr>

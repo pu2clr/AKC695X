@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['reset_121',['reset',['../group___g_a03.html#ga943ec28389bad1988124dd0f04c9b687',1,'AKC695X']]]
+  ['poweron_129',['powerOn',['../group___g_a03.html#gaf156fb3c65b4bfc68a977f4586ae23a6',1,'AKC695X']]]
 ];

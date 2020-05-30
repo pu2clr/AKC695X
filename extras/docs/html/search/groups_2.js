@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['defined_20data_20types_188',['Defined Data Types',['../group___g_a01.html',1,'']]]
+  ['current_20tune_20status_197',['Current Tune Status',['../group___g_a03_a.html',1,'']]]
 ];

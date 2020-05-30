@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['receiver_20operation_20methods_189',['Receiver Operation Methods',['../group___g_a04.html',1,'']]]
+  ['defined_20data_20types_198',['Defined Data Types',['../group___g_a01.html',1,'']]]
 ];
