@@ -55,6 +55,7 @@ akc_band band[] = {
 const int lastBand = (sizeof band / sizeof(akc_band)) - 1;
 int bandIdx = 0; // FM
 
+// The array sizes below can be optimized. 
 char oldFreq[20];
 char oldMode[20];
 char oldUnit[20];
@@ -62,6 +63,7 @@ char oldStep[20];
 char oldRssi[20];
 char oldVolume[20];
 char oldVbat[20];
+char oldStereo[20];
 
 Rotary encoder = Rotary(ENCODER_PIN_A, ENCODER_PIN_B);
 // Encoder control variables
@@ -146,6 +148,7 @@ void resetBuffer()
   clearBuffer(oldRssi);
   clearBuffer(oldVolume);
   clearBuffer(oldVbat);
+  clearBuffer(oldStereo);
 }
 
 /**
@@ -233,6 +236,8 @@ void showFrequency()
   char tmp[15];
   char *unit;
   char *bandMode;
+  char *stereo;
+  
 
   currentFrequency = radio.getFrequency();
 
@@ -249,6 +254,7 @@ void showFrequency()
     freq[6] = '\0';
     unit = (char *) "MHz";
     bandMode =  (char *) "FM";
+    stereo = (radio.isFmStereo())? (char *) "Stereo": (char *)"Mono";
   }
   else // AM
   {
@@ -261,9 +267,12 @@ void showFrequency()
     freq[6] = '\0';
     unit = (char *) "KHz";
     bandMode = (char *) "AM";
+    stereo = (char *) "       ";
   }
 
   printValue(23, 0, oldFreq, freq, 12, 2);
+
+  printValue(0, 20, oldStereo, stereo, 6, 1);
 
   printValue(0, 0, oldMode, bandMode, 7, 1);
   printValue(105, 0, oldUnit, unit, 7, 1);
