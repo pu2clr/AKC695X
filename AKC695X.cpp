@@ -15,7 +15,8 @@
  * Contact: pu2clr@gmail.com
  */
 
-/** @defgroup GA03 Basic Methods 
+/** 
+ * @defgroup GA03 Basic Methods 
  * @section   GA03 Basic 
  */
 
@@ -43,7 +44,7 @@ void AKC695X::reset()
 void AKC695X::setI2CBusAddress(int deviceAddress)
 {
     this->deviceAddress = deviceAddress;
-};
+}
 
 /**
  * @ingroup GA03
@@ -127,7 +128,81 @@ uint8_t AKC695X::getRegister(uint8_t reg)
     return result;
 }
 
-/** @defgroup GA04 Receiver Operation Methods 
+/** 
+ * @defgroup GA03A Current Tune Status 
+ * @section  GA03A Current Tune Status  
+ */
+
+/**
+ * @ingroup GA03A
+ * @brief Gets the result of tune processing
+ * @details This method gets the result of a tune process (seek or tune). 
+ * 
+ * @return true    Catched a channel. You are tuned.
+ * @return false   No channel
+ */
+bool AKC695X::isTuned() {
+    akc595x_reg20 reg20;
+    reg20.raw = getRegister(REG20);
+    return reg20.refined.tuned;
+}
+
+/**
+ * @ingroup GA03A
+ * @brief Gets the Status of seeking or tuning process
+ * @details Return the status of tunning process 
+ * 
+ * @return true    Completed
+ * @return false   Not completed
+ */
+bool AKC695X::isTuningComplete()
+{
+    akc595x_reg20 reg20;
+    reg20.raw = getRegister(REG20);
+    return reg20.refined.stc;
+}
+
+/**
+ * @ingroup GA03A
+ * @brief   Gets the current operation mode;
+ * @details This method returns the current mode stored on register 20. 
+ * 
+ * @return 1    FM mode
+ * @return 0    AM mode
+ */
+uint8_t AKC695X::isCurrentModeFM()
+{
+    akc595x_reg20 reg20;
+    reg20.raw = getRegister(REG20);
+    return reg20.refined.st;
+}
+
+/**
+ * @ingroup GA03A
+ * @brief Gets the current channel
+ * @details Returns the current channel stored in the registers 20 and 21. 
+ * 
+ * @return unit16_t current channel
+ */
+uint16_t AKC695X::getCurrentChannel() {
+
+    akc595x_reg20 reg20;
+    akc595x_reg21 reg21;
+    uint16_t channel = 0;
+
+    reg20.raw = getRegister(REG20);
+    reg21 = getRegister(REG21);
+
+    channel = reg20.refined.readchan;
+    channel = channel << 8;
+    channel = channel | reg21;
+
+    return channel;
+}
+
+
+/** 
+ * @defgroup GA04 Receiver Operation Methods 
  * @section   Receiver Operation 
  */
 
@@ -136,7 +211,8 @@ uint8_t AKC695X::getRegister(uint8_t reg)
  * @brief Sets the STC bit to high when the tune operation completes
  * @details Tells the device that the tune process is over.
  */
-void AKC695X::commitTune()
+    void
+    AKC695X::commitTune()
 {
     akc595x_reg0 reg0;
 
@@ -263,7 +339,7 @@ void AKC695X::setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t max
     setRegister(REG01, reg1.raw);   // Selects the AM band
 
     channel = default_frequency / this->currentStep;
-    high_bit = (channel >>  8) | 0b01100000;
+    high_bit = (channel >> 8) | 0b01100000;
     low_bit = channel & 0b0000011111111;
 
     setRegister(REG03, low_bit);
@@ -320,17 +396,31 @@ void AKC695X::setFmSeekStep(uint8_t space)
 void AKC695X::seekFmStation(uint8_t up_down)
 {
     akc595x_reg0 reg0;
+    long max_time = millis();
 
-    reg0.raw = 0;
+    do {
+        reg0.raw = 0;
+        reg0.refined.fm_en = 1;    // FM
+        reg0.refined.mute = 0;     // Normal operation
+        reg0.refined.power_on = 1; // Power on
+        reg0.refined.tune = 0;     // Trigger tune process
+        reg0.refined.seek = 1;     // ? Trigger seeking process ?
+        reg0.refined.seekup = up_down;
+        setRegister(REG00, reg0.raw);
+        // delay(10);
+        // reg0.raw = getRegister(REG00);
+   } while ( !isTuningComplete() && (millis() - max_time) < 3000 );
 
-    reg0.refined.fm_en = 1;    // FM
-    reg0.refined.mute = 0;     // Normal operation
-    reg0.refined.power_on = 1; // Power on
-    reg0.refined.tune = 1;     // Trigger tune process
-    reg0.refined.seek = 1;     // ? Trigger seeking process ?
-    reg0.refined.seekup = up_down;
+   reg0.raw = 0;
+   reg0.refined.fm_en = 1;    // FM
+   reg0.refined.mute = 0;     // Normal operation
+   reg0.refined.power_on = 1; // Power on
+   reg0.refined.tune = 0;     // Trigger tune process
+   reg0.refined.seek = 0;     // ? Trigger seeking process ?
+   reg0.refined.seekup = up_down;
+   setRegister(REG00, reg0.raw);
 
-    setRegister(REG00, reg0.raw);
+   this->currentFrequency = (getCurrentChannel() >> 2 ) + 300;
 }
 
 /**

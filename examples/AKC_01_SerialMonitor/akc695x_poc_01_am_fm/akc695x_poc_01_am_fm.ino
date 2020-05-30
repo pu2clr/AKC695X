@@ -97,7 +97,12 @@ void loop() {
         radio.frequencyDown();
         break;
       case 'S':
+        radio.setFmSeekStep(0);
+        radio.seekFmStation(1);
+        break;      
       case 's':
+        radio.setFmSeekStep(0);
+        radio.seekFmStation(0);      
         break;
       case '0':
         showStatus();

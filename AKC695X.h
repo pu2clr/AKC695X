@@ -457,6 +457,12 @@ public:
     void setRegister(uint8_t reg, uint8_t parameter);
     uint8_t getRegister(uint8_t reg);
 
+    bool isTuned();
+    bool isTuningComplete();
+    uint8_t isCurrentModeFM();
+    uint16_t getCurrentChannel();
+
+
     void setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step);
     void setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step);
     void setStep(uint8_t step);
