@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pu2clr_20akc695x_20arduino_20library_297',['PU2CLR AKC695X Arduino Library',['../md__a_k_c695_x__r_e_a_d_m_e.html',1,'']]]
+  ['si47xx_20arduino_20library_20implementation_296',['SI47XX Arduino Library implementation',['../index.html',1,'']]]
 ];
