@@ -472,7 +472,7 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t max
     low_bit = channel & 0b0000011111111;
 
     setRegister(REG03, low_bit);
-    setRegister(REG02, high_bit);
+    setRegister(REG02, high_bit);           // Needs consider the crystal type
 
     commitTune();
 }
@@ -542,7 +542,7 @@ void AKC695X::setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t max
     low_bit = channel & 0b0000011111111;
 
     setRegister(REG03, low_bit);
-    setRegister(REG02, high_bit);
+    setRegister(REG02, high_bit);           // Needs consider the crystal type
 
     commitTune();
 }
