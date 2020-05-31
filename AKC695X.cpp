@@ -389,6 +389,7 @@ void AKC695X::commitTune()
 };
 
 /**
+ * @ingroup GA04
  * @brief Sets the start and end frequencies for a custom band
  * @details This method is used by setAM and setFM methods.  
  * @details This will called when you set a band greater than 17 on AM mode or greater than 7 on FM mode.
@@ -425,8 +426,8 @@ void AKC695X::setCustomBand(uint8_t band, uint16_t minimum_frequency, uint16_t m
 }
 
 /**
- * @todo  Adjust for selected crystal type
  * @ingroup GA04
+ * @todo  Adjust for selected crystal type
  * @brief Sets the AKC695X to FM mode
  * @details Sets the device to FM mode. You can configure a custom FM band by setting band number greater than 7.
  * 
@@ -482,8 +483,8 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t max
 }
 
 /**
- * @todo  Adjust for selected crystal type
  * @ingroup GA04
+ * @todo  Adjust for selected crystal type
  * @brief Sets the AKC695X to AM mode and selects the band
  * @details This method configures the AM band you want to use. 
  * @details You must respect the frequency limits defined by the AKC595X device documentation.
@@ -794,6 +795,7 @@ void AKC695X::setVolumeDown()
 }
 
 /**
+ * @ingroup GA04
  * @brief  Sets the kind of audio volume control will be used.
  * @details This method configures the kind of audio volume control will be used. 
  * @details You can control the audio volume by potentiometer or by MCU (Arduino). 
