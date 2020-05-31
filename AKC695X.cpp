@@ -126,6 +126,7 @@ uint8_t AKC695X::getRegister(uint8_t reg)
 }
 
 /**
+ * @ingroup GA03
  * @todo Adjust setAM and setFM for selected crystal 
  * @brief Sets the kind of Crystal
  * @details This method sets the Crystal type you are using in your circuit. 
@@ -138,11 +139,11 @@ void AKC695X::setCrystalType(uint8_t crystal) {
     reg2.raw = getRegister(REG02);          // Gets the current value of the register 2
     reg2.refined.ref_32k_mode = crystal;    // sets the crystal used
     setRegister(REG02,reg2.raw);
-} 
+}
 
 /** 
- * @defgroup GA03A Current Tune Status 
- * @section  GA03A Current Tune Status  
+ * @defgroup GA03A Tune Status and Configuration 
+ * @section  GA03A Tune Status and Configuration  
  */
 
 /**
@@ -300,6 +301,7 @@ uint8_t AKC695X::getFmCarrierNoiseRatio()
 };
 
 /**
+ * @ingroup GA03A
  * @brief Sets de-emphasis 
  * @details Sets de-emphasis to 50us (Asia) or 75us (USA).
   * 
@@ -313,6 +315,7 @@ void AKC695X::setFmEmphasis( uint8_t de) {
 }
 
 /**
+ * @ingroup GA03A
  * @brief Sets the FM stereo or mono 
  * @details This method configures the stereo behavior
  * 
@@ -333,6 +336,7 @@ void AKC695X::setFmStereoMono(uint8_t value)
 }
 
 /**
+ * @ingroup GA03A
  * @brief Sets the FM Bandwidth  
  * @details This method configures FM Bandwidth  
  * 
