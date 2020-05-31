@@ -30,6 +30,9 @@ The AKC695X devices will surprise hobbyists and experimenters with its simplicit
 In this document you will see Arduino source codes, schematics, examples and tips to help you to build a receiver based on Arduino board and AKC695X devices. 
 
 
+{% include video01.html %} 
+
+
 ## MIT License 
 
 Copyright (c) 2019 Ricardo Lima Caratti
@@ -355,7 +358,7 @@ The figure and table below show the pin description of the AKC6951 and AKC6955.
 
 # Videos
 
-* [https://youtu.be/BHW2wCZiTkU](https://youtu.be/BHW2wCZiTkU)
+* [AKC6955 Arduino Library - First Test](https://youtu.be/BHW2wCZiTkU)
 * [PU2CLR AKC695X Arduino Library - SEEKING TEST](https://youtu.be/3OwnVBmOjAs)
 
 
