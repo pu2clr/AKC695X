@@ -100,7 +100,7 @@ There is no information about the register 10 and the registers 14 to 19 in the 
 
 By using the registers 0 to 13, you can change the band, set the frequency, set the channel space, set the audio behavior and volume, set a custom band and more. The file [AKC695X.h](https://github.com/pu2clr/AKC695X/blob/master/AKC695X.h) has details about the all registers used in the library. Also, you can read the [API Documentation](https://pu2clr.github.io/AKC695X/extras/docs/html/modules.html) to know more about AKC695X registers. 
 
-To represent the information stored in the AKC695X registers, this library used the resources of the C / C ++ language: union, struct and typedef. This way, the user of this library will be able to customize this library easily.
+To represent the information stored in the AKC695X registers, this library used the resources of the C / C ++ language: union, struct and typedef. This way, the user of this library will be able to customize it easily.
 
 This approach is shown below for the registers 0, 1, 2 and 3.
 
