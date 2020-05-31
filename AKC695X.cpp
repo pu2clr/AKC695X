@@ -21,9 +21,16 @@
 /**
  * @ingroup GA03
  * @brief Resets the system. 
+ * @details This function can be used to reset the AKC695X device. ypu can also use the RTS pin of your MCU. 
+ * @details In this case, the RESET pin have to be set to  -1. 
+ * 
+ * @see setup
+ * 
  */
 void AKC695X::reset()
 {
+    if (this->resetPin < 0 ) return;  // Do nothing. 
+
     pinMode(this->resetPin, OUTPUT);
     delay(10);
     digitalWrite(this->resetPin, LOW);
