@@ -50,6 +50,7 @@ var NAVTREE =
       [ "References", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md17", null ],
       [ "Videos", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md18", null ]
     ] ],
+    [ "Todo List", "todo.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
@@ -76,7 +77,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_a_k_c695_x_8cpp.html",
-"group___g_a04.html#gadf936fa32a36782b72633cae84d63f88"
+"group___g_a04.html#gabb5f99342439074cf8f9353f1d1307f5"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
