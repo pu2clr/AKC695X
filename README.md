@@ -11,11 +11,11 @@ Contact: __pu2clr@gmail.com__.
 
 # Contents
 
-1. [Preface](https://github.com/pu2clr/AKC695X#preface) 
+1. [Preface](https://pu2clr.github.io/AKC695X/#preface) 
 2. [MIT License](https://pu2clr.github.io/AKC695X/#mit-license)
-3. [About AKC695X / M695X DSP radio](https://github.com/pu2clr/AKC695X#about-akc695x--m695x-dsp-radio)
-4. [AKC695X Pin definitions](https://github.com/pu2clr/AKC695X#akc695x-pin-definitions)
-5. [Schematic](https://github.com/pu2clr/AKC695X#schematic)
+3. [About AKC695X / M695X DSP radio](https://pu2clr.github.io/AKC695X/#about-akc695x--m695x-dsp-radio)
+4. [AKC695X Pin definitions](https://pu2clr.github.io/AKC695X/#akc695x-pin-definitions)
+5. [Schematic](https://pu2clr.github.io/AKC695X/#schematic)
 6. [API Documentation](https://pu2clr.github.io/AKC695X/extras/docs/html/index.html)
 7. [Examples](https://github.com/pu2clr/AKC695X/tree/master/examples)
 8. [Videos](https://github.com/pu2clr/AKC695X#svideos)
