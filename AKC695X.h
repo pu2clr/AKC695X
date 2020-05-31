@@ -89,7 +89,7 @@
 #define REG27 0x1B
 
 /**
- * @defgroup GA01 Defined Data Types  
+ * @defgroup GA01 Union, Structure and Defined Data Types  
  * @brief   AKC695X Defined Data Types 
  * @details Defined Data Types is a way to represent the AKC695X registers information
  * @details Some information appears to be inaccurate due to translation problems from Chinese to English.
