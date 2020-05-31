@@ -146,8 +146,8 @@ void AKC695X::setCrystalType(uint8_t crystal) {
 }
 
 /** 
- * @defgroup GA03A Tune Status and Configuration 
- * @section  GA03A Tune Status and Configuration  
+ * @defgroup GA03A Status and Configuration Methods
+ * @section  GA03A Status and Configuration Methods 
  */
 
 /**
