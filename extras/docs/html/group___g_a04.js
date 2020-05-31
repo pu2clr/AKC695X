@@ -1,6 +1,7 @@
 var group___g_a04 =
 [
     [ "commitTune", "group___g_a04.html#ga735ce923f793b2cc437ff4c09cd4f026", null ],
+    [ "setCustomBand", "group___g_a04.html#ga811f94a0f66d151050ddf0a480f23196", null ],
     [ "setFM", "group___g_a04.html#gaf77739f861a531dc4c7e6ac5a6cb2713", null ],
     [ "setAM", "group___g_a04.html#ga8f61d1c6b668dbcdb5917b58580ed44e", null ],
     [ "setStep", "group___g_a04.html#gabf17b1129300da3388a1ee18735a64e6", null ],
@@ -15,6 +16,7 @@ var group___g_a04 =
     [ "setVolume", "group___g_a04.html#ga5c11dd6e97fe01ca7214676cb880e4a7", null ],
     [ "setVolumeUp", "group___g_a04.html#ga8526d91de9d635764fbba4f6ce1fa7d9", null ],
     [ "setVolumeDown", "group___g_a04.html#ga743ab35c54155385e6585ee0067a209e", null ],
+    [ "setVolumeControl", "group___g_a04.html#gaac575af74cdbf784e24366f13fc60f99", null ],
     [ "getRSSI", "group___g_a04.html#gadf936fa32a36782b72633cae84d63f88", null ],
     [ "getSupplyVoltage", "group___g_a04.html#ga580389b4740ed5cabcba28e481344a64", null ]
 ];

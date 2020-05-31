@@ -95,6 +95,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga735ce923f793b2cc437ff4c09cd4f026"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#ga735ce923f793b2cc437ff4c09cd4f026">AKC695X::commitTune</a> ()</td></tr>
 <tr class="memdesc:ga735ce923f793b2cc437ff4c09cd4f026"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the STC bit to high when the tune operation completes.  <a href="group___g_a04.html#ga735ce923f793b2cc437ff4c09cd4f026">More...</a><br /></td></tr>
 <tr class="separator:ga735ce923f793b2cc437ff4c09cd4f026"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga811f94a0f66d151050ddf0a480f23196"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#ga811f94a0f66d151050ddf0a480f23196">AKC695X::setCustomBand</a> (uint8_t band, uint16_t minimum_frequency, uint16_t maximum_frequency)</td></tr>
+<tr class="memdesc:ga811f94a0f66d151050ddf0a480f23196"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the start and end frequencies for a custom band.  <a href="group___g_a04.html#ga811f94a0f66d151050ddf0a480f23196">More...</a><br /></td></tr>
+<tr class="separator:ga811f94a0f66d151050ddf0a480f23196"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf77739f861a531dc4c7e6ac5a6cb2713"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#gaf77739f861a531dc4c7e6ac5a6cb2713">AKC695X::setFM</a> (uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step)</td></tr>
 <tr class="memdesc:gaf77739f861a531dc4c7e6ac5a6cb2713"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the <a class="el" href="class_a_k_c695_x.html">AKC695X</a> to FM mode.  <a href="group___g_a04.html#gaf77739f861a531dc4c7e6ac5a6cb2713">More...</a><br /></td></tr>
 <tr class="separator:gaf77739f861a531dc4c7e6ac5a6cb2713"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -137,6 +140,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga743ab35c54155385e6585ee0067a209e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#ga743ab35c54155385e6585ee0067a209e">AKC695X::setVolumeDown</a> ()</td></tr>
 <tr class="memdesc:ga743ab35c54155385e6585ee0067a209e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrements the audio volume.  <a href="group___g_a04.html#ga743ab35c54155385e6585ee0067a209e">More...</a><br /></td></tr>
 <tr class="separator:ga743ab35c54155385e6585ee0067a209e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaac575af74cdbf784e24366f13fc60f99"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#gaac575af74cdbf784e24366f13fc60f99">AKC695X::setVolumeControl</a> (uint8_t type)</td></tr>
+<tr class="memdesc:gaac575af74cdbf784e24366f13fc60f99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the kind of audio volume control will be used.  <a href="group___g_a04.html#gaac575af74cdbf784e24366f13fc60f99">More...</a><br /></td></tr>
+<tr class="separator:gaac575af74cdbf784e24366f13fc60f99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadf936fa32a36782b72633cae84d63f88"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#gadf936fa32a36782b72633cae84d63f88">AKC695X::getRSSI</a> ()</td></tr>
 <tr class="memdesc:gadf936fa32a36782b72633cae84d63f88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current RSSI.  <a href="group___g_a04.html#gadf936fa32a36782b72633cae84d63f88">More...</a><br /></td></tr>
 <tr class="separator:gadf936fa32a36782b72633cae84d63f88"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -167,6 +173,56 @@ Operation</h1>
 <p>Tells the device that the tune process is over. </p>
 
 <p class="reference">Referenced by <a class="el" href="group___g_a04.html#ga8f61d1c6b668dbcdb5917b58580ed44e">AKC695X::setAM()</a>, <a class="el" href="group___g_a04.html#gaf77739f861a531dc4c7e6ac5a6cb2713">AKC695X::setFM()</a>, and <a class="el" href="group___g_a04.html#ga0873887fb945b74c56f12ec601be00ac">AKC695X::setFrequency()</a>.</p>
+
+</div>
+</div>
+<a id="ga811f94a0f66d151050ddf0a480f23196"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga811f94a0f66d151050ddf0a480f23196">&#9670;&nbsp;</a></span>setCustomBand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AKC695X::setCustomBand </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>band</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>minimum_frequency</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>maximum_frequency</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the start and end frequencies for a custom band. </p>
+<p>This method is used by setAM and setFM methods. <br  />
+</p>
+<p>This will called when you set a band greater than 17 on AM mode or greater than 7 on FM mode.</p>
+<p>You can use more than one band at a time.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a01.html#ga763d7e126511095914012686cd07f3c6" title="Reg4 (type 0x04 / RW): configures register 4 (default: 0x19) Address.">akc595x_reg4</a>, <a class="el" href="group___g_a01.html#gae0b77f29d6b413d968115e292b6f13f5" title="Reg5 (type 0x05 / RW): configures register 5 (default: 0x32) Address.">akc595x_reg5</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">band</td><td>if FM, a value greater than 7. If AM, a value greater than 17. You can use more than one. </td></tr>
+    <tr><td class="paramname">minimum_frequency</td><td>Start frequency <br  />
+ </td></tr>
+    <tr><td class="paramname">maximum_frequency</td><td>Final frequency </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -613,7 +669,7 @@ AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 1
 <p>Configures the audio output with default values. </p>
 <p>this method sets the audio phase_inv = 0; line = 1 and volume = 40;</p>
 <p>Also, this set the audio controlled by MCU (Arduino)</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_a_k_c695_x.html#aac575af74cdbf784e24366f13fc60f99" title="Sets the kind of audio volume control will be used.">setVolumeControl</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a04.html#gaac575af74cdbf784e24366f13fc60f99" title="Sets the kind of audio volume control will be used.">setVolumeControl</a> </dd></dl>
 
 </div>
 </div>
@@ -681,6 +737,36 @@ AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 1
 
 <p>Decrements the audio volume. </p>
 <p>The minimum volume is 25 </p>
+
+</div>
+</div>
+<a id="gaac575af74cdbf784e24366f13fc60f99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaac575af74cdbf784e24366f13fc60f99">&#9670;&nbsp;</a></span>setVolumeControl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AKC695X::setVolumeControl </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the kind of audio volume control will be used. </p>
+<p>This method configures the kind of audio volume control will be used.</p>
+<p>You can control the audio volume by potentiometer or by MCU (Arduino).</p>
+<p>If you choose volume conttolled by Arduino (type 1), you can set the volume from 25 to 63 levels.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a04.html#ga5c11dd6e97fe01ca7214676cb880e4a7" title="Sets the output audio volume.">setVolume</a>, <a class="el" href="group___g_a01.html#unionakc595x__reg9" title="Reg9 (type 0x09 / RW): configure register 9 (default: 0x07) Address.">akc595x_reg9</a></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>0 = controlled by poteciometer; 1 controlled by the MCU </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
