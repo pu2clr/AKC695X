@@ -116,7 +116,8 @@ Reg0: configure register 0 (default: 0x4c) Address - Type 0x00 (RW)
 |   4   | seek      |    0     | 1 = Trigger tune process. The STC bit is set high when the tune operation completes | 
 |   3   | seekup    |    1     | 1 = Seek up; 0 = Seek down |
 |   2   | mute      |    1     | 0 = Normal operation; 1 = Mute L / R |
-| 1:0   | rsv       |   00     | Debug use, do not change this value using |           
+| 1:0   | rsv       |   00     | Debug use, do not change this value using |  
+
 Source: [AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio](http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf) 
 
 Be aware that the table above presents the data in order of the most significant bits to the least significant bits. In C/C++ representation of that data will be inverted. See the C/C++ code below. 
@@ -170,7 +171,8 @@ Reg1: configure register 1 (default: 0x10) Address - Type 0x01 (RW)
 |  BIT  |  Label    |  Default | Function Description | 
 | ----- | --------- | -------- | -------------------- |         
 | 7:3   | amband    |  0x2     | see table [Table Reg1 amband]() | 
-| 2:0   | fmband    |  0x00    | see table [Table Reg1 fmband]() |           
+| 2:0   | fmband    |  0x00    | see table [Table Reg1 fmband]() |   
+
 Source: [AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio](http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf) 
 
 
@@ -197,6 +199,7 @@ The code below is an example of how the __akc595x_reg1__ can be used.
       .
     reg1.raw = 0;
     reg1.refined.fmband =  fm_band; // Selects the band will be used for FM (see fm band table)
+    setRegister(REG01, reg1.raw);
       . 
       .
 ```
@@ -297,11 +300,16 @@ typedef union {
 typedef uint8_t akc595x_reg3;
 ```
 
-See AKC695x.cpp, methods setFM, setAM and setFrequency to know how the __akc595x_reg2__ and __akc595x_reg2__ work.
+<BR> 
 
+__See AKC695x.cpp methods setFM, setAM and setFrequency to know how the akc595x_reg2 and akc595x_reg2 work__.
 
+<BR> 
+<BR>
 
 ## Schematic 
+
+The main porpuse of this circuit is testing de AKC695X Arduino Library. It does not intend to be a real receiver for exigent listener. However, it is possible to start with it and after add some improvements. On the other hand, with this simple circuit, the experimenter may be surprised with its performance.
 
 The figure below shows the basic schematic of the AKC695X and Arduino Pro Mini 3.3V, 8MHz.  
 
@@ -343,16 +351,15 @@ The figure and table below show the pin description of the AKC6951 and AKC6955.
 | 24  | gnd       | Close to ground | 
 
 
-
-# Receivers based on
-
-* [Troy reviews the Audiomax SRW-710S](https://swling.com/blog/tag/shortwave-radio-review/)
-
-
 # Videos
 
 * [https://youtu.be/BHW2wCZiTkU](https://youtu.be/BHW2wCZiTkU)
 * [PU2CLR AKC695X Arduino Library - SEEKING TEST](https://youtu.be/3OwnVBmOjAs)
+
+
+# Receivers based on
+
+* [Troy reviews the Audiomax SRW-710S](https://swling.com/blog/tag/shortwave-radio-review/)
 
 
 # References
