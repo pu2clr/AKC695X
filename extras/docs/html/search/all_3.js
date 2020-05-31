@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['de_33',['de',['../unionakc595x__reg7.html#adb0bda5c43b6c02aa31df84984c1d90b',1,'akc595x_reg7']]],
-  ['defined_20data_20types_34',['Defined Data Types',['../group___g_a01.html',1,'']]]
+  ['defaul_5fi2c_5faddress_60',['DEFAUL_I2C_ADDRESS',['../_a_k_c695_x_8h.html#adb1c3cfb6a6aaf2a5dd1096c31dcb150',1,'AKC695X.h']]],
+  ['deviceaddress_61',['deviceAddress',['../class_a_k_c695_x.html#ab7cd32a73bfe5345422dbebcd6b54ca7',1,'AKC695X']]],
+  ['distribute_62',['distribute',['../license_8txt.html#aa3cf7f49d189d9fc5cee827d2633810d',1,'license.txt']]],
+  ['defined_20data_20types_63',['Defined Data Types',['../group___g_a01.html',1,'']]]
 ];

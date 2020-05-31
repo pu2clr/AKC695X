@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['de_162',['de',['../unionakc595x__reg7.html#adb0bda5c43b6c02aa31df84984c1d90b',1,'akc595x_reg7']]]
+  ['implied_235',['IMPLIED',['../license_8txt.html#a9c731e523f6a35737f231bf24431695d',1,'license.txt']]]
 ];

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['mode3k_54',['mode3k',['../unionakc595x__reg2.html#af0225f93bf1494a6016a8ad812a9f31c',1,'akc595x_reg2']]],
-  ['mode3k_5ff_55',['mode3k_f',['../unionakc595x__reg22.html#ad8800923aece4581bd42e3e70f468226',1,'akc595x_reg22']]],
-  ['mute_56',['mute',['../unionakc595x__reg0.html#a70240da5744f45eb929696eba1a0a9fa',1,'akc595x_reg0']]]
+  ['liability_86',['LIABILITY',['../license_8txt.html#ae99750133f5a506a38868d5f2722a738',1,'license.txt']]],
+  ['license_2etxt_87',['license.txt',['../license_8txt.html',1,'']]]
 ];

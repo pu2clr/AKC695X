@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['osc_5fen_171',['osc_en',['../unionakc595x__reg9.html#af2aec43b9da99d788da205c6d46380ad',1,'akc595x_reg9']]]
+  ['publish_242',['publish',['../license_8txt.html#ada0e4295c02ecf483dd4971c92e92f1c',1,'license.txt']]]
 ];

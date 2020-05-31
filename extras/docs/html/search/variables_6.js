@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['line_166',['line',['../unionakc595x__reg6.html#ab67a77ff3213a5bec14520ccbfbd425d',1,'akc595x_reg6']]],
-  ['lvmode_167',['lvmode',['../unionakc595x__reg24.html#a919d0672d41d5f9252323726a6fba685',1,'akc595x_reg24']]]
+  ['merchantability_238',['MERCHANTABILITY',['../license_8txt.html#a383a15303ad81a4fe142cc242a159500',1,'license.txt']]],
+  ['merge_239',['merge',['../license_8txt.html#aad4b713ca657a67ecbb454b02ceabff8',1,'license.txt']]],
+  ['modify_240',['modify',['../license_8txt.html#a84db115c842c0bc29f97fd73629d8163',1,'license.txt']]]
 ];
