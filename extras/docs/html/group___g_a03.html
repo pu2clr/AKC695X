@@ -110,6 +110,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga771f5b0ed1750f9b221f5240d3301d5a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga771f5b0ed1750f9b221f5240d3301d5a">AKC695X::getRegister</a> (uint8_t reg)</td></tr>
 <tr class="memdesc:ga771f5b0ed1750f9b221f5240d3301d5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a given register content.  <a href="group___g_a03.html#ga771f5b0ed1750f9b221f5240d3301d5a">More...</a><br /></td></tr>
 <tr class="separator:ga771f5b0ed1750f9b221f5240d3301d5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga860660a84657a9ee209eb6f9459447de"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga860660a84657a9ee209eb6f9459447de">AKC695X::setCrystalType</a> (uint8_t crystal)</td></tr>
+<tr class="memdesc:ga860660a84657a9ee209eb6f9459447de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the kind of Crystal.  <a href="group___g_a03.html#ga860660a84657a9ee209eb6f9459447de">More...</a><br /></td></tr>
+<tr class="separator:ga860660a84657a9ee209eb6f9459447de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>SI47XX Arduino Library implementation</p>
@@ -322,6 +325,35 @@ Basic</h1>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the register content </dd></dl>
+
+</div>
+</div>
+<a id="ga860660a84657a9ee209eb6f9459447de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga860660a84657a9ee209eb6f9459447de">&#9670;&nbsp;</a></span>setCrystalType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AKC695X::setCrystalType </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>crystal</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the kind of Crystal. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Adjust setAM and setFM for selected crystal </dd></dl>
+<p>This method sets the Crystal type you are using in your circuit.</p>
+<p>The valid crystal type are 12MHz or 32.768Khz</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">crystal</td><td>0 = 12MHz; 1 = 32.768KHz </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

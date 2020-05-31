@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['receiver_20operation_20methods_295',['Receiver Operation Methods',['../group___g_a04.html',1,'']]]
+  ['tune_20status_20and_20configuration_295',['Tune Status and Configuration',['../group___g_a03_a.html',1,'']]]
 ];

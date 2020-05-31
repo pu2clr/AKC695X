@@ -15,6 +15,5 @@ var searchData=
   ['currentbandminimumfrequency_55',['currentBandMinimumFrequency',['../class_a_k_c695_x.html#a2a62875b6628634dd57ea9631583c14c',1,'AKC695X']]],
   ['currentfrequency_56',['currentFrequency',['../class_a_k_c695_x.html#a31bef75624625b33b8afced20a7e08c7',1,'AKC695X']]],
   ['currentmode_57',['currentMode',['../class_a_k_c695_x.html#ae1ddbcc5a1f517f3fda2d3776516c749',1,'AKC695X']]],
-  ['currentstep_58',['currentStep',['../class_a_k_c695_x.html#a3c7d7b2a13c51ef791df48aa7f368d4c',1,'AKC695X']]],
-  ['current_20tune_20status_59',['Current Tune Status',['../group___g_a03_a.html',1,'']]]
+  ['currentstep_58',['currentStep',['../class_a_k_c695_x.html#a3c7d7b2a13c51ef791df48aa7f368d4c',1,'AKC695X']]]
 ];

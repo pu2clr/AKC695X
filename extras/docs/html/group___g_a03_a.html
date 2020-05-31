@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>PU2CLR AKC695X Arduino Library: Current Tune Status</title>
+<title>PU2CLR AKC695X Arduino Library: Tune Status and Configuration</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -86,7 +86,7 @@ $(document).ready(function(){initNavTree('group___g_a03_a.html',''); initResizab
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">Current Tune Status</div>  </div>
+<div class="title">Tune Status and Configuration</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
@@ -119,10 +119,20 @@ Functions</h2></td></tr>
 <tr class="memitem:ga3471675057f459e0d641c33f47b4cdd4"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03_a.html#ga3471675057f459e0d641c33f47b4cdd4">AKC695X::getFmCarrierNoiseRatio</a> ()</td></tr>
 <tr class="memdesc:ga3471675057f459e0d641c33f47b4cdd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current FM carrier to noise ratio.  <a href="group___g_a03_a.html#ga3471675057f459e0d641c33f47b4cdd4">More...</a><br /></td></tr>
 <tr class="separator:ga3471675057f459e0d641c33f47b4cdd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga150bbbf8a747af419ec909e50a2c16f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03_a.html#ga150bbbf8a747af419ec909e50a2c16f7">AKC695X::setFmEmphasis</a> (uint8_t de)</td></tr>
+<tr class="memdesc:ga150bbbf8a747af419ec909e50a2c16f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets de-emphasis.  <a href="group___g_a03_a.html#ga150bbbf8a747af419ec909e50a2c16f7">More...</a><br /></td></tr>
+<tr class="separator:ga150bbbf8a747af419ec909e50a2c16f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5a730d440f7b8074b8fbd33d7358409c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03_a.html#ga5a730d440f7b8074b8fbd33d7358409c">AKC695X::setFmStereoMono</a> (uint8_t value)</td></tr>
+<tr class="memdesc:ga5a730d440f7b8074b8fbd33d7358409c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the FM stereo or mono.  <a href="group___g_a03_a.html#ga5a730d440f7b8074b8fbd33d7358409c">More...</a><br /></td></tr>
+<tr class="separator:ga5a730d440f7b8074b8fbd33d7358409c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4d47df4b9fca04ca1fd4a38b9e6891a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03_a.html#ga4d47df4b9fca04ca1fd4a38b9e6891a0">AKC695X::setFmBandwidth</a> (uint8_t value)</td></tr>
+<tr class="memdesc:ga4d47df4b9fca04ca1fd4a38b9e6891a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the FM Bandwidth <br  />
+  <a href="group___g_a03_a.html#ga4d47df4b9fca04ca1fd4a38b9e6891a0">More...</a><br /></td></tr>
+<tr class="separator:ga4d47df4b9fca04ca1fd4a38b9e6891a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h1><a class="anchor" id="GA03A"></a>
-Current Tune Status</h1>
+Tune Status and Configuration</h1>
 <p><br  />
  </p>
 <h2 class="groupheader">Function Documentation</h2>
@@ -323,6 +333,111 @@ false Not completed </dd></dl>
 <p>Return the current FM carrier to noise ratio in dB.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a01.html#unionakc595x__reg23" title="Reg23 (type 0x17 / R)">akc595x_reg23</a></dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>uint8_t value in dB of carrier to noise ratio. </dd></dl>
+
+</div>
+</div>
+<a id="ga150bbbf8a747af419ec909e50a2c16f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga150bbbf8a747af419ec909e50a2c16f7">&#9670;&nbsp;</a></span>setFmEmphasis()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AKC695X::setFmEmphasis </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>de</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets de-emphasis. </p>
+<p>Sets de-emphasis to 50us (Asia) or 75us (USA).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">de</td><td>0 = 75us; 1 = 50us </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ga5a730d440f7b8074b8fbd33d7358409c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5a730d440f7b8074b8fbd33d7358409c">&#9670;&nbsp;</a></span>setFmStereoMono()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AKC695X::setFmStereoMono </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the FM stereo or mono. </p>
+<p>This method configures the stereo behavior</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Parameter vaue </th><th class="markdownTableHeadNone">Description  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">0 </td><td class="markdownTableBodyNone">Auto stereo  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">2 </td><td class="markdownTableBodyNone">Force stereo  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">1 </td><td class="markdownTableBodyNone">Mono  </td></tr>
+</table>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>see table above </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ga4d47df4b9fca04ca1fd4a38b9e6891a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4d47df4b9fca04ca1fd4a38b9e6891a0">&#9670;&nbsp;</a></span>setFmBandwidth()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AKC695X::setFmBandwidth </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the FM Bandwidth <br  />
+ </p>
+<p>This method configures FM Bandwidth <br  />
+</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Parameter vaue </th><th class="markdownTableHeadNone">Bandwidth  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">0 </td><td class="markdownTableBodyNone">150KHz  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">1 </td><td class="markdownTableBodyNone">200KHz  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">2 </td><td class="markdownTableBodyNone">50KHz  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">3 </td><td class="markdownTableBodyNone">100KHz  </td></tr>
+</table>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>see table above </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
