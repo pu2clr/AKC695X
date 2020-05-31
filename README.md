@@ -1,4 +1,4 @@
-# PU2CLR AKC695X Arduino Library
+# [PU2CLR AKC695X Arduino Library](https://pu2clr.github.io/AKC695X)
 
 This is an Arduino Library to control the AKC695X / M695X DSP radio devices.   
 
