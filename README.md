@@ -23,7 +23,7 @@ Contact: __pu2clr@gmail.com__.
 
 ## Preface
 
-The AKC695X devices will surprise hobbyists and experimenters with its simplicity to build FM and AM receiver based on AKC695X. There are currently several receivers based on DSP technology. The KT0915 and SI4745 devices are some examples widely disseminated in the market. This library was developed with the purpose of expanding the alternatives to electronics hobbyists and radio listeners. 
+The AKC695X devices will surprise hobbyists and experimenters with its simplicity to build FM and AM (LW, MW, SW) receivers. There are currently several receivers based on DSP technology. The KT0915 and SI4745 devices are some examples widely disseminated in the market. This library was developed with the purpose of expanding the alternatives to electronics hobbyists and radio listeners. 
 In this document you will see Arduino source codes, schematics, examples and tips to help you to build a receiver based on Arduino board and AKC695X devices. 
 
 
