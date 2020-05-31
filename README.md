@@ -4,7 +4,7 @@ This is an Arduino Library to control the AKC695X / M695X DSP radio devices.
 
 This library was built based on [AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio](http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf) document from "AKC technology".  Others sources help the author to build this library. You can check these sources on [References](https://pu2clr.github.io/AKC695X/#references). 
 
-The PU2CLR AKC695X Arduino Library also intend to be used on **all members of the AKC695X family** respecting, of course, the features available for each IC version. Please, check the Datasheet of the divice before starting your project. Finally, it can be freely distributed using the [MIT Free Software model](https://pu2clr.github.io/AKC695X/#mit-license). 
+The PU2CLR AKC695X Arduino Library also intend to be used on __all members of the AKC695X family with I2C bus interface__ respecting, of course, the features available for each IC version. __Please, check the Datasheet of the divice before starting your project__. Finally, it can be freely distributed using the [MIT Free Software model](https://pu2clr.github.io/AKC695X/#mit-license). 
 
 [Copyright (c) 2020 Ricardo Lima Caratti](https://pu2clr.github.io/AKC695X/#mit-license). 
 
@@ -84,7 +84,9 @@ The table below shows some features fo the AKC695X devices family.
 | According to the battery voltage, automatically adjust the volume         |   X     |    X    |    X      |
 | Pb-free / RoHS complian                                                   |   X     |    X    |    X      |
 
-__Sources:__  AKC6951, AKC6955 and AKC6959 Datasheets.
+__Sources:__  AKC6951, AKC6955 and AKC6959sx Datasheets.
+
+__ATTENTION: The AKC6952 and AKC6959 do not have I2C interface. So, they will not work with this library_. Try AKC6951, AKC6955 or AKC6959sx__.     
 
 
 ## Registers setup
