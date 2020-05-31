@@ -87,11 +87,11 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="title">SI47XX Arduino Library implementation </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>This Library is under construction......</p>
-<p>This is an Arduino library for the <a class="el" href="class_a_k_c695_x.html">AKC695X</a>, BROADCAST RECEIVER, IC family. <br  />
+<div class="textblock"><p>This is an Arduino library for the <a class="el" href="class_a_k_c695_x.html">AKC695X</a>, BROADCAST RECEIVER, IC family. <br  />
  It works with I2C protocol and can provide an easier interface for controlling the <a class="el" href="class_a_k_c695_x.html">AKC695X</a> devices.<br  />
 </p>
 <p>This library was built based on <a href="http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf">AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio</a> document from "AKC technology". It also intend to be used on <b>all members of the <a class="el" href="class_a_k_c695_x.html">AKC695X</a> family</b> respecting, of course, the features available for each IC version.</p>
+<p>This library uses the I2C protocols to read and write <a class="el" href="class_a_k_c695_x.html">AKC695X</a> registers. In this context, registers are memory position into the device. The first 13 registers, you can use to change the behavior of the device. They are read and write registers. The registers from 20 to 27, can be used to get the current device status. They are read only registers. There is no information about the register 10 and the registers 14 to 19 in the documentation used to develop this library. By using the registers 0 to 13, you can change the band, set the frequency, set the channel space, set the audio behavior and volume, set a custom band and more.</p>
 <p>This library can be freely distributed using the MIT Free Software model. <a href="https://pu2clr.github.io/AKC695X/#mit-license">Copyright (c) 2019 Ricardo Lima Caratti</a>. <br  />
  Contact: <a href="#" onclick="location.href='mai'+'lto:'+'pu2'+'cl'+'r@g'+'ma'+'il.'+'co'+'m'; return false;">pu2cl<span style="display: none;">.nosp@m.</span>r@gm<span style="display: none;">.nosp@m.</span>ail.c<span style="display: none;">.nosp@m.</span>om</a> </p>
 </div></div><!-- PageDoc -->

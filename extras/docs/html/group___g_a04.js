@@ -6,7 +6,7 @@ var group___g_a04 =
     [ "getFrequency", "group___g_a04.html#ga1675e3100bba495bc813899563badc42", null ],
     [ "getRSSI", "group___g_a04.html#gadf936fa32a36782b72633cae84d63f88", null ],
     [ "getSupplyVoltage", "group___g_a04.html#ga580389b4740ed5cabcba28e481344a64", null ],
-    [ "seekFmStation", "group___g_a04.html#gabc88b23136a86cc3f1b63f682f14dbc8", null ],
+    [ "seekStation", "group___g_a04.html#ga61f93b8e7579e4e06d91486dccf1d840", null ],
     [ "setAM", "group___g_a04.html#ga8f61d1c6b668dbcdb5917b58580ed44e", null ],
     [ "setAudio", "group___g_a04.html#gafa446d042f11dd32356d2e95eae9f8cf", null ],
     [ "setAudio", "group___g_a04.html#ga0ff5be517897a239d2eba9869e1d2591", null ],

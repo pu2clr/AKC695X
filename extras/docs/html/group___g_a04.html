@@ -107,9 +107,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gaabe4bb9635ae8a7b53a5fd48b98d6339"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#gaabe4bb9635ae8a7b53a5fd48b98d6339">AKC695X::setFmSeekStep</a> (uint8_t value)</td></tr>
 <tr class="memdesc:gaabe4bb9635ae8a7b53a5fd48b98d6339"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets FM step for seeking.  <a href="group___g_a04.html#gaabe4bb9635ae8a7b53a5fd48b98d6339">More...</a><br /></td></tr>
 <tr class="separator:gaabe4bb9635ae8a7b53a5fd48b98d6339"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabc88b23136a86cc3f1b63f682f14dbc8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#gabc88b23136a86cc3f1b63f682f14dbc8">AKC695X::seekFmStation</a> (uint8_t up_down)</td></tr>
-<tr class="memdesc:gabc88b23136a86cc3f1b63f682f14dbc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seeks a FM station.  <a href="group___g_a04.html#gabc88b23136a86cc3f1b63f682f14dbc8">More...</a><br /></td></tr>
-<tr class="separator:gabc88b23136a86cc3f1b63f682f14dbc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga61f93b8e7579e4e06d91486dccf1d840"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#ga61f93b8e7579e4e06d91486dccf1d840">AKC695X::seekStation</a> (uint8_t up_down)</td></tr>
+<tr class="memdesc:ga61f93b8e7579e4e06d91486dccf1d840"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seeks a FM station.  <a href="group___g_a04.html#ga61f93b8e7579e4e06d91486dccf1d840">More...</a><br /></td></tr>
+<tr class="separator:ga61f93b8e7579e4e06d91486dccf1d840"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0873887fb945b74c56f12ec601be00ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#ga0873887fb945b74c56f12ec601be00ac">AKC695X::setFrequency</a> (uint16_t frequency)</td></tr>
 <tr class="memdesc:ga0873887fb945b74c56f12ec601be00ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the the device to a given frequency.  <a href="group___g_a04.html#ga0873887fb945b74c56f12ec601be00ac">More...</a><br /></td></tr>
 <tr class="separator:ga0873887fb945b74c56f12ec601be00ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -270,14 +270,14 @@ Operation</h1>
 
 </div>
 </div>
-<a id="gabc88b23136a86cc3f1b63f682f14dbc8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gabc88b23136a86cc3f1b63f682f14dbc8">&#9670;&nbsp;</a></span>seekFmStation()</h2>
+<a id="ga61f93b8e7579e4e06d91486dccf1d840"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga61f93b8e7579e4e06d91486dccf1d840">&#9670;&nbsp;</a></span>seekStation()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void AKC695X::seekFmStation </td>
+          <td class="memname">void AKC695X::seekStation </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>up_down</em></td><td>)</td>
@@ -287,7 +287,9 @@ Operation</h1>
 </div><div class="memdoc">
 
 <p>Seeks a FM station. </p>
-<p>Seek a FM Station </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Seek a FM Station</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="unionakc595x__reg20.html" title="Reg20 (type 0x14 / R)">akc595x_reg20</a>, <a class="el" href="group___g_a01.html#ga3d85865e7c11161e222ed157c4e2d169" title="Reg21 (type 0x15 / R)">akc595x_reg21</a>, <a class="el" href="group___g_a03_a.html#ga62a70a5191c3e56dfa6cc51c314bc210" title="Converts the channel stored in the registers 20 and 21 to frequency.">channelToFrequency</a></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">up_down</td><td>if 0, seek down; if 1, seek up. </td></tr>
   </table>
@@ -343,6 +345,7 @@ Operation</h1>
 <p>Sets the <a class="el" href="class_a_k_c695_x.html">AKC695X</a> to AM mode and selects the band. </p>
 <p>This method configures the AM band you want to use.</p>
 <p>You must respect the frequency limits defined by the AKC595X device documentation.</p>
+<p>You can configure a custom band by setting a band greater than 17</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">AM band </th><th class="markdownTableHeadNone">N# </th><th class="markdownTableHeadNone">Description  </th></tr>
@@ -387,7 +390,7 @@ Operation</h1>
 </table>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">akc695x_am_band</td><td>AM band (see manual AM band table above) </td></tr>
+    <tr><td class="paramname">akc695x_am_band</td><td>AM band. Set to a value greater than 17 if you want a custom AM band (see manual AM band table above) </td></tr>
     <tr><td class="paramname">minimum_freq</td><td>Minimal frequency of the band </td></tr>
     <tr><td class="paramname">maximum_freq</td><td>Band maximum frequency </td></tr>
     <tr><td class="paramname">default_frequency</td><td>default frequency </td></tr>
@@ -510,7 +513,7 @@ Operation</h1>
 </div><div class="memdoc">
 
 <p>Sets the <a class="el" href="class_a_k_c695_x.html">AKC695X</a> to FM mode. </p>
-<p>Sets the device to FM mode.</p>
+<p>Sets the device to FM mode. You can configure a custom FM band by setting band number greater than 7.</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">FM band </th><th class="markdownTableHeadNone">N# </th><th class="markdownTableHeadNone">Description  </th></tr>
@@ -533,7 +536,7 @@ Operation</h1>
 </table>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">akc695x_fm_band</td><td>FM band (see manual FM band table above) </td></tr>
+    <tr><td class="paramname">akc695x_fm_band</td><td>FM band (see manual FM band table above). Set to a number greater than 7 if you want a custom FM band. </td></tr>
     <tr><td class="paramname">minimum_freq</td><td>Minimal frequency of the band </td></tr>
     <tr><td class="paramname">maximum_freq</td><td>Band maximum frequency </td></tr>
     <tr><td class="paramname">default_frequency</td><td>default frequency </td></tr>
