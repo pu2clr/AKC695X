@@ -40,7 +40,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## About AKC695X / M695X DSP radio 
 
-The AKC695X is a family of IC DSP receiver from AKC technology. The AKC6955 and AKC6959 support AM and FM modes. On AM mode the AKC6955 and AKC6969 work on LW, MW and SW. On FM mode they work from 64MHz to 222MHz.
+The AKC695X is a family of IC DSP receiver from AKC technology. The AKC6955 and AKC6959 support AM and FM modes. 
+On AM mode the AKC6955 and AKC6969 work on LW, MW and SW. On FM mode they work from 64MHz to 222MHz.
 
 
 ### AKC695X features
@@ -84,6 +85,21 @@ __Sources:__  AKC6951, AKC6955 and AKC6959 Datasheets.
 
 
 ## Registers setup
+
+
+### Register operations
+   
+This library uses the I2C protocols to read and write AKC695X registers. In this context, registers are memory position into the device.
+
+The first 13 registers, you can use to change the behavior of the device. They are read and write registers. The registers from 20 to 27, can be used to get the current device status. They are read only registers. 
+
+There is no information about the register 10 and the registers 14 to 19 in the documentation used to develop this library. 
+
+By using the registers 0 to 13, you can change the band, set the frequency, set the channel space, set the audio behavior and volume, set a custom band and more. The file [AKC695X.h](https://github.com/pu2clr/AKC695X/blob/master/AKC695X.h) has details about the all registers used in the library. Also, you can read the [API Documentation](https://pu2clr.github.io/AKC695X/extras/docs/html/modules.html) to know more about AKC695X registers. 
+
+
+You can use the registers 0, 1, 2 and 3 to make the receiver work with the most important functionalities. these registers are described below.
+
 
 ### Table Reg1
 

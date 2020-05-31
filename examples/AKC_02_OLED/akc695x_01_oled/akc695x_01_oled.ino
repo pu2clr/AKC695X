@@ -50,7 +50,7 @@ akc_band band[] = {
     {0, 12, 15000, 15900, 15300, 5},
     {0, 13, 17400, 17900, 17600, 5},  
     {0, 15, 21400, 21900, 21525, 5},
-    {1,  7,  1444,  1480,  1450, 1} } ;
+    {0, 18, 27000, 28000, 27500, 3} } ;
 
 const int lastBand = (sizeof band / sizeof(akc_band)) - 1;
 int bandIdx = 0; // FM
@@ -400,11 +400,9 @@ void bandDown()
 
 void useBand() {
 
-  radio.setFM(band[bandIdx].band, band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
-
   if (band[bandIdx].mode ==  1) 
   {
-    radio.setFM(band[bandIdx].band, band[bandIdx].maximum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
+    radio.setFM(band[bandIdx].band, band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
   }
   else
   {

@@ -116,14 +116,11 @@ uint8_t AKC695X::getRegister(uint8_t reg)
     uint8_t result;
     Wire.beginTransmission(this->deviceAddress);
     Wire.write(reg);
-
-    // Wire.endTransmission(false);
     Wire.endTransmission();
 
     delayMicroseconds(3000);
     Wire.requestFrom(this->deviceAddress, 1);
     result = Wire.read();
-    // Wire.endTransmission(true);
     delayMicroseconds(2000);
     return result;
 }

@@ -1,14 +1,17 @@
 /**
  * @mainpage SI47XX Arduino Library implementation 
  * 
- * This Library is under construction......
- * 
  * This is an Arduino library for the AKC695X, BROADCAST RECEIVER, IC family.  
  * It works with I2C protocol and can provide an easier interface for controlling the AKC695X devices.<br>
  * 
  * This library was built based on [AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio](http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf) document from "AKC technology". 
  * It also intend to  be used on **all members of the AKC695X family** respecting, of course, the features available for each IC version. 
  * 
+ * This library uses the I2C protocols to read and write AKC695X registers. In this context, registers are memory position into the device.
+ * The first 13 registers, you can use to change the behavior of the device. They are read and write registers. The registers from 20 to 27, can be used to get the current device status. They are read only registers. 
+ * There is no information about the register 10 and the registers 14 to 19 in the documentation used to develop this library. 
+ * By using the registers 0 to 13, you can change the band, set the frequency, set the channel space, set the audio behavior and volume, set a custom band and more.
+ *
  * This library can be freely distributed using the MIT Free Software model. [Copyright (c) 2019 Ricardo Lima Caratti](https://pu2clr.github.io/AKC695X/#mit-license).  
  * Contact: pu2clr@gmail.com
  */
@@ -276,8 +279,8 @@ typedef union {
     struct
     {
         uint8_t rsv2 : 5;   //!< Reserved. Measured using, do not change this value
-        uint8_t pd_rx : 1;  //!< 0 = analog and RF analog and RF ??????
-        uint8_t res : 1;    //!< ?????
+        uint8_t pd_rx : 1;  //!< 0 = analog and RF; 1 = closed channel 
+        uint8_t res : 1;    //!< 
         uint8_t pd_adc : 1; //!< Signal channel ADC signal path; 0 = Close; 1 =  Open
     } refined;
     uint8_t raw;
@@ -372,8 +375,8 @@ typedef union {
     {
         uint8_t lvmode : 1;      //!< Low voltage maximum volume limit mode indication bit
         uint8_t rsv : 1;         //!< Reserved.
-        uint8_t pgalevel_if : 3; //!< ?? RF power control loop gain level, the greater the level, a high gain of approximately ??
-        uint8_t pgalevel_rf : 3; //!< ?? RF power control loop gain level, the greater the level, a high gain of approximately ??
+        uint8_t pgalevel_if : 3; //!< RF power control loop gain level, the greater the level, a high gain of approximately
+        uint8_t pgalevel_rf : 3; //!< RF power control loop gain level, the greater the level, a high gain of approximately
     } refined;
     uint8_t raw;
 } akc595x_reg24;
