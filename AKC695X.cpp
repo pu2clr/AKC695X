@@ -3,8 +3,6 @@
 /**
  * SI47XX Arduino Library implementation 
  * 
- * This Library is under construction......
- * 
  * This is an Arduino library for the AKC695X, BROADCAST RECEIVER, IC family.  
  * It works with I2C protocol and can provide an easier interface for controlling the AKC695X devices.<br>
  * 

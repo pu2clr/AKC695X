@@ -5,6 +5,7 @@
  * It works with I2C protocol and can provide an easier interface for controlling the AKC695X devices.<br>
  * 
  * This library was built based on [AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio](http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf) document from "AKC technology". 
+ * Others sources help the author to build this library.  They are referenced in the documentation for this library on: https://github.com/pu2clr/AKC695X
  * It also intend to  be used on **all members of the AKC695X family** respecting, of course, the features available for each IC version. 
  * 
  * This library uses the I2C protocols to read and write AKC695X registers. In this context, registers are memory position into the device.

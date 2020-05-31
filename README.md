@@ -1,8 +1,10 @@
 # [PU2CLR AKC695X Arduino Library](https://pu2clr.github.io/AKC695X)
 
-This is an Arduino Library to control the AKC695X / M695X DSP radio devices.   
+This is an Arduino Library to control the AKC695X / M695X DSP radio devices. 
 
-This library can be freely distributed using the MIT Free Software model. 
+This library was built based on [AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio](http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf) document from "AKC technology".  Others sources help the author to build tis library. You can check these source on [References](https://pu2clr.github.io/AKC695X/#references). 
+
+The PU2CLR AKC695X Arduino Library also intend to be used on **all members of the AKC695X family** respecting, of course, the features available for each IC version. Finally, it can be freely distributed using the MIT Free Software model. 
 
 [Copyright (c) 2020 Ricardo Lima Caratti](https://pu2clr.github.io/AKC695X/#mit-license). 
 
@@ -19,6 +21,7 @@ Contact: __pu2clr@gmail.com__.
 6. [API Documentation](https://pu2clr.github.io/AKC695X/extras/docs/html/index.html)
 7. [Examples](https://github.com/pu2clr/AKC695X/tree/master/examples)
 8. [Videos](https://github.com/pu2clr/AKC695X#svideos)
+9. [References](https://pu2clr.github.io/AKC695X/#references)
 
 
 ## Preface
@@ -59,7 +62,7 @@ The table below shows some features fo the AKC695X devices family.
 | Presets wave band ( 520 ~ 1730 KHz )                                      |   X     |    X    |    X      |
 | Preset shortwave band ( 3.2 ~ 21.9 MHz )                                  |         |    X    |    X      |
 | Preset long-wave band ( 150 ~ 285 KHz )                                   |   X     |    X    |    X      |
-| Custom support band                                                       |   X     |    X    |    X      |
+| Custom support band                                                       |         |    X    |    X      |
 | It supports a wide supply voltage range: 2.0V ~ 4.5V                      |   X     |    X    |    X      |
 | stand by 32.768KHz & 12MHz Passive mode crystal reference clock and Pin   |   X     |    X    |    X      |
 | Integrated audio amplifier (maximum power differential 0.5W )             |   X     |    X    |    X      |
@@ -97,11 +100,70 @@ There is no information about the register 10 and the registers 14 to 19 in the 
 
 By using the registers 0 to 13, you can change the band, set the frequency, set the channel space, set the audio behavior and volume, set a custom band and more. The file [AKC695X.h](https://github.com/pu2clr/AKC695X/blob/master/AKC695X.h) has details about the all registers used in the library. Also, you can read the [API Documentation](https://pu2clr.github.io/AKC695X/extras/docs/html/modules.html) to know more about AKC695X registers. 
 
+To represent the information stored in the AKC695X registers, this library used the resources of the C / C ++ language: union, struct and typedef. This way, the user of this library will be able to customize this library easily.
 
-You can use the registers 0, 1, 2 and 3 to make the receiver work with the most important functionalities. these registers are described below.
+This approach is shown below for the registers 0, 1, 2 and 3.
+
+#### Table Reg0
+
+Reg0: configure register 0 (default: 0x4c) Address - Type 0x00 (RW)
+
+|  BIT  |  Label    |  Default | Function Description | 
+| ----- | --------- | -------- | -------------------- |         
+|   7   | power_on  |    0     | 1 = On; 0 =  Off     | 
+|   6   | fm_en     |    1     | 1 = FM; 0 = AM       |
+|   5   | tune      |    0     | 1 = Trigger tune process. The STC bit is set high when the tune operation completes | 
+|   4   | seek      |    0     | 1 = Trigger tune process. The STC bit is set high when the tune operation completes | 
+|   3   | seekup    |    1     | 1 = Seek up; 0 = Seek down |
+|   2   | mute      |    1     | 0 = Normal operation; 1 = Mute L / R |
+| 1:0   | rsv       |   00     | Debug use, do not change this value using |           
+Source: [AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio](http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf) 
+
+Be aware that the table above presents the data in order of the most significant bits to the least significant bits. In C/C++ representation of that data will be inverted. See the C/C++ code below. 
 
 
-### Table Reg1
+##### Data representation in C/C++ for the register 0
+
+```cpp
+typedef union {
+    struct
+    {
+        uint8_t rsv : 2;      //!< Reserved - Debug use, do not change this value using
+        uint8_t mute : 1;     //!< 1 - Mute L / R channel 0 - Normal operation
+        uint8_t seekup : 1;   //!< Seek direction control bit. 0 = Seek down;  1 = Seek up
+        uint8_t seek : 1;     //!< 0-> 1 Trigger tune process The STC bit is set high when the tune operation completes.
+        uint8_t tune : 1;     //!< 0-> 1 Trigger tune process The STC bit is set high when the tune operation completes.
+        uint8_t fm_en : 1;    //!< 1 = FM mode;  0 = AM mode
+        uint8_t power_on : 1; //!< 1 = Chip on; 0 = Chip off
+    } refined;
+    uint8_t raw;
+} akc595x_reg0;
+```
+
+It is important to say that the code above does not necessarily generate extra machine code. Much more than that, the code above guides the compiler on how to operate with the AKC695X bits stored into its registers. In this case register 0.  If you have some experience in C/C++, you will know when you can use this approach instead direct bit manipulation and vice-versa. 
+
+The code below is an example of how this data structure can be used.
+
+```cpp
+void AKC695X::powerOn(uint8_t fm_en, uint8_t tune, uint8_t mute, uint8_t seek, uint8_t seekup)
+{
+    akc595x_reg0 reg0;
+
+    reg0.refined.power_on = 1;
+    reg0.refined.rsv = 0;
+    reg0.refined.fm_en = fm_en;
+    reg0.refined.mute = mute;
+    reg0.refined.seek = seek;
+    reg0.refined.seekup = seekup;
+    reg0.refined.tune = tune;
+
+    setRegister(REG00, reg0.raw);
+
+}
+```
+
+
+#### Table Reg1
 
 Reg1: configure register 1 (default: 0x10) Address - Type 0x01 (RW)
 
@@ -109,11 +171,38 @@ Reg1: configure register 1 (default: 0x10) Address - Type 0x01 (RW)
 | ----- | --------- | -------- | -------------------- |         
 | 7:3   | amband    |  0x2     | see table [Table Reg1 amband]() | 
 | 2:0   | fmband    |  0x00    | see table [Table Reg1 fmband]() |           
+Source: [AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio](http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf) 
 
-Band seek logic chip only valid for tune logic, frequency can be adjusted at any stage
+
+##### Data representation in C/C++ for the register 1
+
+```cpp
+typedef union {
+    struct
+    {
+        uint8_t fmband : 3; //!<
+        uint8_t amband : 4; //!<
+    } refined;
+    uint8_t raw;
+} akc595x_reg1;
+```
+
+The code below is an example of how the __akc595x_reg1__ can be used.
+
+```cpp
+      .
+      .
+    akc595x_reg1 reg1;
+      .
+      .
+    reg1.raw = 0;
+    reg1.refined.fmband =  fm_band; // Selects the band will be used for FM (see fm band table)
+      . 
+      .
+```
 
 
-#### Table Reg1 amband
+##### Table Reg1 amband
 
 The table below can help you to select the right band and its frequency limits. You might need to use it in your Arduino sketch.
 
@@ -140,7 +229,7 @@ The table below can help you to select the right band and its frequency limits. 
 | Other        | 18+ |custom band, station search interval = 3K |
 
 
-#### Table Reg1 fmband
+##### Table Reg1 fmband
 
 | fmband value | N#  |Description  |
 | ------------ | --- |------------ |
@@ -155,7 +244,7 @@ The table below can help you to select the right band and its frequency limits. 
 
 
 
-### Table Reg2  and Reg3
+#### Table Reg2  and Reg3
 
 The registers 2 and 3 are used together. The tuning frequency is obtained by calculation. The formula is described below.
 
@@ -169,12 +258,28 @@ The registers 2 and 3 are used together. The tuning frequency is obtained by cal
 | 4:0   | Channel    |   0x0A   | The higher 5 bits of the channel number. See comments [ˆ1] and [ˆ2] |
 
 
-#### Reg3
+##### Data representation in C/C++ for the register 2
+
+```cpp
+typedef union {
+    struct
+    {
+        uint8_t channel : 5;      //!< (0:4) - 5 most significant bits that represents the channel (see reg3)
+        uint8_t mode3k : 1;       //!< (5)   - 1 = 3K; 0 = 5K
+        uint8_t ref_32k_mode : 1; //!< (6)   - 1 = 32K ref. crystal clock; 0 = 12MHz ref crystal clock
+        uint8_t rsv : 1;          //!< (7)   - Reserved - Debug use, do not change this value using
+    } refined;
+    uint8_t raw;
+} akc595x_reg2;
+```
+
+
+
+##### Reg3
 
 |  BIT  |  Label     |  Default | Function Description | 
 | ----- | ---------  | -------- | -------------------- |         
 | 7:0   |  rsv       |   0xC8   | The lower 8 bits of the channel number.  See comment [ˆ1]  | 
-
 
 
 [ˆ1]  
@@ -184,6 +289,16 @@ The registers 2 and 3 are used together. The tuning frequency is obtained by cal
    * when 3K channel number pattern, Channel Freq = 3kHz * CHAN. 
 
 [ˆ2] __If the MCU is working with MW2 (see table Table Reg1 amband), the channel number has to be a multiple of three. Otherwise, the radio will be a mess.__  
+
+
+##### Data representation in C/C++ for the register 3
+
+```cpp
+typedef uint8_t akc595x_reg3;
+```
+
+See AKC695x.cpp, methods setFM, setAM and setFrequency to know how the __akc595x_reg2__ and __akc595x_reg2__ work.
+
 
 
 ## Schematic 
@@ -234,19 +349,20 @@ The figure and table below show the pin description of the AKC6951 and AKC6955.
 * [Troy reviews the Audiomax SRW-710S](https://swling.com/blog/tag/shortwave-radio-review/)
 
 
+# Videos
+
+* [https://youtu.be/BHW2wCZiTkU](https://youtu.be/BHW2wCZiTkU)
+* [PU2CLR AKC695X Arduino Library - SEEKING TEST](https://youtu.be/3OwnVBmOjAs)
 
 
 # References
 
 * [AM-SW-FM radio by DSP radio chip version 2](https://www.tindie.com/products/microwavemont/am-sw-fm-radio-by-dsp-radio-chip-version-2/)
 * [Radio, yes AM-SW-FM radio by DSP radio chip](https://hackaday.io/project/12944-radio-yes-am-sw-fm-radio-by-dsp-radio-chip)
-*
+* [AKC6955-M6955--DSP-radio-with-full-colour-LCD](https://github.com/kodera2t/AKC6955-M6955--DSP-radio-with-full-colour-LCD)
+* [Retekess V115   Tivdio V115 / Audiomax/Kaimeda SRW-710S ](http://www.vk6fh.com/vk6fh/V115%20receiver.htm?fbclid=IwAR3QyfxmpFihzIVs5fvR4vsCe-_0OUpyzbhPUWvgIbsEepbHHULL-FxnDl0) 
+* 
 
-
-# Videos
-
-* [https://youtu.be/BHW2wCZiTkU](https://youtu.be/BHW2wCZiTkU)
-* [PU2CLR AKC695X Arduino Library - SEEKING TEST](https://youtu.be/3OwnVBmOjAs)
 
 
 
