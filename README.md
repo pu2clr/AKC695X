@@ -16,7 +16,7 @@ Contact: __pu2clr@gmail.com__.
 3. [About AKC695X / M695X DSP radio](https://github.com/pu2clr/AKC695X#about-akc695x--m695x-dsp-radio)
 4. [AKC695X Pin definitions](https://github.com/pu2clr/AKC695X#akc695x-pin-definitions)
 5. [Schematic](https://github.com/pu2clr/AKC695X#schematic)
-6. [API Documentation](https://pu2clr.github.io/AKC695X/extras/docs/html/modules.html)
+6. [API Documentation](https://pu2clr.github.io/AKC695X/extras/docs/html/index.html)
 7. [Examples](https://github.com/pu2clr/AKC695X/tree/master/examples)
 8. [Videos](https://github.com/pu2clr/AKC695X#svideos)
 
