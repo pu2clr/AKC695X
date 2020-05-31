@@ -4,7 +4,7 @@ This is an Arduino Library to control the AKC695X / M695X DSP radio devices.
 
 This library was built based on [AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio](http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf) document from "AKC technology".  Others sources help the author to build this library. You can check these sources on [References](https://pu2clr.github.io/AKC695X/#references). 
 
-The PU2CLR AKC695X Arduino Library also intend to be used on __all members of the AKC695X family with I2C bus interface__ respecting, of course, the features available for each IC version. __Please, check the Datasheet of the divice before starting your project__. Finally, it can be freely distributed using the [MIT Free Software model](https://pu2clr.github.io/AKC695X/#mit-license). 
+The PU2CLR AKC695X Arduino Library also intend to be used on __all members of the AKC695X family with I²C  bus interface__ respecting, of course, the features available for each IC version. __Please, check the Datasheet of the divice before starting your project__. Finally, it can be freely distributed using the [MIT Free Software model](https://pu2clr.github.io/AKC695X/#mit-license). 
 
 [Copyright (c) 2020 Ricardo Lima Caratti](https://pu2clr.github.io/AKC695X/#mit-license). 
 
@@ -14,14 +14,16 @@ Contact: __pu2clr@gmail.com__.
 # Contents
 
 1. [Preface](https://pu2clr.github.io/AKC695X/#preface) 
-2. [MIT License](https://pu2clr.github.io/AKC695X/#mit-license)
-3. [About AKC695X / M695X DSP radio](https://pu2clr.github.io/AKC695X/#about-akc695x--m695x-dsp-radio)
-4. [AKC695X Pin definitions](https://pu2clr.github.io/AKC695X/#akc695x-pin-definitions)
-5. [Schematic](https://pu2clr.github.io/AKC695X/#schematic)
-6. [API Documentation](https://pu2clr.github.io/AKC695X/extras/docs/html/index.html)
-7. [Examples](https://github.com/pu2clr/AKC695X/tree/master/examples)
-8. [Videos](https://github.com/pu2clr/AKC695X#svideos)
-9. [References](https://pu2clr.github.io/AKC695X/#references)
+2. [Library Features](https://pu2clr.github.io/AKC695X/#library-features)
+3. [MIT License](https://pu2clr.github.io/AKC695X/#mit-license)
+4. [About AKC695X / M695X DSP radio](https://pu2clr.github.io/AKC695X/#about-akc695x--m695x-dsp-radio)
+5. [Library Installation](https://pu2clr.github.io/AKC695X/#library-installation)
+6. [AKC695X Pin definitions](https://pu2clr.github.io/AKC695X/#akc695x-pin-definitions)
+7. [Schematic](https://pu2clr.github.io/AKC695X/#schematic)
+8. [API Documentation](https://pu2clr.github.io/AKC695X/extras/docs/html/index.html)
+9. [Examples](https://github.com/pu2clr/AKC695X/tree/master/examples)
+10. [Videos](https://github.com/pu2clr/AKC695X#svideos)
+11. [References](https://pu2clr.github.io/AKC695X/#references)
 
 
 ## Preface
@@ -33,6 +35,24 @@ In this document you will see Arduino source codes, schematics, examples and tip
 {% include video01.html %} 
 
 
+## Library Features
+
+This library uses the I²C communication protocol and implements most of the functions offered by the AKC695X (BROADCAST AM / FM / SW / LW RADIO RECEIVER). 
+
+The main features of this library are listed below.
+
+1. Open Source. It is free. You can use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software. See MIT License to know more;
+2. Built based on [AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio](http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf);
+3. C++ Language and Object-oriented programming. You can easily extend the AKC695X class by adding more functionalities;
+4. Available on Arduino IDE (via Manage Libraries). Easy to install and use. See [Library Features](https://pu2clr.github.io/AKC695X/#library-features); 
+5. Cross-platform. You can compile and run this library on most of board available on Arduino IDE (Examples: ATtiny85, boards based on ATmega328 and ATmega-32u4, ATmega2560, ARM Cortex, STM32, Arduino DUE, ESP32 and more);
+6. Simplifies projects based on AKC695X IC family with support to I²C;
+7. Seeking function support;
+8. Support to __32.768KHz and 12MHz__ crystal oscillators;
+9. Support to audio controlled by the MCU (Arduino)  or potentiometer;
+10. More than 40 functions implemented.
+
+
 ## MIT License 
 
 Copyright (c) 2019 Ricardo Lima Caratti
@@ -42,6 +62,10 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE ARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+## Library Installation
+
 
 
 ## About AKC695X / M695X DSP radio 
@@ -89,7 +113,7 @@ The table below shows some features fo the AKC695X devices family.
 
 __Sources:__  AKC6951, AKC6955 and AKC6959sx Datasheets.
 
-__ATTENTION: The AKC6952 and AKC6959 do not have I2C interface. So, they will not work with this library. Try AKC6951, AKC6955 or AKC6959sx__.     
+__ATTENTION: The AKC6952 and AKC6959 do not have I²C  interface. So, they will not work with this library. Try AKC6951, AKC6955 or AKC6959sx__.     
 
 
 ## Registers setup
@@ -97,7 +121,7 @@ __ATTENTION: The AKC6952 and AKC6959 do not have I2C interface. So, they will no
 
 ### Register operations
    
-This library uses the I2C protocols to read and write AKC695X registers. In this context, registers are memory position into the device.
+This library uses the I²C  protocols to read and write AKC695X registers. In this context, registers are memory position into the device.
 
 The first 13 registers, you can use to change the behavior of the device. They are read and write registers. The registers from 20 to 27, can be used to get the current device status. They are read only registers. 
 
@@ -336,7 +360,7 @@ The figure and table below show the pin description of the AKC6951 and AKC6955.
 | 4   | tund      | Radio lock indicator pin, connected directly to the light emitting diode; Tuning the MCU software when the pin may also be used as a stop sign | 
 | 5   | p_on      | On-chip power switch, high input power chip; the chip down in a low-power standby state, power consumption of approximately 10uA |
 | 6   | sclk      | 2C clock signal input | 
-| 7   | sdio      | I2C bidirectional data signal input / output | 
+| 7   | sdio      | I²C  bidirectional data signal input / output | 
 | 8   | inl       | External audio signal input L, proposes to add blocking capacitor 1uF | 
 | 9   | inr       | External audio input signal R, proposes to add blocking capacitor 1uF |
 | 10  | vbat      | Then the power pins need to pay attention to the nearest ground 0.1uF decoupling capacitance to ground | 
