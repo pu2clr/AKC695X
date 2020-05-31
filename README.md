@@ -86,7 +86,7 @@ The table below shows some features fo the AKC695X devices family.
 
 __Sources:__  AKC6951, AKC6955 and AKC6959sx Datasheets.
 
-__ATTENTION: The AKC6952 and AKC6959 do not have I2C interface. So, they will not work with this library_. Try AKC6951, AKC6955 or AKC6959sx__.     
+__ATTENTION: The AKC6952 and AKC6959 do not have I2C interface. So, they will not work with this library. Try AKC6951, AKC6955 or AKC6959sx__.     
 
 
 ## Registers setup
