@@ -51,17 +51,31 @@ void AKC695X::setI2CBusAddress(int deviceAddress)
 }
 
 /**
- * @ingroup GA03
- * @brief   Receiver startup 
- * @details 
- * @param resetPin  if >= 0,  then you control the RESET. if -1, you are using ths MCU RST pin. 
+ * @ingroup     GA03
+ * @brief       Receiver startup 
+ * @details     Use this method to define the MCU (Arduino) RESET pin and the Crystal Type used. 
+ * 
+ * @param resetPin      if >= 0,  then you control the RESET. if -1, you are using ths MCU RST pin. 
+ * @param crystal_type  if 1 =  32.768KHz (default); 0 = 12MHz
  */
-void AKC695X::setup(int resetPin)
+void AKC695X::setup(int resetPin, uint8_t crystal_type)
 {
     this->resetPin = resetPin;
     if (resetPin >= 0)
         reset();
     Wire.begin();
+    setCrystalType(crystal_type);
+}
+
+/**
+ * @ingroup     GA03
+ * @brief       Receiver startup 
+ * @details     Use this method to define the MCU (Arduino) RESET. If you call this method the crystal type will be set to 32.768KHz
+ * 
+ * @param resetPin      if >= 0,  then you control the RESET. if -1, you are using ths MCU RST pin. 
+ */
+void AKC695X::setup(int resetPin) {
+    this->setup(resetPin, CYRSTAL_32KHZ);
 }
 
 /**
@@ -76,7 +90,7 @@ void AKC695X::setup(int resetPin)
  * @param seek      If 1 Trigger tune process. The STC bit is set high when the tune operation completes
  * @param seekup    Seek direction control bit. 0 = Seek down;  1 = Seek up
  */
-void AKC695X::powerOn(uint8_t fm_en, uint8_t tune, uint8_t mute, uint8_t seek, uint8_t seekup)
+    void AKC695X::powerOn(uint8_t fm_en, uint8_t tune, uint8_t mute, uint8_t seek, uint8_t seekup)
 {
     akc595x_reg0 reg0;
 
@@ -131,7 +145,6 @@ uint8_t AKC695X::getRegister(uint8_t reg)
 
 /**
  * @ingroup GA03
- * @todo Adjust setAM and setFM for selected crystal 
  * @brief Sets the kind of Crystal
  * @details This method sets the Crystal type you are using in your circuit. 
  * @details The valid crystal type are 12MHz or 32.768Khz
@@ -143,6 +156,7 @@ void AKC695X::setCrystalType(uint8_t crystal) {
     reg2.raw = getRegister(REG02);          // Gets the current value of the register 2
     reg2.refined.ref_32k_mode = crystal;    // sets the crystal used
     setRegister(REG02,reg2.raw);
+    this->currentCrystalType = crystal;
 }
 
 /** 
@@ -334,9 +348,9 @@ void AKC695X::setFmEmphasis( uint8_t de) {
 void AKC695X::setFmStereoMono(uint8_t value)
 {
     akc595x_reg7 reg7;
-    reg7.raw = getRegister(REG07); // Gets the current value
-    reg7.refined.stereo_mono;      // Sets just the attribute
-    setRegister(REG07, reg7.raw);   // Store the new REG07 content
+    reg7.raw = getRegister(REG07);      // Gets the current value
+    reg7.refined.stereo_mono = value;   // Sets just the attribute
+    setRegister(REG07, reg7.raw);       // Store the new REG07 content
 }
 
 /**
@@ -357,7 +371,7 @@ void AKC695X::setFmBandwidth(uint8_t value)
 {
     akc595x_reg7 reg7;
     reg7.raw = getRegister(REG07); // Gets the current value
-    reg7.refined.stereo_mono;      // Sets just the attribute
+    reg7.refined.bw = value;      // Sets just the attribute
     setRegister(REG07, reg7.raw);   // Store the new REG07 content
 }
 
@@ -404,12 +418,11 @@ void AKC695X::commitTune()
  * @param minimum_frequency     Start frequency      
  * @param maximum_frequency     Final frequency
  */
-void AKC695X::setCustomBand(uint8_t band, uint16_t minimum_frequency, uint16_t maximum_frequency) {
+void AKC695X::setCustomBand(uint16_t minimum_frequency, uint16_t maximum_frequency) {
 
     uint8_t start_channel, end_channel;
     akc595x_reg4 reg4; // start channel for custom band
     akc595x_reg5 reg5; // end channel for custom band
-    akc595x_reg1 reg1; // 
 
     if (this->currentMode == CURRENT_MODE_FM)
     {
@@ -458,8 +471,9 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t max
     uint8_t high_bit, low_bit;
 
     akc595x_reg1 reg1;
+    akc595x_reg2 reg2;
 
-    this->currentMode = 1;
+        this->currentMode = 1;
     this->currentBand = akc695x_fm_band;
     this->currentBandMinimumFrequency = minimum_freq;
     this->currentBandMaximumFrequency = maximum_freq;
@@ -472,16 +486,21 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t max
     setRegister(REG00, 0b00010011); // Sets to FM (Power On)
 
     if (akc695x_fm_band > 7 )
-        setCustomBand(akc695x_fm_band, minimum_freq, maximum_freq); // Sets a custom FM band 
+        setCustomBand(minimum_freq, maximum_freq); // Sets a custom FM band 
 
     setRegister(REG01, reg1.raw); // Sets the FM band
 
     channel = (default_frequency - 300) * 4;
-    high_bit = (channel >> 8) | 0b01100000;
+    high_bit = (channel >> 8); 
     low_bit = channel & 0b0000011111111;
 
     setRegister(REG03, low_bit);
-    setRegister(REG02, high_bit);           // Needs consider the crystal type
+
+    reg2.raw = high_bit;
+    reg2.refined.ref_32k_mode = this->currentCrystalType;
+    reg2.refined.mode3k = this->currentMode3k;
+
+    setRegister(REG02, reg2.raw); // Needs consider the crystal type
 
     commitTune();
 }
@@ -528,6 +547,7 @@ void AKC695X::setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t max
     uint8_t high_bit, low_bit;
 
     akc595x_reg1 reg1;
+    akc595x_reg2 reg2;
 
     this->currentMode = 0;
     this->currentBand = akc695x_am_band;
@@ -542,16 +562,21 @@ void AKC695X::setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t max
     setRegister(REG00, 0b10000000); // Sets to AM (Power On)
 
     if (akc695x_am_band > 17)
-        setCustomBand(akc695x_am_band, minimum_freq, maximum_freq); // Sets a custom AM band
+        setCustomBand(minimum_freq, maximum_freq); // Sets a custom AM band
 
     setRegister(REG01, reg1.raw); 
 
     channel = default_frequency / this->currentStep;
-    high_bit = (channel >> 8) | 0b01100000;
+    high_bit = (channel >> 8); 
     low_bit = channel & 0b0000011111111;
 
     setRegister(REG03, low_bit);
-    setRegister(REG02, high_bit);           // Needs consider the crystal type
+
+    reg2.raw = high_bit;
+    reg2.refined.ref_32k_mode = this->currentCrystalType;
+    reg2.refined.mode3k = this->currentMode3k;
+
+    setRegister(REG02, reg2.raw); 
 
     commitTune();
 }
@@ -667,7 +692,10 @@ void AKC695X::setFrequency(uint16_t frequency)
     {
         // AM mode
         channel = tmpFreq / this->currentStep;
-        reg2.refined.channel = channel >> 8 | 0b100000; // Changes just the 5 higher bits of the channel.
+        reg2.refined.channel = (channel >> 8);      // Changes just the 5 higher bits of the channel.
+        reg2.refined.ref_32k_mode = this->currentCrystalType;
+        reg2.refined.mode3k = this->currentMode3k;
+
         reg3 = channel & 0b0000011111111;               // Sets the 8 lower bits of the channel
 
         setRegister(REG03, reg3);
@@ -677,7 +705,10 @@ void AKC695X::setFrequency(uint16_t frequency)
     {
         // FM mode
         channel = (tmpFreq - 300) * 4;
-        reg2.refined.channel = channel >> 8 | 0b100000;
+        reg2.refined.channel = (channel >> 8); 
+        reg2.refined.ref_32k_mode = this->currentCrystalType;
+        reg2.refined.mode3k = this->currentMode3k;
+
         reg3 = channel & 0b0000011111111;
         setRegister(REG03, reg3);
         setRegister(REG02, reg2.raw);

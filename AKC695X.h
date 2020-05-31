@@ -21,8 +21,11 @@
 #include <Wire.h>
 
 #define DEFAUL_I2C_ADDRESS 0x10
-#define CURRENT_MODE_FM 1
-#define CURRENT_MODE_AM 0
+#define CURRENT_MODE_FM     1
+#define CURRENT_MODE_AM     0
+#define CRYSTAL_12MHZ       0
+#define CYRSTAL_32KHZ       1  
+
 
 #define MAX_SEEK_TIME   3000        // Maximum time have to be a seeking process (in ms). 
  
@@ -440,11 +443,12 @@ protected:
     int deviceAddress = AKC595X_I2C_ADRESS;
     int resetPin = -1;
 
-    uint8_t volume;
-
-    uint16_t currentStep;
-    uint16_t currentFrequency;
-    uint8_t currentMode = 0;
+    uint8_t volume;                             //!< Store the current volume
+    uint16_t currentStep;                       //!< Strore the current step
+    uint16_t currentFrequency;                  //!< Store the current frequency
+    uint8_t currentMode = 0;                    //!< Store the current mode: 1 = FM; 0 = AM
+    uint8_t currentCrystalType = CYRSTAL_32KHZ; //!< Store the crystal type used:  0 = 12MHz;   1 = 32.768KHz
+    uint8_t currentMode3k = 1;                  //!<  1 =  3K; 0 = AM
 
     // AM current band information
     uint8_t currentBand = 0;
@@ -458,7 +462,10 @@ public:
     // Low level functions
     void reset();
     void setI2CBusAddress(int deviceAddress);
+
     void setup(int reset_pin);
+    void setup(int reset_pin, uint8_t crystal_type);
+
     void powerOn(uint8_t fm_en, uint8_t tune, uint8_t mute, uint8_t seek, uint8_t seekup);
     void setRegister(uint8_t reg, uint8_t parameter);
     uint8_t getRegister(uint8_t reg);
@@ -483,7 +490,7 @@ public:
     void setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step);
     void setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step);
 
-    void setCustomBand(uint8_t band, uint16_t minimum_frequency, uint16_t maximum_frequency);
+    void setCustomBand(uint16_t minimum_frequency, uint16_t maximum_frequency);
 
     void setStep(uint8_t step);
 
