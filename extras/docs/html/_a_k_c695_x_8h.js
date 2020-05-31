@@ -1,11 +1,11 @@
 var _a_k_c695_x_8h =
 [
     [ "AKC695X", "class_a_k_c695_x.html", "class_a_k_c695_x" ],
-    [ "AKC595X_I2C_ADRESS", "_a_k_c695_x_8h.html#a4f9ba789d49e4594b1c43508cc3856cc", null ],
-    [ "CURRENT_MODE_AM", "_a_k_c695_x_8h.html#a2edf821051a85e58efeb2ff3a8e31f21", null ],
-    [ "CURRENT_MODE_FM", "_a_k_c695_x_8h.html#a375ba4a968253cd1628914e7e6ebc40e", null ],
     [ "DEFAUL_I2C_ADDRESS", "_a_k_c695_x_8h.html#adb1c3cfb6a6aaf2a5dd1096c31dcb150", null ],
+    [ "CURRENT_MODE_FM", "_a_k_c695_x_8h.html#a375ba4a968253cd1628914e7e6ebc40e", null ],
+    [ "CURRENT_MODE_AM", "_a_k_c695_x_8h.html#a2edf821051a85e58efeb2ff3a8e31f21", null ],
     [ "MAX_SEEK_TIME", "_a_k_c695_x_8h.html#acc98e8d3badddd21bc528451bb718f82", null ],
+    [ "AKC595X_I2C_ADRESS", "_a_k_c695_x_8h.html#a4f9ba789d49e4594b1c43508cc3856cc", null ],
     [ "REG00", "_a_k_c695_x_8h.html#a748ad53bef975af9c1edbcacc58e5be4", null ],
     [ "REG01", "_a_k_c695_x_8h.html#afc04faecdab9e0d1751466b6c53fdaf1", null ],
     [ "REG02", "_a_k_c695_x_8h.html#a09a3d3fef9f53f0dbe1dd0072f02c1d4", null ],
@@ -27,9 +27,9 @@ var _a_k_c695_x_8h =
     [ "REG25", "_a_k_c695_x_8h.html#a71f2acb83463b791bebe30694cb7c497", null ],
     [ "REG26", "_a_k_c695_x_8h.html#a0657872519be325710bcbd16b8e9f67a", null ],
     [ "REG27", "_a_k_c695_x_8h.html#a43f6021132d63d5caf3b7d786e3152da", null ],
-    [ "akc595x_reg21", "group___g_a01.html#ga3d85865e7c11161e222ed157c4e2d169", null ],
-    [ "akc595x_reg26", "group___g_a01.html#gab608542d70358eddcde54768d0847edd", null ],
     [ "akc595x_reg3", "group___g_a01.html#ga70e552b2a9ce062ef0342a70e9717a50", null ],
     [ "akc595x_reg4", "group___g_a01.html#ga763d7e126511095914012686cd07f3c6", null ],
-    [ "akc595x_reg5", "group___g_a01.html#gae0b77f29d6b413d968115e292b6f13f5", null ]
+    [ "akc595x_reg5", "group___g_a01.html#gae0b77f29d6b413d968115e292b6f13f5", null ],
+    [ "akc595x_reg21", "group___g_a01.html#ga3d85865e7c11161e222ed157c4e2d169", null ],
+    [ "akc595x_reg26", "group___g_a01.html#gab608542d70358eddcde54768d0847edd", null ]
 ];

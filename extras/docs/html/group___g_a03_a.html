@@ -126,178 +126,6 @@ Current Tune Status</h1>
 <p><br  />
  </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga62a70a5191c3e56dfa6cc51c314bc210"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga62a70a5191c3e56dfa6cc51c314bc210">&#9670;&nbsp;</a></span>channelToFrequency()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint16_t AKC695X::channelToFrequency </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Converts the channel stored in the registers 20 and 21 to frequency. </p>
-<p>Returns the calculated current frequency based on current channel</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a03_a.html#gac0bb41042eb94f538a9d5d97f5a16648" title="Gets the current channel.">getCurrentChannel</a>, <a class="el" href="group___g_a01.html#unionakc595x__reg20" title="Reg20 (type 0x14 / R)">akc595x_reg20</a>, <a class="el" href="group___g_a01.html#ga3d85865e7c11161e222ed157c4e2d169" title="Reg21 (type 0x15 / R)">akc595x_reg21</a> </dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>unit16_t current frequency </dd></dl>
-
-<p class="reference">References <a class="el" href="_a_k_c695_x_8h.html#a375ba4a968253cd1628914e7e6ebc40e">CURRENT_MODE_FM</a>, <a class="el" href="class_a_k_c695_x.html#ae1ddbcc5a1f517f3fda2d3776516c749">AKC695X::currentMode</a>, <a class="el" href="class_a_k_c695_x.html#a3c7d7b2a13c51ef791df48aa7f368d4c">AKC695X::currentStep</a>, and <a class="el" href="group___g_a03_a.html#gac0bb41042eb94f538a9d5d97f5a16648">AKC695X::getCurrentChannel()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="group___g_a04.html#ga61f93b8e7579e4e06d91486dccf1d840">AKC695X::seekStation()</a>.</p>
-
-</div>
-</div>
-<a id="gadade5cf9f5df5fa14917b3cb6bedd187"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gadade5cf9f5df5fa14917b3cb6bedd187">&#9670;&nbsp;</a></span>getAmCarrierNoiseRatio()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t AKC695X::getAmCarrierNoiseRatio </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the current AM carrier to noise ratio. </p>
-<p>Return the current AM carrier to noise ratio in dB.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a01.html#unionakc595x__reg22" title="Reg22 (type 0x16 / R)">akc595x_reg22</a></dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>uint8_t value in dB of carrier to noise ratio. </dd></dl>
-
-<p class="reference">References <a class="el" href="group___g_a03.html#ga771f5b0ed1750f9b221f5240d3301d5a">AKC695X::getRegister()</a>, <a class="el" href="group___g_a01.html#afa7704acaca9776e4059acc91abefec9">akc595x_reg22::raw</a>, <a class="el" href="group___g_a01.html#ad85ecfc4f002d46ef48794aaff5bbc62">akc595x_reg22::refined</a>, and <a class="el" href="_a_k_c695_x_8h.html#ad2f186761707da928b665e01cf172074">REG22</a>.</p>
-
-</div>
-</div>
-<a id="gaf38e047d4c5a455898f799714f4165b8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaf38e047d4c5a455898f799714f4165b8">&#9670;&nbsp;</a></span>getAmCurrentSpace()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t AKC695X::getAmCurrentSpace </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the current AM space. </p>
-<p>Returns the AM current space stored in the register 22.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a01.html#unionakc595x__reg22" title="Reg22 (type 0x16 / R)">akc595x_reg22</a></dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>uint8_t current space 3KHz or 5KHz </dd></dl>
-
-<p class="reference">References <a class="el" href="group___g_a03.html#ga771f5b0ed1750f9b221f5240d3301d5a">AKC695X::getRegister()</a>, <a class="el" href="group___g_a01.html#afa7704acaca9776e4059acc91abefec9">akc595x_reg22::raw</a>, <a class="el" href="group___g_a01.html#ad85ecfc4f002d46ef48794aaff5bbc62">akc595x_reg22::refined</a>, and <a class="el" href="_a_k_c695_x_8h.html#ad2f186761707da928b665e01cf172074">REG22</a>.</p>
-
-</div>
-</div>
-<a id="gac0bb41042eb94f538a9d5d97f5a16648"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac0bb41042eb94f538a9d5d97f5a16648">&#9670;&nbsp;</a></span>getCurrentChannel()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint16_t AKC695X::getCurrentChannel </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the current channel. </p>
-<p>Returns the current channel stored in the registers 20 and 21.</p>
-<dl class="section return"><dt>Returns</dt><dd>unit16_t current channel </dd></dl>
-
-<p class="reference">References <a class="el" href="group___g_a03.html#ga771f5b0ed1750f9b221f5240d3301d5a">AKC695X::getRegister()</a>, <a class="el" href="group___g_a01.html#ac8106e85218c1553e74fabf42ea6b322">akc595x_reg20::raw</a>, <a class="el" href="group___g_a01.html#aeee3fe3380077e2999f767e4567a1406">akc595x_reg20::refined</a>, <a class="el" href="_a_k_c695_x_8h.html#a2e437b34d319df42f92633627f92e9f2">REG20</a>, and <a class="el" href="_a_k_c695_x_8h.html#ab9a2bfb4627e2153c68508a8e93a56ad">REG21</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="group___g_a03_a.html#ga62a70a5191c3e56dfa6cc51c314bc210">AKC695X::channelToFrequency()</a>.</p>
-
-</div>
-</div>
-<a id="ga3471675057f459e0d641c33f47b4cdd4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga3471675057f459e0d641c33f47b4cdd4">&#9670;&nbsp;</a></span>getFmCarrierNoiseRatio()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t AKC695X::getFmCarrierNoiseRatio </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the current FM carrier to noise ratio. </p>
-<p>Return the current FM carrier to noise ratio in dB.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a01.html#unionakc595x__reg23" title="Reg23 (type 0x17 / R)">akc595x_reg23</a></dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>uint8_t value in dB of carrier to noise ratio. </dd></dl>
-
-<p class="reference">References <a class="el" href="group___g_a03.html#ga771f5b0ed1750f9b221f5240d3301d5a">AKC695X::getRegister()</a>, <a class="el" href="group___g_a01.html#a994238e0370595d97063b101d960b894">akc595x_reg23::raw</a>, <a class="el" href="group___g_a01.html#ae5dc00e6aff7e538bdef8c431d40d1af">akc595x_reg23::refined</a>, and <a class="el" href="_a_k_c695_x_8h.html#ab2a30e7b801ce92416c8e7c60cffc2ef">REG23</a>.</p>
-
-</div>
-</div>
-<a id="gab0f41f62d16a51c336d25324e4a9d08b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gab0f41f62d16a51c336d25324e4a9d08b">&#9670;&nbsp;</a></span>isCurrentModeFM()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t AKC695X::isCurrentModeFM </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the current operation mode;. </p>
-<p>This method returns the current mode stored on register 20.</p>
-<dl class="section return"><dt>Returns</dt><dd>1 FM mode </dd>
-<dd>
-0 AM mode </dd></dl>
-
-<p class="reference">References <a class="el" href="group___g_a03.html#ga771f5b0ed1750f9b221f5240d3301d5a">AKC695X::getRegister()</a>, <a class="el" href="group___g_a01.html#ac8106e85218c1553e74fabf42ea6b322">akc595x_reg20::raw</a>, <a class="el" href="group___g_a01.html#aeee3fe3380077e2999f767e4567a1406">akc595x_reg20::refined</a>, and <a class="el" href="_a_k_c695_x_8h.html#a2e437b34d319df42f92633627f92e9f2">REG20</a>.</p>
-
-</div>
-</div>
-<a id="gad7c2f47bcbd005d01a813963745a6f97"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad7c2f47bcbd005d01a813963745a6f97">&#9670;&nbsp;</a></span>isFmStereo()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool AKC695X::isFmStereo </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the current FM stereo status. </p>
-<p>Returns true when the FM stereo signal is more than 30% percent</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a01.html#unionakc595x__reg23" title="Reg23 (type 0x17 / R)">akc595x_reg23</a></dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>true if stereo is detected. </dd></dl>
-
-<p class="reference">References <a class="el" href="group___g_a03.html#ga771f5b0ed1750f9b221f5240d3301d5a">AKC695X::getRegister()</a>, <a class="el" href="group___g_a01.html#a994238e0370595d97063b101d960b894">akc595x_reg23::raw</a>, <a class="el" href="group___g_a01.html#ae5dc00e6aff7e538bdef8c431d40d1af">akc595x_reg23::refined</a>, and <a class="el" href="_a_k_c695_x_8h.html#ab2a30e7b801ce92416c8e7c60cffc2ef">REG23</a>.</p>
-
-</div>
-</div>
 <a id="ga0791915b409796aa2f0f9e4218ac732d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga0791915b409796aa2f0f9e4218ac732d">&#9670;&nbsp;</a></span>isTuned()</h2>
 
@@ -318,8 +146,6 @@ Current Tune Status</h1>
 <dl class="section return"><dt>Returns</dt><dd>true Catched a channel. You are tuned. </dd>
 <dd>
 false No channel </dd></dl>
-
-<p class="reference">References <a class="el" href="group___g_a03.html#ga771f5b0ed1750f9b221f5240d3301d5a">AKC695X::getRegister()</a>, <a class="el" href="group___g_a01.html#ac8106e85218c1553e74fabf42ea6b322">akc595x_reg20::raw</a>, <a class="el" href="group___g_a01.html#aeee3fe3380077e2999f767e4567a1406">akc595x_reg20::refined</a>, and <a class="el" href="_a_k_c695_x_8h.html#a2e437b34d319df42f92633627f92e9f2">REG20</a>.</p>
 
 </div>
 </div>
@@ -344,9 +170,159 @@ false No channel </dd></dl>
 <dd>
 false Not completed </dd></dl>
 
-<p class="reference">References <a class="el" href="group___g_a03.html#ga771f5b0ed1750f9b221f5240d3301d5a">AKC695X::getRegister()</a>, <a class="el" href="group___g_a01.html#ac8106e85218c1553e74fabf42ea6b322">akc595x_reg20::raw</a>, <a class="el" href="group___g_a01.html#aeee3fe3380077e2999f767e4567a1406">akc595x_reg20::refined</a>, and <a class="el" href="_a_k_c695_x_8h.html#a2e437b34d319df42f92633627f92e9f2">REG20</a>.</p>
+</div>
+</div>
+<a id="gab0f41f62d16a51c336d25324e4a9d08b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab0f41f62d16a51c336d25324e4a9d08b">&#9670;&nbsp;</a></span>isCurrentModeFM()</h2>
 
-<p class="reference">Referenced by <a class="el" href="group___g_a04.html#ga61f93b8e7579e4e06d91486dccf1d840">AKC695X::seekStation()</a>.</p>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t AKC695X::isCurrentModeFM </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the current operation mode;. </p>
+<p>This method returns the current mode stored on register 20.</p>
+<dl class="section return"><dt>Returns</dt><dd>1 FM mode </dd>
+<dd>
+0 AM mode </dd></dl>
+
+</div>
+</div>
+<a id="gac0bb41042eb94f538a9d5d97f5a16648"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac0bb41042eb94f538a9d5d97f5a16648">&#9670;&nbsp;</a></span>getCurrentChannel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t AKC695X::getCurrentChannel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the current channel. </p>
+<p>Returns the current channel stored in the registers 20 and 21.</p>
+<dl class="section return"><dt>Returns</dt><dd>unit16_t current channel </dd></dl>
+
+</div>
+</div>
+<a id="ga62a70a5191c3e56dfa6cc51c314bc210"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga62a70a5191c3e56dfa6cc51c314bc210">&#9670;&nbsp;</a></span>channelToFrequency()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t AKC695X::channelToFrequency </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts the channel stored in the registers 20 and 21 to frequency. </p>
+<p>Returns the calculated current frequency based on current channel</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a03_a.html#gac0bb41042eb94f538a9d5d97f5a16648" title="Gets the current channel.">getCurrentChannel</a>, <a class="el" href="group___g_a01.html#unionakc595x__reg20" title="Reg20 (type 0x14 / R)">akc595x_reg20</a>, <a class="el" href="group___g_a01.html#ga3d85865e7c11161e222ed157c4e2d169" title="Reg21 (type 0x15 / R)">akc595x_reg21</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>unit16_t current frequency </dd></dl>
+
+</div>
+</div>
+<a id="gadade5cf9f5df5fa14917b3cb6bedd187"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadade5cf9f5df5fa14917b3cb6bedd187">&#9670;&nbsp;</a></span>getAmCarrierNoiseRatio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t AKC695X::getAmCarrierNoiseRatio </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the current AM carrier to noise ratio. </p>
+<p>Return the current AM carrier to noise ratio in dB.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a01.html#unionakc595x__reg22" title="Reg22 (type 0x16 / R)">akc595x_reg22</a></dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>uint8_t value in dB of carrier to noise ratio. </dd></dl>
+
+</div>
+</div>
+<a id="gaf38e047d4c5a455898f799714f4165b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf38e047d4c5a455898f799714f4165b8">&#9670;&nbsp;</a></span>getAmCurrentSpace()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t AKC695X::getAmCurrentSpace </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the current AM space. </p>
+<p>Returns the AM current space stored in the register 22.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a01.html#unionakc595x__reg22" title="Reg22 (type 0x16 / R)">akc595x_reg22</a></dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>uint8_t current space 3KHz or 5KHz </dd></dl>
+
+</div>
+</div>
+<a id="gad7c2f47bcbd005d01a813963745a6f97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad7c2f47bcbd005d01a813963745a6f97">&#9670;&nbsp;</a></span>isFmStereo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool AKC695X::isFmStereo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the current FM stereo status. </p>
+<p>Returns true when the FM stereo signal is more than 30% percent</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a01.html#unionakc595x__reg23" title="Reg23 (type 0x17 / R)">akc595x_reg23</a></dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>true if stereo is detected. </dd></dl>
+
+</div>
+</div>
+<a id="ga3471675057f459e0d641c33f47b4cdd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3471675057f459e0d641c33f47b4cdd4">&#9670;&nbsp;</a></span>getFmCarrierNoiseRatio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t AKC695X::getFmCarrierNoiseRatio </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the current FM carrier to noise ratio. </p>
+<p>Return the current FM carrier to noise ratio in dB.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a01.html#unionakc595x__reg23" title="Reg23 (type 0x17 / R)">akc595x_reg23</a></dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>uint8_t value in dB of carrier to noise ratio. </dd></dl>
 
 </div>
 </div>

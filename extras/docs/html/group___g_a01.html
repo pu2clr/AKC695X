@@ -224,15 +224,15 @@ Typedefs</h2></td></tr>
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="a69492e94019f64dbfa51040914da5d81"></a>uint8_t</td>
-<td class="fieldname">
-raw</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
 <a id="a8640c13d307b61f1fafd9ec3c2d425a3"></a>struct <a class="el" href="group___g_a01.html#structakc595x__reg0_8refined">akc595x_reg0</a></td>
 <td class="fieldname">
 refined</td>
+<td class="fielddoc">
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a69492e94019f64dbfa51040914da5d81"></a>uint8_t</td>
+<td class="fieldname">
+raw</td>
 <td class="fielddoc">
 </td></tr>
 </table>
@@ -253,11 +253,11 @@ refined</td>
 <div class="textblock"></div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="a79c874405158b4bbcb9778126e75fbd9"></a>uint8_t</td>
+<a id="ae4731d626c4452a365b40a3a846f1e45"></a>uint8_t</td>
 <td class="fieldname">
-fm_en: 1</td>
+rsv: 2</td>
 <td class="fielddoc">
-1 = FM mode; 0 = AM mode </td></tr>
+Reserved - Debug use, do not change this value using. </td></tr>
 <tr><td class="fieldtype">
 <a id="adef9cbe59ce34853e7081f62b095e348"></a>uint8_t</td>
 <td class="fieldname">
@@ -265,17 +265,11 @@ mute: 1</td>
 <td class="fielddoc">
 1 - Mute L / R channel 0 - Normal operation </td></tr>
 <tr><td class="fieldtype">
-<a id="a3c6df965e2e2ea7e93e130172ae11d5b"></a>uint8_t</td>
+<a id="ab71714fa60ed6ec4c89145e95d979f33"></a>uint8_t</td>
 <td class="fieldname">
-power_on: 1</td>
+seekup: 1</td>
 <td class="fielddoc">
-1 = Chip on; 0 = Chip off </td></tr>
-<tr><td class="fieldtype">
-<a id="ae4731d626c4452a365b40a3a846f1e45"></a>uint8_t</td>
-<td class="fieldname">
-rsv: 2</td>
-<td class="fielddoc">
-Reserved - Debug use, do not change this value using. </td></tr>
+Seek direction control bit. 0 = Seek down; 1 = Seek up. </td></tr>
 <tr><td class="fieldtype">
 <a id="ae6f6362248805a36c61d205dbc6f4076"></a>uint8_t</td>
 <td class="fieldname">
@@ -283,17 +277,23 @@ seek: 1</td>
 <td class="fielddoc">
 0-&gt; 1 Trigger tune process The STC bit is set high when the tune operation completes. </td></tr>
 <tr><td class="fieldtype">
-<a id="ab71714fa60ed6ec4c89145e95d979f33"></a>uint8_t</td>
-<td class="fieldname">
-seekup: 1</td>
-<td class="fielddoc">
-Seek direction control bit. 0 = Seek down; 1 = Seek up. </td></tr>
-<tr><td class="fieldtype">
 <a id="a7ce1689483acd43d5bc46598b11bd139"></a>uint8_t</td>
 <td class="fieldname">
 tune: 1</td>
 <td class="fielddoc">
 0-&gt; 1 Trigger tune process The STC bit is set high when the tune operation completes. </td></tr>
+<tr><td class="fieldtype">
+<a id="a79c874405158b4bbcb9778126e75fbd9"></a>uint8_t</td>
+<td class="fieldname">
+fm_en: 1</td>
+<td class="fielddoc">
+1 = FM mode; 0 = AM mode </td></tr>
+<tr><td class="fieldtype">
+<a id="a3c6df965e2e2ea7e93e130172ae11d5b"></a>uint8_t</td>
+<td class="fieldname">
+power_on: 1</td>
+<td class="fielddoc">
+1 = Chip on; 0 = Chip off </td></tr>
 </table>
 
 </div>
@@ -314,15 +314,15 @@ tune: 1</td>
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="aa8de9bc3c9fa44a077da80956afd40b1"></a>uint8_t</td>
-<td class="fieldname">
-raw</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
 <a id="a73da04bffbb53efb86c6976c553689a1"></a>struct <a class="el" href="group___g_a01.html#structakc595x__reg1_8refined">akc595x_reg1</a></td>
 <td class="fieldname">
 refined</td>
+<td class="fielddoc">
+</td></tr>
+<tr><td class="fieldtype">
+<a id="aa8de9bc3c9fa44a077da80956afd40b1"></a>uint8_t</td>
+<td class="fieldname">
+raw</td>
 <td class="fielddoc">
 </td></tr>
 </table>
@@ -343,15 +343,15 @@ refined</td>
 <div class="textblock"></div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="a34cabfefa40ae75e168ddee0c50566e2"></a>uint8_t</td>
-<td class="fieldname">
-amband: 4</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
 <a id="a04b575b9f50eae68241c73a9390142fb"></a>uint8_t</td>
 <td class="fieldname">
 fmband: 3</td>
+<td class="fielddoc">
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a34cabfefa40ae75e168ddee0c50566e2"></a>uint8_t</td>
+<td class="fieldname">
+amband: 4</td>
 <td class="fielddoc">
 </td></tr>
 </table>
@@ -377,15 +377,15 @@ fmband: 3</td>
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="ab8a46f2282e07caf03adaf6d05613965"></a>uint8_t</td>
-<td class="fieldname">
-raw</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
 <a id="a09af389773cdc2c0eb69e80f3b924cfb"></a>struct <a class="el" href="group___g_a01.html#structakc595x__reg2_8refined">akc595x_reg2</a></td>
 <td class="fieldname">
 refined</td>
+<td class="fielddoc">
+</td></tr>
+<tr><td class="fieldtype">
+<a id="ab8a46f2282e07caf03adaf6d05613965"></a>uint8_t</td>
+<td class="fieldname">
+raw</td>
 <td class="fielddoc">
 </td></tr>
 </table>
@@ -448,15 +448,15 @@ rsv: 1</td>
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="aadf07dad5a218aaf1a1879168a1a4c33"></a>uint8_t</td>
-<td class="fieldname">
-raw</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
 <a id="a7e39c15f73c754cc1152064af92b9018"></a>struct <a class="el" href="group___g_a01.html#structakc595x__reg6_8refined">akc595x_reg6</a></td>
 <td class="fieldname">
 refined</td>
+<td class="fielddoc">
+</td></tr>
+<tr><td class="fieldtype">
+<a id="aadf07dad5a218aaf1a1879168a1a4c33"></a>uint8_t</td>
+<td class="fieldname">
+raw</td>
 <td class="fielddoc">
 </td></tr>
 </table>
@@ -477,17 +477,17 @@ refined</td>
 <div class="textblock"></div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="a6438c669e0d0de98e6929c2cc0fac474"></a>uint8_t</td>
-<td class="fieldname">
-line: 1</td>
-<td class="fielddoc">
-0 = Radio mode; 1 = Line Mode </td></tr>
-<tr><td class="fieldtype">
 <a id="af7d17e22e55912a7e096ae27d415a455"></a>uint8_t</td>
 <td class="fieldname">
 phase_inv: 1</td>
 <td class="fielddoc">
 0 = audio output inphase, 1 = opposite phase, for single speaker </td></tr>
+<tr><td class="fieldtype">
+<a id="a6438c669e0d0de98e6929c2cc0fac474"></a>uint8_t</td>
+<td class="fieldname">
+line: 1</td>
+<td class="fielddoc">
+0 = Radio mode; 1 = Line Mode </td></tr>
 <tr><td class="fieldtype">
 <a id="a210ab9e731c9c36c2c38db15c28a8d1c"></a>uint8_t</td>
 <td class="fieldname">
@@ -514,15 +514,15 @@ Volume: 0 ~ 63 (&lt;24 = mute; 24 ~ 63) </td></tr>
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="aa6ab33aab12776a65ae6f2eb0ccb22d6"></a>uint8_t</td>
-<td class="fieldname">
-raw</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
 <a id="a6308cd742582035479ab71ea60337875"></a>struct <a class="el" href="group___g_a01.html#structakc595x__reg7_8refined">akc595x_reg7</a></td>
 <td class="fieldname">
 refined</td>
+<td class="fielddoc">
+</td></tr>
+<tr><td class="fieldtype">
+<a id="aa6ab33aab12776a65ae6f2eb0ccb22d6"></a>uint8_t</td>
+<td class="fieldname">
+raw</td>
 <td class="fielddoc">
 </td></tr>
 </table>
@@ -543,17 +543,23 @@ refined</td>
 <div class="textblock"></div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="a2a277ddd8b721f350092efc6d6e56948"></a>uint8_t</td>
-<td class="fieldname">
-bben: 1</td>
-<td class="fielddoc">
-Base boost enable 0; Close bass 1. </td></tr>
-<tr><td class="fieldtype">
 <a id="a823355b63ab3af0a0e4d1367e89abd1c"></a>uint8_t</td>
 <td class="fieldname">
 bw: 2</td>
 <td class="fielddoc">
 00 = 150K; 01 = 200K; 10 = 50K; 11 = 100K </td></tr>
+<tr><td class="fieldtype">
+<a id="ac1f01308c0b9dd88eecb3a3833d447fa"></a>uint8_t</td>
+<td class="fieldname">
+stereo_mono: 2</td>
+<td class="fielddoc">
+"00" the auto stereo, there Stereo_th control threshold ; "10" long as the pilot is forced stereo "x1" forced mono demodulator </td></tr>
+<tr><td class="fieldtype">
+<a id="a2a277ddd8b721f350092efc6d6e56948"></a>uint8_t</td>
+<td class="fieldname">
+bben: 1</td>
+<td class="fielddoc">
+Base boost enable 0; Close bass 1. </td></tr>
 <tr><td class="fieldtype">
 <a id="a5f02f0889301fd7be1ac972c11bf3e7d"></a>uint8_t</td>
 <td class="fieldname">
@@ -566,12 +572,6 @@ De-emphasis mode. 1 = 75 μ s (USA); 0 = 50 μ s (China) </td></tr>
 rsv: 2</td>
 <td class="fielddoc">
 Measured using, set to "0" during normal use. </td></tr>
-<tr><td class="fieldtype">
-<a id="ac1f01308c0b9dd88eecb3a3833d447fa"></a>uint8_t</td>
-<td class="fieldname">
-stereo_mono: 2</td>
-<td class="fielddoc">
-"00" the auto stereo, there Stereo_th control threshold ; "10" long as the pilot is forced stereo "x1" forced mono demodulator </td></tr>
 </table>
 
 </div>
@@ -592,15 +592,15 @@ stereo_mono: 2</td>
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="ab0c55e3a1e9dbe3ca05d7b86bd7cb092"></a>uint8_t</td>
-<td class="fieldname">
-raw</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
 <a id="a20a93bd3e466f8487fb6f9fbbec38a81"></a>struct <a class="el" href="group___g_a01.html#structakc595x__reg8_8refined">akc595x_reg8</a></td>
 <td class="fieldname">
 refined</td>
+<td class="fielddoc">
+</td></tr>
+<tr><td class="fieldtype">
+<a id="ab0c55e3a1e9dbe3ca05d7b86bd7cb092"></a>uint8_t</td>
+<td class="fieldname">
+raw</td>
 <td class="fielddoc">
 </td></tr>
 </table>
@@ -621,11 +621,11 @@ refined</td>
 <div class="textblock"></div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="a5540559b4abde9286bccbee8711fad3c"></a>uint8_t</td>
+<a id="a09dd7c215735a53e74f481781f02c3dd"></a>uint8_t</td>
 <td class="fieldname">
-am_cnr_th: 2</td>
+stereo_th: 2</td>
 <td class="fielddoc">
-When AM mode, chip sets and lighting sentence carrier to noise ratio threshold. </td></tr>
+FM stereo demodulation start CNR threshold - 00=4, 01=8, 10=12,11=16. </td></tr>
 <tr><td class="fieldtype">
 <a id="a808ae9c91e064e5bd42cb80bc8191551"></a>uint8_t</td>
 <td class="fieldname">
@@ -633,17 +633,17 @@ fd_th: 2</td>
 <td class="fielddoc">
 </td></tr>
 <tr><td class="fieldtype">
+<a id="a5540559b4abde9286bccbee8711fad3c"></a>uint8_t</td>
+<td class="fieldname">
+am_cnr_th: 2</td>
+<td class="fielddoc">
+When AM mode, chip sets and lighting sentence carrier to noise ratio threshold. </td></tr>
+<tr><td class="fieldtype">
 <a id="aeb29891f0998d5756d805d93b226ec85"></a>uint8_t</td>
 <td class="fieldname">
 fm_cnr_th: 2</td>
 <td class="fielddoc">
 When the FM mode, chip sets and lighting sentence carrier to noise. Ratio limit 00-2dB 01-3dB 10-4dB 11-5dB door. </td></tr>
-<tr><td class="fieldtype">
-<a id="a09dd7c215735a53e74f481781f02c3dd"></a>uint8_t</td>
-<td class="fieldname">
-stereo_th: 2</td>
-<td class="fielddoc">
-FM stereo demodulation start CNR threshold - 00=4, 01=8, 10=12,11=16. </td></tr>
 </table>
 
 </div>
@@ -664,15 +664,15 @@ FM stereo demodulation start CNR threshold - 00=4, 01=8, 10=12,11=16. </td></tr>
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="aa8215ef76e670010c1490287f83ed483"></a>uint8_t</td>
-<td class="fieldname">
-raw</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
 <a id="a7e795976ce88b712a3e23bb77af16836"></a>struct <a class="el" href="group___g_a01.html#structakc595x__reg9_8refined">akc595x_reg9</a></td>
 <td class="fieldname">
 refined</td>
+<td class="fielddoc">
+</td></tr>
+<tr><td class="fieldtype">
+<a id="aa8215ef76e670010c1490287f83ed483"></a>uint8_t</td>
+<td class="fieldname">
+raw</td>
 <td class="fielddoc">
 </td></tr>
 </table>
@@ -699,6 +699,12 @@ iv_en: 1</td>
 <td class="fielddoc">
 When low voltage power supply, whether to enter the low-voltage operation mode can. </td></tr>
 <tr><td class="fieldtype">
+<a id="a00894fe91a721f7d2d986973b83ac67e"></a>uint8_t</td>
+<td class="fieldname">
+rsv1: 1</td>
+<td class="fielddoc">
+Reserved. Measured using, do not change this value. </td></tr>
+<tr><td class="fieldtype">
 <a id="a3fc0afe0a3dfd8b7e6b8b1b3045be75b"></a>uint8_t</td>
 <td class="fieldname">
 osc_en: 1</td>
@@ -710,12 +716,6 @@ Oscillator source selection. 0 = 0-External XO; 1 = 1-Crystal. </td></tr>
 pd_adc_vol: 1</td>
 <td class="fielddoc">
 0 = volume potentiometer mode </td></tr>
-<tr><td class="fieldtype">
-<a id="a00894fe91a721f7d2d986973b83ac67e"></a>uint8_t</td>
-<td class="fieldname">
-rsv1: 1</td>
-<td class="fielddoc">
-Reserved. Measured using, do not change this value. </td></tr>
 <tr><td class="fieldtype">
 <a id="a0777862e54ae805035a240e4931a5fba"></a>uint8_t</td>
 <td class="fieldname">
@@ -754,15 +754,15 @@ Reserved. Measured using, do not change this value. </td></tr>
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="a362515f796dcf4a48bf6c512cd249cbd"></a>uint8_t</td>
-<td class="fieldname">
-raw</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
 <a id="ac8a65fa477f6ab7a9890db563b552231"></a>struct <a class="el" href="group___g_a01.html#structakc595x__reg11_8refined">akc595x_reg11</a></td>
 <td class="fieldname">
 refined</td>
+<td class="fielddoc">
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a362515f796dcf4a48bf6c512cd249cbd"></a>uint8_t</td>
+<td class="fieldname">
+raw</td>
 <td class="fielddoc">
 </td></tr>
 </table>
@@ -789,17 +789,17 @@ rsv1: 2</td>
 <td class="fielddoc">
 Reserved. Measured using, do not change this value. </td></tr>
 <tr><td class="fieldtype">
-<a id="a0777862e54ae805035a240e4931a5fba"></a>uint8_t</td>
-<td class="fieldname">
-rsv2: 4</td>
-<td class="fielddoc">
-Reserved. Measured using, do not change this value. </td></tr>
-<tr><td class="fieldtype">
 <a id="aff2364a0be3d20e46cc69efb36afe9a5"></a>uint8_t</td>
 <td class="fieldname">
 space: 2</td>
 <td class="fielddoc">
 00 = 25KHz; 01 = 50KHz; 10 = 100KHz; 11 = 200KHz </td></tr>
+<tr><td class="fieldtype">
+<a id="a0777862e54ae805035a240e4931a5fba"></a>uint8_t</td>
+<td class="fieldname">
+rsv2: 4</td>
+<td class="fielddoc">
+Reserved. Measured using, do not change this value. </td></tr>
 </table>
 
 </div>
@@ -820,15 +820,15 @@ space: 2</td>
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="a2345248088c8f7ed06c67d6cc168f95a"></a>uint8_t</td>
-<td class="fieldname">
-raw</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
 <a id="a1b59896295050fcbdf28752a31f2cf0c"></a>struct <a class="el" href="group___g_a01.html#structakc595x__reg12_8refined">akc595x_reg12</a></td>
 <td class="fieldname">
 refined</td>
+<td class="fielddoc">
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a2345248088c8f7ed06c67d6cc168f95a"></a>uint8_t</td>
+<td class="fieldname">
+raw</td>
 <td class="fielddoc">
 </td></tr>
 </table>
@@ -849,11 +849,11 @@ refined</td>
 <div class="textblock"></div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="a68ffb7784fd44ef2f186507adfa61d32"></a>uint8_t</td>
+<a id="a0777862e54ae805035a240e4931a5fba"></a>uint8_t</td>
 <td class="fieldname">
-pd_adc: 1</td>
+rsv2: 5</td>
 <td class="fielddoc">
-Signal channel ADC signal path; 0 = Close; 1 = Open. </td></tr>
+Reserved. Measured using, do not change this value. </td></tr>
 <tr><td class="fieldtype">
 <a id="afe54e74f9a017cdfbc87b9a54f3ceefd"></a>uint8_t</td>
 <td class="fieldname">
@@ -867,11 +867,11 @@ res: 1</td>
 <td class="fielddoc">
 </td></tr>
 <tr><td class="fieldtype">
-<a id="a0777862e54ae805035a240e4931a5fba"></a>uint8_t</td>
+<a id="a68ffb7784fd44ef2f186507adfa61d32"></a>uint8_t</td>
 <td class="fieldname">
-rsv2: 5</td>
+pd_adc: 1</td>
 <td class="fielddoc">
-Reserved. Measured using, do not change this value. </td></tr>
+Signal channel ADC signal path; 0 = Close; 1 = Open. </td></tr>
 </table>
 
 </div>
@@ -892,15 +892,15 @@ Reserved. Measured using, do not change this value. </td></tr>
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="a0c5ca55993c1b09395b0278a4b63dd23"></a>uint8_t</td>
-<td class="fieldname">
-raw</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
 <a id="aa8889f3734fb34302e5f5a7764c079d1"></a>struct <a class="el" href="group___g_a01.html#structakc595x__reg13_8refined">akc595x_reg13</a></td>
 <td class="fieldname">
 refined</td>
+<td class="fielddoc">
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a0c5ca55993c1b09395b0278a4b63dd23"></a>uint8_t</td>
+<td class="fieldname">
+raw</td>
 <td class="fielddoc">
 </td></tr>
 </table>
@@ -921,21 +921,21 @@ refined</td>
 <div class="textblock"></div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="a00894fe91a721f7d2d986973b83ac67e"></a>uint8_t</td>
+<a id="a0ad2265d9608a1cea3a11c75f33b0f28"></a>uint8_t</td>
 <td class="fieldname">
-rsv1: 1</td>
+rsv3: 2</td>
 <td class="fielddoc">
 Measured using, do not change this value. </td></tr>
+<tr><td class="fieldtype">
+<a id="a987576d9790c061299d6fc8731bee9b1"></a>uint8_t</td>
+<td class="fieldname">
+vol_pre: 2</td>
+<td class="fielddoc">
+Adjusting the output volume of the entire values: 00: 0dB 01: 3.5dB. </td></tr>
 <tr><td class="fieldtype">
 <a id="a0777862e54ae805035a240e4931a5fba"></a>uint8_t</td>
 <td class="fieldname">
 rsv2: 2</td>
-<td class="fielddoc">
-Measured using, do not change this value. </td></tr>
-<tr><td class="fieldtype">
-<a id="a0ad2265d9608a1cea3a11c75f33b0f28"></a>uint8_t</td>
-<td class="fieldname">
-rsv3: 2</td>
 <td class="fielddoc">
 Measured using, do not change this value. </td></tr>
 <tr><td class="fieldtype">
@@ -945,11 +945,11 @@ st_led: 1</td>
 <td class="fielddoc">
 0 = tund pin is tuned lamp; When 1-FM and non wtmode, tund indicator pin is stereo demodulation, tuning lamp remainder </td></tr>
 <tr><td class="fieldtype">
-<a id="a987576d9790c061299d6fc8731bee9b1"></a>uint8_t</td>
+<a id="a00894fe91a721f7d2d986973b83ac67e"></a>uint8_t</td>
 <td class="fieldname">
-vol_pre: 2</td>
+rsv1: 1</td>
 <td class="fielddoc">
-Adjusting the output volume of the entire values: 00: 0dB 01: 3.5dB. </td></tr>
+Measured using, do not change this value. </td></tr>
 </table>
 
 </div>
@@ -970,15 +970,15 @@ Adjusting the output volume of the entire values: 00: 0dB 01: 3.5dB. </td></tr>
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="ac8106e85218c1553e74fabf42ea6b322"></a>uint8_t</td>
-<td class="fieldname">
-raw</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
 <a id="aeee3fe3380077e2999f767e4567a1406"></a>struct <a class="el" href="group___g_a01.html#structakc595x__reg20_8refined">akc595x_reg20</a></td>
 <td class="fieldname">
 refined</td>
+<td class="fielddoc">
+</td></tr>
+<tr><td class="fieldtype">
+<a id="ac8106e85218c1553e74fabf42ea6b322"></a>uint8_t</td>
+<td class="fieldname">
+raw</td>
 <td class="fielddoc">
 </td></tr>
 </table>
@@ -1005,11 +1005,11 @@ readchan: 5</td>
 <td class="fielddoc">
 Current Channel number (high 5bit). See Reg21. </td></tr>
 <tr><td class="fieldtype">
-<a id="a627fcdb6cc9a5e16d657ca6cdef0a6bb"></a>uint8_t</td>
+<a id="ab40b43fd5af2db4fbfeb4e83856e4876"></a>uint8_t</td>
 <td class="fieldname">
-st: 1</td>
+tuned: 1</td>
 <td class="fielddoc">
-??? 0 to the current situation other FM stereo radio ???? </td></tr>
+When transferred to station 1, station search software can use this determination bit table. </td></tr>
 <tr><td class="fieldtype">
 <a id="ae725df0794b817f84db1e813c3512b21"></a>uint8_t</td>
 <td class="fieldname">
@@ -1017,11 +1017,11 @@ stc: 1</td>
 <td class="fielddoc">
 0 = Not complete; 1 = Complete during Seek and Tune in the register 0. </td></tr>
 <tr><td class="fieldtype">
-<a id="ab40b43fd5af2db4fbfeb4e83856e4876"></a>uint8_t</td>
+<a id="a627fcdb6cc9a5e16d657ca6cdef0a6bb"></a>uint8_t</td>
 <td class="fieldname">
-tuned: 1</td>
+st: 1</td>
 <td class="fielddoc">
-When transferred to station 1, station search software can use this determination bit table. </td></tr>
+??? 0 to the current situation other FM stereo radio ???? </td></tr>
 </table>
 
 </div>
@@ -1042,15 +1042,15 @@ When transferred to station 1, station search software can use this determinatio
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="afa7704acaca9776e4059acc91abefec9"></a>uint8_t</td>
-<td class="fieldname">
-raw</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
 <a id="ad85ecfc4f002d46ef48794aaff5bbc62"></a>struct <a class="el" href="group___g_a01.html#structakc595x__reg22_8refined">akc595x_reg22</a></td>
 <td class="fieldname">
 refined</td>
+<td class="fielddoc">
+</td></tr>
+<tr><td class="fieldtype">
+<a id="afa7704acaca9776e4059acc91abefec9"></a>uint8_t</td>
+<td class="fieldname">
+raw</td>
 <td class="fielddoc">
 </td></tr>
 </table>
@@ -1102,15 +1102,15 @@ mode3k_f: 1</td>
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="a994238e0370595d97063b101d960b894"></a>uint8_t</td>
-<td class="fieldname">
-raw</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
 <a id="ae5dc00e6aff7e538bdef8c431d40d1af"></a>struct <a class="el" href="group___g_a01.html#structakc595x__reg23_8refined">akc595x_reg23</a></td>
 <td class="fieldname">
 refined</td>
+<td class="fielddoc">
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a994238e0370595d97063b101d960b894"></a>uint8_t</td>
+<td class="fieldname">
+raw</td>
 <td class="fielddoc">
 </td></tr>
 </table>
@@ -1162,15 +1162,15 @@ Only the demodulated FM stereo (Stereo ratio is greater than 30%) show only one.
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="a729eddfac072898b15050458d4d79903"></a>uint8_t</td>
-<td class="fieldname">
-raw</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
 <a id="a76c1e1e5020d8f42445e2f7c9f0f1413"></a>struct <a class="el" href="group___g_a01.html#structakc595x__reg24_8refined">akc595x_reg24</a></td>
 <td class="fieldname">
 refined</td>
+<td class="fielddoc">
+</td></tr>
+<tr><td class="fieldtype">
+<a id="a729eddfac072898b15050458d4d79903"></a>uint8_t</td>
+<td class="fieldname">
+raw</td>
 <td class="fielddoc">
 </td></tr>
 </table>
@@ -1197,6 +1197,12 @@ lvmode: 1</td>
 <td class="fielddoc">
 Low voltage maximum volume limit mode indication bit. </td></tr>
 <tr><td class="fieldtype">
+<a id="ae4731d626c4452a365b40a3a846f1e45"></a>uint8_t</td>
+<td class="fieldname">
+rsv: 1</td>
+<td class="fielddoc">
+Reserved. </td></tr>
+<tr><td class="fieldtype">
 <a id="a284611cd9dc836900f3de08452b24c39"></a>uint8_t</td>
 <td class="fieldname">
 pgalevel_if: 3</td>
@@ -1208,12 +1214,6 @@ RF power control loop gain level, the greater the level, a high gain of approxim
 pgalevel_rf: 3</td>
 <td class="fielddoc">
 RF power control loop gain level, the greater the level, a high gain of approximately. </td></tr>
-<tr><td class="fieldtype">
-<a id="ae4731d626c4452a365b40a3a846f1e45"></a>uint8_t</td>
-<td class="fieldname">
-rsv: 1</td>
-<td class="fielddoc">
-Reserved. </td></tr>
 </table>
 
 </div>
@@ -1234,15 +1234,15 @@ Reserved. </td></tr>
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="acdef99156cbb020c53d1267b977a5c2f"></a>uint8_t</td>
-<td class="fieldname">
-raw</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
 <a id="ab4439de41bcc334b9322cc619be4deba"></a>struct <a class="el" href="group___g_a01.html#structakc595x__reg25_8refined">akc595x_reg25</a></td>
 <td class="fieldname">
 refined</td>
+<td class="fielddoc">
+</td></tr>
+<tr><td class="fieldtype">
+<a id="acdef99156cbb020c53d1267b977a5c2f"></a>uint8_t</td>
+<td class="fieldname">
+raw</td>
 <td class="fielddoc">
 </td></tr>
 </table>
@@ -1263,17 +1263,17 @@ refined</td>
 <div class="textblock"></div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="ae4731d626c4452a365b40a3a846f1e45"></a>uint8_t</td>
-<td class="fieldname">
-rsv: 2</td>
-<td class="fielddoc">
-Reserved. </td></tr>
-<tr><td class="fieldtype">
 <a id="acd918477e62e143aa96c8b38d139ae02"></a>uint8_t</td>
 <td class="fieldname">
 vbat: 6</td>
 <td class="fielddoc">
 6 bits indicating the supply voltage ( unsigned number ) </td></tr>
+<tr><td class="fieldtype">
+<a id="ae4731d626c4452a365b40a3a846f1e45"></a>uint8_t</td>
+<td class="fieldname">
+rsv: 2</td>
+<td class="fielddoc">
+Reserved. </td></tr>
 </table>
 
 </div>
@@ -1297,15 +1297,15 @@ vbat: 6</td>
 </div><table class="fieldtable">
 <tr><th colspan="3">Data Fields</th></tr>
 <tr><td class="fieldtype">
-<a id="acd4a74c399d17474a702f5047b784b47"></a>uint8_t</td>
-<td class="fieldname">
-raw</td>
-<td class="fielddoc">
-</td></tr>
-<tr><td class="fieldtype">
 <a id="a71079fb0898cb78a91117ecea33cdc5b"></a>struct <a class="el" href="group___g_a01.html#structakc595x__reg27_8refined">akc595x_reg27</a></td>
 <td class="fieldname">
 refined</td>
+<td class="fielddoc">
+</td></tr>
+<tr><td class="fieldtype">
+<a id="acd4a74c399d17474a702f5047b784b47"></a>uint8_t</td>
+<td class="fieldname">
+raw</td>
 <td class="fielddoc">
 </td></tr>
 </table>
@@ -1342,41 +1342,6 @@ Reserved. </td></tr>
 </div>
 </div>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="ga3d85865e7c11161e222ed157c4e2d169"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga3d85865e7c11161e222ed157c4e2d169">&#9670;&nbsp;</a></span>akc595x_reg21</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef uint8_t <a class="el" href="group___g_a01.html#ga3d85865e7c11161e222ed157c4e2d169">akc595x_reg21</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Reg21 (type 0x15 / R) </p>
-<p>Reg21 is the Current Channel number (low 8bit). See Reg 20. </p>
-
-</div>
-</div>
-<a id="gab608542d70358eddcde54768d0847edd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gab608542d70358eddcde54768d0847edd">&#9670;&nbsp;</a></span>akc595x_reg26</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef uint8_t <a class="el" href="group___g_a01.html#gab608542d70358eddcde54768d0847edd">akc595x_reg26</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Reg26 (type 0x1A / R) </p>
-<p>When the frequency offset indicated, complement format, greater than 127, 256 can be reduced to normal values, attention here to 1KHz units FM, AM in units of 100Hz</p>
-<dl class="section see"><dt>See also</dt><dd>AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 15 When the frequency offset indicated, complement format, greater than 127, 256 can be </dd></dl>
-
-</div>
-</div>
 <a id="ga70e552b2a9ce062ef0342a70e9717a50"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga70e552b2a9ce062ef0342a70e9717a50">&#9670;&nbsp;</a></span>akc595x_reg3</h2>
 
@@ -1425,6 +1390,41 @@ Reserved. </td></tr>
 
 <p>Reg5 (type 0x05 / RW): configures register 5 (default: 0x32) Address. </p>
 <p>Custom end-band channel number chan = 32 * usr_chan_stop </p>
+
+</div>
+</div>
+<a id="ga3d85865e7c11161e222ed157c4e2d169"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3d85865e7c11161e222ed157c4e2d169">&#9670;&nbsp;</a></span>akc595x_reg21</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef uint8_t <a class="el" href="group___g_a01.html#ga3d85865e7c11161e222ed157c4e2d169">akc595x_reg21</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reg21 (type 0x15 / R) </p>
+<p>Reg21 is the Current Channel number (low 8bit). See Reg 20. </p>
+
+</div>
+</div>
+<a id="gab608542d70358eddcde54768d0847edd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab608542d70358eddcde54768d0847edd">&#9670;&nbsp;</a></span>akc595x_reg26</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef uint8_t <a class="el" href="group___g_a01.html#gab608542d70358eddcde54768d0847edd">akc595x_reg26</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reg26 (type 0x1A / R) </p>
+<p>When the frequency offset indicated, complement format, greater than 127, 256 can be reduced to normal values, attention here to 1KHz units FM, AM in units of 100Hz</p>
+<dl class="section see"><dt>See also</dt><dd>AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 15 When the frequency offset indicated, complement format, greater than 127, 256 can be </dd></dl>
 
 </div>
 </div>

@@ -123,34 +123,82 @@ Functions</h2></td></tr>
 <h1><a class="anchor" id="GA03"></a>
 Basic</h1>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ga771f5b0ed1750f9b221f5240d3301d5a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga771f5b0ed1750f9b221f5240d3301d5a">&#9670;&nbsp;</a></span>getRegister()</h2>
+<a id="ga943ec28389bad1988124dd0f04c9b687"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga943ec28389bad1988124dd0f04c9b687">&#9670;&nbsp;</a></span>reset()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t AKC695X::getRegister </td>
+          <td class="memname">void AKC695X::reset </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>reg</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Gets a given register content. </p>
-<p>It is a basic function to get a value from a given <a class="el" href="class_a_k_c695_x.html">AKC695X</a> device register </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Resets the system. </p>
+
+<p class="reference">Referenced by <a class="el" href="group___g_a03.html#gaaa883afce133a14c97aa938a60b41e0a">AKC695X::setup()</a>.</p>
+
+</div>
+</div>
+<a id="gae472084d592c6b814d7a6d72bab5af05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae472084d592c6b814d7a6d72bab5af05">&#9670;&nbsp;</a></span>setI2CBusAddress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AKC695X::setI2CBusAddress </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>deviceAddress</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the I2C bus device address. </p>
+<p>You do not need use this function if your i2c device address is 0x10 (default value) <br  />
+</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">reg</td><td>register number to be read (0 ~ 26) </td></tr>
+    <tr><td class="paramname">deviceAddress</td><td></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>the register content </dd></dl>
 
 <p class="reference">References <a class="el" href="class_a_k_c695_x.html#ab7cd32a73bfe5345422dbebcd6b54ca7">AKC695X::deviceAddress</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="group___g_a03_a.html#gadade5cf9f5df5fa14917b3cb6bedd187">AKC695X::getAmCarrierNoiseRatio()</a>, <a class="el" href="group___g_a03_a.html#gaf38e047d4c5a455898f799714f4165b8">AKC695X::getAmCurrentSpace()</a>, <a class="el" href="group___g_a03_a.html#gac0bb41042eb94f538a9d5d97f5a16648">AKC695X::getCurrentChannel()</a>, <a class="el" href="group___g_a03_a.html#ga3471675057f459e0d641c33f47b4cdd4">AKC695X::getFmCarrierNoiseRatio()</a>, <a class="el" href="group___g_a04.html#gadf936fa32a36782b72633cae84d63f88">AKC695X::getRSSI()</a>, <a class="el" href="group___g_a04.html#ga580389b4740ed5cabcba28e481344a64">AKC695X::getSupplyVoltage()</a>, <a class="el" href="group___g_a03_a.html#gab0f41f62d16a51c336d25324e4a9d08b">AKC695X::isCurrentModeFM()</a>, <a class="el" href="group___g_a03_a.html#gad7c2f47bcbd005d01a813963745a6f97">AKC695X::isFmStereo()</a>, <a class="el" href="group___g_a03_a.html#ga0791915b409796aa2f0f9e4218ac732d">AKC695X::isTuned()</a>, <a class="el" href="group___g_a03_a.html#ga47a2a79e7c68701c9eb100b1a48adb90">AKC695X::isTuningComplete()</a>, <a class="el" href="group___g_a04.html#ga0873887fb945b74c56f12ec601be00ac">AKC695X::setFrequency()</a>, <a class="el" href="group___g_a04.html#ga5c11dd6e97fe01ca7214676cb880e4a7">AKC695X::setVolume()</a>, and <a class="el" href="class_a_k_c695_x.html#aac575af74cdbf784e24366f13fc60f99">AKC695X::setVolumeControl()</a>.</p>
+</div>
+</div>
+<a id="gaaa883afce133a14c97aa938a60b41e0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaaa883afce133a14c97aa938a60b41e0a">&#9670;&nbsp;</a></span>setup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AKC695X::setup </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>resetPin</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Receiver startup. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">resetPin</td><td>if &gt;= 0, then you control the RESET. if -1, you are using ths MCU RST pin. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="reference">References <a class="el" href="group___g_a03.html#ga943ec28389bad1988124dd0f04c9b687">AKC695X::reset()</a>, and <a class="el" href="class_a_k_c695_x.html#a53464dde83a8625917655865af8ef53d">AKC695X::resetPin</a>.</p>
 
 </div>
 </div>
@@ -211,61 +259,6 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="class_a_k_c695_x.html#ae1ddbcc5a1f517f3fda2d3776516c749">AKC695X::currentMode</a>, <a class="el" href="group___g_a01.html#a69492e94019f64dbfa51040914da5d81">akc595x_reg0::raw</a>, <a class="el" href="group___g_a01.html#a8640c13d307b61f1fafd9ec3c2d425a3">akc595x_reg0::refined</a>, <a class="el" href="_a_k_c695_x_8h.html#a748ad53bef975af9c1edbcacc58e5be4">REG00</a>, and <a class="el" href="group___g_a03.html#gaffff7bd58909a00d6a461f4a325ab396">AKC695X::setRegister()</a>.</p>
-
-</div>
-</div>
-<a id="ga943ec28389bad1988124dd0f04c9b687"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga943ec28389bad1988124dd0f04c9b687">&#9670;&nbsp;</a></span>reset()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void AKC695X::reset </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Resets the system. </p>
-
-<p class="reference">References <a class="el" href="class_a_k_c695_x.html#a53464dde83a8625917655865af8ef53d">AKC695X::resetPin</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="group___g_a03.html#gaaa883afce133a14c97aa938a60b41e0a">AKC695X::setup()</a>.</p>
-
-</div>
-</div>
-<a id="gae472084d592c6b814d7a6d72bab5af05"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gae472084d592c6b814d7a6d72bab5af05">&#9670;&nbsp;</a></span>setI2CBusAddress()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void AKC695X::setI2CBusAddress </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>deviceAddress</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets the I2C bus device address. </p>
-<p>You do not need use this function if your i2c device address is 0x10 (default value) <br  />
-</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">deviceAddress</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="reference">References <a class="el" href="class_a_k_c695_x.html#ab7cd32a73bfe5345422dbebcd6b54ca7">AKC695X::deviceAddress</a>.</p>
-
 </div>
 </div>
 <a id="gaffff7bd58909a00d6a461f4a325ab396"></a>
@@ -303,37 +296,32 @@ Basic</h1>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="class_a_k_c695_x.html#ab7cd32a73bfe5345422dbebcd6b54ca7">AKC695X::deviceAddress</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="group___g_a04.html#ga735ce923f793b2cc437ff4c09cd4f026">AKC695X::commitTune()</a>, <a class="el" href="group___g_a03.html#gaf156fb3c65b4bfc68a977f4586ae23a6">AKC695X::powerOn()</a>, <a class="el" href="group___g_a04.html#ga61f93b8e7579e4e06d91486dccf1d840">AKC695X::seekStation()</a>, <a class="el" href="group___g_a04.html#ga8f61d1c6b668dbcdb5917b58580ed44e">AKC695X::setAM()</a>, <a class="el" href="group___g_a04.html#ga0ff5be517897a239d2eba9869e1d2591">AKC695X::setAudio()</a>, <a class="el" href="class_a_k_c695_x.html#a811f94a0f66d151050ddf0a480f23196">AKC695X::setCustomBand()</a>, <a class="el" href="group___g_a04.html#gaf77739f861a531dc4c7e6ac5a6cb2713">AKC695X::setFM()</a>, <a class="el" href="group___g_a04.html#gaabe4bb9635ae8a7b53a5fd48b98d6339">AKC695X::setFmSeekStep()</a>, <a class="el" href="group___g_a04.html#ga0873887fb945b74c56f12ec601be00ac">AKC695X::setFrequency()</a>, <a class="el" href="group___g_a04.html#ga5c11dd6e97fe01ca7214676cb880e4a7">AKC695X::setVolume()</a>, and <a class="el" href="class_a_k_c695_x.html#aac575af74cdbf784e24366f13fc60f99">AKC695X::setVolumeControl()</a>.</p>
-
 </div>
 </div>
-<a id="gaaa883afce133a14c97aa938a60b41e0a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaaa883afce133a14c97aa938a60b41e0a">&#9670;&nbsp;</a></span>setup()</h2>
+<a id="ga771f5b0ed1750f9b221f5240d3301d5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga771f5b0ed1750f9b221f5240d3301d5a">&#9670;&nbsp;</a></span>getRegister()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void AKC695X::setup </td>
+          <td class="memname">uint8_t AKC695X::getRegister </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>resetPin</em></td><td>)</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>reg</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Receiver startup. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Gets a given register content. </p>
+<p>It is a basic function to get a value from a given <a class="el" href="class_a_k_c695_x.html">AKC695X</a> device register </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">resetPin</td><td>if &gt;= 0, then you control the RESET. if -1, you are using ths MCU RST pin. </td></tr>
+    <tr><td class="paramname">reg</td><td>register number to be read (0 ~ 26) </td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="reference">References <a class="el" href="group___g_a03.html#ga943ec28389bad1988124dd0f04c9b687">AKC695X::reset()</a>, and <a class="el" href="class_a_k_c695_x.html#a53464dde83a8625917655865af8ef53d">AKC695X::resetPin</a>.</p>
+<dl class="section return"><dt>Returns</dt><dd>the register content </dd></dl>
 
 </div>
 </div>

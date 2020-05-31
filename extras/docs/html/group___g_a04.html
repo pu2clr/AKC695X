@@ -166,151 +166,88 @@ Operation</h1>
 <p>Sets the STC bit to high when the tune operation completes. </p>
 <p>Tells the device that the tune process is over. </p>
 
-<p class="reference">References <a class="el" href="class_a_k_c695_x.html#ae1ddbcc5a1f517f3fda2d3776516c749">AKC695X::currentMode</a>, <a class="el" href="group___g_a01.html#a69492e94019f64dbfa51040914da5d81">akc595x_reg0::raw</a>, <a class="el" href="group___g_a01.html#a8640c13d307b61f1fafd9ec3c2d425a3">akc595x_reg0::refined</a>, <a class="el" href="_a_k_c695_x_8h.html#a748ad53bef975af9c1edbcacc58e5be4">REG00</a>, and <a class="el" href="group___g_a03.html#gaffff7bd58909a00d6a461f4a325ab396">AKC695X::setRegister()</a>.</p>
-
 <p class="reference">Referenced by <a class="el" href="group___g_a04.html#ga8f61d1c6b668dbcdb5917b58580ed44e">AKC695X::setAM()</a>, <a class="el" href="group___g_a04.html#gaf77739f861a531dc4c7e6ac5a6cb2713">AKC695X::setFM()</a>, and <a class="el" href="group___g_a04.html#ga0873887fb945b74c56f12ec601be00ac">AKC695X::setFrequency()</a>.</p>
 
 </div>
 </div>
-<a id="gabb5f99342439074cf8f9353f1d1307f5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gabb5f99342439074cf8f9353f1d1307f5">&#9670;&nbsp;</a></span>frequencyDown()</h2>
+<a id="gaf77739f861a531dc4c7e6ac5a6cb2713"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf77739f861a531dc4c7e6ac5a6cb2713">&#9670;&nbsp;</a></span>setFM()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void AKC695X::frequencyDown </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Subtracts the current step from the current frequency and assign the new frequency. </p>
-<p>Goes to the previous frequency channel <br  />
- </p>
-
-<p class="reference">References <a class="el" href="class_a_k_c695_x.html#a31bef75624625b33b8afced20a7e08c7">AKC695X::currentFrequency</a>, <a class="el" href="class_a_k_c695_x.html#a3c7d7b2a13c51ef791df48aa7f368d4c">AKC695X::currentStep</a>, and <a class="el" href="group___g_a04.html#ga0873887fb945b74c56f12ec601be00ac">AKC695X::setFrequency()</a>.</p>
-
-</div>
-</div>
-<a id="gaf8351a39885da7e518e6fc5208c801c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaf8351a39885da7e518e6fc5208c801c7">&#9670;&nbsp;</a></span>frequencyUp()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void AKC695X::frequencyUp </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Adds the current step to the current frequency and sets the new frequency. </p>
-<p>Goes to the next frequency channel <br  />
- </p>
-
-<p class="reference">References <a class="el" href="class_a_k_c695_x.html#a31bef75624625b33b8afced20a7e08c7">AKC695X::currentFrequency</a>, <a class="el" href="class_a_k_c695_x.html#a3c7d7b2a13c51ef791df48aa7f368d4c">AKC695X::currentStep</a>, and <a class="el" href="group___g_a04.html#ga0873887fb945b74c56f12ec601be00ac">AKC695X::setFrequency()</a>.</p>
-
-</div>
-</div>
-<a id="ga1675e3100bba495bc813899563badc42"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga1675e3100bba495bc813899563badc42">&#9670;&nbsp;</a></span>getFrequency()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint16_t AKC695X::getFrequency </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns the current frequency value. </p>
-<p>Gets the current frequency. </p><dl class="section return"><dt>Returns</dt><dd>uint16_t Current frequency value. </dd></dl>
-
-<p class="reference">References <a class="el" href="class_a_k_c695_x.html#a31bef75624625b33b8afced20a7e08c7">AKC695X::currentFrequency</a>.</p>
-
-</div>
-</div>
-<a id="gadf936fa32a36782b72633cae84d63f88"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gadf936fa32a36782b72633cae84d63f88">&#9670;&nbsp;</a></span>getRSSI()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int AKC695X::getRSSI </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the current RSSI. </p>
-<p>Gets the current RSSI </p><dl class="section return"><dt>Returns</dt><dd>int RSSI value </dd></dl>
-
-<p class="reference">References <a class="el" href="class_a_k_c695_x.html#ae1ddbcc5a1f517f3fda2d3776516c749">AKC695X::currentMode</a>, <a class="el" href="group___g_a03.html#ga771f5b0ed1750f9b221f5240d3301d5a">AKC695X::getRegister()</a>, <a class="el" href="group___g_a01.html#a729eddfac072898b15050458d4d79903">akc595x_reg24::raw</a>, <a class="el" href="group___g_a01.html#acd4a74c399d17474a702f5047b784b47">akc595x_reg27::raw</a>, <a class="el" href="group___g_a01.html#a76c1e1e5020d8f42445e2f7c9f0f1413">akc595x_reg24::refined</a>, <a class="el" href="group___g_a01.html#a71079fb0898cb78a91117ecea33cdc5b">akc595x_reg27::refined</a>, <a class="el" href="_a_k_c695_x_8h.html#ae2bae8a5a2a921698cab7c2a9cf2f063">REG24</a>, and <a class="el" href="_a_k_c695_x_8h.html#a43f6021132d63d5caf3b7d786e3152da">REG27</a>.</p>
-
-</div>
-</div>
-<a id="ga580389b4740ed5cabcba28e481344a64"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga580389b4740ed5cabcba28e481344a64">&#9670;&nbsp;</a></span>getSupplyVoltage()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float AKC695X::getSupplyVoltage </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the supply voltage. </p>
-<p>Gets the current supply voltage </p><dl class="section return"><dt>Returns</dt><dd>float the supply voltage </dd></dl>
-
-<p class="reference">References <a class="el" href="group___g_a03.html#ga771f5b0ed1750f9b221f5240d3301d5a">AKC695X::getRegister()</a>, <a class="el" href="group___g_a01.html#acdef99156cbb020c53d1267b977a5c2f">akc595x_reg25::raw</a>, <a class="el" href="group___g_a01.html#ab4439de41bcc334b9322cc619be4deba">akc595x_reg25::refined</a>, and <a class="el" href="_a_k_c695_x_8h.html#a71f2acb83463b791bebe30694cb7c497">REG25</a>.</p>
-
-</div>
-</div>
-<a id="ga61f93b8e7579e4e06d91486dccf1d840"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga61f93b8e7579e4e06d91486dccf1d840">&#9670;&nbsp;</a></span>seekStation()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void AKC695X::seekStation </td>
+          <td class="memname">void AKC695X::setFM </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>up_down</em></td><td>)</td>
+          <td class="paramname"><em>akc695x_fm_band</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>minimum_freq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>maximum_freq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>default_frequency</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>default_step</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Seeks a FM station. </p>
-<p>Seek a FM Station</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a01.html#unionakc595x__reg20" title="Reg20 (type 0x14 / R)">akc595x_reg20</a>, <a class="el" href="group___g_a01.html#ga3d85865e7c11161e222ed157c4e2d169" title="Reg21 (type 0x15 / R)">akc595x_reg21</a>, <a class="el" href="group___g_a03_a.html#ga62a70a5191c3e56dfa6cc51c314bc210" title="Converts the channel stored in the registers 20 and 21 to frequency.">channelToFrequency</a></dd></dl>
+<p>Sets the <a class="el" href="class_a_k_c695_x.html">AKC695X</a> to FM mode. </p>
+<p>Sets the device to FM mode. You can configure a custom FM band by setting band number greater than 7.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">FM band </th><th class="markdownTableHeadNone">N# </th><th class="markdownTableHeadNone">Description  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">000 </td><td class="markdownTableBodyNone">0 </td><td class="markdownTableBodyNone">FM1,87 ~ 108, station search space specified intervals  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">001 </td><td class="markdownTableBodyNone">1 </td><td class="markdownTableBodyNone">FM2,76 ~ 108, station search space specified intervals  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">010 </td><td class="markdownTableBodyNone">2 </td><td class="markdownTableBodyNone">FM3,70 ~ 93, with a space station search interval set  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">011 </td><td class="markdownTableBodyNone">3 </td><td class="markdownTableBodyNone">FM4,76 ~ 90, Tuning predetermined space intervals  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">100 </td><td class="markdownTableBodyNone">4 </td><td class="markdownTableBodyNone">FM5,64 ~ 88, with a space station search interval set  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">101 </td><td class="markdownTableBodyNone">5 </td><td class="markdownTableBodyNone">TV1,56.25 ~ 91.75, station search space specified intervals  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">110 </td><td class="markdownTableBodyNone">6 </td><td class="markdownTableBodyNone">TV2, 174.75 ~ 222.25, found  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">111 </td><td class="markdownTableBodyNone">7 </td><td class="markdownTableBodyNone">sets predetermined space intervals, custom FM, station search space specified intervals  </td></tr>
+</table>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">up_down</td><td>if 0, seek down; if 1, seek up. </td></tr>
+    <tr><td class="paramname">akc695x_fm_band</td><td>FM band (see manual FM band table above). Set to a number greater than 7 if you want a custom FM band. </td></tr>
+    <tr><td class="paramname">minimum_freq</td><td>Minimal frequency of the band </td></tr>
+    <tr><td class="paramname">maximum_freq</td><td>Band maximum frequency </td></tr>
+    <tr><td class="paramname">default_frequency</td><td>default frequency </td></tr>
+    <tr><td class="paramname">default_step</td><td>increment and decrement step </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="group___g_a03_a.html#ga62a70a5191c3e56dfa6cc51c314bc210">AKC695X::channelToFrequency()</a>, <a class="el" href="class_a_k_c695_x.html#a31bef75624625b33b8afced20a7e08c7">AKC695X::currentFrequency</a>, <a class="el" href="class_a_k_c695_x.html#ae1ddbcc5a1f517f3fda2d3776516c749">AKC695X::currentMode</a>, <a class="el" href="group___g_a03_a.html#ga47a2a79e7c68701c9eb100b1a48adb90">AKC695X::isTuningComplete()</a>, <a class="el" href="_a_k_c695_x_8h.html#acc98e8d3badddd21bc528451bb718f82">MAX_SEEK_TIME</a>, <a class="el" href="group___g_a01.html#a69492e94019f64dbfa51040914da5d81">akc595x_reg0::raw</a>, <a class="el" href="group___g_a01.html#a8640c13d307b61f1fafd9ec3c2d425a3">akc595x_reg0::refined</a>, <a class="el" href="_a_k_c695_x_8h.html#a748ad53bef975af9c1edbcacc58e5be4">REG00</a>, and <a class="el" href="group___g_a03.html#gaffff7bd58909a00d6a461f4a325ab396">AKC695X::setRegister()</a>.</p>
+<p class="reference">References <a class="el" href="group___g_a04.html#ga735ce923f793b2cc437ff4c09cd4f026">AKC695X::commitTune()</a>.</p>
 
 </div>
 </div>
@@ -415,159 +352,37 @@ Operation</h1>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="group___g_a04.html#ga735ce923f793b2cc437ff4c09cd4f026">AKC695X::commitTune()</a>, <a class="el" href="class_a_k_c695_x.html#a750a6bc02db2cc1c8635a3a074ed3189">AKC695X::currentBand</a>, <a class="el" href="class_a_k_c695_x.html#a017b74af1d64d66542ecad53f2b425a7">AKC695X::currentBandMaximumFrequency</a>, <a class="el" href="class_a_k_c695_x.html#a2a62875b6628634dd57ea9631583c14c">AKC695X::currentBandMinimumFrequency</a>, <a class="el" href="class_a_k_c695_x.html#a31bef75624625b33b8afced20a7e08c7">AKC695X::currentFrequency</a>, <a class="el" href="class_a_k_c695_x.html#ae1ddbcc5a1f517f3fda2d3776516c749">AKC695X::currentMode</a>, <a class="el" href="class_a_k_c695_x.html#a3c7d7b2a13c51ef791df48aa7f368d4c">AKC695X::currentStep</a>, <a class="el" href="group___g_a01.html#aa8de9bc3c9fa44a077da80956afd40b1">akc595x_reg1::raw</a>, <a class="el" href="group___g_a01.html#a73da04bffbb53efb86c6976c553689a1">akc595x_reg1::refined</a>, <a class="el" href="_a_k_c695_x_8h.html#a748ad53bef975af9c1edbcacc58e5be4">REG00</a>, <a class="el" href="_a_k_c695_x_8h.html#afc04faecdab9e0d1751466b6c53fdaf1">REG01</a>, <a class="el" href="_a_k_c695_x_8h.html#a09a3d3fef9f53f0dbe1dd0072f02c1d4">REG02</a>, <a class="el" href="_a_k_c695_x_8h.html#ac2446f96334b533154259a21c13950e6">REG03</a>, <a class="el" href="class_a_k_c695_x.html#a811f94a0f66d151050ddf0a480f23196">AKC695X::setCustomBand()</a>, and <a class="el" href="group___g_a03.html#gaffff7bd58909a00d6a461f4a325ab396">AKC695X::setRegister()</a>.</p>
+<p class="reference">References <a class="el" href="group___g_a04.html#ga735ce923f793b2cc437ff4c09cd4f026">AKC695X::commitTune()</a>.</p>
 
 </div>
 </div>
-<a id="gafa446d042f11dd32356d2e95eae9f8cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gafa446d042f11dd32356d2e95eae9f8cf">&#9670;&nbsp;</a></span>setAudio() <span class="overload">[1/2]</span></h2>
+<a id="gabf17b1129300da3388a1ee18735a64e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabf17b1129300da3388a1ee18735a64e6">&#9670;&nbsp;</a></span>setStep()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void AKC695X::setAudio </td>
+          <td class="memname">void AKC695X::setStep </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>step</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Configures the audio output with default values. </p>
-<p>this method sets the audio phase_inv = 0; line = 1 and volume = 40;</p>
-<p>Also, this set the audio controlled by MCU (Arduino)</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_a_k_c695_x.html#aac575af74cdbf784e24366f13fc60f99" title="Sets the kind of audio volume control will be used.">setVolumeControl</a> </dd></dl>
-
-<p class="reference">References <a class="el" href="class_a_k_c695_x.html#aac575af74cdbf784e24366f13fc60f99">AKC695X::setVolumeControl()</a>.</p>
-
-</div>
-</div>
-<a id="ga0ff5be517897a239d2eba9869e1d2591"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga0ff5be517897a239d2eba9869e1d2591">&#9670;&nbsp;</a></span>setAudio() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void AKC695X::setAudio </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>phase_inv</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>line</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>volume</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Configures the audio output. </p>
-<p>This method sets the <a class="el" href="class_a_k_c695_x.html">AKC695X</a> device audio behaviour</p>
+<p>Sets the step that will be used to increment and decrement the current frequency. </p>
+<p>The <a class="el" href="class_a_k_c695_x.html">AKC695X</a> has two possible steps (3KHz and 5KHz). The step value is important to calculate the frequenvy you want to set.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a04.html#ga0873887fb945b74c56f12ec601be00ac" title="Sets the the device to a given frequency.">setFrequency</a> </dd>
+<dd>
+AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 12</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">phase_inv</td><td>if 0, audio output inphase; if 1, audio output inverted </td></tr>
-    <tr><td class="paramname">line</td><td>if 0, audio input mode; if 1, radio mode. </td></tr>
-    <tr><td class="paramname">volume</td><td>if 25 a 63, audio volume; if &lt;= 24 mute </td></tr>
+    <tr><td class="paramname">step</td><td>The valid values are 3 and 5. Other values will be ignored. </td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="reference">References <a class="el" href="group___g_a01.html#aadf07dad5a218aaf1a1879168a1a4c33">akc595x_reg6::raw</a>, <a class="el" href="group___g_a01.html#a7e39c15f73c754cc1152064af92b9018">akc595x_reg6::refined</a>, <a class="el" href="_a_k_c695_x_8h.html#ac5641e8e0c3254714bcd533a4b0111ca">REG06</a>, <a class="el" href="group___g_a03.html#gaffff7bd58909a00d6a461f4a325ab396">AKC695X::setRegister()</a>, and <a class="el" href="class_a_k_c695_x.html#a6eeb46370dd33c3336d4a228a61c4f12">AKC695X::volume</a>.</p>
-
-</div>
-</div>
-<a id="gaf77739f861a531dc4c7e6ac5a6cb2713"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaf77739f861a531dc4c7e6ac5a6cb2713">&#9670;&nbsp;</a></span>setFM()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void AKC695X::setFM </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>akc695x_fm_band</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>minimum_freq</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>maximum_freq</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>default_frequency</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>default_step</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets the <a class="el" href="class_a_k_c695_x.html">AKC695X</a> to FM mode. </p>
-<p>Sets the device to FM mode. You can configure a custom FM band by setting band number greater than 7.</p>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone">FM band </th><th class="markdownTableHeadNone">N# </th><th class="markdownTableHeadNone">Description  </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">000 </td><td class="markdownTableBodyNone">0 </td><td class="markdownTableBodyNone">FM1,87 ~ 108, station search space specified intervals  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">001 </td><td class="markdownTableBodyNone">1 </td><td class="markdownTableBodyNone">FM2,76 ~ 108, station search space specified intervals  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">010 </td><td class="markdownTableBodyNone">2 </td><td class="markdownTableBodyNone">FM3,70 ~ 93, with a space station search interval set  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">011 </td><td class="markdownTableBodyNone">3 </td><td class="markdownTableBodyNone">FM4,76 ~ 90, Tuning predetermined space intervals  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">100 </td><td class="markdownTableBodyNone">4 </td><td class="markdownTableBodyNone">FM5,64 ~ 88, with a space station search interval set  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">101 </td><td class="markdownTableBodyNone">5 </td><td class="markdownTableBodyNone">TV1,56.25 ~ 91.75, station search space specified intervals  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">110 </td><td class="markdownTableBodyNone">6 </td><td class="markdownTableBodyNone">TV2, 174.75 ~ 222.25, found  </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">111 </td><td class="markdownTableBodyNone">7 </td><td class="markdownTableBodyNone">sets predetermined space intervals, custom FM, station search space specified intervals  </td></tr>
-</table>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">akc695x_fm_band</td><td>FM band (see manual FM band table above). Set to a number greater than 7 if you want a custom FM band. </td></tr>
-    <tr><td class="paramname">minimum_freq</td><td>Minimal frequency of the band </td></tr>
-    <tr><td class="paramname">maximum_freq</td><td>Band maximum frequency </td></tr>
-    <tr><td class="paramname">default_frequency</td><td>default frequency </td></tr>
-    <tr><td class="paramname">default_step</td><td>increment and decrement step </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="reference">References <a class="el" href="group___g_a04.html#ga735ce923f793b2cc437ff4c09cd4f026">AKC695X::commitTune()</a>, <a class="el" href="class_a_k_c695_x.html#a750a6bc02db2cc1c8635a3a074ed3189">AKC695X::currentBand</a>, <a class="el" href="class_a_k_c695_x.html#a017b74af1d64d66542ecad53f2b425a7">AKC695X::currentBandMaximumFrequency</a>, <a class="el" href="class_a_k_c695_x.html#a2a62875b6628634dd57ea9631583c14c">AKC695X::currentBandMinimumFrequency</a>, <a class="el" href="class_a_k_c695_x.html#a31bef75624625b33b8afced20a7e08c7">AKC695X::currentFrequency</a>, <a class="el" href="class_a_k_c695_x.html#ae1ddbcc5a1f517f3fda2d3776516c749">AKC695X::currentMode</a>, <a class="el" href="class_a_k_c695_x.html#a3c7d7b2a13c51ef791df48aa7f368d4c">AKC695X::currentStep</a>, <a class="el" href="group___g_a01.html#aa8de9bc3c9fa44a077da80956afd40b1">akc595x_reg1::raw</a>, <a class="el" href="group___g_a01.html#a73da04bffbb53efb86c6976c553689a1">akc595x_reg1::refined</a>, <a class="el" href="_a_k_c695_x_8h.html#a748ad53bef975af9c1edbcacc58e5be4">REG00</a>, <a class="el" href="_a_k_c695_x_8h.html#afc04faecdab9e0d1751466b6c53fdaf1">REG01</a>, <a class="el" href="_a_k_c695_x_8h.html#a09a3d3fef9f53f0dbe1dd0072f02c1d4">REG02</a>, <a class="el" href="_a_k_c695_x_8h.html#ac2446f96334b533154259a21c13950e6">REG03</a>, <a class="el" href="class_a_k_c695_x.html#a811f94a0f66d151050ddf0a480f23196">AKC695X::setCustomBand()</a>, and <a class="el" href="group___g_a03.html#gaffff7bd58909a00d6a461f4a325ab396">AKC695X::setRegister()</a>.</p>
 
 </div>
 </div>
@@ -609,7 +424,33 @@ Operation</h1>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="group___g_a01.html#a362515f796dcf4a48bf6c512cd249cbd">akc595x_reg11::raw</a>, <a class="el" href="group___g_a01.html#ac8a65fa477f6ab7a9890db563b552231">akc595x_reg11::refined</a>, <a class="el" href="_a_k_c695_x_8h.html#a96ac68e41626933b41138548318e052b">REG11</a>, and <a class="el" href="group___g_a03.html#gaffff7bd58909a00d6a461f4a325ab396">AKC695X::setRegister()</a>.</p>
+</div>
+</div>
+<a id="ga61f93b8e7579e4e06d91486dccf1d840"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga61f93b8e7579e4e06d91486dccf1d840">&#9670;&nbsp;</a></span>seekStation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AKC695X::seekStation </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>up_down</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Seeks a FM station. </p>
+<p>Seek a FM Station</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a01.html#unionakc595x__reg20" title="Reg20 (type 0x14 / R)">akc595x_reg20</a>, <a class="el" href="group___g_a01.html#ga3d85865e7c11161e222ed157c4e2d169" title="Reg21 (type 0x15 / R)">akc595x_reg21</a>, <a class="el" href="group___g_a03_a.html#ga62a70a5191c3e56dfa6cc51c314bc210" title="Converts the channel stored in the registers 20 and 21 to frequency.">channelToFrequency</a></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">up_down</td><td>if 0, seek down; if 1, seek up. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -641,41 +482,136 @@ Operation</h1>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="group___g_a04.html#ga735ce923f793b2cc437ff4c09cd4f026">AKC695X::commitTune()</a>, <a class="el" href="class_a_k_c695_x.html#a017b74af1d64d66542ecad53f2b425a7">AKC695X::currentBandMaximumFrequency</a>, <a class="el" href="class_a_k_c695_x.html#a2a62875b6628634dd57ea9631583c14c">AKC695X::currentBandMinimumFrequency</a>, <a class="el" href="class_a_k_c695_x.html#a31bef75624625b33b8afced20a7e08c7">AKC695X::currentFrequency</a>, <a class="el" href="class_a_k_c695_x.html#ae1ddbcc5a1f517f3fda2d3776516c749">AKC695X::currentMode</a>, <a class="el" href="class_a_k_c695_x.html#a3c7d7b2a13c51ef791df48aa7f368d4c">AKC695X::currentStep</a>, <a class="el" href="group___g_a03.html#ga771f5b0ed1750f9b221f5240d3301d5a">AKC695X::getRegister()</a>, <a class="el" href="group___g_a01.html#ab8a46f2282e07caf03adaf6d05613965">akc595x_reg2::raw</a>, <a class="el" href="group___g_a01.html#a09af389773cdc2c0eb69e80f3b924cfb">akc595x_reg2::refined</a>, <a class="el" href="_a_k_c695_x_8h.html#a09a3d3fef9f53f0dbe1dd0072f02c1d4">REG02</a>, <a class="el" href="_a_k_c695_x_8h.html#ac2446f96334b533154259a21c13950e6">REG03</a>, and <a class="el" href="group___g_a03.html#gaffff7bd58909a00d6a461f4a325ab396">AKC695X::setRegister()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="group___g_a04.html#gabb5f99342439074cf8f9353f1d1307f5">AKC695X::frequencyDown()</a>, and <a class="el" href="group___g_a04.html#gaf8351a39885da7e518e6fc5208c801c7">AKC695X::frequencyUp()</a>.</p>
+<p class="reference">References <a class="el" href="group___g_a04.html#ga735ce923f793b2cc437ff4c09cd4f026">AKC695X::commitTune()</a>.</p>
 
 </div>
 </div>
-<a id="gabf17b1129300da3388a1ee18735a64e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gabf17b1129300da3388a1ee18735a64e6">&#9670;&nbsp;</a></span>setStep()</h2>
+<a id="ga1675e3100bba495bc813899563badc42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1675e3100bba495bc813899563badc42">&#9670;&nbsp;</a></span>getFrequency()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void AKC695X::setStep </td>
+          <td class="memname">uint16_t AKC695X::getFrequency </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>step</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the step that will be used to increment and decrement the current frequency. </p>
-<p>The <a class="el" href="class_a_k_c695_x.html">AKC695X</a> has two possible steps (3KHz and 5KHz). The step value is important to calculate the frequenvy you want to set.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a04.html#ga0873887fb945b74c56f12ec601be00ac" title="Sets the the device to a given frequency.">setFrequency</a> </dd>
-<dd>
-AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 12</dd></dl>
+<p>Returns the current frequency value. </p>
+<p>Gets the current frequency. </p><dl class="section return"><dt>Returns</dt><dd>uint16_t Current frequency value. </dd></dl>
+
+</div>
+</div>
+<a id="gaf8351a39885da7e518e6fc5208c801c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf8351a39885da7e518e6fc5208c801c7">&#9670;&nbsp;</a></span>frequencyUp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AKC695X::frequencyUp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds the current step to the current frequency and sets the new frequency. </p>
+<p>Goes to the next frequency channel <br  />
+ </p>
+
+</div>
+</div>
+<a id="gabb5f99342439074cf8f9353f1d1307f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabb5f99342439074cf8f9353f1d1307f5">&#9670;&nbsp;</a></span>frequencyDown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AKC695X::frequencyDown </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Subtracts the current step from the current frequency and assign the new frequency. </p>
+<p>Goes to the previous frequency channel <br  />
+ </p>
+
+</div>
+</div>
+<a id="ga0ff5be517897a239d2eba9869e1d2591"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0ff5be517897a239d2eba9869e1d2591">&#9670;&nbsp;</a></span>setAudio() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AKC695X::setAudio </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>phase_inv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>volume</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configures the audio output. </p>
+<p>This method sets the <a class="el" href="class_a_k_c695_x.html">AKC695X</a> device audio behaviour</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">step</td><td>The valid values are 3 and 5. Other values will be ignored. </td></tr>
+    <tr><td class="paramname">phase_inv</td><td>if 0, audio output inphase; if 1, audio output inverted </td></tr>
+    <tr><td class="paramname">line</td><td>if 0, audio input mode; if 1, radio mode. </td></tr>
+    <tr><td class="paramname">volume</td><td>if 25 a 63, audio volume; if &lt;= 24 mute </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="class_a_k_c695_x.html#a3c7d7b2a13c51ef791df48aa7f368d4c">AKC695X::currentStep</a>.</p>
+</div>
+</div>
+<a id="gafa446d042f11dd32356d2e95eae9f8cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafa446d042f11dd32356d2e95eae9f8cf">&#9670;&nbsp;</a></span>setAudio() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AKC695X::setAudio </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configures the audio output with default values. </p>
+<p>this method sets the audio phase_inv = 0; line = 1 and volume = 40;</p>
+<p>Also, this set the audio controlled by MCU (Arduino)</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_a_k_c695_x.html#aac575af74cdbf784e24366f13fc60f99" title="Sets the kind of audio volume control will be used.">setVolumeControl</a> </dd></dl>
 
 </div>
 </div>
@@ -704,9 +640,25 @@ AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 1
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="group___g_a03.html#ga771f5b0ed1750f9b221f5240d3301d5a">AKC695X::getRegister()</a>, <a class="el" href="group___g_a01.html#aadf07dad5a218aaf1a1879168a1a4c33">akc595x_reg6::raw</a>, <a class="el" href="group___g_a01.html#a7e39c15f73c754cc1152064af92b9018">akc595x_reg6::refined</a>, <a class="el" href="_a_k_c695_x_8h.html#ac5641e8e0c3254714bcd533a4b0111ca">REG06</a>, <a class="el" href="group___g_a03.html#gaffff7bd58909a00d6a461f4a325ab396">AKC695X::setRegister()</a>, and <a class="el" href="class_a_k_c695_x.html#a6eeb46370dd33c3336d4a228a61c4f12">AKC695X::volume</a>.</p>
+</div>
+</div>
+<a id="ga8526d91de9d635764fbba4f6ce1fa7d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8526d91de9d635764fbba4f6ce1fa7d9">&#9670;&nbsp;</a></span>setVolumeUp()</h2>
 
-<p class="reference">Referenced by <a class="el" href="group___g_a04.html#ga743ab35c54155385e6585ee0067a209e">AKC695X::setVolumeDown()</a>, and <a class="el" href="group___g_a04.html#ga8526d91de9d635764fbba4f6ce1fa7d9">AKC695X::setVolumeUp()</a>.</p>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AKC695X::setVolumeUp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Increments the audio volume. </p>
+<p>The maximum volume is 63 </p>
 
 </div>
 </div>
@@ -728,18 +680,16 @@ AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 1
 <p>Decrements the audio volume. </p>
 <p>The minimum volume is 25 </p>
 
-<p class="reference">References <a class="el" href="group___g_a04.html#ga5c11dd6e97fe01ca7214676cb880e4a7">AKC695X::setVolume()</a>, and <a class="el" href="class_a_k_c695_x.html#a6eeb46370dd33c3336d4a228a61c4f12">AKC695X::volume</a>.</p>
-
 </div>
 </div>
-<a id="ga8526d91de9d635764fbba4f6ce1fa7d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga8526d91de9d635764fbba4f6ce1fa7d9">&#9670;&nbsp;</a></span>setVolumeUp()</h2>
+<a id="gadf936fa32a36782b72633cae84d63f88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadf936fa32a36782b72633cae84d63f88">&#9670;&nbsp;</a></span>getRSSI()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void AKC695X::setVolumeUp </td>
+          <td class="memname">int AKC695X::getRSSI </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -747,10 +697,28 @@ AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 1
       </table>
 </div><div class="memdoc">
 
-<p>Increments the audio volume. </p>
-<p>The maximum volume is 63 </p>
+<p>Gets the current RSSI. </p>
+<p>Gets the current RSSI </p><dl class="section return"><dt>Returns</dt><dd>int RSSI value </dd></dl>
 
-<p class="reference">References <a class="el" href="group___g_a04.html#ga5c11dd6e97fe01ca7214676cb880e4a7">AKC695X::setVolume()</a>, and <a class="el" href="class_a_k_c695_x.html#a6eeb46370dd33c3336d4a228a61c4f12">AKC695X::volume</a>.</p>
+</div>
+</div>
+<a id="ga580389b4740ed5cabcba28e481344a64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga580389b4740ed5cabcba28e481344a64">&#9670;&nbsp;</a></span>getSupplyVoltage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float AKC695X::getSupplyVoltage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the supply voltage. </p>
+<p>Gets the current supply voltage </p><dl class="section return"><dt>Returns</dt><dd>float the supply voltage </dd></dl>
 
 </div>
 </div>
