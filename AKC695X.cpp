@@ -328,7 +328,7 @@ void AKC695X::setFmStereoMono(uint8_t value)
 {
     akc595x_reg7 reg7;
     reg7.raw = getRegister(REG07); // Gets the current value
-    reg7.refined.stereo_mono;      // Sets just DE attribute
+    reg7.refined.stereo_mono;      // Sets just the attribute
     setRegister(REG07, reg7.raw);   // Store the new REG07 content
 }
 
@@ -349,7 +349,7 @@ void AKC695X::setFmBandwidth(uint8_t value)
 {
     akc595x_reg7 reg7;
     reg7.raw = getRegister(REG07); // Gets the current value
-    reg7.refined.stereo_mono;      // Sets just DE attribute
+    reg7.refined.stereo_mono;      // Sets just the attribute
     setRegister(REG07, reg7.raw);   // Store the new REG07 content
 }
 
