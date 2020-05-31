@@ -125,6 +125,21 @@ uint8_t AKC695X::getRegister(uint8_t reg)
     return result;
 }
 
+/**
+ * @todo Adjust setAM and setFM for selected crystal 
+ * @brief Sets the kind of Crystal
+ * @details This method sets the Crystal type you are using in your circuit. 
+ * @details The valid crystal type are 12MHz or 32.768Khz
+ *  
+ * @param crystal   0 = 12MHz;  1 = 32.768KHz
+ */
+void AKC695X::setCrystalType(uint8_t crystal) {
+    akc595x_reg2 reg2; 
+    reg2.raw = getRegister(REG02);          // Gets the current value of the register 2
+    reg2.refined.ref_32k_mode = crystal;    // sets the crystal used
+    setRegister(REG02,reg2.raw);
+} 
+
 /** 
  * @defgroup GA03A Current Tune Status 
  * @section  GA03A Current Tune Status  
@@ -284,6 +299,59 @@ uint8_t AKC695X::getFmCarrierNoiseRatio()
     return reg23.refined.cnrfm;
 };
 
+/**
+ * @brief Sets de-emphasis 
+ * @details Sets de-emphasis to 50us (Asia) or 75us (USA).
+  * 
+ * @param de  0 = 75us; 1 = 50us
+ */
+void AKC695X::setFmEmphasis( uint8_t de) {
+    akc595x_reg7 reg7;
+    reg7.raw = getRegister(REG07); // Gets the current value 
+    reg7.refined.de = de;          // Sets just DE attribute 
+    setRegister(REG07, reg7.raw);        // Store the new REG07 content 
+}
+
+/**
+ * @brief Sets the FM stereo or mono 
+ * @details This method configures the stereo behavior
+ * 
+ * | Parameter vaue |  Description   |
+ * | -------------- | -------------  | 
+ * |       0        | Auto stereo    | 
+ * |       2        | Force stereo   | 
+ * |       1        | Mono           | 
+ * 
+ * @param value     see table above
+ */
+void AKC695X::setFmStereoMono(uint8_t value)
+{
+    akc595x_reg7 reg7;
+    reg7.raw = getRegister(REG07); // Gets the current value
+    reg7.refined.stereo_mono;      // Sets just DE attribute
+    setRegister(REG07, reg7.raw);   // Store the new REG07 content
+}
+
+/**
+ * @brief Sets the FM Bandwidth  
+ * @details This method configures FM Bandwidth  
+ * 
+ * | Parameter vaue |  Bandwidth |
+ * | -------------- | -----------| 
+ * |       0        | 150KHz     | 
+ * |       1        | 200KHz     | 
+ * |       2        | 50KHz      | 
+ * |       3        | 100KHz     |  
+ * 
+ * @param value     see table above
+ */
+void AKC695X::setFmBandwidth(uint8_t value)
+{
+    akc595x_reg7 reg7;
+    reg7.raw = getRegister(REG07); // Gets the current value
+    reg7.refined.stereo_mono;      // Sets just DE attribute
+    setRegister(REG07, reg7.raw);   // Store the new REG07 content
+}
 
 /** 
  * @defgroup GA04 Receiver Operation Methods 
@@ -352,8 +420,8 @@ void AKC695X::setCustomBand(uint8_t band, uint16_t minimum_frequency, uint16_t m
     setRegister(REG05, reg5);
 }
 
-
 /**
+ * @todo  Adjust for selected crystal type
  * @ingroup GA04
  * @brief Sets the AKC695X to FM mode
  * @details Sets the device to FM mode. You can configure a custom FM band by setting band number greater than 7.
@@ -375,8 +443,7 @@ void AKC695X::setCustomBand(uint8_t band, uint16_t minimum_frequency, uint16_t m
  * @param default_frequency     default frequency
  * @param default_step          increment and decrement step 
  */
-    void
-    AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step)
+void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step)
 {
     uint16_t channel;
     uint8_t high_bit, low_bit;
@@ -411,6 +478,7 @@ void AKC695X::setCustomBand(uint8_t band, uint16_t minimum_frequency, uint16_t m
 }
 
 /**
+ * @todo  Adjust for selected crystal type
  * @ingroup GA04
  * @brief Sets the AKC695X to AM mode and selects the band
  * @details This method configures the AM band you want to use. 

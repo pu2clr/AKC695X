@@ -151,7 +151,7 @@ typedef union {
     {
         uint8_t channel : 5;      //!< (0:4) - 5 most significant bits that represents the channel (see reg3)
         uint8_t mode3k : 1;       //!< (5)   - 1 = 3K; 0 = 5K
-        uint8_t ref_37k_mode : 1; //!< (6)   - 1 = 32K ref. crystal clock; 0 = 12MHz ref crystal clock
+        uint8_t ref_32k_mode : 1; //!< (6)   - 1 = 32K ref. crystal clock; 0 = 12MHz ref crystal clock
         uint8_t rsv : 1;          //!< (7)   - Reserved - Debug use, do not change this value using
     } refined;
     uint8_t raw;
@@ -461,9 +461,15 @@ public:
     void powerOn(uint8_t fm_en, uint8_t tune, uint8_t mute, uint8_t seek, uint8_t seekup);
     void setRegister(uint8_t reg, uint8_t parameter);
     uint8_t getRegister(uint8_t reg);
+    void setCrystalType(uint8_t crystal);
 
     bool isTuned();
     bool isTuningComplete();
+
+    void setFmEmphasis(uint8_t de);
+    void setFmStereoMono(uint8_t value);
+    void setFmBandwidth(uint8_t value);
+
     uint8_t isCurrentModeFM();
     uint16_t getCurrentChannel();
     uint16_t channelToFrequency();
