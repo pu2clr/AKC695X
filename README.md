@@ -40,7 +40,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## About AKC695X / M695X DSP radio 
 
-The AKC695X is a family of IC DSP receiver from AKC technology. The AKC6955 and AKC6959 support AM and FM modes. 
+The AKC695X is a family of IC DSP receiver from AKC technology. The AKC6955 and AKC6959sx support AM and FM modes. 
 On AM mode the AKC6955 and AKC6969 work on LW, MW and SW. On FM mode they work from 64MHz to 222MHz.
 
 
@@ -49,37 +49,37 @@ On AM mode the AKC6955 and AKC6969 work on LW, MW and SW. On FM mode they work f
 The table below shows some features fo the AKC695X devices family.
 
 
-| Feature                                                                   | AKC6951 | AKC6955 | AKC6959 |
-| ------------------------------------------------------------------------- | ------- | ------- | ------- |
-| stand by 30 ~ 230MHz Any frequency FM demodulation                        |   X     |    X    |    X    |
-| stand by 0.15 ~ 30MHz Any frequency AM demodulation                       |   X     |    X    |    X    |
-| Preset FM band ( 64 ~ 108 MHz )                                           |   X     |    X    |    X    |
-| stand by TV1 audio( 56.25 ~ 91.75 MHz )                                   |   X     |    X    |    X    |
-| stand by TV2 audio( 174.75 ~ 222.25 MHz )                                 |   X     |    X    |    X    |
-| Presets wave band ( 520 ~ 1730 KHz )                                      |   X     |    X    |    X    |
-| Preset shortwave band ( 3.2 ~ 21.9 MHz )                                  |         |    X    |    X    |
-| Preset long-wave band ( 150 ~ 285 KHz )                                   |   X     |    X    |    X    |
-| Custom support band                                                       |   X     |    X    |    X    |
-| It supports a wide supply voltage range: 2.0V ~ 4.5V                      |   X     |    X    |    X    |
-| stand by 32.768KHz & 12MHz Passive mode crystal reference clock and Pin   |   X     |    X    |    X    |
-| Integrated audio amplifier (maximum power differential 0.5W )             |   X     |    X    |    X    |
-| Two kinds of control volume: volume potentiometer and the volume register |   X     |    X    |    X    |
-| Two kinds of de-emphasis modes: 50us / 75us                               |   X     |    X    |    X    |
-| Support tuning lamp function                                              |   X     |    X    |    X    |
-| The audio output may be in phase, may be inverted output                  |   X     |    X    |    X    |
-| Support for stereo line input                                             |   X     |    X    |    X    |
-| Support low-power standby mode, 3V When power consumption 10uA            |   X     |    X    |    X    |
-| Internal integrated PLL                                                   |   X     |    X    |    X    |
-| Intelligent frequency control                                             |   X     |    X    |    X    |
-| AGC                                                                       |   X     |    X    |    X    |
-| Precise digital demodulation                                              |   X     |    X    |    X    |
-| Smart mute function                                                       |   X     |    X    |    X    |
-| SW Increased tracking filter, greatly improving SW Audibility             |         |    X    |    X    |
-| MW Precise tuning adaptive front end                                      |   X     |    X    |    X    |
-| FM Subwoofer                                                              |   X     |    X    |    X    |
-| integrated LDO                                                            |   X     |    X    |    X    |
-| According to the battery voltage, automatically adjust the volume         |   X     |    X    |    X    |
-| Pb-free / RoHS complian                                                   |   X     |    X    |    X    |
+| Feature                                                                   | AKC6951 | AKC6955 | AKC6959sx |
+| ------------------------------------------------------------------------- | ------- | ------- | -------   |
+| stand by 30 ~ 230MHz Any frequency FM demodulation                        |   X     |    X    |    X      |
+| stand by 0.15 ~ 30MHz Any frequency AM demodulation                       |   X     |    X    |    X      |
+| Preset FM band ( 64 ~ 108 MHz )                                           |   X     |    X    |    X      |
+| stand by TV1 audio( 56.25 ~ 91.75 MHz )                                   |   X     |    X    |    X      |
+| stand by TV2 audio( 174.75 ~ 222.25 MHz )                                 |   X     |    X    |    X      |
+| Presets wave band ( 520 ~ 1730 KHz )                                      |   X     |    X    |    X      |
+| Preset shortwave band ( 3.2 ~ 21.9 MHz )                                  |         |    X    |    X      |
+| Preset long-wave band ( 150 ~ 285 KHz )                                   |   X     |    X    |    X      |
+| Custom support band                                                       |   X     |    X    |    X      |
+| It supports a wide supply voltage range: 2.0V ~ 4.5V                      |   X     |    X    |    X      |
+| stand by 32.768KHz & 12MHz Passive mode crystal reference clock and Pin   |   X     |    X    |    X      |
+| Integrated audio amplifier (maximum power differential 0.5W )             |   X     |    X    |    X      |
+| Two kinds of control volume: volume potentiometer and the volume register |   X     |    X    |    X      |
+| Two kinds of de-emphasis modes: 50us / 75us                               |   X     |    X    |    X      |
+| Support tuning lamp function                                              |   X     |    X    |    X      |
+| The audio output may be in phase, may be inverted output                  |   X     |    X    |    X      |
+| Support for stereo line input                                             |   X     |    X    |    X      |
+| Support low-power standby mode, 3V When power consumption 10uA            |   X     |    X    |    X      |
+| Internal integrated PLL                                                   |   X     |    X    |    X      |
+| Intelligent frequency control                                             |   X     |    X    |    X      |
+| AGC                                                                       |   X     |    X    |    X      |
+| Precise digital demodulation                                              |   X     |    X    |    X      |
+| Smart mute function                                                       |   X     |    X    |    X      |
+| SW Increased tracking filter, greatly improving SW Audibility             |         |    X    |    X      |
+| MW Precise tuning adaptive front end                                      |   X     |    X    |    X      |
+| FM Subwoofer                                                              |   X     |    X    |    X      |
+| integrated LDO                                                            |   X     |    X    |    X      |
+| According to the battery voltage, automatically adjust the volume         |   X     |    X    |    X      |
+| Pb-free / RoHS complian                                                   |   X     |    X    |    X      |
 
 __Sources:__  AKC6951, AKC6955 and AKC6959 Datasheets.
 
