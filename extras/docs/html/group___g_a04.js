@@ -6,7 +6,7 @@ var group___g_a04 =
     [ "setAM", "group___g_a04.html#ga8f61d1c6b668dbcdb5917b58580ed44e", null ],
     [ "setStep", "group___g_a04.html#gabf17b1129300da3388a1ee18735a64e6", null ],
     [ "setFmSeekStep", "group___g_a04.html#gaabe4bb9635ae8a7b53a5fd48b98d6339", null ],
-    [ "seekStation", "group___g_a04.html#ga61f93b8e7579e4e06d91486dccf1d840", null ],
+    [ "seekStation", "group___g_a04.html#ga60e4f53f014c32b748de04c9d643826d", null ],
     [ "setFrequency", "group___g_a04.html#ga0873887fb945b74c56f12ec601be00ac", null ],
     [ "getFrequency", "group___g_a04.html#ga1675e3100bba495bc813899563badc42", null ],
     [ "frequencyUp", "group___g_a04.html#gaf8351a39885da7e518e6fc5208c801c7", null ],

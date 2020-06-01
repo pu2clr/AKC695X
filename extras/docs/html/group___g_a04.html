@@ -110,9 +110,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gaabe4bb9635ae8a7b53a5fd48b98d6339"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#gaabe4bb9635ae8a7b53a5fd48b98d6339">AKC695X::setFmSeekStep</a> (uint8_t value)</td></tr>
 <tr class="memdesc:gaabe4bb9635ae8a7b53a5fd48b98d6339"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets FM step for seeking.  <a href="group___g_a04.html#gaabe4bb9635ae8a7b53a5fd48b98d6339">More...</a><br /></td></tr>
 <tr class="separator:gaabe4bb9635ae8a7b53a5fd48b98d6339"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga61f93b8e7579e4e06d91486dccf1d840"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#ga61f93b8e7579e4e06d91486dccf1d840">AKC695X::seekStation</a> (uint8_t up_down)</td></tr>
-<tr class="memdesc:ga61f93b8e7579e4e06d91486dccf1d840"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seeks a FM station.  <a href="group___g_a04.html#ga61f93b8e7579e4e06d91486dccf1d840">More...</a><br /></td></tr>
-<tr class="separator:ga61f93b8e7579e4e06d91486dccf1d840"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga60e4f53f014c32b748de04c9d643826d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#ga60e4f53f014c32b748de04c9d643826d">AKC695X::seekStation</a> (uint8_t up_down, void(*showFunc)()=NULL)</td></tr>
+<tr class="memdesc:ga60e4f53f014c32b748de04c9d643826d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Seeks a FM station.  <a href="group___g_a04.html#ga60e4f53f014c32b748de04c9d643826d">More...</a><br /></td></tr>
+<tr class="separator:ga60e4f53f014c32b748de04c9d643826d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0873887fb945b74c56f12ec601be00ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#ga0873887fb945b74c56f12ec601be00ac">AKC695X::setFrequency</a> (uint16_t frequency)</td></tr>
 <tr class="memdesc:ga0873887fb945b74c56f12ec601be00ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the the device to a given frequency.  <a href="group___g_a04.html#ga0873887fb945b74c56f12ec601be00ac">More...</a><br /></td></tr>
 <tr class="separator:ga0873887fb945b74c56f12ec601be00ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -478,8 +478,8 @@ AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 1
 
 </div>
 </div>
-<a id="ga61f93b8e7579e4e06d91486dccf1d840"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga61f93b8e7579e4e06d91486dccf1d840">&#9670;&nbsp;</a></span>seekStation()</h2>
+<a id="ga60e4f53f014c32b748de04c9d643826d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga60e4f53f014c32b748de04c9d643826d">&#9670;&nbsp;</a></span>seekStation()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -488,18 +488,35 @@ AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 1
           <td class="memname">void AKC695X::seekStation </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>up_down</em></td><td>)</td>
+          <td class="paramname"><em>up_down</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">void(*)()&#160;</td>
+          <td class="paramname"><em>showFunc</em> = <code>NULL</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Seeks a FM station. </p>
 <p>Seek a FM Station</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a01.html#unionakc595x__reg20" title="Reg20 (type 0x14 / R)">akc595x_reg20</a>, <a class="el" href="group___g_a01.html#ga3d85865e7c11161e222ed157c4e2d169" title="Reg21 (type 0x15 / R)">akc595x_reg21</a>, <a class="el" href="group___g_a03_a.html#ga62a70a5191c3e56dfa6cc51c314bc210" title="Converts the channel stored in the registers 20 and 21 to frequency.">channelToFrequency</a></dd></dl>
+<div class="fragment"><div class="line"><span class="comment">// Do this if you want to show the frequency during the seek process. </span></div>
+<div class="line"><span class="comment">// Where showFrequency is the function name of your sketch that shows the current frequency.  </span></div>
+<div class="line">radio.seekStation(up_down,showFrequency);  </div>
+</div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">// Do this if you don&#39;t want to show the frequency during seek process. </span></div>
+<div class="line">radio.seekStation(up_down);  </div>
+</div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a01.html#unionakc595x__reg20" title="Reg20 (type 0x14 / R)">akc595x_reg20</a>, <a class="el" href="group___g_a01.html#ga3d85865e7c11161e222ed157c4e2d169" title="Reg21 (type 0x15 / R)">akc595x_reg21</a>, <a class="el" href="group___g_a03_a.html#ga62a70a5191c3e56dfa6cc51c314bc210" title="Converts the channel stored in the registers 20 and 21 to frequency.">channelToFrequency</a></dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">up_down</td><td>if 0, seek down; if 1, seek up. </td></tr>
+    <tr><td class="paramname">showFunc</td><td>Optional. Point to the function in you sketch that shows the current frequency. If NULL, do nothing (default). <br  />
+ </td></tr>
   </table>
   </dd>
 </dl>

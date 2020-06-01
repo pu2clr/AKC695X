@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['seekstation_213',['seekStation',['../group___g_a04.html#ga61f93b8e7579e4e06d91486dccf1d840',1,'AKC695X']]],
+  ['seekstation_213',['seekStation',['../group___g_a04.html#ga60e4f53f014c32b748de04c9d643826d',1,'AKC695X']]],
   ['setam_214',['setAM',['../group___g_a04.html#ga8f61d1c6b668dbcdb5917b58580ed44e',1,'AKC695X']]],
   ['setaudio_215',['setAudio',['../group___g_a04.html#ga0ff5be517897a239d2eba9869e1d2591',1,'AKC695X::setAudio(uint8_t phase_inv, uint8_t line, uint8_t volume)'],['../group___g_a04.html#gafa446d042f11dd32356d2e95eae9f8cf',1,'AKC695X::setAudio()']]],
   ['setcrystaltype_216',['setCrystalType',['../group___g_a03.html#ga860660a84657a9ee209eb6f9459447de',1,'AKC695X']]],
