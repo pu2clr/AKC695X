@@ -867,11 +867,14 @@ void AKC695X::setVolumeControl(uint8_t type)
  * @ingroup GA04
  * @brief Gets the current RSSI
  * @details This method calculates the RSSI based on two register (24 and 27).
+ * @details Actually, it is the Antenna aperture and can be calculated using signal levels rssi, pgalevel_rf, pgalevel_if.
+ * @details The rssi is stored in the register 27 and the pgalevel_rf, pgalevel_if are stored in register 24.
  * @details On FM mode or SW band, the formula is: Pin (dBuV) = 103 - rssi - 6 * pgalevel_rf - 6 * pgalevel_if
  * @details On AM mode (LW or MW), the formula is: Pin (dBuV) = 123 - rssi - 6 * pgalevel_rf - 6 * pgalevel_if  
  * 
+ * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio; page 16 
  * @see akc595x_reg24, akc595x_reg27
- * 
+ *  
  * @return int  RSSI value
  */
 int AKC695X::getRSSI()
