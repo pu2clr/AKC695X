@@ -83,7 +83,7 @@ On AM mode the AKC6955 and AKC6969 work on LW, MW and SW. On FM mode they work f
 
 ### AKC695X features
 
-The table below shows some features fo the AKC695X devices family.
+The table below shows some AKC695X devices family features.
 
 
 | Feature                                                                   | AKC6951 | AKC6955 | AKC6959sx |
