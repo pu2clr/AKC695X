@@ -50,7 +50,8 @@ akc_band band[] = {
     {0, 12, 15000, 15900, 15300, 5},
     {0, 13, 17400, 17900, 17600, 5},  
     {0, 15, 21400, 21900, 21525, 5},
-    {0, 18, 27000, 28000, 27500, 3} } ;
+    {0, 18, 27000, 28000, 27500, 3},
+    {1,  7, 1400, 1480, 1450, 1}};
 
 const int lastBand = (sizeof band / sizeof(akc_band)) - 1;
 int bandIdx = 0; // FM
@@ -104,7 +105,7 @@ void setup()
 
   // You can select the RESET pin and Crystal type you are using in your circuit. 
   // Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32KHZ or CRYSTAL_12MHZ
-  radio.setup(RESET_PIN, CRYSTAL_12MHZ);
+  radio.setup(RESET_PIN, CRYSTAL_32KHZ);
 
   radio.setFM(band[bandIdx].band, band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency,band[bandIdx].default_frequency, band[bandIdx].step);
   radio.setAudio(); // Sets the audio output behaviour (default configuration).
@@ -406,6 +407,7 @@ void useBand() {
   if (band[bandIdx].mode ==  1) 
   {
     radio.setFM(band[bandIdx].band, band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
+    radio.setFmSeekStep(0); // 25KHz.
   }
   else
   {

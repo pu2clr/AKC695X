@@ -75,7 +75,7 @@ void AKC695X::setup(int resetPin, uint8_t crystal_type)
  * @param resetPin      if >= 0,  then you control the RESET. if -1, you are using ths MCU RST pin. 
  */
 void AKC695X::setup(int resetPin) {
-    this->setup(resetPin, CYRSTAL_32KHZ);
+    this->setup(resetPin, CRYSTAL_32KHZ);
 }
 
 /**
@@ -484,7 +484,7 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t max
 
     setRegister(REG00, 0b00010011); // Sets to FM (Power On)
 
-    if (akc695x_fm_band > 7 )
+    if (akc695x_fm_band > 6 )
         setCustomBand(minimum_freq, maximum_freq); // Sets a custom FM band 
 
     setRegister(REG01, reg1.raw); // Sets the FM band
