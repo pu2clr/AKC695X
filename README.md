@@ -424,6 +424,21 @@ The figure and table below show the pin description of the AKC6951 and AKC6955.
 # Prototype Photos
 
 
+![Photo 01](https://pu2clr.github.io/AKC695X/extras/images/board_adapter_12MHZ_01.png)
+
+<BR>
+
+![Ponto 02](https://pu2clr.github.io/AKC695X/extras/images/board_adapter_32KHz_03.png)
+
+<BR>
+
+![Photo 03](https://pu2clr.github.io/AKC695X/extras/images/prototype_tmp_03.png)
+
+<BR>
+
+![Photo 03](https://pu2clr.github.io/AKC695X/extras/images/prototype_tmp_02.png)
+
+<BR>
 
 
 # Videos
