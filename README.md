@@ -363,6 +363,8 @@ The figure below shows the basic schematic of the AKC695X and Arduino Pro Mini 3
 
 ### Component parts
 
+
+
 |               | Name              | Description | 
 | --------------| ----------------- | ----------- | 
 |               | AKC6955           | SSOP24 DSP receiver from AKC. You also can use AKC5951 (just FM and AM/MW) or AKC6959sx  | 
