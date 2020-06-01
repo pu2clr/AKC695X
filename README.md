@@ -11,6 +11,9 @@ The PU2CLR AKC695X Arduino Library also intend to be used on __all members of th
 Contact: __pu2clr@gmail.com__.
 
 
+Be a member of Facebook group [DSP receivers for hobbyists](https://www.facebook.com/groups/2655942598067211)
+
+
 # Contents
 
 1. [Preface](https://pu2clr.github.io/AKC695X/#preface) 
@@ -31,7 +34,6 @@ Contact: __pu2clr@gmail.com__.
 
 The AKC695X devices will surprise hobbyists and experimenters with its simplicity to build FM and AM (LW, MW, SW) receivers. There are currently several receivers based on DSP technology. The KT0915 and SI4735 devices are some examples widely disseminated in the market. This library was developed with the purpose of expanding the alternatives to electronics hobbyists and radio listeners. 
 In this document you will see Arduino source codes, schematics, examples and tips to help you to build a receiver based on Arduino board and AKC695X devices. 
-
 
 {% include video01.html %} 
 
