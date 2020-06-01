@@ -367,8 +367,8 @@ The figure below shows the basic schematic of the AKC695X and Arduino Pro Mini 3
 
 |               | Name              | Description | 
 | --------------| ----------------- | ----------- | 
-|               | AKC6955           | SSOP24 DSP receiver from AKC. You also can use AKC5951 (just FM and AM/MW) or AKC6959sx  | 
-|               | Arduino Board     | It can be an Atmega based board, SMT32, ESP32, Attiny or another compatible Arduino board | 
+| AKC6955       | SSOP24 DSP receiver from AKC. You also can use AKC5951 (just FM and AM/MW) or AKC6959sx  | 
+| Arduino Board | It can be an Atmega based board, SMT32, ESP32, Attiny or another compatible Arduino board | 
 | Y1            | 32.32.768KHz or 12MHz crystal oscillator. By default this library uses 32.768KHz. But, you can set it to deal with 12MHz crystal. See [API Documentation](https://pu2clr.github.io/AKC695X/extras/docs/html/index.html) |
 | C1 and C2     | 22pF capacitor    | Ceramic  or Tantalum capacitor |
 | C3            | 470uF capacitor   | Electrolytic capacitor | 
