@@ -27,25 +27,27 @@ var NAVTREE =
     [ "<a href=\"https://pu2clr.github.io/AKC695X\">PU2CLR AKC695X Arduino Library</a>", "md__a_k_c695_x__r_e_a_d_m_e.html", [
       [ "Contents", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md1", [
         [ "Preface", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md2", null ],
-        [ "MIT License", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md3", null ],
-        [ "About AKC695X / M695X DSP radio", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md4", [
-          [ "AKC695X features", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md5", null ]
+        [ "Library Features", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md3", null ],
+        [ "MIT License", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md4", null ],
+        [ "Library Installation", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md5", null ],
+        [ "About AKC695X / M695X DSP radio", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md6", [
+          [ "AKC695X features", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md7", null ]
         ] ],
-        [ "Registers setup", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md6", [
-          [ "Register operations", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md7", [
-            [ "Table Reg0", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md8", null ],
-            [ "Table Reg1", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md10", null ],
-            [ "Table Reg2  and Reg3", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md14", null ],
-            [ "Reg2", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md15", null ]
+        [ "Registers setup", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md8", [
+          [ "Register operations", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md9", [
+            [ "Table Reg0", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md10", null ],
+            [ "Table Reg1", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md12", null ],
+            [ "Table Reg2  and Reg3", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md16", null ],
+            [ "Reg2", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md17", null ]
           ] ]
         ] ],
-        [ "Schematic", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md19", [
-          [ "AKC695X Pin definitions", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md20", null ]
+        [ "Schematic", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md21", [
+          [ "AKC695X Pin definitions", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md22", null ]
         ] ]
       ] ],
-      [ "Videos", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md21", null ],
-      [ "Receivers based on", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md22", null ],
-      [ "References", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md23", null ]
+      [ "Videos", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md23", null ],
+      [ "Receivers based on", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md24", null ],
+      [ "References", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md25", null ]
     ] ],
     [ "Todo List", "todo.html", null ],
     [ "Modules", "modules.html", "modules" ],
@@ -74,7 +76,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_a_k_c695_x_8cpp.html",
-"group___g_a04.html#ga8f61d1c6b668dbcdb5917b58580ed44e"
+"group___g_a04.html#ga735ce923f793b2cc437ff4c09cd4f026"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

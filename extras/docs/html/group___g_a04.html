@@ -95,9 +95,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga735ce923f793b2cc437ff4c09cd4f026"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#ga735ce923f793b2cc437ff4c09cd4f026">AKC695X::commitTune</a> ()</td></tr>
 <tr class="memdesc:ga735ce923f793b2cc437ff4c09cd4f026"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the STC bit to high when the tune operation completes.  <a href="group___g_a04.html#ga735ce923f793b2cc437ff4c09cd4f026">More...</a><br /></td></tr>
 <tr class="separator:ga735ce923f793b2cc437ff4c09cd4f026"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga811f94a0f66d151050ddf0a480f23196"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#ga811f94a0f66d151050ddf0a480f23196">AKC695X::setCustomBand</a> (uint8_t band, uint16_t minimum_frequency, uint16_t maximum_frequency)</td></tr>
-<tr class="memdesc:ga811f94a0f66d151050ddf0a480f23196"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the start and end frequencies for a custom band.  <a href="group___g_a04.html#ga811f94a0f66d151050ddf0a480f23196">More...</a><br /></td></tr>
-<tr class="separator:ga811f94a0f66d151050ddf0a480f23196"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0401dca3302ebfe9f35c215bb0a76364"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#ga0401dca3302ebfe9f35c215bb0a76364">AKC695X::setCustomBand</a> (uint16_t minimum_frequency, uint16_t maximum_frequency)</td></tr>
+<tr class="memdesc:ga0401dca3302ebfe9f35c215bb0a76364"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the start and end frequencies for a custom band.  <a href="group___g_a04.html#ga0401dca3302ebfe9f35c215bb0a76364">More...</a><br /></td></tr>
+<tr class="separator:ga0401dca3302ebfe9f35c215bb0a76364"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf77739f861a531dc4c7e6ac5a6cb2713"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#gaf77739f861a531dc4c7e6ac5a6cb2713">AKC695X::setFM</a> (uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step)</td></tr>
 <tr class="memdesc:gaf77739f861a531dc4c7e6ac5a6cb2713"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the <a class="el" href="class_a_k_c695_x.html">AKC695X</a> to FM mode.  <a href="group___g_a04.html#gaf77739f861a531dc4c7e6ac5a6cb2713">More...</a><br /></td></tr>
 <tr class="separator:gaf77739f861a531dc4c7e6ac5a6cb2713"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -176,8 +176,8 @@ Operation</h1>
 
 </div>
 </div>
-<a id="ga811f94a0f66d151050ddf0a480f23196"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga811f94a0f66d151050ddf0a480f23196">&#9670;&nbsp;</a></span>setCustomBand()</h2>
+<a id="ga0401dca3302ebfe9f35c215bb0a76364"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga0401dca3302ebfe9f35c215bb0a76364">&#9670;&nbsp;</a></span>setCustomBand()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -185,12 +185,6 @@ Operation</h1>
         <tr>
           <td class="memname">void AKC695X::setCustomBand </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>band</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">uint16_t&#160;</td>
           <td class="paramname"><em>minimum_frequency</em>, </td>
         </tr>
@@ -271,7 +265,7 @@ Operation</h1>
 </div><div class="memdoc">
 
 <p>Sets the <a class="el" href="class_a_k_c695_x.html">AKC695X</a> to FM mode. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Adjust for selected crystal type </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Adjust for selected crystal type </dd></dl>
 <p>Sets the device to FM mode. You can configure a custom FM band by setting band number greater than 7.</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -353,7 +347,7 @@ Operation</h1>
 </div><div class="memdoc">
 
 <p>Sets the <a class="el" href="class_a_k_c695_x.html">AKC695X</a> to AM mode and selects the band. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>Adjust for selected crystal type </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Adjust for selected crystal type </dd></dl>
 <p>This method configures the AM band you want to use.</p>
 <p>You must respect the frequency limits defined by the AKC595X device documentation.</p>
 <p>You can configure a custom band by setting a band greater than 17</p>

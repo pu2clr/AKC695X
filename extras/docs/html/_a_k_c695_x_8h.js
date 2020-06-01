@@ -4,6 +4,8 @@ var _a_k_c695_x_8h =
     [ "DEFAUL_I2C_ADDRESS", "_a_k_c695_x_8h.html#adb1c3cfb6a6aaf2a5dd1096c31dcb150", null ],
     [ "CURRENT_MODE_FM", "_a_k_c695_x_8h.html#a375ba4a968253cd1628914e7e6ebc40e", null ],
     [ "CURRENT_MODE_AM", "_a_k_c695_x_8h.html#a2edf821051a85e58efeb2ff3a8e31f21", null ],
+    [ "CRYSTAL_12MHZ", "_a_k_c695_x_8h.html#a74c62040d9bf060c6281703c49412772", null ],
+    [ "CYRSTAL_32KHZ", "_a_k_c695_x_8h.html#ad4dba84491c8b220fe620e1f48ab2ce3", null ],
     [ "MAX_SEEK_TIME", "_a_k_c695_x_8h.html#acc98e8d3badddd21bc528451bb718f82", null ],
     [ "AKC595X_I2C_ADRESS", "_a_k_c695_x_8h.html#a4f9ba789d49e4594b1c43508cc3856cc", null ],
     [ "REG00", "_a_k_c695_x_8h.html#a748ad53bef975af9c1edbcacc58e5be4", null ],

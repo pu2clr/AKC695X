@@ -98,6 +98,9 @@ Functions</h2></td></tr>
 <tr class="memitem:gae472084d592c6b814d7a6d72bab5af05"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#gae472084d592c6b814d7a6d72bab5af05">AKC695X::setI2CBusAddress</a> (int <a class="el" href="class_a_k_c695_x.html#ab7cd32a73bfe5345422dbebcd6b54ca7">deviceAddress</a>)</td></tr>
 <tr class="memdesc:gae472084d592c6b814d7a6d72bab5af05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the I2C bus device address.  <a href="group___g_a03.html#gae472084d592c6b814d7a6d72bab5af05">More...</a><br /></td></tr>
 <tr class="separator:gae472084d592c6b814d7a6d72bab5af05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1da8ed0e900d063c21b73b51d9310e60"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#ga1da8ed0e900d063c21b73b51d9310e60">AKC695X::setup</a> (int reset_pin, uint8_t crystal_type)</td></tr>
+<tr class="memdesc:ga1da8ed0e900d063c21b73b51d9310e60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receiver startup.  <a href="group___g_a03.html#ga1da8ed0e900d063c21b73b51d9310e60">More...</a><br /></td></tr>
+<tr class="separator:ga1da8ed0e900d063c21b73b51d9310e60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaaa883afce133a14c97aa938a60b41e0a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a03.html#gaaa883afce133a14c97aa938a60b41e0a">AKC695X::setup</a> (int reset_pin)</td></tr>
 <tr class="memdesc:gaaa883afce133a14c97aa938a60b41e0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receiver startup.  <a href="group___g_a03.html#gaaa883afce133a14c97aa938a60b41e0a">More...</a><br /></td></tr>
 <tr class="separator:gaaa883afce133a14c97aa938a60b41e0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,8 +144,13 @@ Basic</h1>
 </div><div class="memdoc">
 
 <p>Resets the system. </p>
+<p>This function can be used to reset the <a class="el" href="class_a_k_c695_x.html">AKC695X</a> device. ypu can also use the RTS pin of your MCU.</p>
+<p>In this case, the RESET pin have to be set to -1. This setup can be configured calling <a class="el" href="group___g_a03.html#gaaa883afce133a14c97aa938a60b41e0a" title="Receiver startup.">AKC695X::setup</a> method.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a03.html#gaaa883afce133a14c97aa938a60b41e0a" title="Receiver startup.">setup</a> </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="group___g_a03.html#gaaa883afce133a14c97aa938a60b41e0a">AKC695X::setup()</a>.</p>
+<p class="reference">References <a class="el" href="class_a_k_c695_x.html#a53464dde83a8625917655865af8ef53d">AKC695X::resetPin</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="group___g_a03.html#ga1da8ed0e900d063c21b73b51d9310e60">AKC695X::setup()</a>.</p>
 
 </div>
 </div>
@@ -176,8 +184,48 @@ Basic</h1>
 
 </div>
 </div>
+<a id="ga1da8ed0e900d063c21b73b51d9310e60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1da8ed0e900d063c21b73b51d9310e60">&#9670;&nbsp;</a></span>setup() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AKC695X::setup </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>resetPin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>crystal_type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Receiver startup. </p>
+<p>Use this method to define the MCU (Arduino) RESET pin and the Crystal Type used.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">resetPin</td><td>if &gt;= 0, then you control the RESET. if -1, you are using ths MCU RST pin. </td></tr>
+    <tr><td class="paramname">crystal_type</td><td>if 1 = 32.768KHz (default); 0 = 12MHz </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="reference">References <a class="el" href="group___g_a03.html#ga943ec28389bad1988124dd0f04c9b687">AKC695X::reset()</a>, and <a class="el" href="class_a_k_c695_x.html#a53464dde83a8625917655865af8ef53d">AKC695X::resetPin</a>.</p>
+
+</div>
+</div>
 <a id="gaaa883afce133a14c97aa938a60b41e0a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaaa883afce133a14c97aa938a60b41e0a">&#9670;&nbsp;</a></span>setup()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#gaaa883afce133a14c97aa938a60b41e0a">&#9670;&nbsp;</a></span>setup() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -193,14 +241,13 @@ Basic</h1>
 </div><div class="memdoc">
 
 <p>Receiver startup. </p>
+<p>Use this method to define the MCU (Arduino) RESET. If you call this method the crystal type will be set to 32.768KHz</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">resetPin</td><td>if &gt;= 0, then you control the RESET. if -1, you are using ths MCU RST pin. </td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="reference">References <a class="el" href="group___g_a03.html#ga943ec28389bad1988124dd0f04c9b687">AKC695X::reset()</a>, and <a class="el" href="class_a_k_c695_x.html#a53464dde83a8625917655865af8ef53d">AKC695X::resetPin</a>.</p>
 
 </div>
 </div>
@@ -344,7 +391,6 @@ Basic</h1>
 </div><div class="memdoc">
 
 <p>Sets the kind of Crystal. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Adjust setAM and setFM for selected crystal </dd></dl>
 <p>This method sets the Crystal type you are using in your circuit.</p>
 <p>The valid crystal type are 12MHz or 32.768Khz</p>
 <dl class="params"><dt>Parameters</dt><dd>

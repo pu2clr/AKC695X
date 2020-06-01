@@ -1,7 +1,7 @@
 var group___g_a04 =
 [
     [ "commitTune", "group___g_a04.html#ga735ce923f793b2cc437ff4c09cd4f026", null ],
-    [ "setCustomBand", "group___g_a04.html#ga811f94a0f66d151050ddf0a480f23196", null ],
+    [ "setCustomBand", "group___g_a04.html#ga0401dca3302ebfe9f35c215bb0a76364", null ],
     [ "setFM", "group___g_a04.html#gaf77739f861a531dc4c7e6ac5a6cb2713", null ],
     [ "setAM", "group___g_a04.html#ga8f61d1c6b668dbcdb5917b58580ed44e", null ],
     [ "setStep", "group___g_a04.html#gabf17b1129300da3388a1ee18735a64e6", null ],
