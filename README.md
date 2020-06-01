@@ -421,6 +421,11 @@ The figure and table below show the pin description of the AKC6951 and AKC6955.
 | 24  | gnd       | Close to ground | 
 
 
+# Prototype Photos
+
+
+
+
 # Videos
 
 * [AKC6955 Arduino Library - First Test](https://youtu.be/BHW2wCZiTkU)
