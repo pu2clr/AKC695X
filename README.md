@@ -339,6 +339,9 @@ typedef uint8_t akc595x_reg3;
 
 __See AKC695x.cpp methods setFM, setAM and setFrequency to know how the akc595x_reg2 and akc595x_reg2 work__.
 
+[Click here to read the complete API Documentation](https://pu2clr.github.io/AKC695X/extras/docs/html/index.html)
+
+
 <BR> 
 <BR>
 
