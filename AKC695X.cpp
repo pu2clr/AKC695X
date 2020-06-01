@@ -623,15 +623,28 @@ void AKC695X::setFmSeekStep(uint8_t space)
 /**
  * @ingroup GA04
  * @brief Seeks a FM station 
- * @details Seek a FM Station
+ * @details Seek a FM Station 
+ * 
+ * @code
+ *  // Do this if you want to show the frequency during the seek process. 
+ *  // Where showFrequency is the function name of your sketch that shows the current frequency.  
+ *  radio.seekStation(up_down,showFrequency);  
+ * @endcode
+ * 
+ * @code
+ *  // Do this if you don't want to show the frequency during seek process. 
+ *  radio.seekStation(up_down);  
+ * @endcode
  * 
  * @see akc595x_reg20, akc595x_reg21, channelToFrequency
  * 
- * @param up_down  if 0, seek down; if 1, seek up.
+ * @param up_down   if 0, seek down; if 1, seek up.
+ * @param showFunc  Optional. Point to the function in you sketch that shows the current frequency. If NULL, do nothing (default).  
  */
-void AKC695X::seekStation(uint8_t up_down)
+void AKC695X::seekStation(uint8_t up_down, void (*showFunc)())
 {
     akc595x_reg0 reg0;
+    uint16_t currentChannel; 
     long max_time = millis();
 
     do {
@@ -643,6 +656,10 @@ void AKC695X::seekStation(uint8_t up_down)
         reg0.refined.seek = 1;                      // Trigger seeking process 
         reg0.refined.seekup = up_down;
         setRegister(REG00, reg0.raw);
+        if (showFunc != NULL) {
+            this->currentFrequency = channelToFrequency(); // gets the Current frequency in the registers 20 and 21.
+            showFunc();             // Call your function that shows the frequency 
+        }
     } while (!isTuningComplete() && (millis() - max_time) < MAX_SEEK_TIME);
 
    reg0.raw = 0;

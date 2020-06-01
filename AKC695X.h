@@ -495,7 +495,7 @@ public:
     void setStep(uint8_t step);
 
     void setFmSeekStep(uint8_t value);
-    void seekStation(uint8_t up_down);
+    void seekStation(uint8_t up_down, void (*showFunc)() = NULL);
 
     void setFrequency(uint16_t frequency);
     uint16_t getFrequency();
