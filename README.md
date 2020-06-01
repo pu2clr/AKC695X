@@ -361,6 +361,29 @@ The figure below shows the basic schematic of the AKC695X and Arduino Pro Mini 3
 ![Basic Schematic](https://pu2clr.github.io/AKC695X/extras/images/basic_schematic.png)
 
 
+### Component parts
+
+|               | Name              | Description | 
+| --------------| ----------------- | ----------- | 
+|               | AKC6955           | SSOP24 DSP receiver from AKC. You also can use AKC5951 (just FM and AM/MW) or AKC6959sx  | 
+|               | Arduino Board     | It can be an Atmega based board, SMT32, ESP32, Attiny or another compatible Arduino board | 
+| Y1            | Crystal           | 32.32.768KHz or 12MHz | Crystal oscillator. By default this library uses 32.768KHz. But you can set it to deal with 12MHz crystal. See [API Documentation](https://pu2clr.github.io/AKC695X/extras/docs/html/index.html) |
+| C1 and C2     | 22pF capacitor    | Ceramic  or Tantalum capacitor |
+| C3            | 470uF capacitor   | Electrolytic capacitor | 
+| C4  | 1nF capacitor     | Ceramic  or Tantalum capacitor |
+| C4  | 1nF capacitor     | Ceramic  or Tantalum capacitor |
+| C5 and C8     | 100nF             | Ceramic  or Tantalum capacitor | 
+| C9            | 22uF capacitor    | Electrolytic capacitor |  
+| C6            | 100pF             | Ceramic  or Tantalum capacitor | 
+| C7            | 3nF               | Ceramic  or Tantalum capacitor | 
+| R1   | 10K resistor      | 10K          | 
+| R2   | 22K resistor  | This value is not critical. Use something closer to 25K |
+| R3   | 4.7K resistor | This value is not critical. Use something closer to  5K |
+| LED1 | LED               | regular LED  | 
+| L1   | Ferrite Antenna   | Ferrite Rod Coil for LW and MW. It is very common in old medium wave receivers |  
+
+
+  
 ### AKC695X Pin definitions
 
 The figure and table below show the pin description of the AKC6951 and AKC6955.
