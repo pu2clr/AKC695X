@@ -358,14 +358,14 @@ The main porpuse of this circuit is testing de AKC695X Arduino Library. It does 
 
 The figure below shows the basic schematic of the AKC695X and Arduino Pro Mini 3.3V, 8MHz.  
 
-![Basic Schematic](https://github.com/pu2clr/AKC695X/blob/master/extras/images/basic_schematic.png)
+![Basic Schematic](https://pu2clr.github.io/AKC695X/extras/images/basic_schematic.png)
 
 
 ### AKC695X Pin definitions
 
 The figure and table below show the pin description of the AKC6951 and AKC6955.
 
-![AKC6951(55) pin out](https://github.com/pu2clr/AKC695X/blob/master/extras/images/AKC695X_pinout.png)
+![AKC6951(55) pin out](https://pu2clr.github.io/AKC695X/extras/images/AKC695X_pinout.png)
 
 
 | Pin | Name      | Description  | 
