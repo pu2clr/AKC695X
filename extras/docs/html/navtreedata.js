@@ -49,7 +49,6 @@ var NAVTREE =
       [ "Receivers based on", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md24", null ],
       [ "References", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md25", null ]
     ] ],
-    [ "Todo List", "todo.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
