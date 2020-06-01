@@ -444,7 +444,6 @@ void AKC695X::setCustomBand(uint16_t minimum_frequency, uint16_t maximum_frequen
 
 /**
  * @ingroup GA04
- * @todo  Adjust for selected crystal type
  * @brief Sets the AKC695X to FM mode
  * @details Sets the device to FM mode. You can configure a custom FM band by setting band number greater than 7.
  * 
@@ -507,7 +506,6 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t max
 
 /**
  * @ingroup GA04
- * @todo  Adjust for selected crystal type
  * @brief Sets the AKC695X to AM mode and selects the band
  * @details This method configures the AM band you want to use. 
  * @details You must respect the frequency limits defined by the AKC595X device documentation.
