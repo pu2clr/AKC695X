@@ -34,6 +34,11 @@ In this document you will see Arduino source codes, schematics, examples and tip
 
 {% include video01.html %} 
 
+## Your support is important.
+
+If you would like to support this library development, consider joining this project via Github. Alternatively, make suggestions on new features and report errors if you find them. Thank you!
+
+<BR>
 
 ## Library Features
 
