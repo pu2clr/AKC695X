@@ -378,11 +378,11 @@ The figure below shows the basic schematic of the AKC695X and Arduino Pro Mini 3
 | C6            | 100pF Ceramic  or Tantalum capacitor | 
 | C7            | 3nF  Ceramic  or Tantalum capacitor | 
 | C9            | 22uF Electrolytic capacitor |  
-| R1   | 10K resistor      | 10K          | 
-| R2   | 22K resistor  | This value is not critical. Use something closer to 25K |
-| R3   | 4.7K resistor | This value is not critical. Use something closer to  5K |
-| LED1 | LED               | regular LED  | 
-| L1   | Ferrite Antenna   | Ferrite Rod Coil for LW and MW. It is very common in old medium wave receivers |  
+| R1   | 10K resistor  | 
+| R2   | 22K resisto. This value is not critical. Use something closer to 25K |
+| R3   | 4.7K resistor. This value is not critical. Use something closer to  5K |
+| LED1 | regular LED  | 
+| L1   | Ferrite Rod Coil for LW and MW. It is very common in old medium wave receivers |  
 
 
   
