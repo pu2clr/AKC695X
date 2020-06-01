@@ -66,6 +66,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ## Library Installation
 
+You can install this library on your Arduino environment using different methods. 
+The video below shows how to install the PU2CLR AKC695X Arduino Library from your Arduino IDE. 
+
+[PU2CLR AKC695X Arduino Library Installation](https://youtu.be/eHHeXapDNiU)
+{% include libinstalling.html %}
+
 
 
 ## About AKC695X / M695X DSP radio 
