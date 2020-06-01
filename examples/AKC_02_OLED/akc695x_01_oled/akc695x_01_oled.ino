@@ -357,9 +357,10 @@ void volumeButton(byte d)
   delay(MIN_ELAPSED_TIME); // waits a little more for releasing the button.
 }
 
+
 void seekButton( uint8_t up_down ) {
     // Tells to the radio.seekStation your function that shows the frequency. In this case showFrequency.
-    // If you don't want this resource, just call radio.seekStation(up_down);
+    // If you don't want to show the frequency during the seek process, just call radio.seekStation(up_down);
     radio.seekStation(up_down,showFrequency);  
     showFrequency();
 }
