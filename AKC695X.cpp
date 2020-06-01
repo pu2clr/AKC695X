@@ -642,7 +642,6 @@ void AKC695X::setFmSeekStep(uint8_t space)
 void AKC695X::seekStation(uint8_t up_down, void (*showFunc)())
 {
     akc595x_reg0 reg0;
-    uint16_t currentChannel; 
     long max_time = millis();
 
     do {
@@ -867,7 +866,12 @@ void AKC695X::setVolumeControl(uint8_t type)
 /**
  * @ingroup GA04
  * @brief Gets the current RSSI
- * @details Gets the current RSSI
+ * @details This method calculates the RSSI based on two register (24 and 27).
+ * @details On FM mode or SW band, the formula is: Pin (dBuV) = 103 - rssi - 6 * pgalevel_rf - 6 * pgalevel_if
+ * @details On AM mode (LW or MW), the formula is: Pin (dBuV) = 123 - rssi - 6 * pgalevel_rf - 6 * pgalevel_if  
+ * 
+ * @see akc595x_reg24, akc595x_reg27
+ * 
  * @return int  RSSI value
  */
 int AKC695X::getRSSI()
@@ -875,16 +879,13 @@ int AKC695X::getRSSI()
     akc595x_reg24 reg24;
     akc595x_reg27 reg27;
 
-    int fator = (this->currentMode == 1) ? 103 : 123;
-    int rssi;
+    int factor = (this->currentMode == CURRENT_MODE_FM || this->currentFrequency > 3000) ? 103 : 123;
 
     reg24.raw = getRegister(REG24);
     reg27.raw = getRegister(REG27);
 
     // Calculates the RSSI
-    rssi = fator - reg27.refined.rssi - 6 * reg24.refined.pgalevel_rf - 6 * reg24.refined.pgalevel_if;
-
-    return rssi;
+    return ( factor - reg27.refined.rssi - 6 * (reg24.refined.pgalevel_rf + reg24.refined.pgalevel_if) );
 }
 
 /**
