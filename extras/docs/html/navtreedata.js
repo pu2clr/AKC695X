@@ -24,30 +24,33 @@ var NAVTREE =
 [
   [ "PU2CLR AKC695X Arduino Library", "index.html", [
     [ "SI47XX Arduino Library implementation", "index.html", null ],
-    [ "<a href=\"https://pu2clr.github.io/AKC695X\">PU2CLR AKC695X Arduino Library</a>", "md__a_k_c695_x__r_e_a_d_m_e.html", [
+    [ "PU2CLR AKC695X Arduino Library", "md__a_k_c695_x__r_e_a_d_m_e.html", [
       [ "Contents", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md1", [
         [ "Preface", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md2", null ],
-        [ "Library Features", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md3", null ],
-        [ "MIT License", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md4", null ],
-        [ "Library Installation", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md5", null ],
-        [ "About AKC695X / M695X DSP radio", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md6", [
-          [ "AKC695X features", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md7", null ]
+        [ "Your support is important", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md3", null ],
+        [ "Library Features", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md4", null ],
+        [ "MIT License", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md5", null ],
+        [ "Library Installation", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md6", null ],
+        [ "About AKC695X / M695X DSP radio", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md7", [
+          [ "AKC695X features", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md8", null ]
         ] ],
-        [ "Registers setup", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md8", [
-          [ "Register operations", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md9", [
-            [ "Table Reg0", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md10", null ],
-            [ "Table Reg1", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md12", null ],
-            [ "Table Reg2  and Reg3", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md16", null ],
-            [ "Reg2", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md17", null ]
+        [ "Registers setup", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md9", [
+          [ "Register operations", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md10", [
+            [ "Table Reg0", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md11", null ],
+            [ "Table Reg1", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md13", null ],
+            [ "Table Reg2  and Reg3", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md17", null ],
+            [ "Reg2", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md18", null ]
           ] ]
         ] ],
-        [ "Schematic", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md21", [
-          [ "AKC695X Pin definitions", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md22", null ]
+        [ "Schematic", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md22", [
+          [ "Component parts", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md23", null ],
+          [ "AKC695X Pin definitions", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md24", null ]
         ] ]
       ] ],
-      [ "Videos", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md23", null ],
-      [ "Receivers based on", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md24", null ],
-      [ "References", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md25", null ]
+      [ "Prototype Photos", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md25", null ],
+      [ "Videos", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md26", null ],
+      [ "Receivers based on AKC695X / M695X", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md27", null ],
+      [ "References", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md28", null ]
     ] ],
     [ "Modules", "modules.html", "modules" ],
     [ "Data Structures", "annotated.html", [

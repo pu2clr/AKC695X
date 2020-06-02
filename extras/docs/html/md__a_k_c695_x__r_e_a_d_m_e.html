@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>PU2CLR AKC695X Arduino Library: &lt;a href=&quot;https://pu2clr.github.io/AKC695X&quot;&gt;PU2CLR AKC695X Arduino Library&lt;/a&gt;</title>
+<title>PU2CLR AKC695X Arduino Library: PU2CLR AKC695X Arduino Library</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PU2CLR AKC695X Arduino Library
-   &#160;<span id="projectnumber">1.0.1</span>
+   &#160;<span id="projectnumber">1.0.2</span>
    </div>
    <div id="projectbrief">This is an Arduino Library to control the AKC695X / M695X DSP radio devices</div>
   </td>
@@ -84,7 +84,7 @@ $(document).ready(function(){initNavTree('md__a_k_c695_x__r_e_a_d_m_e.html','');
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title"><a href="https://pu2clr.github.io/AKC695X">PU2CLR AKC695X Arduino Library</a> </div>  </div>
+<div class="title">PU2CLR <a class="el" href="class_a_k_c695_x.html">AKC695X</a> Arduino Library </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>This is an Arduino Library to control the <a class="el" href="class_a_k_c695_x.html">AKC695X</a> / M695X DSP radio devices.</p>
@@ -92,10 +92,12 @@ $(document).ready(function(){initNavTree('md__a_k_c695_x__r_e_a_d_m_e.html','');
 <p>The PU2CLR <a class="el" href="class_a_k_c695_x.html">AKC695X</a> Arduino Library also intend to be used on <b>all members of the <a class="el" href="class_a_k_c695_x.html">AKC695X</a> family with I²C bus interface</b> respecting, of course, the features available for each IC version. <b>Please, check the Datasheet of the divice before starting your project</b>. Finally, it can be freely distributed using the <a href="https://pu2clr.github.io/AKC695X/#mit-license">MIT Free Software model</a>.</p>
 <p><a href="https://pu2clr.github.io/AKC695X/#mit-license">Copyright (c) 2020 Ricardo Lima Caratti</a>.</p>
 <p>Contact: <a href="#" onclick="location.href='mai'+'lto:'+'__p'+'u2'+'clr'+'@g'+'mai'+'l.'+'com'+'__'; return false;">__pu2<span style="display: none;">.nosp@m.</span>clr@<span style="display: none;">.nosp@m.</span>gmail<span style="display: none;">.nosp@m.</span>.com<span style="display: none;">.nosp@m.</span>__</a>.</p>
+<p>Be a member of Facebook group <a href="https://www.facebook.com/groups/2655942598067211">DSP receivers for hobbyists</a></p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Contents</h1>
 <ol type="1">
 <li><a href="https://pu2clr.github.io/AKC695X/#preface">Preface</a></li>
+<li><a href="https://pu2clr.github.io/AKC695X/#your-support-is-important">Your support is important</a></li>
 <li><a href="https://pu2clr.github.io/AKC695X/#library-features">Library Features</a></li>
 <li><a href="https://pu2clr.github.io/AKC695X/#mit-license">MIT License</a></li>
 <li><a href="https://pu2clr.github.io/AKC695X/#about-akc695x--m695x-dsp-radio">About AKC695X / M695X DSP radio</a></li>
@@ -112,36 +114,47 @@ Preface</h2>
 <p>The <a class="el" href="class_a_k_c695_x.html">AKC695X</a> devices will surprise hobbyists and experimenters with its simplicity to build FM and AM (LW, MW, SW) receivers. There are currently several receivers based on DSP technology. The KT0915 and SI4735 devices are some examples widely disseminated in the market. This library was developed with the purpose of expanding the alternatives to electronics hobbyists and radio listeners. In this document you will see Arduino source codes, schematics, examples and tips to help you to build a receiver based on Arduino board and <a class="el" href="class_a_k_c695_x.html">AKC695X</a> devices.</p>
 <p>{% include video01.html %}</p>
 <h2><a class="anchor" id="autotoc_md3"></a>
+Your support is important</h2>
+<p>If you would like to support this library development, consider joining this project via Github. Alternatively, make suggestions on new features and report errors if you find them. Thank you!</p>
+<p><br  />
+</p>
+<h2><a class="anchor" id="autotoc_md4"></a>
 Library Features</h2>
 <p>This library uses the I²C communication protocol and implements most of the functions offered by the <a class="el" href="class_a_k_c695_x.html">AKC695X</a> (BROADCAST AM / FM / SW / LW RADIO RECEIVER).</p>
 <p>The main features of this library are listed below.</p>
 <ol type="1">
-<li>Open Source. It is free. You can use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software. See MIT License to know more;</li>
+<li>Open Source. It is free. You can use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software. See <a href="https://pu2clr.github.io/AKC695X/#mit-license">MIT License to know more</a>;</li>
 <li>Built based on <a href="http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf">AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio</a>;</li>
 <li>C++ Language and Object-oriented programming. You can easily extend the <a class="el" href="class_a_k_c695_x.html">AKC695X</a> class by adding more functionalities;</li>
-<li>Available on Arduino IDE (via Manage Libraries). Easy to install and use. See <a href="https://pu2clr.github.io/AKC695X/#library-features">Library Features</a>;</li>
+<li>Available on Arduino IDE (via Manage Libraries). Easy to install and use;</li>
 <li>Cross-platform. You can compile and run this library on most of board available on Arduino IDE (Examples: ATtiny85, boards based on ATmega328 and ATmega-32u4, ATmega2560, ARM Cortex, STM32, Arduino DUE, ESP32 and more);</li>
 <li>Simplifies projects based on <a class="el" href="class_a_k_c695_x.html">AKC695X</a> IC family with support to I²C;</li>
 <li>Seeking function support;</li>
 <li>Support to <b>32.768KHz and 12MHz</b> crystal oscillators;</li>
 <li>Support to audio controlled by the MCU (Arduino) or potentiometer;</li>
+<li>Real tim FM stereo or mono indicator;</li>
+<li>FM stereo or mono selecting;</li>
+<li>Real time signal level reading;</li>
+<li>Real time AM and FM carrier to noise ratio information (dB).</li>
+<li>Bandwidth selection for FM;</li>
+<li>Custom band support;</li>
 <li>More than 40 functions implemented.</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md5"></a>
 MIT License</h2>
 <p>Copyright (c) 2019 Ricardo Lima Caratti</p>
 <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
 <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
 <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE ARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md6"></a>
 Library Installation</h2>
 <p>You can install this library on your Arduino environment using different methods. The video below shows how to install the PU2CLR <a class="el" href="class_a_k_c695_x.html">AKC695X</a> Arduino Library from your Arduino IDE.</p>
 <p><a href="https://youtu.be/eHHeXapDNiU">PU2CLR AKC695X Arduino Library Installation</a></p>
 <p>{% include libinstalling.html %}</p>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md7"></a>
 About AKC695X / M695X DSP radio</h2>
 <p>The <a class="el" href="class_a_k_c695_x.html">AKC695X</a> is a family of IC DSP receiver from AKC technology. The AKC6955 and AKC6959sx support AM and FM modes. On AM mode the AKC6955 and AKC6969 work on LW, MW and SW. On FM mode they work from 64MHz to 222MHz.</p>
-<h3><a class="anchor" id="autotoc_md7"></a>
+<h3><a class="anchor" id="autotoc_md8"></a>
 AKC695X features</h3>
 <p>The table below shows some <a class="el" href="class_a_k_c695_x.html">AKC695X</a> devices family features.</p>
 <table class="markdownTable">
@@ -209,17 +222,18 @@ AKC695X features</h3>
 <p><b>Sources:</b> AKC6951, AKC6955 and AKC6959sx Datasheets.</p>
 <p><b>ATTENTION: The AKC6952 and AKC6959 do not have I²C interface. So, they will not work with this library. Try AKC6951, AKC6955 or AKC6959sx</b>. <br  />
 </p>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md9"></a>
 Registers setup</h2>
-<h3><a class="anchor" id="autotoc_md9"></a>
-Register operations</h3>
 <p>This library uses the I²C protocols to read and write <a class="el" href="class_a_k_c695_x.html">AKC695X</a> registers. In this context, registers are memory position into the device.</p>
 <p>The first 13 registers, you can use to change the behavior of the device. They are read and write registers. The registers from 20 to 27, can be used to get the current device status. They are read only registers.</p>
-<p>There is no information about the register 10 and the registers 14 to 19 in the documentation used to develop this library.</p>
+<p>By writing and reading these register, you can control the <a class="el" href="class_a_k_c695_x.html">AKC695X</a> devices.</p>
+<h3><a class="anchor" id="autotoc_md10"></a>
+Register operations</h3>
 <p>By using the registers 0 to 13, you can change the band, set the frequency, set the channel space, set the audio behavior and volume, set a custom band and more. The file <a href="https://github.com/pu2clr/AKC695X/blob/master/AKC695X.h">AKC695X.h</a> has details about the all registers used in the library. Also, you can read the <a href="https://pu2clr.github.io/AKC695X/extras/docs/html/modules.html">API Documentation</a> to know more about <a class="el" href="class_a_k_c695_x.html">AKC695X</a> registers.</p>
+<p>There is no information about the register 10 and the registers 14 to 19 in the documentation used to develop this library.</p>
 <p>To represent the information stored in the <a class="el" href="class_a_k_c695_x.html">AKC695X</a> registers, this library used the resources of the C / C ++ language: union, struct and typedef. This way, the user of this library will be able to customize it easily.</p>
 <p>This approach is shown below for the registers 0, 1, 2 and 3.</p>
-<h4><a class="anchor" id="autotoc_md10"></a>
+<h4><a class="anchor" id="autotoc_md11"></a>
 Table Reg0</h4>
 <p>Reg0: configure register 0 (default: 0x4c) Address - Type 0x00 (RW)</p>
 <table class="markdownTable">
@@ -242,7 +256,7 @@ Table Reg0</h4>
 </table>
 <p>Source: <a href="http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf">AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio</a></p>
 <p>Be aware that the table above presents the data in order of the most significant bits to the least significant bits. In C/C++ representation of that data will be inverted. See the C/C++ code below.</p>
-<p><a class="anchor" id="autotoc_md11"></a></p><h5>Data representation in C/C++ for the register 0</h5>
+<p><a class="anchor" id="autotoc_md12"></a></p><h5>Data representation in C/C++ for the register 0</h5>
 <div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keyword">union </span>{</div>
 <div class="line">    <span class="keyword">struct</span></div>
 <div class="line">    {</div>
@@ -273,7 +287,7 @@ Table Reg0</h4>
 <div class="line">    <a class="code" href="group___g_a03.html#gaffff7bd58909a00d6a461f4a325ab396">setRegister</a>(<a class="code" href="_a_k_c695_x_8h.html#a748ad53bef975af9c1edbcacc58e5be4">REG00</a>, reg0.<a class="code" href="group___g_a01.html#a69492e94019f64dbfa51040914da5d81">raw</a>);</div>
 <div class="line"> </div>
 <div class="line">}</div>
-</div><!-- fragment --><h4><a class="anchor" id="autotoc_md12"></a>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md13"></a>
 Table Reg1</h4>
 <p>Reg1: configure register 1 (default: 0x10) Address - Type 0x01 (RW)</p>
 <table class="markdownTable">
@@ -285,7 +299,7 @@ Table Reg1</h4>
 <td class="markdownTableBodyNone">2:0 </td><td class="markdownTableBodyNone">fmband </td><td class="markdownTableBodyNone">0x00 </td><td class="markdownTableBodyNone">see table [Table Reg1 fmband]()  </td></tr>
 </table>
 <p>Source: <a href="http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf">AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio</a></p>
-<p><a class="anchor" id="autotoc_md13"></a></p><h5>Data representation in C/C++ for the register 1</h5>
+<p><a class="anchor" id="autotoc_md14"></a></p><h5>Data representation in C/C++ for the register 1</h5>
 <div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keyword">union </span>{</div>
 <div class="line">    <span class="keyword">struct</span></div>
 <div class="line">    {</div>
@@ -305,7 +319,7 @@ Table Reg1</h4>
 <div class="line">setRegister(<a class="code" href="_a_k_c695_x_8h.html#afc04faecdab9e0d1751466b6c53fdaf1">REG01</a>, reg1.raw);</div>
 <div class="line">  . </div>
 <div class="line">  .</div>
-</div><!-- fragment --><p><a class="anchor" id="autotoc_md14"></a></p><h5>Table Reg1 amband</h5>
+</div><!-- fragment --><p><a class="anchor" id="autotoc_md15"></a></p><h5>Table Reg1 amband</h5>
 <p>The table below can help you to select the right band and its frequency limits. You might need to use it in your Arduino sketch.</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -349,7 +363,7 @@ Table Reg1</h4>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">Other </td><td class="markdownTableBodyNone">18+ </td><td class="markdownTableBodyNone">custom band, station search interval = 3K  </td></tr>
 </table>
-<p><a class="anchor" id="autotoc_md15"></a></p><h5>Table Reg1 fmband</h5>
+<p><a class="anchor" id="autotoc_md16"></a></p><h5>Table Reg1 fmband</h5>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">fmband value </th><th class="markdownTableHeadNone">N# </th><th class="markdownTableHeadNone">Description  </th></tr>
@@ -370,10 +384,10 @@ Table Reg1</h4>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">111 </td><td class="markdownTableBodyNone">7 </td><td class="markdownTableBodyNone">sets predetermined space intervals, custom FM, station search space specified intervals  </td></tr>
 </table>
-<h4><a class="anchor" id="autotoc_md16"></a>
+<h4><a class="anchor" id="autotoc_md17"></a>
 Table Reg2  and Reg3</h4>
 <p>The registers 2 and 3 are used together. The tuning frequency is obtained by calculation. The formula is described below.</p>
-<h4><a class="anchor" id="autotoc_md17"></a>
+<h4><a class="anchor" id="autotoc_md18"></a>
 Reg2</h4>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -387,7 +401,7 @@ Reg2</h4>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">4:0 </td><td class="markdownTableBodyNone">Channel </td><td class="markdownTableBodyNone">0x0A </td><td class="markdownTableBodyNone">The higher 5 bits of the channel number. See comments [ˆ1] and [ˆ2]  </td></tr>
 </table>
-<p><a class="anchor" id="autotoc_md18"></a></p><h5>Data representation in C/C++ for the register 2</h5>
+<p><a class="anchor" id="autotoc_md19"></a></p><h5>Data representation in C/C++ for the register 2</h5>
 <div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keyword">union </span>{</div>
 <div class="line">    <span class="keyword">struct</span></div>
 <div class="line">    {</div>
@@ -398,7 +412,7 @@ Reg2</h4>
 <div class="line">    } refined;</div>
 <div class="line">    uint8_t raw;</div>
 <div class="line">} <a class="code" href="group___g_a01.html#unionakc595x__reg2">akc595x_reg2</a>;</div>
-</div><!-- fragment --><p><a class="anchor" id="autotoc_md19"></a></p><h5>Reg3</h5>
+</div><!-- fragment --><p><a class="anchor" id="autotoc_md20"></a></p><h5>Reg3</h5>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">BIT </th><th class="markdownTableHeadNone">Label </th><th class="markdownTableHeadNone">Default </th><th class="markdownTableHeadNone">Function Description  </th></tr>
@@ -416,7 +430,7 @@ Reg2</h4>
 </ol>
 <p>[ˆ2] <b>If the MCU is working with MW2 (see table Table Reg1 amband), the channel number has to be a multiple of three. Otherwise, the radio will be a mess.</b> <br  />
 </p>
-<p><a class="anchor" id="autotoc_md20"></a></p><h5>Data representation in C/C++ for the register 3</h5>
+<p><a class="anchor" id="autotoc_md21"></a></p><h5>Data representation in C/C++ for the register 3</h5>
 <div class="fragment"><div class="line"><span class="keyword">typedef</span> uint8_t <a class="code" href="group___g_a01.html#ga70e552b2a9ce062ef0342a70e9717a50">akc595x_reg3</a>;</div>
 </div><!-- fragment --><p><br  />
 </p>
@@ -425,16 +439,54 @@ Reg2</h4>
 <p><br  />
  <br  />
 </p>
-<h2><a class="anchor" id="autotoc_md21"></a>
+<h2><a class="anchor" id="autotoc_md22"></a>
 Schematic</h2>
 <p>The main porpuse of this circuit is testing de <a class="el" href="class_a_k_c695_x.html">AKC695X</a> Arduino Library. It does not intend to be a real receiver for exigent listener. However, it is possible to start with it and after add some improvements. On the other hand, with this simple circuit, the experimenter may be surprised with its performance.</p>
 <p>The figure below shows the basic schematic of the <a class="el" href="class_a_k_c695_x.html">AKC695X</a> and Arduino Pro Mini 3.3V, 8MHz. <br  />
 </p>
-<p><img src="https://github.com/pu2clr/AKC695X/blob/master/extras/images/basic_schematic.png" alt="Basic Schematic" class="inline"/></p>
-<h3><a class="anchor" id="autotoc_md22"></a>
+<p><img src="https://pu2clr.github.io/AKC695X/extras/images/basic_schematic.png" alt="Basic Schematic" class="inline"/></p>
+<h3><a class="anchor" id="autotoc_md23"></a>
+Component parts</h3>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Name / Label </th><th class="markdownTableHeadNone">Description  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">AKC6955 </td><td class="markdownTableBodyNone">SSOP24 DSP receiver from AKC. You also can use AKC5951 (just FM and AM/MW) or AKC6959sx  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Arduino Board </td><td class="markdownTableBodyNone">It can be an Atmega based board, SMT32, ESP32, Attiny or another compatible Arduino board  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Y1 </td><td class="markdownTableBodyNone">32.32.768KHz or 12MHz crystal oscillator. By default this library uses 32.768KHz. But, you can set it to deal with 12MHz crystal. See <a href="https://pu2clr.github.io/AKC695X/extras/docs/html/index.html">API Documentation</a>.  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">C1 and C2 </td><td class="markdownTableBodyNone">22pF Ceramic or Tantalum capacitor  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">C3 </td><td class="markdownTableBodyNone">470uF Electrolytic capacitor  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">C4 </td><td class="markdownTableBodyNone">1nF Ceramic or Tantalum capacitor  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">C4 </td><td class="markdownTableBodyNone">1nF Ceramic or Tantalum capacitor  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">C5 and C8 </td><td class="markdownTableBodyNone">100nF Ceramic or Tantalum capacitor  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">C6 </td><td class="markdownTableBodyNone">100pF Ceramic or Tantalum capacitor  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">C7 </td><td class="markdownTableBodyNone">3nF Ceramic or Tantalum capacitor  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">C9 </td><td class="markdownTableBodyNone">22uF Electrolytic capacitor  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">R1 </td><td class="markdownTableBodyNone">10K resistor  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">R2 </td><td class="markdownTableBodyNone">22K resisto. This value is not critical. Use something closer to 25K  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">R3 </td><td class="markdownTableBodyNone">4.7K resistor. This value is not critical. Use something closer to 5K  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">LED1 </td><td class="markdownTableBodyNone">regular LED  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">L1 </td><td class="markdownTableBodyNone">Ferrite Rod Coil for LW and MW. It is very common in old medium wave receivers  </td></tr>
+</table>
+<h3><a class="anchor" id="autotoc_md24"></a>
 AKC695X Pin definitions</h3>
 <p>The figure and table below show the pin description of the AKC6951 and AKC6955.</p>
-<p><img src="https://github.com/pu2clr/AKC695X/blob/master/extras/images/AKC695X_pinout.png" alt="AKC6951(55) pin out" class="inline"/></p>
+<p><img src="https://pu2clr.github.io/AKC695X/extras/images/AKC695X_pinout.png" alt="AKC6951(55) pin out" class="inline"/></p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Pin </th><th class="markdownTableHeadNone">Name </th><th class="markdownTableHeadNone">Description  </th></tr>
@@ -487,18 +539,30 @@ AKC695X Pin definitions</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">24 </td><td class="markdownTableBodyNone">gnd </td><td class="markdownTableBodyNone">Close to ground  </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md23"></a>
+<h1><a class="anchor" id="autotoc_md25"></a>
+Prototype Photos</h1>
+<p><img src="https://pu2clr.github.io/AKC695X/extras/images/board_adapter_12MHZ_01.png" alt="Photo 01" class="inline"/></p>
+<p><br  />
+</p>
+<p><img src="https://pu2clr.github.io/AKC695X/extras/images/board_adapter_32KHz_03.png" alt="Ponto 02" class="inline"/></p>
+<p><br  />
+</p>
+<p><img src="https://pu2clr.github.io/AKC695X/extras/images/prototype_tmp_03.png" alt="Photo 03" class="inline"/></p>
+<p><br  />
+</p>
+<p><img src="https://pu2clr.github.io/AKC695X/extras/images/prototype_tmp_02.png" alt="Photo 03" class="inline"/></p>
+<p><br  />
+</p>
+<h1><a class="anchor" id="autotoc_md26"></a>
 Videos</h1>
 <ul>
 <li><a href="https://youtu.be/BHW2wCZiTkU">AKC6955 Arduino Library - First Test</a></li>
 <li><a href="https://youtu.be/3OwnVBmOjAs">PU2CLR AKC695X Arduino Library - SEEKING TEST</a></li>
 </ul>
-<h1><a class="anchor" id="autotoc_md24"></a>
-Receivers based on</h1>
-<ul>
-<li><a href="https://swling.com/blog/tag/shortwave-radio-review/">Troy reviews the Audiomax SRW-710S</a></li>
-</ul>
-<h1><a class="anchor" id="autotoc_md25"></a>
+<h1><a class="anchor" id="autotoc_md27"></a>
+Receivers based on AKC695X / M695X</h1>
+<p><a href="https://swling.com/blog/tag/shortwave-radio-review/">Troy reviews the Audiomax SRW-710S</a> <a href="https://youtu.be/SZ1bf-yj3C0">Full Review of the Tivdio V115 AM FM Shortwave portable receiver</a></p>
+<h1><a class="anchor" id="autotoc_md28"></a>
 References</h1>
 <ul>
 <li><a href="https://www.tindie.com/products/microwavemont/am-sw-fm-radio-by-dsp-radio-chip-version-2/">AM-SW-FM radio by DSP radio chip version 2</a></li>
@@ -516,9 +580,9 @@ References</h1>
 <div class="ttc" id="agroup___g_a01_html_a8640c13d307b61f1fafd9ec3c2d425a3"><div class="ttname"><a href="group___g_a01.html#a8640c13d307b61f1fafd9ec3c2d425a3">akc595x_reg0::refined</a></div><div class="ttdeci">struct akc595x_reg0::@0 refined</div></div>
 <div class="ttc" id="agroup___g_a01_html_ga70e552b2a9ce062ef0342a70e9717a50"><div class="ttname"><a href="group___g_a01.html#ga70e552b2a9ce062ef0342a70e9717a50">akc595x_reg3</a></div><div class="ttdeci">uint8_t akc595x_reg3</div><div class="ttdoc">Reg3 (type 0x03 / RW): configures register 3 (default: 0xC8) Address.</div><div class="ttdef"><b>Definition:</b> AKC695X.h:167</div></div>
 <div class="ttc" id="a_a_k_c695_x_8h_html_afc04faecdab9e0d1751466b6c53fdaf1"><div class="ttname"><a href="_a_k_c695_x_8h.html#afc04faecdab9e0d1751466b6c53fdaf1">REG01</a></div><div class="ttdeci">#define REG01</div><div class="ttdef"><b>Definition:</b> AKC695X.h:72</div></div>
-<div class="ttc" id="agroup___g_a03_html_gaf156fb3c65b4bfc68a977f4586ae23a6"><div class="ttname"><a href="group___g_a03.html#gaf156fb3c65b4bfc68a977f4586ae23a6">AKC695X::powerOn</a></div><div class="ttdeci">void powerOn(uint8_t fm_en, uint8_t tune, uint8_t mute, uint8_t seek, uint8_t seekup)</div><div class="ttdoc">Power the device on.</div><div class="ttdef"><b>Definition:</b> AKC695X.cpp:93</div></div>
+<div class="ttc" id="agroup___g_a03_html_gaf156fb3c65b4bfc68a977f4586ae23a6"><div class="ttname"><a href="group___g_a03.html#gaf156fb3c65b4bfc68a977f4586ae23a6">AKC695X::powerOn</a></div><div class="ttdeci">void powerOn(uint8_t fm_en, uint8_t tune, uint8_t mute, uint8_t seek, uint8_t seekup)</div><div class="ttdoc">Power the device on.</div><div class="ttdef"><b>Definition:</b> AKC695X.cpp:108</div></div>
 <div class="ttc" id="a_a_k_c695_x_8h_html_a748ad53bef975af9c1edbcacc58e5be4"><div class="ttname"><a href="_a_k_c695_x_8h.html#a748ad53bef975af9c1edbcacc58e5be4">REG00</a></div><div class="ttdeci">#define REG00</div><div class="ttdef"><b>Definition:</b> AKC695X.h:71</div></div>
-<div class="ttc" id="agroup___g_a03_html_gaffff7bd58909a00d6a461f4a325ab396"><div class="ttname"><a href="group___g_a03.html#gaffff7bd58909a00d6a461f4a325ab396">AKC695X::setRegister</a></div><div class="ttdeci">void setRegister(uint8_t reg, uint8_t parameter)</div><div class="ttdoc">Sets a given register with a given value.</div><div class="ttdef"><b>Definition:</b> AKC695X.cpp:116</div></div>
+<div class="ttc" id="agroup___g_a03_html_gaffff7bd58909a00d6a461f4a325ab396"><div class="ttname"><a href="group___g_a03.html#gaffff7bd58909a00d6a461f4a325ab396">AKC695X::setRegister</a></div><div class="ttdeci">void setRegister(uint8_t reg, uint8_t parameter)</div><div class="ttdoc">Sets a given register with a given value.</div><div class="ttdef"><b>Definition:</b> AKC695X.cpp:131</div></div>
 <div class="ttc" id="agroup___g_a01_html_a69492e94019f64dbfa51040914da5d81"><div class="ttname"><a href="group___g_a01.html#a69492e94019f64dbfa51040914da5d81">akc595x_reg0::raw</a></div><div class="ttdeci">uint8_t raw</div><div class="ttdef"><b>Definition:</b> AKC695X.h:122</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

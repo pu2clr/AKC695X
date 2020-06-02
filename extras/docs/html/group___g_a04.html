@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">PU2CLR AKC695X Arduino Library
-   &#160;<span id="projectnumber">1.0.1</span>
+   &#160;<span id="projectnumber">1.0.2</span>
    </div>
    <div id="projectbrief">This is an Arduino Library to control the AKC695X / M695X DSP radio devices</div>
   </td>
@@ -506,9 +506,9 @@ AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 1
 <p>Seek a FM Station</p>
 <div class="fragment"><div class="line"><span class="comment">// Do this if you want to show the frequency during the seek process. </span></div>
 <div class="line"><span class="comment">// Where showFrequency is the function name of your sketch that shows the current frequency.  </span></div>
-<div class="line">radio.seekStation(up_down,showFrequency);  </div>
+<div class="line">radio.<a class="code" href="group___g_a04.html#ga60e4f53f014c32b748de04c9d643826d">seekStation</a>(up_down,showFrequency);  </div>
 </div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">// Do this if you don&#39;t want to show the frequency during seek process. </span></div>
-<div class="line">radio.seekStation(up_down);  </div>
+<div class="line">radio.<a class="code" href="group___g_a04.html#ga60e4f53f014c32b748de04c9d643826d">seekStation</a>(up_down);  </div>
 </div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a01.html#unionakc595x__reg20" title="Reg20 (type 0x14 / R)">akc595x_reg20</a>, <a class="el" href="group___g_a01.html#ga3d85865e7c11161e222ed157c4e2d169" title="Reg21 (type 0x15 / R)">akc595x_reg21</a>, <a class="el" href="group___g_a03_a.html#ga62a70a5191c3e56dfa6cc51c314bc210" title="Converts the channel stored in the registers 20 and 21 to frequency.">channelToFrequency</a></dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -795,7 +795,16 @@ AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 1
 </div><div class="memdoc">
 
 <p>Gets the current RSSI. </p>
-<p>Gets the current RSSI </p><dl class="section return"><dt>Returns</dt><dd>int RSSI value </dd></dl>
+<p>This method calculates the RSSI based on two register (24 and 27).</p>
+<p>Actually, it is the Antenna aperture and can be calculated using signal levels rssi, pgalevel_rf, pgalevel_if.</p>
+<p>The rssi is stored in the register 27 and the pgalevel_rf, pgalevel_if are stored in register 24.</p>
+<p>On FM mode or SW band, the formula is: Pin (dBuV) = 103 - rssi - 6 * pgalevel_rf - 6 * pgalevel_if</p>
+<p>On AM mode (LW or MW), the formula is: Pin (dBuV) = 123 - rssi - 6 * pgalevel_rf - 6 * pgalevel_if <br  />
+</p>
+<dl class="section see"><dt>See also</dt><dd>AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio; page 16 </dd>
+<dd>
+<a class="el" href="group___g_a01.html#unionakc595x__reg24" title="Reg24 (type 0x18 / R)">akc595x_reg24</a>, <a class="el" href="group___g_a01.html#unionakc595x__reg27" title="Reg27 (type 0x1B / R)">akc595x_reg27</a></dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>int RSSI value </dd></dl>
 
 </div>
 </div>
@@ -821,6 +830,7 @@ AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 1
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="agroup___g_a04_html_ga60e4f53f014c32b748de04c9d643826d"><div class="ttname"><a href="group___g_a04.html#ga60e4f53f014c32b748de04c9d643826d">AKC695X::seekStation</a></div><div class="ttdeci">void seekStation(uint8_t up_down, void(*showFunc)()=NULL)</div><div class="ttdoc">Seeks a FM station.</div><div class="ttdef"><b>Definition:</b> AKC695X.cpp:657</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

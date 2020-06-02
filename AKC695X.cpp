@@ -62,7 +62,7 @@ void AKC695X::setI2CBusAddress(int deviceAddress)
  * AKC695X radio;
  * void setup() {
  *    // Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32KHZ or CRYSTAL_12MHZ
- *    // radio.setup(RESET_PIN); Instead the line below, you use this line, the crystal type considered will be 32.768KHz.   
+ *    // radio.setup(RESET_PIN); Instead the line below, if you use this line, the crystal type considered will be 32.768KHz.   
  *    radio.setup(RESET_PIN, CRYSTAL_12MHZ);
  *    radio.setFM(0, 870, 1080, 1039, 1); // Tunes on 103.9MHz, FM, band 0. 
  * }
@@ -70,7 +70,7 @@ void AKC695X::setI2CBusAddress(int deviceAddress)
  * 
  * @see setCrystalType, akc595x_reg2
  * 
- * @param resetPin      if >= 0,  then you control the RESET. if -1, you are using ths MCU RST pin. 
+ * @param resetPin      if >= 0,  then you control the RESET. if -1, you are using ths Arduino RST pin. 
  * @param crystal_type  if 1 =  32.768KHz (default); 0 = 12MHz
  */
 void AKC695X::setup(int resetPin, uint8_t crystal_type)
@@ -86,7 +86,16 @@ void AKC695X::setup(int resetPin, uint8_t crystal_type)
  * @ingroup     GA03
  * @brief       Receiver startup 
  * @details     Use this method to define the MCU (Arduino) RESET. If you call this method the crystal type will be set to 32.768KHz
- * 
+ * @code
+ * #include <AKC695X.h>
+ * AKC695X radio;
+ * void setup() {
+ *    // Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32KHZ or CRYSTAL_12MHZ
+ *    // radio.setup(-1); Use this line if you are using RST pin of the Arduino. The crystal type considered will be 32.768KHz. 
+ *    radio.setup(12); // You ara usint Arduino Pin 12 to reset control. The crystal type considered will be 32.768KHz.   
+ *    radio.setFM(0, 870, 1080, 1039, 1); // Tunes on 103.9MHz, FM, band 0. 
+ * }
+ * @endcode
  * @param resetPin      if >= 0,  then you control the RESET. if -1, you are using ths MCU RST pin. 
  */
 void AKC695X::setup(int resetPin) {
@@ -105,7 +114,7 @@ void AKC695X::setup(int resetPin) {
  * @param seek      If 1 Trigger tune process. The STC bit is set high when the tune operation completes
  * @param seekup    Seek direction control bit. 0 = Seek down;  1 = Seek up
  */
-    void AKC695X::powerOn(uint8_t fm_en, uint8_t tune, uint8_t mute, uint8_t seek, uint8_t seekup)
+void AKC695X::powerOn(uint8_t fm_en, uint8_t tune, uint8_t mute, uint8_t seek, uint8_t seekup)
 {
     akc595x_reg0 reg0;
 
