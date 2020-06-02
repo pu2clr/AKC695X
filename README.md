@@ -139,16 +139,18 @@ __ATTENTION: The AKC6952 and AKC6959 do not have I²C  interface. So, they will 
 
 ## Registers setup
 
-
-### Register operations
-   
-This library uses the I²C  protocols to read and write AKC695X registers. In this context, registers are memory position into the device.
+This library uses the I²C  protocols to read and write AKC695X registers. In this context, registers are memory position into the device. 
 
 The first 13 registers, you can use to change the behavior of the device. They are read and write registers. The registers from 20 to 27, can be used to get the current device status. They are read only registers. 
 
-There is no information about the register 10 and the registers 14 to 19 in the documentation used to develop this library. 
+By writing and reading these register, you can control the AKC695X devices.
 
+
+### Register operations
+   
 By using the registers 0 to 13, you can change the band, set the frequency, set the channel space, set the audio behavior and volume, set a custom band and more. The file [AKC695X.h](https://github.com/pu2clr/AKC695X/blob/master/AKC695X.h) has details about the all registers used in the library. Also, you can read the [API Documentation](https://pu2clr.github.io/AKC695X/extras/docs/html/modules.html) to know more about AKC695X registers. 
+
+There is no information about the register 10 and the registers 14 to 19 in the documentation used to develop this library. 
 
 To represent the information stored in the AKC695X registers, this library used the resources of the C / C ++ language: union, struct and typedef. This way, the user of this library will be able to customize it easily.
 
