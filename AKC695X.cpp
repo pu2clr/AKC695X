@@ -51,9 +51,24 @@ void AKC695X::setI2CBusAddress(int deviceAddress)
 }
 
 /**
- * @ingroup     GA03
- * @brief       Receiver startup 
- * @details     Use this method to define the MCU (Arduino) RESET pin and the Crystal Type used. 
+ * @ingroup  GA03
+ * @brief    Receiver startup 
+ * @details  Use this method to define the MCU (Arduino) RESET pin and the crystal type you are using. 
+ * @details  The options for the crystal type is:  CRYSTAL_32KHZ (32.768KHz) or CRYSTAL_12MHZ (12MHz).
+ * @details  If you omit the crystal type parameter, will be considered 32.768KHz.  Example:
+ * @code
+ * #include <AKC695X.h>
+ * #define RESET_PIN 12   // set it to -1 if you want to use the RST pin of your MCU.
+ * AKC695X radio;
+ * void setup() {
+ *    // Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32KHZ or CRYSTAL_12MHZ
+ *    // radio.setup(RESET_PIN); Instead the line below, you use this line, the crystal type considered will be 32.768KHz.   
+ *    radio.setup(RESET_PIN, CRYSTAL_12MHZ);
+ *    radio.setFM(0, 870, 1080, 1039, 1); // Tunes on 103.9MHz, FM, band 0. 
+ * }
+ * @endcode
+ * 
+ * @see setCrystalType, akc595x_reg2
  * 
  * @param resetPin      if >= 0,  then you control the RESET. if -1, you are using ths MCU RST pin. 
  * @param crystal_type  if 1 =  32.768KHz (default); 0 = 12MHz
