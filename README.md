@@ -32,8 +32,12 @@ Be a member of Facebook group [DSP receivers for hobbyists](https://www.facebook
 
 ## Preface
 
-The AKC695X devices will surprise hobbyists and experimenters with its simplicity to build FM and AM (LW, MW, SW) receivers. There are currently several receivers based on DSP technology. The KT0915 and SI4735 devices are some examples widely disseminated in the market. This library was developed with the purpose of expanding the alternatives to electronics hobbyists and radio listeners. 
-In this document you will see Arduino source codes, schematics, examples and tips to help you to build a receiver based on Arduino board and AKC695X devices. 
+AKC695X device family offer versatile FM/MW/SW/LW receiver solution by reducing the external components usually found in regular receivers. This device family will surprise hobbyists and experimenters with its simplicity to build FM and AM (LW, MW, SW) receivers. 
+
+There are currently some receivers based on DSP technology. The KT0915 and SI4735 devices are some examples widely disseminated in the market. This library was developed with the purpose of expanding the alternatives to hobbyists and radio listeners. 
+
+In this document you will see Arduino source codes, schematics, examples and tips to help you to build a receiver based on Arduino board and AKC695X devices.  The project and examples shown here do not intend to be a real receiver for exigent listener. However, it is possible to start with it and after add some improvements. On the other hand, with the simple circuits shown here, the experimenter may be surprised with the AKC695X performance.
+
 
 {% include video01.html %} 
 
