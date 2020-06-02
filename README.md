@@ -85,11 +85,35 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ## Library Installation
 
 You can install this library on your Arduino environment using different methods. 
+
+### Installing via Arduino IDE
+
 The video below shows how to install the PU2CLR AKC695X Arduino Library from your Arduino IDE. 
 
 [PU2CLR AKC695X Arduino Library Installation](https://youtu.be/eHHeXapDNiU)
 
 {% include libinstalling.html %}
+
+
+### Installing via the repository 
+
+With this approach, you will have the __most current version__ of the library. However, __it may not be the most stable version__. This is because the current version is always in development. [Prefer releases](https://github.com/pu2clr/AKC695X/releases).
+Do you need some old version (release) of this library?  If yes, [check here](https://github.com/pu2clr/AKC695X/releases).
+
+
+![Installing from this repository](extras/images/install_lib_from_git_01.png)
+
+<BR>
+
+![Installing from this repository](extras/images/install_lib_from_git_02.png)
+
+First, you have to [download](https://github.com/pu2clr/SI4735/archive/master.zip) this library in zip format. 
+After, unzip the SI4735-master.zip file in your Arduino Library folder. 
+
+* On __Windows__: "My Documents\Arduino\libraries"
+* On __MAC OS__: ˜/Documents/Arduino/libraries
+* On __Linux__: ˜/Documents/Arduino/libraries
+
 
 
 
