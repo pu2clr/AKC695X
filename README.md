@@ -114,6 +114,8 @@ First, you have to [download](https://github.com/pu2clr/AKC695X/archive/master.z
 ![Installing from this repository](extras/images/install_02.png)
 
 
+<BR>
+
 After download, unzip the AKC695X-master.zip file in your Arduino Library folder. Check this folder path below.
 
 * On __Windows__: "My Documents\Arduino\libraries"
