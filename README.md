@@ -101,19 +101,20 @@ With this approach, you will have the __most current version__ of the library. H
 Do you need some old version (release) of this library?  If yes, [check here](https://github.com/pu2clr/AKC695X/releases).
 
 
-![Installing from this repository](extras/images/install_lib_from_git_01.png)
+First, you have to [download](https://github.com/pu2clr/AKC695X/archive/master.zip) this library in zip format.  The figures below show that. 
+
+![Installing from this repository](extras/images/install_01.png)
 
 <BR>
 
-![Installing from this repository](extras/images/install_lib_from_git_02.png)
+![Installing from this repository](extras/images/install_02.png)
 
-First, you have to [download](https://github.com/pu2clr/SI4735/archive/master.zip) this library in zip format. 
-After, unzip the SI4735-master.zip file in your Arduino Library folder. 
+
+After download, unzip the AKC695X-master.zip file in your Arduino Library folder. Check this folder path below.
 
 * On __Windows__: "My Documents\Arduino\libraries"
 * On __MAC OS__: ˜/Documents/Arduino/libraries
 * On __Linux__: ˜/Documents/Arduino/libraries
-
 
 
 
