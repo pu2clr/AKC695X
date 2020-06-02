@@ -103,10 +103,14 @@ Do you need some old version (release) of this library?  If yes, [check here](ht
 
 First, you have to [download](https://github.com/pu2clr/AKC695X/archive/master.zip) this library in zip format.  The figures below show that. 
 
+#### Downloading from AKC695X PU2CLR Arduino Library repository
+
+##### First step
 ![Installing from this repository](extras/images/install_01.png)
 
 <BR>
 
+##### Last step
 ![Installing from this repository](extras/images/install_02.png)
 
 
