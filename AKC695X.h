@@ -65,7 +65,7 @@
  * | Pb-free / RoHS complian                                                   |   X     |    X    |    X    |
  */
 
-#define AKC595X_I2C_ADRESS 0x10
+#define AKC695X_I2C_ADRESS 0x10
 
 // Read and Write (RW) AKC695X registers
 #define REG00 0x00
@@ -430,7 +430,7 @@ typedef union {
 /**
  * @defgroup GA02 AKC695X Class  
  * @brief AKC695X Class 
- * @details This class implements all functions to help you to control the AKC695X devices. 
+ * @details This class implements all functions that will help you to control the AKC695X devices. 
  * 
  * @author PU2CLR - Ricardo Lima Caratti 
  */
@@ -439,7 +439,7 @@ class AKC695X
 {
 
 protected:
-    int deviceAddress = AKC595X_I2C_ADRESS;
+    int deviceAddress = AKC695X_I2C_ADRESS;
     int resetPin = -1;
 
     uint8_t volume;                             //!< Store the current volume
