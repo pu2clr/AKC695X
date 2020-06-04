@@ -2,23 +2,42 @@
 # Syntax Coloring Map 
 ##################################################################
 # Datatypes (KEYWORD1)
-S4735 KEYWORD1
+AKC695X KEYWORD1
 
 # Methods (KEYWORD2)
 
-AKC695X         KEYWORD2
-setup           KEYWORD2
-reset           KEYWORD2
-setPowerOn      KEYWORD2
-powerOn         KEYWORD2
-setRegister     KEYWORD2
-getRegister     KEYWORD2
-setFM           KEYWORD2
-setAM           KEYWORD2
-setStep         KEYWORD2
-setFrequency    KEYWORD2
-frequencyUp     KEYWORD2
-frequencyDown   KEYWORD2
+setup               KEYWORD2
+reset               KEYWORD2
+setPowerOn          KEYWORD2
+powerOn             KEYWORD2
+setRegister         KEYWORD2
+getRegister         KEYWORD2
+setFM               KEYWORD2
+setAM               KEYWORD2
+setStep             KEYWORD2
+setFrequency        KEYWORD2
+frequencyUp         KEYWORD2
+frequencyDown       KEYWORD2
+setAudio            KEYWORD2
+setCustomBand       KEYWORD2
+getRSSI             KEYWORD2
+getSupplyVoltage    KEYWORD2
+getVolume           KEYWORD2
+setVolumeDown       KEYWORD2
+setVolumeUp         KEYWORD2
+setVolumeControl    KEYWORD2
+setFmEmphasis       KEYWORD2
+setFmStereoMono     KEYWORD2
+setFmBandwidth      KEYWORD2
+isCurrentModeFM     KEYWORD2
+getCurrentChannel   KEYWORD2
+channelToFrequency  KEYWORD2
+getAmCurrentSpace   KEYWORD2
+getAmCarrierNoiseRatio KEYWORD2
+isFmStereo          KEYWORD2
+getFmCarrierNoiseRatio  KEYWORD2
+setI2CBusAddress    KEYWORD2
+ 
 
 akc595x_reg1    KEYWORD2
 akc595x_reg2    KEYWORD2
@@ -58,3 +77,9 @@ REG09 LITERAL1
 REG11 LITERAL1
 REG12 LITERAL1
 REG13 LITERAL1
+DEFAUL_I2C_ADDRESS LITERAL1
+CURRENT_MODE_FM    LITERAL1
+CURRENT_MODE_AM    LITERAL1
+CRYSTAL_12MHZ      LITERAL1
+CRYSTAL_32KHZ      LITERAL1
+MAX_SEEK_TIME      LITERAL1 
