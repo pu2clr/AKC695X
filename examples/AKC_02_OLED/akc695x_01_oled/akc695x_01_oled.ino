@@ -1,3 +1,30 @@
+/**
+ * It is FM and AM (MW and SW) AKC6955 based receiver controlled by a Arduino Pro Mini. You can also use 
+ * other Arduino boards. However, see documentation before try that: https://github.com/pu2clr/AKC695X 
+ * 
+ * This receiver use a OLED 92" (128 x 64), 6 push buttons and an Encoder. 
+ *  
+ * This sketch uses the following libraries:
+ *  PU2CLR AKC Arduino Library;
+ *  Adafruit_GFX; and 
+ *  Adafruit_SSD1306
+ *  
+ * This software can be freely distributed using the MIT Free Software model.
+ * 
+ * AKC6955 and Arduino Pro Mini wire up
+ * 
+ * | AKC6955 pin | Arduino pin | Description | 
+ * | ----------- | ----------- | ----------- |
+ * |    5        |   12        | You can use the Arduino RST pin. In this case set RESET_PIN to -1 |
+ * |    6 (SCL)  |   A5 SCL    | I2C bus clock | 
+ * |    7 (SDA)  |   A4 SDA    | I2C bus data  | 
+ *    
+ * @see schematic on https://github.com/pu2clr/AKC695X#schematic
+ * 
+ * @author Ricardo Lima Caratti (pu2clr@gmail.com)
+ * @copyright Copyright (c) 2020
+ */
+
 #include <AKC695X.h>
 
 #include <Adafruit_GFX.h>
@@ -7,10 +34,10 @@
 
 #define RESET_PIN 12 // You can use the Arduino RST pin. In this case, set it to -1
 
-#define OLED_I2C_ADDRESS 0x3C
-#define SCREEN_WIDTH 128  // OLED display width, in pixels
-#define SCREEN_HEIGHT 64  // OLED display height, in pixels
-#define OLED_RESET -1     // Reset pin # (or -1 if sharing Arduino reset pin)
+#define OLED_I2C_ADDRESS 0x3C   // Check the I2C bus of your OLED device
+#define SCREEN_WIDTH 128        // OLED display width, in pixels
+#define SCREEN_HEIGHT 64        // OLED display height, in pixels
+#define OLED_RESET -1           // Reset pin # (or -1 if sharing Arduino reset pin)
 
 #define ENCODER_PIN_A 2
 #define ENCODER_PIN_B 3
