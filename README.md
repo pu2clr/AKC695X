@@ -30,6 +30,7 @@ Be a member of Facebook group [DSP receivers for hobbyists](https://www.facebook
 9.  [Examples](https://github.com/pu2clr/AKC695X/tree/master/examples)
 10. [Videos](https://github.com/pu2clr/AKC695X#svideos)
 11. [References](https://pu2clr.github.io/AKC695X/#references)
+12. [Commercial receivers based on AKC6955](https://pu2clr.github.io/AKC695X/#commercial-receivers-based-on-akc6955)
 
 
 ## Preface
@@ -514,8 +515,11 @@ The figure and table below show the pin description of the AKC6951 and AKC6955.
 * [AM-SW-FM radio by DSP radio chip version 2](https://www.tindie.com/products/microwavemont/am-sw-fm-radio-by-dsp-radio-chip-version-2/)
 * [Radio, yes AM-SW-FM radio by DSP radio chip](https://hackaday.io/project/12944-radio-yes-am-sw-fm-radio-by-dsp-radio-chip)
 * [AKC6955-M6955--DSP-radio-with-full-colour-LCD](https://github.com/kodera2t/AKC6955-M6955--DSP-radio-with-full-colour-LCD)
+
+# Commercial receivers based on AKC6955
+
 * [Retekess V115   Tivdio V115 / Audiomax/Kaimeda SRW-710S ](http://www.vk6fh.com/vk6fh/V115%20receiver.htm?fbclid=IwAR3QyfxmpFihzIVs5fvR4vsCe-_0OUpyzbhPUWvgIbsEepbHHULL-FxnDl0) 
-* 
+* [Martin is pleased with the Retekess/Tivdio V-115 (a.k.a. Audiomax SRW-710S)](https://swling.com/blog/tag/tivdio-v-115-review/)
 
 
 
