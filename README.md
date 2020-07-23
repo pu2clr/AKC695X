@@ -6,7 +6,7 @@ This library was built based on [AKC6955 stereo FM / TV / MW / SW / LW digital t
 
 The PU2CLR AKC695X Arduino Library also intend to be used on __all members of the AKC695X family with I²C  bus interface__ respecting, of course, the features available for each IC version. __Please, check the Datasheet of the divice before starting your project__. Finally, it can be freely distributed using the [MIT Free Software model](https://pu2clr.github.io/AKC695X/#mit-license). 
 
-[Copyright (c) 2020 Ricardo Lima Caratti](https://pu2clr.github.io/AKC695X/#mit-license). 
+    [Copyright (c) 2020 Ricardo Lima Caratti](https://pu2clr.github.io/AKC695X/#mit-license). 
 
 Contact: __pu2clr@gmail.com__.
 
@@ -509,6 +509,10 @@ The figure and table below show the pin description of the AKC6951 and AKC6955.
  [Full Review of the Tivdio V115 AM FM Shortwave portable receiver](https://youtu.be/SZ1bf-yj3C0)
 
 
+# Third-party projects using this library
+
+* [AKC6955-Arduino radio](https://oshwhub.com/Maaaaark/AKC6955-Arduinoshou-yin-ji?fbclid=IwAR2ifmrrh3mAV_cjBXUf2OESEYDru1bHlRB74fJFX4DCgL61jCQTZNraQYk)
+ 
 
 # References
 
@@ -516,11 +520,12 @@ The figure and table below show the pin description of the AKC6951 and AKC6955.
 * [Radio, yes AM-SW-FM radio by DSP radio chip](https://hackaday.io/project/12944-radio-yes-am-sw-fm-radio-by-dsp-radio-chip)
 * [AKC6955-M6955--DSP-radio-with-full-colour-LCD](https://github.com/kodera2t/AKC6955-M6955--DSP-radio-with-full-colour-LCD)
 
+
+
 # Commercial receivers based on AKC6955
 
 * [Retekess V115   Tivdio V115 / Audiomax/Kaimeda SRW-710S ](http://www.vk6fh.com/vk6fh/V115%20receiver.htm?fbclid=IwAR3QyfxmpFihzIVs5fvR4vsCe-_0OUpyzbhPUWvgIbsEepbHHULL-FxnDl0) 
 * [Martin is pleased with the Retekess/Tivdio V-115 (a.k.a. Audiomax SRW-710S)](https://swling.com/blog/tag/tivdio-v-115-review/)
-
-
-
-
+* [Troy reviews the Audiomax SRW-710S](https://swling.com/blog/2016/12/troy-reviews-the-audiomax-srw-710s/)
+* [Thoughts and/or experiences on the Retekess V115 (formerly/sometimes known as Tivdio V-115)? ](https://www.reddit.com/r/shortwave/comments/ahso6e/thoughts_andor_experiences_on_the_retekess_v115/)
+* 
