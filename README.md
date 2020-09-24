@@ -512,6 +512,8 @@ The figure and table below show the pin description of the AKC6951 and AKC6955.
 # Third-party projects using this library
 
 * [AKC6955-Arduino radio](https://oshwhub.com/Maaaaark/AKC6955-Arduinoshou-yin-ji?fbclid=IwAR2ifmrrh3mAV_cjBXUf2OESEYDru1bHlRB74fJFX4DCgL61jCQTZNraQYk)
+* [](https://gitee.com/maaaaark/AKC695X-STM32)
+
  
 
 # References
