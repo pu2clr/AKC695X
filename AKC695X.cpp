@@ -274,7 +274,7 @@ uint16_t AKC695X::channelToFrequency()
     else
     {
         // the AM tuned frequency is channel * current step.
-        frequency = getCurrentChannel() * this->currentStep;
+        frequency = (this-currentMode3k)?getCurrentChannel() * 3:getCurrentChannel() * 5;
     }
     return frequency;
 }
@@ -729,7 +729,7 @@ void AKC695X::setFrequency(uint16_t frequency)
     if (this->currentMode == 0)
     {
         // AM mode
-        channel = tmpFreq / this->currentStep;
+        channel = tmpFreq / ((this-currentMode3k)? 3: 5);
         reg2.refined.channel = (channel >> 8);      // Changes just the 5 higher bits of the channel.
         reg2.refined.ref_32k_mode = this->currentCrystalType;
         reg2.refined.mode3k = this->currentMode3k;
