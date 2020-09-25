@@ -444,7 +444,7 @@ void AKC695X::commitTune()
  */
 void AKC695X::setCustomBand(uint16_t minimum_frequency, uint16_t maximum_frequency) {
 
-    uint8_t start_channel, end_channel;
+    uint16_t start_channel, end_channel;
     akc595x_reg4 reg4; // start channel for custom band
     akc595x_reg5 reg5; // end channel for custom band
 
@@ -455,8 +455,8 @@ void AKC695X::setCustomBand(uint16_t minimum_frequency, uint16_t maximum_frequen
     }
     else
     {
-        start_channel = minimum_frequency / this->currentStep;
-        end_channel = maximum_frequency / this->currentStep;
+        start_channel = minimum_frequency / ((this-currentMode3k)? 3: 5);
+        end_channel = maximum_frequency / ((this-currentMode3k)? 3: 5);
     }
 
     reg4 = start_channel / 32;
@@ -496,7 +496,7 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t max
     akc595x_reg1 reg1;
     akc595x_reg2 reg2;
 
-        this->currentMode = 1;
+    this->currentMode = 1;
     this->currentBand = akc695x_fm_band;
     this->currentBandMinimumFrequency = minimum_freq;
     this->currentBandMaximumFrequency = maximum_freq;
@@ -506,26 +506,13 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t max
     reg1.raw = 0;
     reg1.refined.fmband = akc695x_fm_band; // Selects the band will be used for FM (see fm band table)
 
-    setRegister(REG00, 0b00010011); // Sets to FM (Power On)
+    setRegister(REG00, 0b11000000); // Sets to FM (Power On)
 
     if (akc695x_fm_band > 6 )
         setCustomBand(minimum_freq, maximum_freq); // Sets a custom FM band 
 
     setRegister(REG01, reg1.raw); // Sets the FM band
-
-    channel = (default_frequency - 300) * 4;
-    high_bit = (channel >> 8); 
-    low_bit = channel & 0b0000011111111;
-
-    setRegister(REG03, low_bit);
-
-    reg2.raw = high_bit;
-    reg2.refined.ref_32k_mode = this->currentCrystalType;
-    reg2.refined.mode3k = this->currentMode3k;
-
-    setRegister(REG02, reg2.raw); // Needs consider the crystal type
-
-    commitTune();
+	setFrequency(default_frequency);
 }
 
 /**
@@ -587,20 +574,7 @@ void AKC695X::setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t max
         setCustomBand(minimum_freq, maximum_freq); // Sets a custom AM band
 
     setRegister(REG01, reg1.raw); 
-
-    channel = default_frequency / this->currentStep;
-    high_bit = (channel >> 8); 
-    low_bit = channel & 0b0000011111111;
-
-    setRegister(REG03, low_bit);
-
-    reg2.raw = high_bit;
-    reg2.refined.ref_32k_mode = this->currentCrystalType;
-    reg2.refined.mode3k = this->currentMode3k;
-
-    setRegister(REG02, reg2.raw); 
-
-    commitTune();
+	setFrequency(default_frequency);
 }
 
 /**
