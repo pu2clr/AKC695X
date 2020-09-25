@@ -6,7 +6,7 @@ This library was built based on [AKC6955 stereo FM / TV / MW / SW / LW digital t
 
 The PU2CLR AKC695X Arduino Library also intend to be used on __all members of the AKC695X family with I²C  bus interface__ respecting, of course, the features available for each IC version. __Please, check the Datasheet of the divice before starting your project__. Finally, it can be freely distributed using the [MIT Free Software model](https://pu2clr.github.io/AKC695X/#mit-license). 
 
-    [Copyright (c) 2020 Ricardo Lima Caratti](https://pu2clr.github.io/AKC695X/#mit-license). 
+[Copyright (c) 2020 Ricardo Lima Caratti](https://pu2clr.github.io/AKC695X/#mit-license). 
 
 Contact: __pu2clr@gmail.com__.
 
