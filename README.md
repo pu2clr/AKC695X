@@ -534,4 +534,4 @@ The figure and table below show the pin description of the AKC6951 and AKC6955.
 * [Martin is pleased with the Retekess/Tivdio V-115 (a.k.a. Audiomax SRW-710S)](https://swling.com/blog/tag/tivdio-v-115-review/)
 * [Troy reviews the Audiomax SRW-710S](https://swling.com/blog/2016/12/troy-reviews-the-audiomax-srw-710s/)
 * [Thoughts and/or experiences on the Retekess V115 (formerly/sometimes known as Tivdio V-115)? ](https://www.reddit.com/r/shortwave/comments/ahso6e/thoughts_andor_experiences_on_the_retekess_v115/)
-* 
+* __Retekess TR601__
