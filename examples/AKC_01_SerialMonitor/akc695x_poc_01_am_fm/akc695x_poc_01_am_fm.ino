@@ -5,7 +5,7 @@
 
 AKC695X radio;
 
-uint16_t currentFM = 103;
+uint16_t currentFM = 1039;
 uint16_t currentAM = 810;
 
 uint16_t currentFrequency;
@@ -13,19 +13,19 @@ uint16_t currentFrequency;
 void setup() {
 
   Serial.begin(9600);
-  while (!Serial);
+  // while (!Serial);
 
+  showHelp();
   // You can select the RESET pin and Crystal type you are using in your circuit.
   // Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32KHZ or CRYSTAL_12MHZ
   // radio.setup(RESET_PIN, CRYSTAL_12MHZ);
   radio.setup(RESET_PIN);
-  
+  delay(500);
   currentFrequency = currentFM = 1039;
   radio.setFM(0, 870, 1080, currentFrequency, 1);
   
   radio.setAudio(); // Sets the audio output behaviour (default configuration). 
 
-  showHelp();
   showStatus();
 }
 
@@ -46,11 +46,11 @@ void showHelp()
 void showStatus()
 {
 
-  float freq;
+  char  freq[15];
 
   currentFrequency = radio.getFrequency();
 
-  freq =  (radio.getCurrentMode() == CURRENT_MODE_FM)?  currentFrequency / 10.0 : currentFrequency / 1000.0;
+  sprintf(freq,"%5.5u", currentFrequency); // (radio.getCurrentMode() == CURRENT_MODE_FM)?  currentFrequency / 10.0 : currentFrequency / 1000.0;
 
   Serial.print("\nYou are tuned on ");
   Serial.print(freq);
@@ -78,13 +78,13 @@ void loop() {
         break;
       case 'a':
       case 'A':
-        currentFM = currentFrequency;
+        currentFM = radio.getFrequency();
         radio.setAM(3,550, 1710, currentAM, 5);
         break;
       case 'f':
       case 'F':
-        currentAM = currentFrequency;
-        radio.setFM(0, 87.0, 108.0,currentFM, 1);
+        currentAM = radio.getFrequency();
+        radio.setFM(0, 87, 108,currentFM, 1);
         break;
       case '1':
         radio.setAM(10,11400, 12200, 11940, 5);
