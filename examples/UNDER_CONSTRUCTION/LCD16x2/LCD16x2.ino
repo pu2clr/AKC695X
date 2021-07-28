@@ -3,6 +3,7 @@
   UNDER CONSTRUNCTION......
    
   
+
   See user_manual.txt before operating the receiver. 
 
    Wire up on Arduino UNO, Pro mini and AKC6955
@@ -76,9 +77,7 @@ const uint16_t size_content = sizeof ssb_patch_content; // see patch_init.h
 #define LW 4
 
 #define SSB 1
-
 #define EEPROM_SIZE        512
-
 #define STORE_TIME 10000 // Time of inactivity to make the current receiver status writable (10s / 10000 milliseconds).
 
 // EEPROM - Stroring control variables
@@ -429,7 +428,15 @@ void showVolume()
  */
 void setBand(int8_t up_down)
 {
-  // TO DO
+  // save the current frequency for the band
+  band[bandIdx].currentFreq = currentFrequency;
+
+  if (up_down == 1)
+    bandIdx = (bandIdx < lastBand) ? (bandIdx + 1) : 0;
+  else
+    bandIdx = (bandIdx > 0) ? (bandIdx - 1) : lastBand;
+  useBand();
+  delay(MIN_ELAPSED_TIME); // waits a little more for releasing the button.
 }
 
 /**
@@ -437,7 +444,19 @@ void setBand(int8_t up_down)
  */
 void useBand()
 {
-  // TO DO
+
+  if (band[bandIdx].mode == 1)
+  {
+    rx.setFM(band[bandIdx].band, band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].currentFreq, band[bandIdx].step);
+    rx.setFmSeekStep(0); // 25KHz.
+  }
+  else
+  {
+    rx.setAM(band[bandIdx].band, band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].currentFreq, band[bandIdx].step);
+  }
+  delay(100);
+  currentFrequency = band[bandIdx].currentFreq;
+  rx.setFrequency(currentFrequency);
   showStatus();
   showCommandStatus((char *) "Band");
 }
@@ -500,24 +519,14 @@ void doVolume( int8_t v ) {
   delay(MIN_ELAPSED_TIME); // waits a little more for releasing the button.
 }
 
-/**
- *  This function is called by the seek function process.
- */
-void showFrequencySeek(uint16_t freq)
-{
-  currentFrequency = freq;
-  showFrequency();
-}
 
 /**
  *  Find a station. The direction is based on the last encoder move clockwise or counterclockwise
  */
 void doSeek()
 {
-  // TO DO
-  
+  rx.seekStation(seekDirection, showFrequency);
 }
-
 
 
 /**
@@ -564,11 +573,11 @@ void doCurrentMenuCmd() {
       showBandwidth();
       break;
     case 3:
-      seekDirection = 1;    // SEEK 
+      seekDirection = AKC_SEEK_UP; // SEEK UP
       doSeek();
       break;  
     case 4:
-      seekDirection = 0;
+      seekDirection = AKC_SEEK_DOWN; // SEEK DOWN
       doSeek();
       break;    
     default:

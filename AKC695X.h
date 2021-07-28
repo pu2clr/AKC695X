@@ -27,6 +27,8 @@
 #define CRYSTAL_32KHZ       1
 
 #define MAX_SEEK_TIME   3000        // Maximum time have to be a seeking process (in ms). 
+#define AKC_SEEK_UP 1
+#define AKC_SEEK_DOWN 0
  
 /**
  * @brief AKC695X features
