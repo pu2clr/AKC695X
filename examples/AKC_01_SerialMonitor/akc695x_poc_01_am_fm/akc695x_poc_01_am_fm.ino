@@ -19,7 +19,8 @@ void setup() {
   // You can select the RESET pin and Crystal type you are using in your circuit.
   // Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32KHZ or CRYSTAL_12MHZ
   // radio.setup(RESET_PIN, CRYSTAL_12MHZ);
-  radio.setup(RESET_PIN);
+  radio.setup(RESET_PIN, CRYSTAL_12MHZ);
+  // radio.setup(RESET_PIN, CRYSTAL_32KHZ);
   delay(500);
   currentFrequency = currentFM = 1039;
   radio.setFM(0, 870, 1080, currentFrequency, 1);
@@ -79,12 +80,12 @@ void loop() {
       case 'a':
       case 'A':
         currentFM = radio.getFrequency();
-        radio.setAM(3,550, 1710, currentAM, 5);
+        radio.setAM(3,480, 1710, currentAM, 10);
         break;
       case 'f':
       case 'F':
         currentAM = radio.getFrequency();
-        radio.setFM(0, 87, 108,currentFM, 1);
+        radio.setFM(0, 870, 1080,currentFM, 1);
         break;
       case '1':
         radio.setAM(10,11400, 12200, 11940, 5);

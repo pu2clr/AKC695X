@@ -1,34 +1,34 @@
 #include <AKC695X.h>
 
 /**
- * SI47XX Arduino Library implementation 
- * 
- * This is an Arduino library for the AKC695X, BROADCAST RECEIVER, IC family.  
+ * SI47XX Arduino Library implementation
+ *
+ * This is an Arduino library for the AKC695X, BROADCAST RECEIVER, IC family.
  * It works with I2C protocol and can provide an easier interface for controlling the AKC695X devices.<br>
- * 
- * This library was built based on [AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio](http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf) document from "AKC technology". 
- * It also intend to  be used on **all members of the AKC695X family** respecting, of course, the features available for each IC version. 
- * 
- * This library can be freely distributed using the MIT Free Software model. [Copyright (c) 2019 Ricardo Lima Caratti](https://pu2clr.github.io/AKC695X/#mit-license).  
+ *
+ * This library was built based on [AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio](http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf) document from "AKC technology".
+ * It also intend to  be used on **all members of the AKC695X family** respecting, of course, the features available for each IC version.
+ *
+ * This library can be freely distributed using the MIT Free Software model. [Copyright (c) 2019 Ricardo Lima Caratti](https://pu2clr.github.io/AKC695X/#mit-license).
  * Contact: pu2clr@gmail.com
  */
 
-/** 
- * @defgroup GA03 Basic Methods 
- * @section   GA03 Basic 
+/**
+ * @defgroup GA03 Basic Methods
+ * @section   GA03 Basic
  */
 
 /**
  * @ingroup GA03
- * @brief Resets the system. 
- * @details This function can be used to reset the AKC695X device. ypu can also use the RTS pin of your MCU. 
+ * @brief Resets the system.
+ * @details This function can be used to reset the AKC695X device. ypu can also use the RTS pin of your MCU.
  * @details In this case, the RESET pin have to be set to  -1. This setup can be configured calling AKC695X::setup method.
- * 
+ *
  * @see setup
  */
 void AKC695X::reset()
 {
-    if (this->resetPin < 0 ) return;  // Do nothing. 
+    if (this->resetPin < 0 ) return;  // Do nothing.
 
     pinMode(this->resetPin, OUTPUT);
     delay(10);
@@ -40,10 +40,10 @@ void AKC695X::reset()
 
 /**
  * @ingroup GA03
- * @brief Sets the I2C bus device address 
- * @details You do not need use this function if your i2c device address is 0x10 (default value)  
- * 
- * @param deviceAddress 
+ * @brief Sets the I2C bus device address
+ * @details You do not need use this function if your i2c device address is 0x10 (default value)
+ *
+ * @param deviceAddress
  */
 void AKC695X::setI2CBusAddress(int deviceAddress)
 {
@@ -52,8 +52,8 @@ void AKC695X::setI2CBusAddress(int deviceAddress)
 
 /**
  * @ingroup  GA03
- * @brief    Receiver startup 
- * @details  Use this method to define the MCU (Arduino) RESET pin and the crystal type you are using. 
+ * @brief    Receiver startup
+ * @details  Use this method to define the MCU (Arduino) RESET pin and the crystal type you are using.
  * @details  The options for the crystal type is:  CRYSTAL_32KHZ (32.768KHz) or CRYSTAL_12MHZ (12MHz).
  * @details  If you omit the crystal type parameter, will be considered 32.768KHz.  Example:
  * @code
@@ -62,15 +62,15 @@ void AKC695X::setI2CBusAddress(int deviceAddress)
  * AKC695X radio;
  * void setup() {
  *    // Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32KHZ or CRYSTAL_12MHZ
- *    // radio.setup(RESET_PIN); Instead the line below, if you use this line, the crystal type considered will be 32.768KHz.   
+ *    // radio.setup(RESET_PIN); Instead the line below, if you use this line, the crystal type considered will be 32.768KHz.
  *    radio.setup(RESET_PIN, CRYSTAL_12MHZ);
- *    radio.setFM(0, 870, 1080, 1039, 1); // Tunes on 103.9MHz, FM, band 0. 
+ *    radio.setFM(0, 870, 1080, 1039, 1); // Tunes on 103.9MHz, FM, band 0.
  * }
  * @endcode
- * 
+ *
  * @see setCrystalType, akc595x_reg2
- * 
- * @param resetPin      if >= 0,  then you control the RESET. if -1, you are using ths Arduino RST pin. 
+ *
+ * @param resetPin      if >= 0,  then you control the RESET. if -1, you are using ths Arduino RST pin.
  * @param crystal_type  if 1 =  32.768KHz (default); 0 = 12MHz
  */
 void AKC695X::setup(int resetPin, uint8_t crystal_type)
@@ -84,19 +84,19 @@ void AKC695X::setup(int resetPin, uint8_t crystal_type)
 
 /**
  * @ingroup     GA03
- * @brief       Receiver startup 
+ * @brief       Receiver startup
  * @details     Use this method to define the MCU (Arduino) RESET. If you call this method the crystal type will be set to 32.768KHz
  * @code
  * #include <AKC695X.h>
  * AKC695X radio;
  * void setup() {
  *    // Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32KHZ or CRYSTAL_12MHZ
- *    // radio.setup(-1); Use this line if you are using RST pin of the Arduino. The crystal type considered will be 32.768KHz. 
- *    radio.setup(12); // You ara usint Arduino Pin 12 to reset control. The crystal type considered will be 32.768KHz.   
- *    radio.setFM(0, 870, 1080, 1039, 1); // Tunes on 103.9MHz, FM, band 0. 
+ *    // radio.setup(-1); Use this line if you are using RST pin of the Arduino. The crystal type considered will be 32.768KHz.
+ *    radio.setup(12); // You ara usint Arduino Pin 12 to reset control. The crystal type considered will be 32.768KHz.
+ *    radio.setFM(0, 870, 1080, 1039, 1); // Tunes on 103.9MHz, FM, band 0.
  * }
  * @endcode
- * @param resetPin      if >= 0,  then you control the RESET. if -1, you are using ths MCU RST pin. 
+ * @param resetPin      if >= 0,  then you control the RESET. if -1, you are using ths MCU RST pin.
  */
 void AKC695X::setup(int resetPin) {
     this->setup(resetPin, CRYSTAL_32KHZ);
@@ -104,13 +104,13 @@ void AKC695X::setup(int resetPin) {
 
 /**
  * @ingroup GA03
- * @brief Power the device on 
- * 
+ * @brief Power the device on
+ *
  * @details  Starts the AKC695X with some parameters.
- * 
+ *
  * @param fm_en     1 = FM mode;  0 = AM mode
  * @param tune      If 1 Trigger tune process. The STC bit is set high when the tune operation completes
- * @param mute      If 1 mute L/R audio 
+ * @param mute      If 1 mute L/R audio
  * @param seek      If 1 Trigger tune process. The STC bit is set high when the tune operation completes
  * @param seekup    Seek direction control bit. 0 = Seek down;  1 = Seek up
  */
@@ -132,10 +132,10 @@ void AKC695X::powerOn(uint8_t fm_en, uint8_t tune, uint8_t mute, uint8_t seek, u
 
 /**
  * @ingroup GA03
- * @brief Sets a given register with a given value 
- * @details It is a basic function to deal with the AKC695X devices 
- * @param reg  register number to be written (only for RW type registers) 
- * @param parameter  value to be written in the register 
+ * @brief Sets a given register with a given value
+ * @details It is a basic function to deal with the AKC695X devices
+ * @param reg  register number to be written (only for RW type registers)
+ * @param parameter  value to be written in the register
  */
 void AKC695X::setRegister(uint8_t reg, uint8_t parameter)
 {
@@ -148,9 +148,9 @@ void AKC695X::setRegister(uint8_t reg, uint8_t parameter)
 
 /**
  * @ingroup GA03
- * @brief Gets a given register content 
+ * @brief Gets a given register content
  * @details It is a basic function to get a value from a given AKC695X device register
- * @param reg  register number to be read (0 ~ 26) 
+ * @param reg  register number to be read (0 ~ 26)
  * @return the register content
  */
 uint8_t AKC695X::getRegister(uint8_t reg)
@@ -170,29 +170,29 @@ uint8_t AKC695X::getRegister(uint8_t reg)
 /**
  * @ingroup GA03
  * @brief Sets the kind of Crystal
- * @details This method sets the Crystal type you are using in your circuit. 
+ * @details This method sets the Crystal type you are using in your circuit.
  * @details The valid crystal type are 12MHz or 32.768Khz
- *  
+ *
  * @param crystal   0 = 12MHz;  1 = 32.768KHz
  */
 void AKC695X::setCrystalType(uint8_t crystal) {
-    akc595x_reg2 reg2; 
+    akc595x_reg2 reg2;
     reg2.raw = getRegister(REG02);          // Gets the current value of the register 2
     reg2.refined.ref_32k_mode = crystal;    // sets the crystal used
     setRegister(REG02,reg2.raw);
     this->currentCrystalType = crystal;
 }
 
-/** 
+/**
  * @defgroup GA03A Status and Configuration Methods
- * @section  GA03A Status and Configuration Methods 
+ * @section  GA03A Status and Configuration Methods
  */
 
 /**
  * @ingroup GA03A
  * @brief Gets the result of tune processing
- * @details This method gets the result of a tune process (seek or tune). 
- * 
+ * @details This method gets the result of a tune process (seek or tune).
+ *
  * @return true    Catched a channel. You are tuned.
  * @return false   No channel
  */
@@ -205,8 +205,8 @@ bool AKC695X::isTuned() {
 /**
  * @ingroup GA03A
  * @brief Gets the Status of seeking or tuning process
- * @details Return the status of tunning process 
- * 
+ * @details Return the status of tunning process
+ *
  * @return true    Completed
  * @return false   Not completed
  */
@@ -220,8 +220,8 @@ bool AKC695X::isTuningComplete()
 /**
  * @ingroup GA03A
  * @brief   Gets the current operation mode;
- * @details This method returns the current mode stored on register 20. 
- * 
+ * @details This method returns the current mode stored on register 20.
+ *
  * @return 1    FM mode
  * @return 0    AM mode
  */
@@ -235,8 +235,8 @@ uint8_t AKC695X::isCurrentModeFM()
 /**
  * @ingroup GA03A
  * @brief Gets the current channel
- * @details Returns the current channel stored in the registers 20 and 21. 
- * 
+ * @details Returns the current channel stored in the registers 20 and 21.
+ *
  * @return unit16_t current channel
  */
 uint16_t AKC695X::getCurrentChannel() {
@@ -259,7 +259,7 @@ uint16_t AKC695X::getCurrentChannel() {
  * @ingroup GA03A
  * @brief Converts the channel stored in the registers 20 and 21 to frequency
  * @details Returns the calculated current frequency based on current channel
- * 
+ *
  * @see getCurrentChannel, akc595x_reg20, akc595x_reg21
  * @return unit16_t current frequency
  */
@@ -274,7 +274,7 @@ uint16_t AKC695X::channelToFrequency()
     else
     {
         // the AM tuned frequency is channel * current step.
-        frequency = (this-currentMode3k)?getCurrentChannel() * 3:getCurrentChannel() * 5;
+        frequency = (this->currentMode3k)? getCurrentChannel() * 3:getCurrentChannel() * 5;
     }
     return frequency;
 }
@@ -285,9 +285,9 @@ uint16_t AKC695X::channelToFrequency()
  * @ingroup GA03A
  * @brief Gets the current AM carrier to noise ratio
  * @details Return the current AM carrier to noise ratio in dB.
- * 
+ *
  * @see akc595x_reg22
- * 
+ *
  * @return uint8_t value in dB of carrier to noise ratio.
  */
 uint8_t AKC695X::getAmCarrierNoiseRatio(){
@@ -300,9 +300,9 @@ uint8_t AKC695X::getAmCarrierNoiseRatio(){
  * @ingroup GA03A
  * @brief Gets the current AM space
  * @details Returns the AM current space stored in the register 22.
- * 
+ *
  * @see akc595x_reg22
- * 
+ *
  * @return uint8_t current space 3KHz or 5KHz
  */
 uint8_t AKC695X::getAmCurrentSpace(){
@@ -315,10 +315,10 @@ uint8_t AKC695X::getAmCurrentSpace(){
  * @ingroup GA03A
  * @brief Gets the current FM stereo status
  * @details Returns true when the FM stereo signal is more than 30% percent
- * 
+ *
  * @see akc595x_reg23
  *
- * @return true  if stereo is detected. 
+ * @return true  if stereo is detected.
  */
 bool AKC695X::isFmStereo() {
     akc595x_reg23 reg23;
@@ -330,9 +330,9 @@ bool AKC695X::isFmStereo() {
  * @ingroup GA03A
  * @brief Gets the current FM carrier to noise ratio
  * @details Return the current FM carrier to noise ratio in dB.
- * 
+ *
  * @see akc595x_reg23
- * 
+ *
  * @return uint8_t value in dB of carrier to noise ratio.
  */
 uint8_t AKC695X::getFmCarrierNoiseRatio()
@@ -344,29 +344,29 @@ uint8_t AKC695X::getFmCarrierNoiseRatio()
 
 /**
  * @ingroup GA03A
- * @brief Sets de-emphasis 
+ * @brief Sets de-emphasis
  * @details Sets de-emphasis to 50us (Asia) or 75us (USA).
-  * 
+  *
  * @param de  0 = 75us; 1 = 50us
  */
 void AKC695X::setFmEmphasis( uint8_t de) {
     akc595x_reg7 reg7;
-    reg7.raw = getRegister(REG07); // Gets the current value 
-    reg7.refined.de = de;          // Sets just DE attribute 
-    setRegister(REG07, reg7.raw);        // Store the new REG07 content 
+    reg7.raw = getRegister(REG07); // Gets the current value
+    reg7.refined.de = de;          // Sets just DE attribute
+    setRegister(REG07, reg7.raw);        // Store the new REG07 content
 }
 
 /**
  * @ingroup GA03A
- * @brief Sets the FM stereo or mono 
+ * @brief Sets the FM stereo or mono
  * @details This method configures the stereo behavior
- * 
+ *
  * | Parameter vaue |  Description   |
- * | -------------- | -------------  | 
- * |       0        | Auto stereo    | 
- * |       2        | Force stereo   | 
- * |       1        | Mono           | 
- * 
+ * | -------------- | -------------  |
+ * |       0        | Auto stereo    |
+ * |       2        | Force stereo   |
+ * |       1        | Mono           |
+ *
  * @param value     see table above
  */
 void AKC695X::setFmStereoMono(uint8_t value)
@@ -379,16 +379,16 @@ void AKC695X::setFmStereoMono(uint8_t value)
 
 /**
  * @ingroup GA03A
- * @brief Sets the FM Bandwidth  
- * @details This method configures FM Bandwidth  
- * 
+ * @brief Sets the FM Bandwidth
+ * @details This method configures FM Bandwidth
+ *
  * | Parameter vaue |  Bandwidth |
- * | -------------- | -----------| 
- * |       0        | 150KHz     | 
- * |       1        | 200KHz     | 
- * |       2        | 50KHz      | 
- * |       3        | 100KHz     |  
- * 
+ * | -------------- | -----------|
+ * |       0        | 150KHz     |
+ * |       1        | 200KHz     |
+ * |       2        | 50KHz      |
+ * |       3        | 100KHz     |
+ *
  * @param value     see table above
  */
 void AKC695X::setFmBandwidth(uint8_t value)
@@ -399,9 +399,9 @@ void AKC695X::setFmBandwidth(uint8_t value)
     setRegister(REG07, reg7.raw);   // Store the new REG07 content
 }
 
-/** 
- * @defgroup GA04 Receiver Operation Methods 
- * @section   Receiver Operation 
+/**
+ * @defgroup GA04 Receiver Operation Methods
+ * @section   Receiver Operation
  */
 
  /**
@@ -433,13 +433,13 @@ void AKC695X::commitTune()
 /**
  * @ingroup GA04
  * @brief Sets the start and end frequencies for a custom band
- * @details This method is used by setAM and setFM methods.  
+ * @details This method is used by setAM and setFM methods.
  * @details This will called when you set a band greater than 17 on AM mode or greater than 7 on FM mode.
  * @details You can use more than one band at a time.
- * 
+ *
  * @see akc595x_reg4, akc595x_reg5
  * @param band                  if FM, a value greater than 7. If AM, a value greater than  17. You can use more than one.
- * @param minimum_frequency     Start frequency      
+ * @param minimum_frequency     Start frequency
  * @param maximum_frequency     Final frequency
  */
 void AKC695X::setCustomBand(uint16_t minimum_frequency, uint16_t maximum_frequency) {
@@ -455,8 +455,8 @@ void AKC695X::setCustomBand(uint16_t minimum_frequency, uint16_t maximum_frequen
     }
     else
     {
-        start_channel = minimum_frequency / ((this-currentMode3k)? 3: 5);
-        end_channel = maximum_frequency / ((this-currentMode3k)? 3: 5);
+        start_channel = minimum_frequency / ((this->currentMode3k)? 3: 5);
+        end_channel = maximum_frequency / ((this->currentMode3k)? 3: 5);
     }
 
     reg4 = start_channel / 32;
@@ -470,23 +470,23 @@ void AKC695X::setCustomBand(uint16_t minimum_frequency, uint16_t maximum_frequen
  * @ingroup GA04
  * @brief Sets the AKC695X to FM mode
  * @details Sets the device to FM mode. You can configure a custom FM band by setting band number greater than 7.
- * 
+ *
  * | FM band | N#  |Description  |
  * | --------| --- |------------ |
  * | 000     |  0  | FM1,87 ~ 108, station search space specified intervals |
  * | 001     |  1  | FM2,76 ~ 108, station search space specified intervals |
  * | 010     |  2  | FM3,70 ~ 93, with a space station search interval set |
  * | 011     |  3  | FM4,76 ~ 90, Tuning predetermined space intervals |
- * | 100     |  4  | FM5,64 ~ 88, with a space station search interval set | 
+ * | 100     |  4  | FM5,64 ~ 88, with a space station search interval set |
  * | 101     |  5  | TV1,56.25 ~ 91.75, station search space specified intervals |
  * | 110     |  6  | TV2, 174.75 ~ 222.25, found |
  * | 111     |  7  | sets predetermined space intervals, custom FM, station search space specified intervals |
- * 
+ *
  * @param akc695x_fm_band       FM band (see manual FM band table above). Set to a number greater than 7 if you want a custom FM band.
- * @param minimum_freq          Minimal frequency of the band 
+ * @param minimum_freq          Minimal frequency of the band
  * @param maximum_freq          Band maximum frequency
  * @param default_frequency     default frequency
- * @param default_step          increment and decrement step 
+ * @param default_step          increment and decrement step
  */
 void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step)
 {
@@ -509,7 +509,7 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t max
     setRegister(REG00, 0b11000000); // Sets to FM (Power On)
 
     if (akc695x_fm_band > 6 )
-        setCustomBand(minimum_freq, maximum_freq); // Sets a custom FM band 
+        setCustomBand(minimum_freq, maximum_freq); // Sets a custom FM band
 
     setRegister(REG01, reg1.raw); // Sets the FM band
 	setFrequency(default_frequency);
@@ -518,10 +518,10 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t max
 /**
  * @ingroup GA04
  * @brief Sets the AKC695X to AM mode and selects the band
- * @details This method configures the AM band you want to use. 
+ * @details This method configures the AM band you want to use.
  * @details You must respect the frequency limits defined by the AKC595X device documentation.
- * @details You can configure a custom band by setting a band greater than 17 
- * 
+ * @details You can configure a custom band by setting a band greater than 17
+ *
  * | AM band      | N#  |Description  |
  * | ------------ | --- |------------ |
  * | 00000        |  0  |LW, 0.15 ~ 0.285, 3K station search |
@@ -543,12 +543,12 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t max
  * | 10000        | 16  |SW13, 11.4 ~ 17.9, 5K station search |
  * | 10010        | 17  |MW4, 0.52 to 1.73, 5K station search |
  * | Other        | 18+ |custom band, station search interval = 3K |
- * 
+ *
  * @param akc695x_am_band       AM band. Set to a value greater than 17 if you want a custom AM band (see manual AM band table above)
- * @param minimum_freq          Minimal frequency of the band 
+ * @param minimum_freq          Minimal frequency of the band
  * @param maximum_freq          Band maximum frequency
  * @param default_frequency     default frequency
- * @param default_step          increment and decrement step 
+ * @param default_step          increment and decrement step
  */
 void AKC695X::setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step)
 {
@@ -564,6 +564,7 @@ void AKC695X::setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t max
     this->currentBandMaximumFrequency = maximum_freq;
     this->currentFrequency = default_frequency;
     this->currentStep = default_step;
+    
 
     reg1.raw = 0;
     reg1.refined.amband = akc695x_am_band; // Selects the AM band will be used (see AM band table)
@@ -573,18 +574,18 @@ void AKC695X::setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t max
     if (akc695x_am_band > 17)
         setCustomBand(minimum_freq, maximum_freq); // Sets a custom AM band
 
-    setRegister(REG01, reg1.raw); 
+    setRegister(REG01, reg1.raw);
 	setFrequency(default_frequency);
 }
 
 /**
  * @ingroup GA04
  * @brief Sets the step that will be used to increment and decrement the current frequency
- * @details The AKC695X has two possible steps (3KHz and 5KHz). The step value is important to calculate the frequenvy you want to set. 
- * 
+ * @details The AKC695X has two possible steps (3KHz and 5KHz). The step value is important to calculate the frequenvy you want to set.
+ *
  * @see setFrequency
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 12
- * 
+ *
  * @param step  The valid values are 3 and 5. Other values will be ignored.
  */
 void AKC695X::setStep(uint8_t step)
@@ -594,20 +595,20 @@ void AKC695X::setStep(uint8_t step)
 
 /**
  * @ingroup GA04
- * @brief Sets FM step for seeking. 
- * 
- * @details Sets FM seek step. 
- * 
+ * @brief Sets FM step for seeking.
+ *
+ * @details Sets FM seek step.
+ *
  * | spece | N#  | step    |
- * | ----- | --- | ------- | 
+ * | ----- | --- | ------- |
  * |  00   |  0  | 25 KHz  |
- * |  01   |  1  | 50 KHz  | 
- * |  10   |  2  | 100 KHz | 
- * |  11   |  3  | 200 KHz | 
- * 
+ * |  01   |  1  | 50 KHz  |
+ * |  10   |  2  | 100 KHz |
+ * |  11   |  3  | 200 KHz |
+ *
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 14
- * 
- * @param space value betwenn 0 and 3 (see table above). 
+ *
+ * @param space value betwenn 0 and 3 (see table above).
  */
 void AKC695X::setFmSeekStep(uint8_t space)
 {
@@ -618,24 +619,24 @@ void AKC695X::setFmSeekStep(uint8_t space)
 
 /**
  * @ingroup GA04
- * @brief Seeks a FM station 
- * @details Seek a FM Station 
- * 
+ * @brief Seeks a FM station
+ * @details Seek a FM Station
+ *
  * @code
- *  // Do this if you want to show the frequency during the seek process. 
- *  // Where showFrequency is the function name of your sketch that shows the current frequency.  
- *  radio.seekStation(up_down,showFrequency);  
+ *  // Do this if you want to show the frequency during the seek process.
+ *  // Where showFrequency is the function name of your sketch that shows the current frequency.
+ *  radio.seekStation(up_down,showFrequency);
  * @endcode
- * 
+ *
  * @code
- *  // Do this if you don't want to show the frequency during seek process. 
- *  radio.seekStation(up_down);  
+ *  // Do this if you don't want to show the frequency during seek process.
+ *  radio.seekStation(up_down);
  * @endcode
- * 
+ *
  * @see akc595x_reg20, akc595x_reg21, channelToFrequency
- * 
+ *
  * @param up_down   if 0, seek down; if 1, seek up.
- * @param showFunc  Optional. Point to the function in you sketch that shows the current frequency. If NULL, do nothing (default).  
+ * @param showFunc  Optional. Point to the function in you sketch that shows the current frequency. If NULL, do nothing (default).
  */
 void AKC695X::seekStation(uint8_t up_down, void (*showFunc)())
 {
@@ -647,26 +648,26 @@ void AKC695X::seekStation(uint8_t up_down, void (*showFunc)())
         reg0.refined.fm_en = this->currentMode;     // Sets the current mode
         reg0.refined.mute = 0;                      // Normal operation
         reg0.refined.power_on = 1;                  // Power on
-        reg0.refined.tune = 0;      
-        reg0.refined.seek = 1;                      // Trigger seeking process 
+        reg0.refined.tune = 0;
+        reg0.refined.seek = 1;                      // Trigger seeking process
         reg0.refined.seekup = up_down;
         setRegister(REG00, reg0.raw);
         if (showFunc != NULL) {
             this->currentFrequency = channelToFrequency(); // gets the Current frequency in the registers 20 and 21.
-            showFunc();             // Call your function that shows the frequency 
+            showFunc();             // Call your function that shows the frequency
         }
     } while (!isTuningComplete() && (millis() - max_time) < MAX_SEEK_TIME);
 
    reg0.raw = 0;
    reg0.refined.fm_en = this->currentMode;
-   reg0.refined.mute = 0;     
-   reg0.refined.power_on = 1; 
-   reg0.refined.tune = 0;     
-   reg0.refined.seek = 0;     
+   reg0.refined.mute = 0;
+   reg0.refined.power_on = 1;
+   reg0.refined.tune = 0;
+   reg0.refined.seek = 0;
    reg0.refined.seekup = up_down;
    setRegister(REG00, reg0.raw);
 
-   // Updates the currentFrequency member variable to a calculated frequency based on the  channel 
+   // Updates the currentFrequency member variable to a calculated frequency based on the  channel
    // value stored in the registers 20 and 21
    this->currentFrequency = channelToFrequency();
 
@@ -675,14 +676,14 @@ void AKC695X::seekStation(uint8_t up_down, void (*showFunc)())
 /**
  * @ingroup GA04
  * @brief Sets the the device to a given frequency
- * 
+ *
  * @details This methods check the current mode (AM or FM), calculates the right channel to be setted.
  * @details Sets to reg2 structure the 5 most significan bist of the channel.
  * @details Sets to reg3 the 8 less significant bits of the channel.
- * 
+ *
  * @see akc595x_reg2, akc595x_reg3
- * 
- * @param frequency frequency you want to set to 
+ *
+ * @param frequency frequency you want to set to
  */
 void AKC695X::setFrequency(uint16_t frequency)
 {
@@ -696,14 +697,14 @@ void AKC695X::setFrequency(uint16_t frequency)
     else if (frequency < this->currentBandMinimumFrequency )
         tmpFreq = this->currentBandMaximumFrequency;
     else
-        tmpFreq = frequency; 
+        tmpFreq = frequency;
 
     reg2.raw = getRegister(REG02); // Gets the current value of the REG02
 
     if (this->currentMode == 0)
     {
         // AM mode
-        channel = tmpFreq / ((this-currentMode3k)? 3: 5);
+        channel = tmpFreq / ((this->currentMode3k)? 3: 5);
         reg2.refined.channel = (channel >> 8);      // Changes just the 5 higher bits of the channel.
         reg2.refined.ref_32k_mode = this->currentCrystalType;
         reg2.refined.mode3k = this->currentMode3k;
@@ -717,7 +718,7 @@ void AKC695X::setFrequency(uint16_t frequency)
     {
         // FM mode
         channel = (tmpFreq - 300) * 4;
-        reg2.refined.channel = (channel >> 8); 
+        reg2.refined.channel = (channel >> 8);
         reg2.refined.ref_32k_mode = this->currentCrystalType;
         reg2.refined.mode3k = this->currentMode3k;
 
@@ -745,7 +746,7 @@ uint16_t AKC695X::getFrequency()
 /**
  * @ingroup GA04
  * @brief Adds the current step to the current frequency and sets the new frequency
- * @details Goes to the next frequency channel  
+ * @details Goes to the next frequency channel
  */
 void AKC695X::frequencyUp()
 {
@@ -756,7 +757,7 @@ void AKC695X::frequencyUp()
 /**
  * @ingroup GA04
  * @brief Subtracts the current step from the current frequency and assign the new frequency
- * @details Goes to the previous frequency channel  
+ * @details Goes to the previous frequency channel
  */
 void AKC695X::frequencyDown()
 {
@@ -767,12 +768,12 @@ void AKC695X::frequencyDown()
 /**
  * @ingroup GA04
  * @brief Configures the audio output
- * 
+ *
  * @details This method sets the AKC695X device audio behaviour
- * 
+ *
  * @param phase_inv if 0, audio output inphase; if 1, audio output inverted
  * @param line      if 0, audio input mode; if 1, radio mode.
- * @param volume    if 25 a 63, audio volume; if <= 24 mute 
+ * @param volume    if 25 a 63, audio volume; if <= 24 mute
  */
 void AKC695X::setAudio(uint8_t phase_inv, uint8_t line, uint8_t volume)
 {
@@ -789,9 +790,9 @@ void AKC695X::setAudio(uint8_t phase_inv, uint8_t line, uint8_t volume)
  * @brief Configures the audio output with default values
  * @details this method sets the audio phase_inv = 0; line = 1 and volume = 40;
  * @details Also, this set the audio controlled by MCU (Arduino)
- * 
+ *
  * @see setVolumeControl
- * 
+ *
  */
 void AKC695X::setAudio()
 {
@@ -802,9 +803,9 @@ void AKC695X::setAudio()
 /**
  * @ingroup GA04
  * @brief Sets the output audio volume
- * @details Values less than 24 mute the audio output. 
+ * @details Values less than 24 mute the audio output.
  * @details Values between 25 and 63 set the output audio volume.
- * @param volume 
+ * @param volume
  */
 
 void AKC695X::setVolume(uint8_t volume)
@@ -821,7 +822,7 @@ void AKC695X::setVolume(uint8_t volume)
 
 /**
  * @ingroup GA04
- * @brief Increments the audio volume 
+ * @brief Increments the audio volume
  * @details The maximum volume is 63
  */
 void AKC695X::setVolumeUp()
@@ -832,7 +833,7 @@ void AKC695X::setVolumeUp()
 
 /**
  * @ingroup GA04
- * @brief Decrements the audio volume 
+ * @brief Decrements the audio volume
  * @details The minimum volume is 25
  */
 void AKC695X::setVolumeDown()
@@ -844,13 +845,13 @@ void AKC695X::setVolumeDown()
 /**
  * @ingroup GA04
  * @brief  Sets the kind of audio volume control will be used.
- * @details This method configures the kind of audio volume control will be used. 
- * @details You can control the audio volume by potentiometer or by MCU (Arduino). 
+ * @details This method configures the kind of audio volume control will be used.
+ * @details You can control the audio volume by potentiometer or by MCU (Arduino).
  * @details If you choose volume conttolled by Arduino (type 1), you can set the volume from 25 to 63 levels.
- *  
+ *
  * @see setVolume, akc595x_reg9
- * 
- * @param type  0 = controlled by poteciometer; 1 controlled by the MCU 
+ *
+ * @param type  0 = controlled by poteciometer; 1 controlled by the MCU
  */
 void AKC695X::setVolumeControl(uint8_t type)
 {
@@ -868,11 +869,11 @@ void AKC695X::setVolumeControl(uint8_t type)
  * @details Actually, it is the Antenna aperture and can be calculated using signal levels rssi, pgalevel_rf, pgalevel_if.
  * @details The rssi is stored in the register 27 and the pgalevel_rf, pgalevel_if are stored in register 24.
  * @details On FM mode or SW band, the formula is: Pin (dBuV) = 103 - rssi - 6 * pgalevel_rf - 6 * pgalevel_if
- * @details On AM mode (LW or MW), the formula is: Pin (dBuV) = 123 - rssi - 6 * pgalevel_rf - 6 * pgalevel_if  
- * 
- * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio; page 16 
+ * @details On AM mode (LW or MW), the formula is: Pin (dBuV) = 123 - rssi - 6 * pgalevel_rf - 6 * pgalevel_if
+ *
+ * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio; page 16
  * @see akc595x_reg24, akc595x_reg27
- *  
+ *
  * @return int  RSSI value
  */
 int AKC695X::getRSSI()
@@ -891,8 +892,8 @@ int AKC695X::getRSSI()
 
 /**
  * @ingroup GA04
- * @brief Gets the supply voltage 
- * @details Gets the current supply voltage 
+ * @brief Gets the supply voltage
+ * @details Gets the current supply voltage
  * @return float the supply voltage
  */
 float AKC695X::getSupplyVoltage()

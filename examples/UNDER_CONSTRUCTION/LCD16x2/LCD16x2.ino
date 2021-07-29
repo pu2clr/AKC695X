@@ -68,7 +68,7 @@ const uint16_t size_content = sizeof ssb_patch_content; // see patch_init.h
 #define MIN_ELAPSED_RSSI_TIME 500
 #define ELAPSED_COMMAND 2000 // time to turn off the last command controlled by encoder. Time to goes back to the FVO control
 #define ELAPSED_CLICK 1500   // time to check the double click commands
-#define DEFAULT_VOLUME 35    // change it for your favorite sound volume
+#define DEFAULT_VOLUME 36    // change it for your favorite sound volume
 
 #define FM 0
 #define LSB 1
@@ -126,7 +126,7 @@ typedef struct
 
 akc_band band[] = {
     {1, 1, 760, 1080, 1039, 1},
-    {0, 3, 520, 1710, 810, 5},
+    {0, 3, 400, 1710, 810, 10},
     {0, 6, 4700, 5600, 4885, 5}, 
     {0, 7, 5700, 6400, 6100, 5},    
     {0, 8, 6800, 7600, 7205, 5},
@@ -137,7 +137,8 @@ akc_band band[] = {
     {0, 13, 17400, 17900, 17600, 5},  
     {0, 15, 21400, 21900, 21525, 5},
     {0, 18, 27000, 28000, 27500, 3},
-    {1,  7, 1400, 1480, 1450, 1}};
+    {0, 0, 150, 285, 200, 3},       // LW   
+    {1,  7, 1400, 1480, 1450, 1}};  // VHF / FM
 
 const int lastBand = (sizeof band / sizeof(akc_band)) - 1;
 int bandIdx = 0; // FM
@@ -182,18 +183,23 @@ void setup()
   // controlling encoder via interrupt
   attachInterrupt(digitalPinToInterrupt(ENCODER_PIN_A), rotaryEncoder, CHANGE);
   attachInterrupt(digitalPinToInterrupt(ENCODER_PIN_B), rotaryEncoder, CHANGE);
+
+  // rx.setup(RESET_PIN,CRYSTAL_12MHZ);
+  rx.setup(RESET_PIN, CRYSTAL_32KHZ);
+  delay(500);
+
+  // rx.setFM(band[bandIdx].band, band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency,band[bandIdx].currentFreq, band[bandIdx].step);
+  rx.setAudio(); // Sets the audio output behaviour (default configuration).
+
   
-  rx.setup(RESET_PIN);
-  
-  delay(300);
-  rx.getVolume();
+
 
   // Checking the EEPROM content
   if (EEPROM.read(eeprom_address) == app_id)
   {
     readAllReceiverInformation();
   } else 
-    rx.setVolume(volume);
+    rx.setVolume(DEFAULT_VOLUME);
   
   useBand();
   showStatus();
@@ -341,8 +347,10 @@ void showFrequency()
   char *unit;
   char freqDisplay[12];
 
+  currentFrequency = rx.getFrequency();
+
   if (band[bandIdx].mode == 1) { // FM
-    convertToChar(currentFrequency, freqDisplay, 5, 3, ',');
+    convertToChar(currentFrequency, freqDisplay, 5, 4, ',');
     unit = (char *)"MHz";    
   } else {
     convertToChar(currentFrequency, freqDisplay, 5, ((currentFrequency < 1000)? 0:2), '.');
@@ -350,7 +358,7 @@ void showFrequency()
   }
 
   strcat(freqDisplay, unit);
-  lcd.setCursor(4, 1);
+  lcd.setCursor(3, 1);
   lcd.print(freqDisplay);  
 }
 
@@ -395,6 +403,7 @@ void showRSSI()
     rssiAux = 9;
 
   lcd.setCursor(13, 1);
+  lcd.print('S');
   lcd.print(rssiAux);
   lcd.print( (rssi>= 60)? '+':' ');
 
@@ -454,7 +463,7 @@ void useBand()
   {
     rx.setAM(band[bandIdx].band, band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].currentFreq, band[bandIdx].step);
   }
-  delay(100);
+  delay(500);
   currentFrequency = band[bandIdx].currentFreq;
   rx.setFrequency(currentFrequency);
   showStatus();
@@ -526,6 +535,8 @@ void doVolume( int8_t v ) {
 void doSeek()
 {
   rx.seekStation(seekDirection, showFrequency);
+  currentFrequency = rx.getFrequency();
+  showStatus();
 }
 
 
@@ -661,9 +672,9 @@ void loop()
   }
 
   // Show RSSI status only if this condition has changed
-  if ((millis() - elapsedRSSI) > MIN_ELAPSED_RSSI_TIME * 6)
+  if ((millis() - elapsedRSSI) > MIN_ELAPSED_RSSI_TIME * 9)
   {
-    // TO DO  
+    showRSSI(); 
     elapsedRSSI = millis();
   }
 

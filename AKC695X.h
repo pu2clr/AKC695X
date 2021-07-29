@@ -1,19 +1,19 @@
 /**
- * @mainpage AKC695X Arduino Library implementation 
- * 
- * This is an Arduino library for the AKC695X, BROADCAST RECEIVER, IC family.  
+ * @mainpage AKC695X Arduino Library implementation
+ *
+ * This is an Arduino library for the AKC695X, BROADCAST RECEIVER, IC family.
  * It works with I2C protocol and can provide an easier interface for controlling the AKC695X devices.<br>
- * 
- * This library was built based on [AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio](http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf) document from "AKC technology". 
+ *
+ * This library was built based on [AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio](http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf) document from "AKC technology".
  * Others sources help the author to build this library.  They are referenced in the documentation for this library on: https://github.com/pu2clr/AKC695X
- * It also intend to  be used on **all members of the AKC695X family** respecting, of course, the features available for each IC version. 
- * 
+ * It also intend to  be used on **all members of the AKC695X family** respecting, of course, the features available for each IC version.
+ *
  * This library uses the I2C protocols to read and write AKC695X registers. In this context, registers are memory position into the device.
- * The first 13 registers, you can use to change the behavior of the device. They are read and write registers. The registers from 20 to 27, can be used to get the current device status. They are read only registers. 
- * There is no information about the register 10 and the registers 14 to 19 in the documentation used to develop this library. 
+ * The first 13 registers, you can use to change the behavior of the device. They are read and write registers. The registers from 20 to 27, can be used to get the current device status. They are read only registers.
+ * There is no information about the register 10 and the registers 14 to 19 in the documentation used to develop this library.
  * By using the registers 0 to 13, you can change the band, set the frequency, set the channel space, set the audio behavior and volume, set a custom band and more.
  *
- * This library can be freely distributed using the MIT Free Software model. [Copyright (c) 2019 Ricardo Lima Caratti](https://pu2clr.github.io/AKC695X/#mit-license).  
+ * This library can be freely distributed using the MIT Free Software model. [Copyright (c) 2019 Ricardo Lima Caratti](https://pu2clr.github.io/AKC695X/#mit-license).
  * Contact: pu2clr@gmail.com
  */
 
@@ -26,18 +26,18 @@
 #define CRYSTAL_12MHZ       0
 #define CRYSTAL_32KHZ       1
 
-#define MAX_SEEK_TIME   3000        // Maximum time have to be a seeking process (in ms). 
+#define MAX_SEEK_TIME   3000        // Maximum time have to be a seeking process (in ms).
 #define AKC_SEEK_UP 1
 #define AKC_SEEK_DOWN 0
- 
+
 /**
  * @brief AKC695X features
  * @details the table below shows some features fo the AKC695X devices family
- * 
- * | Feature                                                                   | AKC6951 | AKC6955 | AKC6959 |  
- * | --------------------------------------------------------------------------| ------- | ------- | ------- |          
- * | stand by 30 ~ 230MHz Any frequency FM demodulation                        |   X     |    X    |    X    |  
- * | stand by 0.15 ~ 30MHz Any frequency AM demodulation                       |   X     |    X    |    X    | 
+ *
+ * | Feature                                                                   | AKC6951 | AKC6955 | AKC6959 |
+ * | --------------------------------------------------------------------------| ------- | ------- | ------- |
+ * | stand by 30 ~ 230MHz Any frequency FM demodulation                        |   X     |    X    |    X    |
+ * | stand by 0.15 ~ 30MHz Any frequency AM demodulation                       |   X     |    X    |    X    |
  * | Preset FM band ( 64 ~ 108 MHz )                                           |   X     |    X    |    X    |
  * | stand by TV1 audio( 56.25 ~ 91.75 MHz )                                   |   X     |    X    |    X    |
  * | stand by TV2 audio( 174.75 ~ 222.25 MHz )                                 |   X     |    X    |    X    |
@@ -94,14 +94,14 @@
 #define REG27 0x1B
 
 /**
- * @defgroup GA01 Union, Structure and Defined Data Types  
- * @brief   AKC695X Defined Data Types 
+ * @defgroup GA01 Union, Structure and Defined Data Types
+ * @brief   AKC695X Defined Data Types
  * @details Defined Data Types is a way to represent the AKC695X registers information
  * @details Some information appears to be inaccurate due to translation problems from Chinese to English.
  * @details The information shown here was extracted from Datasheet:
  * @details AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation.
- * @details Other information seems incomplete even in the original Chinese Datasheet. 
- * @details For example: Reg 10 (0x0A). There is no information about it. The Reg11 and 12 seem wrong  
+ * @details Other information seems incomplete even in the original Chinese Datasheet.
+ * @details For example: Reg 10 (0x0A). There is no information about it. The Reg11 and 12 seem wrong
  */
 
 /**
@@ -127,9 +127,9 @@ typedef union {
 /**
  * @ingroup GA01
  * @brief Reg1 (type 0x01 / RW): configures register 1 (default: 0x10) Address
- * 
+ *
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 12
- * 
+ *
  */
 typedef union {
     struct
@@ -143,13 +143,13 @@ typedef union {
 /**
  * @ingroup GA01
  * @brief Reg2 (type 0x02 / RW): configure register 2 (default: 0x4A) Address
- * 
- * @details High channel number 5, the channel number and frequencies related as follows: 
- * @details FM mode: Channel Freq = 25kHz * CHAN + 30MHz AM mode, when 5K channel number pattern:. 
+ *
+ * @details High channel number 5, the channel number and frequencies related as follows:
+ * @details FM mode: Channel Freq = 25kHz * CHAN + 30MHz AM mode, when 5K channel number pattern:.
  * @details Channel Freq = 5kHz * CHAN AM mode, 3K channel number pattern. when: Channel Freq = 3kHz * CHAN.
- * 
+ *
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 12
- * 
+ *
  */
 typedef union {
     struct
@@ -177,7 +177,7 @@ typedef uint8_t akc595x_reg4; //!< Custom channel band start number chan = 32 * 
 /**
  * @ingroup GA01
  * @brief Reg5 (type 0x05 / RW): configures register 5 (default: 0x32) Address
- * 
+ *
  */
 typedef uint8_t akc595x_reg5; //!< Custom end-band channel number chan = 32 * usr_chan_stop
 
@@ -215,8 +215,8 @@ typedef union {
 /**
  * @ingroup GA01
  * @brief Reg8 (type 0x08 / RW):  configures register 8 (default: 0x58) Address
- * @details 
- * 
+ * @details
+ *
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 14
  */
 typedef union {
@@ -233,8 +233,8 @@ typedef union {
 /**
  * @ingroup GA01
  * @brief Reg9 (type 0x09 / RW):  configure register 9 (default: 0x07) Address
- * @details 
- * 
+ * @details
+ *
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 14
  */
 typedef union {
@@ -252,15 +252,15 @@ typedef union {
 /**
  * @ingroup GA01
  * @brief Reg11 (type 0x0B / RW):  configure register 9 (default: 0xE0) Address
- * 
- * @details Sets FM seek step. 
+ *
+ * @details Sets FM seek step.
  * | spece |  step   |
- * | ----- |  ------ | 
+ * | ----- |  ------ |
  * |  00   |  25 KHz |
- * |  01   |  50 KHz | 
- * |  10   | 100 KHz | 
- * |  11   | 200 KHz | 
- * 
+ * |  01   |  50 KHz |
+ * |  10   | 100 KHz |
+ * |  11   | 200 KHz |
+ *
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 14
  */
 typedef union {
@@ -276,16 +276,16 @@ typedef union {
 /**
  * @ingroup GA01
  * @brief Reg12 (type 0x0C / RW):  configure register 11 (default: 0x??) Address
- * @details 
- * 
+ * @details
+ *
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 15
  */
 typedef union {
     struct
     {
         uint8_t rsv2 : 5;   //!< Reserved. Measured using, do not change this value
-        uint8_t pd_rx : 1;  //!< 0 = analog and RF; 1 = closed channel 
-        uint8_t res : 1;    //!< 
+        uint8_t pd_rx : 1;  //!< 0 = analog and RF; 1 = closed channel
+        uint8_t res : 1;    //!<
         uint8_t pd_adc : 1; //!< Signal channel ADC signal path; 0 = Close; 1 =  Open
     } refined;
     uint8_t raw;
@@ -294,8 +294,8 @@ typedef union {
 /**
  * @ingroup GA01
  * @brief Reg13 (type 0x0D / RW):  configure register 11 (default: 0x??) Address
- * @details 
- * 
+ * @details
+ *
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 15
  */
 typedef union {
@@ -312,9 +312,9 @@ typedef union {
 
 /**
  * @ingroup GA01
- * @brief Reg20 (type 0x14 / R) 
- * @details 
- * 
+ * @brief Reg20 (type 0x14 / R)
+ * @details
+ *
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 15
  */
 typedef union {
@@ -330,17 +330,17 @@ typedef union {
 
 /**
  * @ingroup GA01
- * @brief Reg21 (type 0x15 / R) 
+ * @brief Reg21 (type 0x15 / R)
  * @details Reg21 is the Current Channel number (low 8bit). See Reg 20.
- * 
+ *
  */
 typedef uint8_t akc595x_reg21;
 
 /**
  * @ingroup GA01
- * @brief Reg22 (type 0x16 / R) 
- * @details 
- * 
+ * @brief Reg22 (type 0x16 / R)
+ * @details
+ *
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 15
  */
 typedef union {
@@ -354,9 +354,9 @@ typedef union {
 
 /**
  * @ingroup GA01
- * @brief Reg23 (type 0x17 / R) 
- * @details 
- * 
+ * @brief Reg23 (type 0x17 / R)
+ * @details
+ *
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 15
  */
 typedef union {
@@ -370,9 +370,9 @@ typedef union {
 
 /**
  * @ingroup GA01
- * @brief Reg24 (type 0x18 / R) 
- * @details 
- * 
+ * @brief Reg24 (type 0x18 / R)
+ * @details
+ *
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 15
  */
 typedef union {
@@ -388,9 +388,9 @@ typedef union {
 
 /**
  * @ingroup GA01
- * @brief Reg25 (type 0x19 / R) 
- * @details 
- * 
+ * @brief Reg25 (type 0x19 / R)
+ * @details
+ *
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 15
  */
 typedef union {
@@ -404,20 +404,20 @@ typedef union {
 
 /**
  * @ingroup GA01
- * @brief Reg26 (type 0x1A / R) 
+ * @brief Reg26 (type 0x1A / R)
  * @details When the frequency offset indicated, complement format, greater than 127, 256 can be reduced to normal values, attention here to 1KHz units FM, AM in units of 100Hz
- * 
+ *
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 15
  */
 typedef uint8_t akc595x_reg26; //!<   When the frequency offset indicated, complement format, greater than 127, 256 can be
 
 /**
  * @ingroup GA01
- * @brief Reg27 (type 0x1B / R) 
+ * @brief Reg27 (type 0x1B / R)
  * @details Antenna aperture can be calculated using signal levels rssi, pgalevel_rf, pgalevel_if
  * @details FM / SW : Pin (dBuV) = 103 - rssi - 6 * pgalevel_rf - 6 * pgalevel_if
  * @details MW / LW : Pin (dBuV) = 123 - rssi - 6 * pgalevel_rf - 6 * pgalevel_if
- * 
+ *
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 15
  */
 typedef union {
@@ -430,11 +430,11 @@ typedef union {
 } akc595x_reg27;
 
 /**
- * @defgroup GA02 AKC695X Class  
- * @brief AKC695X Class 
- * @details This class implements all functions that will help you to control the AKC695X devices. 
- * 
- * @author PU2CLR - Ricardo Lima Caratti 
+ * @defgroup GA02 AKC695X Class
+ * @brief AKC695X Class
+ * @details This class implements all functions that will help you to control the AKC695X devices.
+ *
+ * @author PU2CLR - Ricardo Lima Caratti
  */
 
 class AKC695X
@@ -449,7 +449,7 @@ protected:
     uint16_t currentFrequency;                  //!< Store the current frequency
     uint8_t currentMode = 0;                    //!< Store the current mode: 1 = FM; 0 = AM
     uint8_t currentCrystalType = CRYSTAL_32KHZ; //!< Store the crystal type used:  0 = 12MHz;   1 = 32.768KHz
-    uint8_t currentMode3k = 1;                  //!<  1 =  3K; 0 = AM
+    uint8_t currentMode3k = 0;                  //!<  1 =  3K; 0 = AM
 
     // AM current band information
     uint8_t currentBand = 0;
@@ -516,6 +516,13 @@ public:
     float getSupplyVoltage();
 
     inline uint8_t getCurrentMode() { return this->currentMode; };
+
+    /**
+     * @ingroup GA03A
+     * @brief Sets the current AM channel spacing
+     * @details Use this function to change the AM channel spacing
+    */
+    inline void setMode3k(bool on_off) { this->currentMode3k = on_off;};
 
     void commitTune();
 };
