@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['si47xx_20arduino_20library_20implementation_305',['SI47XX Arduino Library implementation',['../index.html',1,'']]]
+  ['your_20support_20is_20important_2e_313',['Your support is important.',['../md__a_k_c695_x__c_o_n_t_r_i_b_u_t_i_n_g.html',1,'']]]
 ];

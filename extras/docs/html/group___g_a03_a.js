@@ -1,5 +1,6 @@
 var group___g_a03_a =
 [
+    [ "setMode3k", "group___g_a03_a.html#gaafde8fa9c0e8aad2e427fdd15d0a7afc", null ],
     [ "isTuned", "group___g_a03_a.html#ga0791915b409796aa2f0f9e4218ac732d", null ],
     [ "isTuningComplete", "group___g_a03_a.html#ga47a2a79e7c68701c9eb100b1a48adb90", null ],
     [ "isCurrentModeFM", "group___g_a03_a.html#gab0f41f62d16a51c336d25324e4a9d08b", null ],

@@ -119,12 +119,10 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>SI47XX Arduino Library implementation</p>
-<p>This is an Arduino library for the <a class="el" href="class_a_k_c695_x.html">AKC695X</a>, BROADCAST RECEIVER, IC family. <br  />
- It works with I2C protocol and can provide an easier interface for controlling the <a class="el" href="class_a_k_c695_x.html">AKC695X</a> devices.<br  />
+<p>This is an Arduino library for the <a class="el" href="class_a_k_c695_x.html">AKC695X</a>, BROADCAST RECEIVER, IC family. It works with I2C protocol and can provide an easier interface for controlling the <a class="el" href="class_a_k_c695_x.html">AKC695X</a> devices.<br  />
 </p>
 <p>This library was built based on <a href="http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf">AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio</a> document from "AKC technology". It also intend to be used on <b>all members of the <a class="el" href="class_a_k_c695_x.html">AKC695X</a> family</b> respecting, of course, the features available for each IC version.</p>
-<p>This library can be freely distributed using the MIT Free Software model. <a href="https://pu2clr.github.io/AKC695X/#mit-license">Copyright (c) 2019 Ricardo Lima Caratti</a>. <br  />
- Contact: <a href="#" onclick="location.href='mai'+'lto:'+'pu2'+'cl'+'r@g'+'ma'+'il.'+'co'+'m'; return false;">pu2cl<span style="display: none;">.nosp@m.</span>r@gm<span style="display: none;">.nosp@m.</span>ail.c<span style="display: none;">.nosp@m.</span>om</a> </p>
+<p>This library can be freely distributed using the MIT Free Software model. <a href="https://pu2clr.github.io/AKC695X/#mit-license">Copyright (c) 2019 Ricardo Lima Caratti</a>. Contact: <a href="#" onclick="location.href='mai'+'lto:'+'pu2'+'cl'+'r@g'+'ma'+'il.'+'co'+'m'; return false;">pu2cl<span style="display: none;">.nosp@m.</span>r@gm<span style="display: none;">.nosp@m.</span>ail.c<span style="display: none;">.nosp@m.</span>om</a> </p>
 <h1><a class="anchor" id="GA03"></a>
 Basic</h1>
 <h2 class="groupheader">Function Documentation</h2>
@@ -171,8 +169,7 @@ Basic</h1>
 </div><div class="memdoc">
 
 <p>Sets the I2C bus device address. </p>
-<p>You do not need use this function if your i2c device address is 0x10 (default value) <br  />
-</p>
+<p>You do not need use this function if your i2c device address is 0x10 (default value)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">deviceAddress</td><td></td></tr>
@@ -218,9 +215,9 @@ Basic</h1>
 <div class="line"><a class="code" href="class_a_k_c695_x.html">AKC695X</a> radio;</div>
 <div class="line"><span class="keywordtype">void</span> <a class="code" href="group___g_a03.html#gaaa883afce133a14c97aa938a60b41e0a">setup</a>() {</div>
 <div class="line">   <span class="comment">// Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32KHZ or CRYSTAL_12MHZ</span></div>
-<div class="line">   <span class="comment">// radio.setup(RESET_PIN); Instead the line below, if you use this line, the crystal type considered will be 32.768KHz.   </span></div>
+<div class="line">   <span class="comment">// radio.setup(RESET_PIN); Instead the line below, if you use this line, the crystal type considered will be 32.768KHz.</span></div>
 <div class="line">   radio.<a class="code" href="group___g_a03.html#gaaa883afce133a14c97aa938a60b41e0a">setup</a>(RESET_PIN, <a class="code" href="_a_k_c695_x_8h.html#a74c62040d9bf060c6281703c49412772">CRYSTAL_12MHZ</a>);</div>
-<div class="line">   radio.<a class="code" href="group___g_a04.html#gaf77739f861a531dc4c7e6ac5a6cb2713">setFM</a>(0, 870, 1080, 1039, 1); <span class="comment">// Tunes on 103.9MHz, FM, band 0. </span></div>
+<div class="line">   radio.<a class="code" href="group___g_a04.html#gaf77739f861a531dc4c7e6ac5a6cb2713">setFM</a>(0, 870, 1080, 1039, 1); <span class="comment">// Tunes on 103.9MHz, FM, band 0.</span></div>
 <div class="line">}</div>
 </div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a03.html#ga860660a84657a9ee209eb6f9459447de" title="Sets the kind of Crystal.">setCrystalType</a>, <a class="el" href="group___g_a01.html#unionakc595x__reg2" title="Reg2 (type 0x02 / RW): configure register 2 (default: 0x4A) Address.">akc595x_reg2</a></dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -252,8 +249,15 @@ Basic</h1>
 </div><div class="memdoc">
 
 <p>Receiver startup. </p>
-<p>Use this method to define the MCU (Arduino) RESET. If you call this method the crystal type will be set to 32.768KHz</p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Use this method to define the MCU (Arduino) RESET. If you call this method the crystal type will be set to 32.768KHz </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_a_k_c695_x_8h.html">AKC695X.h</a>&gt;</span></div>
+<div class="line"><a class="code" href="class_a_k_c695_x.html">AKC695X</a> radio;</div>
+<div class="line"><span class="keywordtype">void</span> <a class="code" href="group___g_a03.html#gaaa883afce133a14c97aa938a60b41e0a">setup</a>() {</div>
+<div class="line">   <span class="comment">// Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32KHZ or CRYSTAL_12MHZ</span></div>
+<div class="line">   <span class="comment">// radio.setup(-1); Use this line if you are using RST pin of the Arduino. The crystal type considered will be 32.768KHz.</span></div>
+<div class="line">   radio.<a class="code" href="group___g_a03.html#gaaa883afce133a14c97aa938a60b41e0a">setup</a>(12); <span class="comment">// You ara usint Arduino Pin 12 to reset control. The crystal type considered will be 32.768KHz.</span></div>
+<div class="line">   radio.<a class="code" href="group___g_a04.html#gaf77739f861a531dc4c7e6ac5a6cb2713">setFM</a>(0, 870, 1080, 1039, 1); <span class="comment">// Tunes on 103.9MHz, FM, band 0.</span></div>
+<div class="line">}</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">resetPin</td><td>if &gt;= 0, then you control the RESET. if -1, you are using ths MCU RST pin. </td></tr>
   </table>
@@ -415,10 +419,10 @@ Basic</h1>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclass_a_k_c695_x_html"><div class="ttname"><a href="class_a_k_c695_x.html">AKC695X</a></div><div class="ttdef"><b>Definition:</b> AKC695X.h:438</div></div>
-<div class="ttc" id="agroup___g_a04_html_gaf77739f861a531dc4c7e6ac5a6cb2713"><div class="ttname"><a href="group___g_a04.html#gaf77739f861a531dc4c7e6ac5a6cb2713">AKC695X::setFM</a></div><div class="ttdeci">void setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step)</div><div class="ttdoc">Sets the AKC695X to FM mode.</div><div class="ttdef"><b>Definition:</b> AKC695X.cpp:482</div></div>
+<div class="ttc" id="aclass_a_k_c695_x_html"><div class="ttname"><a href="class_a_k_c695_x.html">AKC695X</a></div><div class="ttdef"><b>Definition:</b> AKC695X.h:440</div></div>
+<div class="ttc" id="agroup___g_a04_html_gaf77739f861a531dc4c7e6ac5a6cb2713"><div class="ttname"><a href="group___g_a04.html#gaf77739f861a531dc4c7e6ac5a6cb2713">AKC695X::setFM</a></div><div class="ttdeci">void setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step)</div><div class="ttdoc">Sets the AKC695X to FM mode.</div><div class="ttdef"><b>Definition:</b> AKC695X.cpp:491</div></div>
 <div class="ttc" id="a_a_k_c695_x_8h_html"><div class="ttname"><a href="_a_k_c695_x_8h.html">AKC695X.h</a></div></div>
-<div class="ttc" id="agroup___g_a03_html_gaaa883afce133a14c97aa938a60b41e0a"><div class="ttname"><a href="group___g_a03.html#gaaa883afce133a14c97aa938a60b41e0a">AKC695X::setup</a></div><div class="ttdeci">void setup(int reset_pin)</div><div class="ttdoc">Receiver startup.</div><div class="ttdef"><b>Definition:</b> AKC695X.cpp:92</div></div>
+<div class="ttc" id="agroup___g_a03_html_gaaa883afce133a14c97aa938a60b41e0a"><div class="ttname"><a href="group___g_a03.html#gaaa883afce133a14c97aa938a60b41e0a">AKC695X::setup</a></div><div class="ttdeci">void setup(int reset_pin)</div><div class="ttdoc">Receiver startup.</div><div class="ttdef"><b>Definition:</b> AKC695X.cpp:101</div></div>
 <div class="ttc" id="a_a_k_c695_x_8h_html_a74c62040d9bf060c6281703c49412772"><div class="ttname"><a href="_a_k_c695_x_8h.html#a74c62040d9bf060c6281703c49412772">CRYSTAL_12MHZ</a></div><div class="ttdeci">#define CRYSTAL_12MHZ</div><div class="ttdef"><b>Definition:</b> AKC695X.h:26</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

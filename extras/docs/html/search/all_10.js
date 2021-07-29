@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['volume_152',['volume',['../class_a_k_c695_x.html#a6eeb46370dd33c3336d4a228a61c4f12',1,'AKC695X']]]
+  ['your_20support_20is_20important_2e_156',['Your support is important.',['../md__a_k_c695_x__c_o_n_t_r_i_b_u_t_i_n_g.html',1,'']]]
 ];

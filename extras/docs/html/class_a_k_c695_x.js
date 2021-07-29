@@ -40,6 +40,7 @@ var class_a_k_c695_x =
     [ "getRSSI", "group___g_a04.html#gadf936fa32a36782b72633cae84d63f88", null ],
     [ "getSupplyVoltage", "group___g_a04.html#ga580389b4740ed5cabcba28e481344a64", null ],
     [ "getCurrentMode", "class_a_k_c695_x.html#a2bb0dab82de260b79371da6df6e0954c", null ],
+    [ "setMode3k", "group___g_a03_a.html#gaafde8fa9c0e8aad2e427fdd15d0a7afc", null ],
     [ "commitTune", "group___g_a04.html#ga735ce923f793b2cc437ff4c09cd4f026", null ],
     [ "deviceAddress", "class_a_k_c695_x.html#ab7cd32a73bfe5345422dbebcd6b54ca7", null ],
     [ "resetPin", "class_a_k_c695_x.html#a53464dde83a8625917655865af8ef53d", null ],

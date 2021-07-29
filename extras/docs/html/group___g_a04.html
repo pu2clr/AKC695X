@@ -172,7 +172,7 @@ Operation</h1>
 <p>Sets the STC bit to high when the tune operation completes. </p>
 <p>Tells the device that the tune process is over. </p>
 
-<p class="reference">Referenced by <a class="el" href="group___g_a04.html#ga8f61d1c6b668dbcdb5917b58580ed44e">AKC695X::setAM()</a>, <a class="el" href="group___g_a04.html#gaf77739f861a531dc4c7e6ac5a6cb2713">AKC695X::setFM()</a>, and <a class="el" href="group___g_a04.html#ga0873887fb945b74c56f12ec601be00ac">AKC695X::setFrequency()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="group___g_a04.html#ga0873887fb945b74c56f12ec601be00ac">AKC695X::setFrequency()</a>.</p>
 
 </div>
 </div>
@@ -203,16 +203,14 @@ Operation</h1>
 </div><div class="memdoc">
 
 <p>Sets the start and end frequencies for a custom band. </p>
-<p>This method is used by setAM and setFM methods. <br  />
-</p>
+<p>This method is used by setAM and setFM methods.</p>
 <p>This will called when you set a band greater than 17 on AM mode or greater than 7 on FM mode.</p>
 <p>You can use more than one band at a time.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a01.html#ga763d7e126511095914012686cd07f3c6" title="Reg4 (type 0x04 / RW): configures register 4 (default: 0x19) Address.">akc595x_reg4</a>, <a class="el" href="group___g_a01.html#gae0b77f29d6b413d968115e292b6f13f5" title="Reg5 (type 0x05 / RW): configures register 5 (default: 0x32) Address.">akc595x_reg5</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">band</td><td>if FM, a value greater than 7. If AM, a value greater than 17. You can use more than one. </td></tr>
-    <tr><td class="paramname">minimum_frequency</td><td>Start frequency <br  />
- </td></tr>
+    <tr><td class="paramname">minimum_frequency</td><td>Start frequency </td></tr>
     <tr><td class="paramname">maximum_frequency</td><td>Final frequency </td></tr>
   </table>
   </dd>
@@ -296,8 +294,6 @@ Operation</h1>
   </table>
   </dd>
 </dl>
-
-<p class="reference">References <a class="el" href="group___g_a04.html#ga735ce923f793b2cc437ff4c09cd4f026">AKC695X::commitTune()</a>.</p>
 
 </div>
 </div>
@@ -402,8 +398,6 @@ Operation</h1>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="group___g_a04.html#ga735ce923f793b2cc437ff4c09cd4f026">AKC695X::commitTune()</a>.</p>
-
 </div>
 </div>
 <a id="gabf17b1129300da3388a1ee18735a64e6"></a>
@@ -504,17 +498,16 @@ AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 1
 
 <p>Seeks a FM station. </p>
 <p>Seek a FM Station</p>
-<div class="fragment"><div class="line"><span class="comment">// Do this if you want to show the frequency during the seek process. </span></div>
-<div class="line"><span class="comment">// Where showFrequency is the function name of your sketch that shows the current frequency.  </span></div>
-<div class="line">radio.<a class="code" href="group___g_a04.html#ga60e4f53f014c32b748de04c9d643826d">seekStation</a>(up_down,showFrequency);  </div>
-</div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">// Do this if you don&#39;t want to show the frequency during seek process. </span></div>
-<div class="line">radio.<a class="code" href="group___g_a04.html#ga60e4f53f014c32b748de04c9d643826d">seekStation</a>(up_down);  </div>
+<div class="fragment"><div class="line"><span class="comment">// Do this if you want to show the frequency during the seek process.</span></div>
+<div class="line"><span class="comment">// Where showFrequency is the function name of your sketch that shows the current frequency.</span></div>
+<div class="line">radio.<a class="code" href="group___g_a04.html#ga60e4f53f014c32b748de04c9d643826d">seekStation</a>(up_down,showFrequency);</div>
+</div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">// Do this if you don&#39;t want to show the frequency during seek process.</span></div>
+<div class="line">radio.<a class="code" href="group___g_a04.html#ga60e4f53f014c32b748de04c9d643826d">seekStation</a>(up_down);</div>
 </div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a class="el" href="group___g_a01.html#unionakc595x__reg20" title="Reg20 (type 0x14 / R)">akc595x_reg20</a>, <a class="el" href="group___g_a01.html#ga3d85865e7c11161e222ed157c4e2d169" title="Reg21 (type 0x15 / R)">akc595x_reg21</a>, <a class="el" href="group___g_a03_a.html#ga62a70a5191c3e56dfa6cc51c314bc210" title="Converts the channel stored in the registers 20 and 21 to frequency.">channelToFrequency</a></dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">up_down</td><td>if 0, seek down; if 1, seek up. </td></tr>
-    <tr><td class="paramname">showFunc</td><td>Optional. Point to the function in you sketch that shows the current frequency. If NULL, do nothing (default). <br  />
- </td></tr>
+    <tr><td class="paramname">showFunc</td><td>Optional. Point to the function in you sketch that shows the current frequency. If NULL, do nothing (default). </td></tr>
   </table>
   </dd>
 </dl>
@@ -589,8 +582,7 @@ AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 1
 </div><div class="memdoc">
 
 <p>Adds the current step to the current frequency and sets the new frequency. </p>
-<p>Goes to the next frequency channel <br  />
- </p>
+<p>Goes to the next frequency channel </p>
 
 </div>
 </div>
@@ -610,8 +602,7 @@ AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 1
 </div><div class="memdoc">
 
 <p>Subtracts the current step from the current frequency and assign the new frequency. </p>
-<p>Goes to the previous frequency channel <br  />
- </p>
+<p>Goes to the previous frequency channel </p>
 
 </div>
 </div>
@@ -799,8 +790,7 @@ AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 1
 <p>Actually, it is the Antenna aperture and can be calculated using signal levels rssi, pgalevel_rf, pgalevel_if.</p>
 <p>The rssi is stored in the register 27 and the pgalevel_rf, pgalevel_if are stored in register 24.</p>
 <p>On FM mode or SW band, the formula is: Pin (dBuV) = 103 - rssi - 6 * pgalevel_rf - 6 * pgalevel_if</p>
-<p>On AM mode (LW or MW), the formula is: Pin (dBuV) = 123 - rssi - 6 * pgalevel_rf - 6 * pgalevel_if <br  />
-</p>
+<p>On AM mode (LW or MW), the formula is: Pin (dBuV) = 123 - rssi - 6 * pgalevel_rf - 6 * pgalevel_if</p>
 <dl class="section see"><dt>See also</dt><dd>AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio; page 16 </dd>
 <dd>
 <a class="el" href="group___g_a01.html#unionakc595x__reg24" title="Reg24 (type 0x18 / R)">akc595x_reg24</a>, <a class="el" href="group___g_a01.html#unionakc595x__reg27" title="Reg27 (type 0x1B / R)">akc595x_reg27</a></dd></dl>
@@ -830,7 +820,7 @@ AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 1
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="agroup___g_a04_html_ga60e4f53f014c32b748de04c9d643826d"><div class="ttname"><a href="group___g_a04.html#ga60e4f53f014c32b748de04c9d643826d">AKC695X::seekStation</a></div><div class="ttdeci">void seekStation(uint8_t up_down, void(*showFunc)()=NULL)</div><div class="ttdoc">Seeks a FM station.</div><div class="ttdef"><b>Definition:</b> AKC695X.cpp:657</div></div>
+<div class="ttc" id="agroup___g_a04_html_ga60e4f53f014c32b748de04c9d643826d"><div class="ttname"><a href="group___g_a04.html#ga60e4f53f014c32b748de04c9d643826d">AKC695X::seekStation</a></div><div class="ttdeci">void seekStation(uint8_t up_down, void(*showFunc)()=NULL)</div><div class="ttdoc">Seeks a FM station.</div><div class="ttdef"><b>Definition:</b> AKC695X.cpp:641</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

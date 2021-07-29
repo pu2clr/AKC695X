@@ -1,13 +1,13 @@
 var searchData=
 [
-  ['getamcarriernoiseratio_197',['getAmCarrierNoiseRatio',['../group___g_a03_a.html#gadade5cf9f5df5fa14917b3cb6bedd187',1,'AKC695X']]],
-  ['getamcurrentspace_198',['getAmCurrentSpace',['../group___g_a03_a.html#gaf38e047d4c5a455898f799714f4165b8',1,'AKC695X']]],
-  ['getcurrentchannel_199',['getCurrentChannel',['../group___g_a03_a.html#gac0bb41042eb94f538a9d5d97f5a16648',1,'AKC695X']]],
-  ['getcurrentmode_200',['getCurrentMode',['../class_a_k_c695_x.html#a2bb0dab82de260b79371da6df6e0954c',1,'AKC695X']]],
-  ['getfmcarriernoiseratio_201',['getFmCarrierNoiseRatio',['../group___g_a03_a.html#ga3471675057f459e0d641c33f47b4cdd4',1,'AKC695X']]],
-  ['getfrequency_202',['getFrequency',['../group___g_a04.html#ga1675e3100bba495bc813899563badc42',1,'AKC695X']]],
-  ['getregister_203',['getRegister',['../group___g_a03.html#ga771f5b0ed1750f9b221f5240d3301d5a',1,'AKC695X']]],
-  ['getrssi_204',['getRSSI',['../group___g_a04.html#gadf936fa32a36782b72633cae84d63f88',1,'AKC695X']]],
-  ['getsupplyvoltage_205',['getSupplyVoltage',['../group___g_a04.html#ga580389b4740ed5cabcba28e481344a64',1,'AKC695X']]],
-  ['getvolume_206',['getVolume',['../class_a_k_c695_x.html#aac415010022eeaa8ff0029aeb30e07f3',1,'AKC695X']]]
+  ['getamcarriernoiseratio_202',['getAmCarrierNoiseRatio',['../group___g_a03_a.html#gadade5cf9f5df5fa14917b3cb6bedd187',1,'AKC695X']]],
+  ['getamcurrentspace_203',['getAmCurrentSpace',['../group___g_a03_a.html#gaf38e047d4c5a455898f799714f4165b8',1,'AKC695X']]],
+  ['getcurrentchannel_204',['getCurrentChannel',['../group___g_a03_a.html#gac0bb41042eb94f538a9d5d97f5a16648',1,'AKC695X']]],
+  ['getcurrentmode_205',['getCurrentMode',['../class_a_k_c695_x.html#a2bb0dab82de260b79371da6df6e0954c',1,'AKC695X']]],
+  ['getfmcarriernoiseratio_206',['getFmCarrierNoiseRatio',['../group___g_a03_a.html#ga3471675057f459e0d641c33f47b4cdd4',1,'AKC695X']]],
+  ['getfrequency_207',['getFrequency',['../group___g_a04.html#ga1675e3100bba495bc813899563badc42',1,'AKC695X']]],
+  ['getregister_208',['getRegister',['../group___g_a03.html#ga771f5b0ed1750f9b221f5240d3301d5a',1,'AKC695X']]],
+  ['getrssi_209',['getRSSI',['../group___g_a04.html#gadf936fa32a36782b72633cae84d63f88',1,'AKC695X']]],
+  ['getsupplyvoltage_210',['getSupplyVoltage',['../group___g_a04.html#ga580389b4740ed5cabcba28e481344a64',1,'AKC695X']]],
+  ['getvolume_211',['getVolume',['../class_a_k_c695_x.html#aac415010022eeaa8ff0029aeb30e07f3',1,'AKC695X']]]
 ];
