@@ -527,4 +527,6 @@ public:
     inline void setMode3k(bool on_off) { this->currentMode3k = on_off;};
 
     void commitTune();
+
+    void convertToChar(uint16_t value, char *strValue, uint8_t len, uint8_t dot, uint8_t separator, bool remove_leading_zeros = true)
 };

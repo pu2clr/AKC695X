@@ -902,3 +902,46 @@ float AKC695X::getSupplyVoltage()
     reg25.raw = getRegister(REG25);
     return (1.8 + 0.05 * reg25.refined.vbat);
 }
+
+/**
+ * @ingroup GA04
+ * @brief Converts a number to a char array 
+ * @details It is useful to mitigate memory space used by functions like sprintf or othetr generic similar functions
+ * @details You can use it to format frequency using decimal or tousand separator and also to convert smalm numbers.      
+ * 
+ * @param value  value to be converted
+ * @param strValue char array that will be receive the converted value 
+ * @param len final string size (in bytes) 
+ * @param dot the decimal or tousand separator position
+ * @param separator symbol "." or "," 
+ * @param remove_leading_zeros if true removes up to two leading zeros 
+ */
+void AKC695X::convertToChar(uint16_t value, char *strValue, uint8_t len, uint8_t dot, uint8_t separator, bool remove_leading_zeros)
+{
+    char d;
+    for (int i = (len - 1); i >= 0; i--)
+    {
+        d = value % 10;
+        value = value / 10;
+        strValue[i] = d + 48;
+    }
+    strValue[len] = '\0';
+    if (dot > 0)
+    {
+        for (int i = len; i >= dot; i--)
+        {
+            strValue[i + 1] = strValue[i];
+        }
+        strValue[dot] = separator;
+    }
+
+    if (remove_leading_zeros)
+    {
+        if (strValue[0] == '0')
+        {
+            strValue[0] = ' ';
+            if (strValue[1] == '0')
+                strValue[1] = ' ';
+        }
+    }
+}
