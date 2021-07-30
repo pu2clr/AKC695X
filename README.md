@@ -435,6 +435,13 @@ The figure below shows the basic schematic of the AKC695X and Arduino Pro Mini 3
 ![Basic Schematic](https://pu2clr.github.io/AKC695X/extras/images/basic_schematic.png)
 
 
+The schematic below shows the AKC6955 controlled by a standalone ATmega328 with a LCD16X2
+
+
+![Basic Schematic 2](https://pu2clr.github.io/AKC695X/extras/images/schematic_atmega328_standalone_8MHz_LCD16x2.png)
+
+
+
 ### Component parts
 
 
