@@ -18,5 +18,6 @@ var group___g_a04 =
     [ "setVolumeDown", "group___g_a04.html#ga743ab35c54155385e6585ee0067a209e", null ],
     [ "setVolumeControl", "group___g_a04.html#gaac575af74cdbf784e24366f13fc60f99", null ],
     [ "getRSSI", "group___g_a04.html#gadf936fa32a36782b72633cae84d63f88", null ],
-    [ "getSupplyVoltage", "group___g_a04.html#ga580389b4740ed5cabcba28e481344a64", null ]
+    [ "getSupplyVoltage", "group___g_a04.html#ga580389b4740ed5cabcba28e481344a64", null ],
+    [ "convertToChar", "group___g_a04.html#ga9188ca28aff45b2e876fb80c8ce4e6f3", null ]
 ];

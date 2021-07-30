@@ -54,14 +54,14 @@ void AKC695X::setI2CBusAddress(int deviceAddress)
  * @ingroup  GA03
  * @brief    Receiver startup
  * @details  Use this method to define the MCU (Arduino) RESET pin and the crystal type you are using.
- * @details  The options for the crystal type is:  CRYSTAL_32kHz (32.768kHz) or CRYSTAL_12MHZ (12MHz).
+ * @details  The options for the crystal type is:  CRYSTAL_32KHz (32.768kHz) or CRYSTAL_12MHZ (12MHz).
  * @details  If you omit the crystal type parameter, will be considered 32.768kHz.  Example:
  * @code
  * #include <AKC695X.h>
  * #define RESET_PIN 12   // set it to -1 if you want to use the RST pin of your MCU.
  * AKC695X radio;
  * void setup() {
- *    // Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32kHz or CRYSTAL_12MHZ
+ *    // Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32KHz or CRYSTAL_12MHZ
  *    // radio.setup(RESET_PIN); Instead the line below, if you use this line, the crystal type considered will be 32.768kHz.
  *    radio.setup(RESET_PIN, CRYSTAL_12MHZ);
  *    radio.setFM(0, 870, 1080, 1039, 1); // Tunes on 103.9MHz, FM, band 0.
@@ -90,7 +90,7 @@ void AKC695X::setup(int resetPin, uint8_t crystal_type)
  * #include <AKC695X.h>
  * AKC695X radio;
  * void setup() {
- *    // Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32kHz or CRYSTAL_12MHZ
+ *    // Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32KHz or CRYSTAL_12MHZ
  *    // radio.setup(-1); Use this line if you are using RST pin of the Arduino. The crystal type considered will be 32.768kHz.
  *    radio.setup(12); // You ara usint Arduino Pin 12 to reset control. The crystal type considered will be 32.768kHz.
  *    radio.setFM(0, 870, 1080, 1039, 1); // Tunes on 103.9MHz, FM, band 0.
@@ -99,7 +99,7 @@ void AKC695X::setup(int resetPin, uint8_t crystal_type)
  * @param resetPin      if >= 0,  then you control the RESET. if -1, you are using ths MCU RST pin.
  */
 void AKC695X::setup(int resetPin) {
-    this->setup(resetPin, CRYSTAL_32kHz);
+    this->setup(resetPin, CRYSTAL_32KHz);
 }
 
 /**
@@ -490,12 +490,7 @@ void AKC695X::setCustomBand(uint16_t minimum_frequency, uint16_t maximum_frequen
  */
 void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step)
 {
-    uint16_t channel;
-    uint8_t high_bit, low_bit;
-
     akc595x_reg1 reg1;
-    akc595x_reg2 reg2;
-
     this->currentMode = 1;
     this->currentBand = akc695x_fm_band;
     this->currentBandMinimumFrequency = minimum_freq;
@@ -552,11 +547,8 @@ void AKC695X::setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t max
  */
 void AKC695X::setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step)
 {
-    uint16_t channel;
-    uint8_t high_bit, low_bit;
 
     akc595x_reg1 reg1;
-    akc595x_reg2 reg2;
 
     this->currentMode = 0;
     this->currentBand = akc695x_am_band;

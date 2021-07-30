@@ -189,8 +189,8 @@ void setup()
   attachInterrupt(digitalPinToInterrupt(ENCODER_PIN_A), rotaryEncoder, CHANGE);
   attachInterrupt(digitalPinToInterrupt(ENCODER_PIN_B), rotaryEncoder, CHANGE);
 
-  // rx.setup(RESET_PIN,CRYSTAL_12MHZ);
-  rx.setup(RESET_PIN, CRYSTAL_32KHZ);
+  // rx.setup(RESET_PIN,CRYSTAL_12MHZ); 
+  rx.setup(RESET_PIN, CRYSTAL_32KHz);    
   delay(500);
 
   // rx.setFM(band[bandIdx].band, band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency,band[bandIdx].currentFreq, band[bandIdx].step);

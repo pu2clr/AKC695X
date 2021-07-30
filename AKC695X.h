@@ -17,6 +17,9 @@
  * Contact: pu2clr@gmail.com
  */
 
+#ifndef _AKC6955_H // Prevent this file from being compiled more than once
+#define _AKC6955_H
+
 #include <Arduino.h>
 #include <Wire.h>
 
@@ -24,7 +27,7 @@
 #define CURRENT_MODE_FM     1
 #define CURRENT_MODE_AM     0
 #define CRYSTAL_12MHZ       0
-#define CRYSTAL_32kHz       1
+#define CRYSTAL_32KHz       1
 
 #define MAX_SEEK_TIME   3000        // Maximum time have to be a seeking process (in ms).
 #define AKC_SEEK_UP 1
@@ -450,7 +453,7 @@ protected:
     uint16_t currentStep;                       //!< Strore the current step
     uint16_t currentFrequency;                  //!< Store the current frequency
     uint8_t currentMode = 0;                    //!< Store the current mode: 1 = FM; 0 = AM
-    uint8_t currentCrystalType = CRYSTAL_32kHz; //!< Store the crystal type used:  0 = 12MHz;   1 = 32.768kHz
+    uint8_t currentCrystalType = CRYSTAL_32KHz; //!< Store the crystal type used:  0 = 12MHz;   1 = 32.768kHz
     uint8_t currentMode3k = 0;                  //!<  1 =  3K; 0 = AM
 
     // AM current band information
@@ -528,5 +531,7 @@ public:
 
     void commitTune();
 
-    void convertToChar(uint16_t value, char *strValue, uint8_t len, uint8_t dot, uint8_t separator, bool remove_leading_zeros = true)
+    void convertToChar(uint16_t value, char *strValue, uint8_t len, uint8_t dot, uint8_t separator, bool remove_leading_zeros = true);
 };
+
+#endif // _AKC6955_H

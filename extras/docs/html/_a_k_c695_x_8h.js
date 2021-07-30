@@ -5,7 +5,7 @@ var _a_k_c695_x_8h =
     [ "CURRENT_MODE_FM", "_a_k_c695_x_8h.html#a375ba4a968253cd1628914e7e6ebc40e", null ],
     [ "CURRENT_MODE_AM", "_a_k_c695_x_8h.html#a2edf821051a85e58efeb2ff3a8e31f21", null ],
     [ "CRYSTAL_12MHZ", "_a_k_c695_x_8h.html#a74c62040d9bf060c6281703c49412772", null ],
-    [ "CRYSTAL_32kHz", "_a_k_c695_x_8h.html#a5ada86af6106ecfd6ac5468385d2ee00", null ],
+    [ "CRYSTAL_32KHz", "_a_k_c695_x_8h.html#a72a6e3b9ddd0b55253043143e0f4f2d4", null ],
     [ "MAX_SEEK_TIME", "_a_k_c695_x_8h.html#acc98e8d3badddd21bc528451bb718f82", null ],
     [ "AKC_SEEK_UP", "_a_k_c695_x_8h.html#a09d8f38980499b49afa6a01221d4d827", null ],
     [ "AKC_SEEK_DOWN", "_a_k_c695_x_8h.html#a88095b3908de87ed8f63d7142ecaefcb", null ],
