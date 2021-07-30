@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['max_5fseek_5ftime_94',['MAX_SEEK_TIME',['../_a_k_c695_x_8h.html#acc98e8d3badddd21bc528451bb718f82',1,'AKC695X.h']]],
-  ['merchantability_95',['MERCHANTABILITY',['../license_8txt.html#a383a15303ad81a4fe142cc242a159500',1,'license.txt']]],
-  ['merge_96',['merge',['../license_8txt.html#aad4b713ca657a67ecbb454b02ceabff8',1,'license.txt']]],
-  ['modify_97',['modify',['../license_8txt.html#a84db115c842c0bc29f97fd73629d8163',1,'license.txt']]]
+  ['max_5fseek_5ftime_96',['MAX_SEEK_TIME',['../_a_k_c695_x_8h.html#acc98e8d3badddd21bc528451bb718f82',1,'AKC695X.h']]],
+  ['merchantability_97',['MERCHANTABILITY',['../license_8txt.html#a383a15303ad81a4fe142cc242a159500',1,'license.txt']]],
+  ['merge_98',['merge',['../license_8txt.html#aad4b713ca657a67ecbb454b02ceabff8',1,'license.txt']]],
+  ['modify_99',['modify',['../license_8txt.html#a84db115c842c0bc29f97fd73629d8163',1,'license.txt']]]
 ];

@@ -190,7 +190,7 @@ void setup()
   attachInterrupt(digitalPinToInterrupt(ENCODER_PIN_B), rotaryEncoder, CHANGE);
 
   // rx.setup(RESET_PIN,CRYSTAL_12MHZ);
-  rx.setup(RESET_PIN, CRYSTAL_32KHZ);
+  rx.setup(RESET_PIN, CRYSTAL_32kHz);
   delay(500);
 
   // rx.setFM(band[bandIdx].band, band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency,band[bandIdx].currentFreq, band[bandIdx].step);
@@ -471,7 +471,7 @@ void useBand()
   if (band[bandIdx].mode == AKC_FM)
   {
     rx.setFM(band[bandIdx].band, band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].currentFreq, band[bandIdx].step);
-    rx.setFmSeekStep(0); // 25KHz.
+    // rx.setFmSeekStep(0); // 0 = 25kHz; 1 = 50kHz; 2 = 100kHz.
   }
   else
   {
@@ -613,12 +613,12 @@ void doCurrentMenuCmd() {
       break;
     case 3:
       seekDirection = AKC_SEEK_UP; // SEEK UP
-      rx.frequencyUp();
+      // rx.frequencyUp();
       doSeek();
       break;  
     case 4:
       seekDirection = AKC_SEEK_DOWN; // SEEK DOWN
-      rx.frequencyDown();
+      // rx.frequencyDown();
       doSeek();
       break;    
     default:

@@ -209,13 +209,13 @@ Basic</h1>
 
 <p>Receiver startup. </p>
 <p>Use this method to define the MCU (Arduino) RESET pin and the crystal type you are using.</p>
-<p>The options for the crystal type is: CRYSTAL_32KHZ (32.768KHz) or CRYSTAL_12MHZ (12MHz).</p>
-<p>If you omit the crystal type parameter, will be considered 32.768KHz. Example: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_a_k_c695_x_8h.html">AKC695X.h</a>&gt;</span></div>
+<p>The options for the crystal type is: CRYSTAL_32kHz (32.768kHz) or CRYSTAL_12MHZ (12MHz).</p>
+<p>If you omit the crystal type parameter, will be considered 32.768kHz. Example: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_a_k_c695_x_8h.html">AKC695X.h</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#define RESET_PIN 12   // set it to -1 if you want to use the RST pin of your MCU.</span></div>
 <div class="line"><a class="code" href="class_a_k_c695_x.html">AKC695X</a> radio;</div>
 <div class="line"><span class="keywordtype">void</span> <a class="code" href="group___g_a03.html#gaaa883afce133a14c97aa938a60b41e0a">setup</a>() {</div>
-<div class="line">   <span class="comment">// Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32KHZ or CRYSTAL_12MHZ</span></div>
-<div class="line">   <span class="comment">// radio.setup(RESET_PIN); Instead the line below, if you use this line, the crystal type considered will be 32.768KHz.</span></div>
+<div class="line">   <span class="comment">// Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32kHz or CRYSTAL_12MHZ</span></div>
+<div class="line">   <span class="comment">// radio.setup(RESET_PIN); Instead the line below, if you use this line, the crystal type considered will be 32.768kHz.</span></div>
 <div class="line">   radio.<a class="code" href="group___g_a03.html#gaaa883afce133a14c97aa938a60b41e0a">setup</a>(RESET_PIN, <a class="code" href="_a_k_c695_x_8h.html#a74c62040d9bf060c6281703c49412772">CRYSTAL_12MHZ</a>);</div>
 <div class="line">   radio.<a class="code" href="group___g_a04.html#gaf77739f861a531dc4c7e6ac5a6cb2713">setFM</a>(0, 870, 1080, 1039, 1); <span class="comment">// Tunes on 103.9MHz, FM, band 0.</span></div>
 <div class="line">}</div>
@@ -223,7 +223,7 @@ Basic</h1>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">resetPin</td><td>if &gt;= 0, then you control the RESET. if -1, you are using ths Arduino RST pin. </td></tr>
-    <tr><td class="paramname">crystal_type</td><td>if 1 = 32.768KHz (default); 0 = 12MHz </td></tr>
+    <tr><td class="paramname">crystal_type</td><td>if 1 = 32.768kHz (default); 0 = 12MHz </td></tr>
   </table>
   </dd>
 </dl>
@@ -249,12 +249,12 @@ Basic</h1>
 </div><div class="memdoc">
 
 <p>Receiver startup. </p>
-<p>Use this method to define the MCU (Arduino) RESET. If you call this method the crystal type will be set to 32.768KHz </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_a_k_c695_x_8h.html">AKC695X.h</a>&gt;</span></div>
+<p>Use this method to define the MCU (Arduino) RESET. If you call this method the crystal type will be set to 32.768kHz </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="_a_k_c695_x_8h.html">AKC695X.h</a>&gt;</span></div>
 <div class="line"><a class="code" href="class_a_k_c695_x.html">AKC695X</a> radio;</div>
 <div class="line"><span class="keywordtype">void</span> <a class="code" href="group___g_a03.html#gaaa883afce133a14c97aa938a60b41e0a">setup</a>() {</div>
-<div class="line">   <span class="comment">// Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32KHZ or CRYSTAL_12MHZ</span></div>
-<div class="line">   <span class="comment">// radio.setup(-1); Use this line if you are using RST pin of the Arduino. The crystal type considered will be 32.768KHz.</span></div>
-<div class="line">   radio.<a class="code" href="group___g_a03.html#gaaa883afce133a14c97aa938a60b41e0a">setup</a>(12); <span class="comment">// You ara usint Arduino Pin 12 to reset control. The crystal type considered will be 32.768KHz.</span></div>
+<div class="line">   <span class="comment">// Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32kHz or CRYSTAL_12MHZ</span></div>
+<div class="line">   <span class="comment">// radio.setup(-1); Use this line if you are using RST pin of the Arduino. The crystal type considered will be 32.768kHz.</span></div>
+<div class="line">   radio.<a class="code" href="group___g_a03.html#gaaa883afce133a14c97aa938a60b41e0a">setup</a>(12); <span class="comment">// You ara usint Arduino Pin 12 to reset control. The crystal type considered will be 32.768kHz.</span></div>
 <div class="line">   radio.<a class="code" href="group___g_a04.html#gaf77739f861a531dc4c7e6ac5a6cb2713">setFM</a>(0, 870, 1080, 1039, 1); <span class="comment">// Tunes on 103.9MHz, FM, band 0.</span></div>
 <div class="line">}</div>
 </div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
@@ -407,10 +407,10 @@ Basic</h1>
 
 <p>Sets the kind of Crystal. </p>
 <p>This method sets the Crystal type you are using in your circuit.</p>
-<p>The valid crystal type are 12MHz or 32.768Khz</p>
+<p>The valid crystal type are 12MHz or 32.768kHz</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">crystal</td><td>0 = 12MHz; 1 = 32.768KHz </td></tr>
+    <tr><td class="paramname">crystal</td><td>0 = 12MHz; 1 = 32.768kHz </td></tr>
   </table>
   </dd>
 </dl>
@@ -419,7 +419,7 @@ Basic</h1>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclass_a_k_c695_x_html"><div class="ttname"><a href="class_a_k_c695_x.html">AKC695X</a></div><div class="ttdef"><b>Definition:</b> AKC695X.h:440</div></div>
+<div class="ttc" id="aclass_a_k_c695_x_html"><div class="ttname"><a href="class_a_k_c695_x.html">AKC695X</a></div><div class="ttdef"><b>Definition:</b> AKC695X.h:442</div></div>
 <div class="ttc" id="agroup___g_a04_html_gaf77739f861a531dc4c7e6ac5a6cb2713"><div class="ttname"><a href="group___g_a04.html#gaf77739f861a531dc4c7e6ac5a6cb2713">AKC695X::setFM</a></div><div class="ttdeci">void setFM(uint8_t akc695x_fm_band, uint16_t minimum_freq, uint16_t maximum_freq, uint16_t default_frequency, uint8_t default_step)</div><div class="ttdoc">Sets the AKC695X to FM mode.</div><div class="ttdef"><b>Definition:</b> AKC695X.cpp:491</div></div>
 <div class="ttc" id="a_a_k_c695_x_8h_html"><div class="ttname"><a href="_a_k_c695_x_8h.html">AKC695X.h</a></div></div>
 <div class="ttc" id="agroup___g_a03_html_gaaa883afce133a14c97aa938a60b41e0a"><div class="ttname"><a href="group___g_a03.html#gaaa883afce133a14c97aa938a60b41e0a">AKC695X::setup</a></div><div class="ttdeci">void setup(int reset_pin)</div><div class="ttdoc">Receiver startup.</div><div class="ttdef"><b>Definition:</b> AKC695X.cpp:101</div></div>

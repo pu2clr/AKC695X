@@ -24,7 +24,7 @@
 #define CURRENT_MODE_FM     1
 #define CURRENT_MODE_AM     0
 #define CRYSTAL_12MHZ       0
-#define CRYSTAL_32KHZ       1
+#define CRYSTAL_32kHz       1
 
 #define MAX_SEEK_TIME   3000        // Maximum time have to be a seeking process (in ms).
 #define AKC_SEEK_UP 1
@@ -43,12 +43,12 @@
  * | Preset FM band ( 64 ~ 108 MHz )                                           |   X     |    X    |    X    |
  * | stand by TV1 audio( 56.25 ~ 91.75 MHz )                                   |   X     |    X    |    X    |
  * | stand by TV2 audio( 174.75 ~ 222.25 MHz )                                 |   X     |    X    |    X    |
- * | Presets wave band ( 520 ~ 1730 KHz )                                      |   X     |    X    |    X    |
+ * | Presets wave band ( 520 ~ 1730 kHz )                                      |   X     |    X    |    X    |
  * | __Preset shortwave band ( 3.2 ~ 21.9 MHz )__                              |         |    X    |    X    |
- * | Preset long-wave band ( 150 ~ 285 KHz )                                   |   X     |    X    |    X    |
+ * | Preset long-wave band ( 150 ~ 285 kHz )                                   |   X     |    X    |    X    |
  * | Custom support band                                                       |   X     |    X    |    X    |
  * | It supports a wide supply voltage range: 2.0V ~ 4.5V                      |   X     |    X    |    X    |
- * | stand by 32.768KHz & 12MHz Passive mode crystal reference clock and Pin   |   X     |    X    |    X    |
+ * | stand by 32.768kHz & 12MHz Passive mode crystal reference clock and Pin   |   X     |    X    |    X    |
  * | Integrated audio amplifier (maximum power differential 0.5W )             |   X     |    X    |    X    |
  * | Two kinds of control volume: volume potentiometer and the volume register |   X     |    X    |    X    |
  * | Two kinds of de-emphasis modes: 50us / 75us                               |   X     |    X    |    X    |
@@ -258,10 +258,10 @@ typedef union {
  * @details Sets FM seek step.
  * | spece |  step   |
  * | ----- |  ------ |
- * |  00   |  25 KHz |
- * |  01   |  50 KHz |
- * |  10   | 100 KHz |
- * |  11   | 200 KHz |
+ * |  00   |  25 kHz |
+ * |  01   |  50 kHz |
+ * |  10   | 100 kHz |
+ * |  11   | 200 kHz |
  *
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 14
  */
@@ -269,7 +269,7 @@ typedef union {
     struct
     {
         uint8_t rsv1 : 2;  //!< Reserved. Measured using, do not change this value
-        uint8_t space : 2; //!< 00 = 25KHz; 01 = 50KHz; 10 = 100KHz; 11 = 200KHz
+        uint8_t space : 2; //!< 00 = 25kHz; 01 = 50kHz; 10 = 100kHz; 11 = 200kHz
         uint8_t rsv2 : 4;  //!< Reserved. Measured using, do not change this value
     } refined;
     uint8_t raw;
@@ -407,7 +407,7 @@ typedef union {
 /**
  * @ingroup GA01
  * @brief Reg26 (type 0x1A / R)
- * @details When the frequency offset indicated, complement format, greater than 127, 256 can be reduced to normal values, attention here to 1KHz units FM, AM in units of 100Hz
+ * @details When the frequency offset indicated, complement format, greater than 127, 256 can be reduced to normal values, attention here to 1kHz units FM, AM in units of 100Hz
  *
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 15
  */
@@ -450,7 +450,7 @@ protected:
     uint16_t currentStep;                       //!< Strore the current step
     uint16_t currentFrequency;                  //!< Store the current frequency
     uint8_t currentMode = 0;                    //!< Store the current mode: 1 = FM; 0 = AM
-    uint8_t currentCrystalType = CRYSTAL_32KHZ; //!< Store the crystal type used:  0 = 12MHz;   1 = 32.768KHz
+    uint8_t currentCrystalType = CRYSTAL_32kHz; //!< Store the crystal type used:  0 = 12MHz;   1 = 32.768kHz
     uint8_t currentMode3k = 0;                  //!<  1 =  3K; 0 = AM
 
     // AM current band information

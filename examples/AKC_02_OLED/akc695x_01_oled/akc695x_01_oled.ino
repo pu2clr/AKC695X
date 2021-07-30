@@ -132,8 +132,8 @@ void setup()
   splash();
 
   // You can select the RESET pin and Crystal type you are using in your circuit. 
-  // Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32KHZ or CRYSTAL_12MHZ
-  radio.setup(RESET_PIN, CRYSTAL_32KHZ);
+  // Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32kHz or CRYSTAL_12MHZ
+  radio.setup(RESET_PIN, CRYSTAL_32kHz);
 
   radio.setFM(band[bandIdx].band, band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency,band[bandIdx].default_frequency, band[bandIdx].step);
   radio.setAudio(); // Sets the audio output behaviour (default configuration).
@@ -296,7 +296,7 @@ void showFrequency()
     freq[4] = tmp[3];
     freq[5] = tmp[4];
     freq[6] = '\0';
-    unit = (char *) "KHz";
+    unit = (char *) "kHz";
     bandMode = (char *) "AM";
     stereo = (char *) "       ";
   }
@@ -435,7 +435,7 @@ void useBand() {
   if (band[bandIdx].mode ==  1) 
   {
     radio.setFM(band[bandIdx].band, band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].default_frequency, band[bandIdx].step);
-    radio.setFmSeekStep(0); // 25KHz.
+    radio.setFmSeekStep(0); // 25kHz.
   }
   else
   {

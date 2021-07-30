@@ -54,15 +54,15 @@ void AKC695X::setI2CBusAddress(int deviceAddress)
  * @ingroup  GA03
  * @brief    Receiver startup
  * @details  Use this method to define the MCU (Arduino) RESET pin and the crystal type you are using.
- * @details  The options for the crystal type is:  CRYSTAL_32KHZ (32.768KHz) or CRYSTAL_12MHZ (12MHz).
- * @details  If you omit the crystal type parameter, will be considered 32.768KHz.  Example:
+ * @details  The options for the crystal type is:  CRYSTAL_32kHz (32.768kHz) or CRYSTAL_12MHZ (12MHz).
+ * @details  If you omit the crystal type parameter, will be considered 32.768kHz.  Example:
  * @code
  * #include <AKC695X.h>
  * #define RESET_PIN 12   // set it to -1 if you want to use the RST pin of your MCU.
  * AKC695X radio;
  * void setup() {
- *    // Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32KHZ or CRYSTAL_12MHZ
- *    // radio.setup(RESET_PIN); Instead the line below, if you use this line, the crystal type considered will be 32.768KHz.
+ *    // Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32kHz or CRYSTAL_12MHZ
+ *    // radio.setup(RESET_PIN); Instead the line below, if you use this line, the crystal type considered will be 32.768kHz.
  *    radio.setup(RESET_PIN, CRYSTAL_12MHZ);
  *    radio.setFM(0, 870, 1080, 1039, 1); // Tunes on 103.9MHz, FM, band 0.
  * }
@@ -71,7 +71,7 @@ void AKC695X::setI2CBusAddress(int deviceAddress)
  * @see setCrystalType, akc595x_reg2
  *
  * @param resetPin      if >= 0,  then you control the RESET. if -1, you are using ths Arduino RST pin.
- * @param crystal_type  if 1 =  32.768KHz (default); 0 = 12MHz
+ * @param crystal_type  if 1 =  32.768kHz (default); 0 = 12MHz
  */
 void AKC695X::setup(int resetPin, uint8_t crystal_type)
 {
@@ -85,21 +85,21 @@ void AKC695X::setup(int resetPin, uint8_t crystal_type)
 /**
  * @ingroup     GA03
  * @brief       Receiver startup
- * @details     Use this method to define the MCU (Arduino) RESET. If you call this method the crystal type will be set to 32.768KHz
+ * @details     Use this method to define the MCU (Arduino) RESET. If you call this method the crystal type will be set to 32.768kHz
  * @code
  * #include <AKC695X.h>
  * AKC695X radio;
  * void setup() {
- *    // Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32KHZ or CRYSTAL_12MHZ
- *    // radio.setup(-1); Use this line if you are using RST pin of the Arduino. The crystal type considered will be 32.768KHz.
- *    radio.setup(12); // You ara usint Arduino Pin 12 to reset control. The crystal type considered will be 32.768KHz.
+ *    // Set RESET_PIN to -1 if you are using the Arduino RST pin; Select CRYSTAL_32kHz or CRYSTAL_12MHZ
+ *    // radio.setup(-1); Use this line if you are using RST pin of the Arduino. The crystal type considered will be 32.768kHz.
+ *    radio.setup(12); // You ara usint Arduino Pin 12 to reset control. The crystal type considered will be 32.768kHz.
  *    radio.setFM(0, 870, 1080, 1039, 1); // Tunes on 103.9MHz, FM, band 0.
  * }
  * @endcode
  * @param resetPin      if >= 0,  then you control the RESET. if -1, you are using ths MCU RST pin.
  */
 void AKC695X::setup(int resetPin) {
-    this->setup(resetPin, CRYSTAL_32KHZ);
+    this->setup(resetPin, CRYSTAL_32kHz);
 }
 
 /**
@@ -171,9 +171,9 @@ uint8_t AKC695X::getRegister(uint8_t reg)
  * @ingroup GA03
  * @brief Sets the kind of Crystal
  * @details This method sets the Crystal type you are using in your circuit.
- * @details The valid crystal type are 12MHz or 32.768Khz
+ * @details The valid crystal type are 12MHz or 32.768kHz
  *
- * @param crystal   0 = 12MHz;  1 = 32.768KHz
+ * @param crystal   0 = 12MHz;  1 = 32.768kHz
  */
 void AKC695X::setCrystalType(uint8_t crystal) {
     akc595x_reg2 reg2;
@@ -303,7 +303,7 @@ uint8_t AKC695X::getAmCarrierNoiseRatio(){
  *
  * @see akc595x_reg22
  *
- * @return uint8_t current space 3KHz or 5KHz
+ * @return uint8_t current space 3kHz or 5kHz
  */
 uint8_t AKC695X::getAmCurrentSpace(){
     akc595x_reg22 reg22;
@@ -384,10 +384,10 @@ void AKC695X::setFmStereoMono(uint8_t value)
  *
  * | Parameter vaue |  Bandwidth |
  * | -------------- | -----------|
- * |       0        | 150KHz     |
- * |       1        | 200KHz     |
- * |       2        | 50KHz      |
- * |       3        | 100KHz     |
+ * |       0        | 150kHz     |
+ * |       1        | 200kHz     |
+ * |       2        | 50kHz      |
+ * |       3        | 100kHz     |
  *
  * @param value     see table above
  */
@@ -581,7 +581,7 @@ void AKC695X::setAM(uint8_t akc695x_am_band, uint16_t minimum_freq, uint16_t max
 /**
  * @ingroup GA04
  * @brief Sets the step that will be used to increment and decrement the current frequency
- * @details The AKC695X has two possible steps (3KHz and 5KHz). The step value is important to calculate the frequenvy you want to set.
+ * @details The AKC695X has two possible steps (3kHz and 5kHz). The step value is important to calculate the frequenvy you want to set.
  *
  * @see setFrequency
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 12
@@ -601,10 +601,10 @@ void AKC695X::setStep(uint8_t step)
  *
  * | spece | N#  | step    |
  * | ----- | --- | ------- |
- * |  00   |  0  | 25 KHz  |
- * |  01   |  1  | 50 KHz  |
- * |  10   |  2  | 100 KHz |
- * |  11   |  3  | 200 KHz |
+ * |  00   |  0  | 25 kHz  |
+ * |  01   |  1  | 50 kHz  |
+ * |  10   |  2  | 100 kHz |
+ * |  11   |  3  | 200 kHz |
  *
  * @see AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 14
  *

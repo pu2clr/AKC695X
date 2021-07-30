@@ -53,16 +53,17 @@ var NAVTREE =
           ] ]
         ] ],
         [ "Schematic", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md31", [
-          [ "Component parts", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md32", null ],
-          [ "AKC695X Pin definitions", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md33", null ]
+          [ "Arduino Pro mini 3.3V/8MHz or standalone Atmega328 and AKC6955, encoder and LCD16x2", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md32", null ],
+          [ "Component parts", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md33", null ],
+          [ "AKC695X Pin definitions", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md34", null ]
         ] ]
       ] ],
-      [ "Prototype Photos", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md34", null ],
-      [ "Videos", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md35", null ],
-      [ "Receivers based on AKC695X / M695X", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md36", null ],
-      [ "Third-party projects using this library", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md37", null ],
-      [ "References", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md38", null ],
-      [ "Commercial receivers based on AKC6955", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md39", null ]
+      [ "Prototype Photos", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md35", null ],
+      [ "Videos", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md36", null ],
+      [ "Receivers based on AKC695X / M695X", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md37", null ],
+      [ "Third-party projects using this library", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md38", null ],
+      [ "References", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md39", null ],
+      [ "Commercial receivers based on AKC6955", "md__a_k_c695_x__r_e_a_d_m_e.html#autotoc_md40", null ]
     ] ],
     [ "Modules", "modules.html", "modules" ],
     [ "Data Structures", "annotated.html", [
@@ -90,7 +91,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_a_k_c695_x_8cpp.html",
-"group___g_a04.html#ga5c11dd6e97fe01ca7214676cb880e4a7"
+"group___g_a04.html#ga580389b4740ed5cabcba28e481344a64"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

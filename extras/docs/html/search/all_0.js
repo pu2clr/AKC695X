@@ -41,8 +41,10 @@ var searchData=
   ['akc695x_2ecpp_38',['AKC695X.cpp',['../_a_k_c695_x_8cpp.html',1,'']]],
   ['akc695x_2eh_39',['AKC695X.h',['../_a_k_c695_x_8h.html',1,'']]],
   ['akc695x_5fi2c_5fadress_40',['AKC695X_I2C_ADRESS',['../_a_k_c695_x_8h.html#ae5c5d25aa6dc8e43a43acb83c9e90204',1,'AKC695X.h']]],
-  ['akc_5fseek_5fdown_41',['AKC_SEEK_DOWN',['../_a_k_c695_x_8h.html#a88095b3908de87ed8f63d7142ecaefcb',1,'AKC695X.h']]],
-  ['akc_5fseek_5fup_42',['AKC_SEEK_UP',['../_a_k_c695_x_8h.html#a09d8f38980499b49afa6a01221d4d827',1,'AKC695X.h']]],
-  ['akc695x_20class_43',['AKC695X Class',['../group___g_a02.html',1,'']]],
-  ['akc695x_20arduino_20library_20implementation_44',['AKC695X Arduino Library implementation',['../index.html',1,'']]]
+  ['akc_5fam_41',['AKC_AM',['../_a_k_c695_x_8h.html#a25f2d82d36f360098f5d79bc72a2c5e9',1,'AKC695X.h']]],
+  ['akc_5ffm_42',['AKC_FM',['../_a_k_c695_x_8h.html#a275fd6aaa115d6b745cc85e380b44a1d',1,'AKC695X.h']]],
+  ['akc_5fseek_5fdown_43',['AKC_SEEK_DOWN',['../_a_k_c695_x_8h.html#a88095b3908de87ed8f63d7142ecaefcb',1,'AKC695X.h']]],
+  ['akc_5fseek_5fup_44',['AKC_SEEK_UP',['../_a_k_c695_x_8h.html#a09d8f38980499b49afa6a01221d4d827',1,'AKC695X.h']]],
+  ['akc695x_20class_45',['AKC695X Class',['../group___g_a02.html',1,'']]],
+  ['akc695x_20arduino_20library_20implementation_46',['AKC695X Arduino Library implementation',['../index.html',1,'']]]
 ];
