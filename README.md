@@ -440,6 +440,29 @@ The schematic below shows the AKC6955 controlled by a standalone ATmega328 with 
 
 ![Basic Schematic 2](https://pu2clr.github.io/AKC695X/extras/images/schematic_atmega328_standalone_8MHz_LCD16x2.png)
 
+### Arduino Pro mini 3.3V/8MHz or standalone Atmega328 and AKC6955, encoder and LCD16x2
+
+  | Device name               | Device Pin / Description      |  Arduino Pin  |
+  | ----------------          | ----------------------------- | ------------  |
+  | LCD 16x2 or 20x4 (3.3V)   |                               |               |
+  |                           | D4                            |     D7        |
+  |                           | D5                            |     D6        |
+  |                           | D6                            |     D5        |
+  |                           | D7                            |     D4        |
+  |                           | RS                            |     D12       |
+  |                           | E/ENA                         |     D13       |
+  |                           | RW & VSS & K (16)             |    GND        |
+  |                           | A (15) & VDD                  |    +Vcc       |
+  |                           | VO (see 20K tripot connection)|   ---------   |
+  |     AKC6955               |                               |               |
+  |                           | RESET (pin 5)                 |      9        |
+  |                           | SDIO (pin  6)                 |     A4        |
+  |                           | SCLK (pin  7)                 |     A5        |
+  |    Encoder                |                               |               |
+  |                           | A                             |       2       |
+  |                           | B                             |       3       |
+  |                           | PUSH BUTTON (encoder)         |     A0/14     |
+
 
 
 ### Component parts

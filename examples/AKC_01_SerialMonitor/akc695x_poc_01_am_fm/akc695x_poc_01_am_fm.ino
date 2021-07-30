@@ -80,7 +80,7 @@ void loop() {
       case 'a':
       case 'A':
         currentFM = radio.getFrequency();
-        radio.setAM(3,480, 1710, currentAM, 10);
+        radio.setAM(3,520, 1710, currentAM, 10);
         break;
       case 'f':
       case 'F':
@@ -100,10 +100,10 @@ void loop() {
         radio.frequencyDown();
         break;
       case 'S':
-        radio.seekStation(1);
+        radio.seekStation(AKC_SEEK_UP);
         break;      
       case 's':
-        radio.seekStation(0);      
+        radio.seekStation(AKC_SEEK_DOWN);      
         break;
       case '0':
         showStatus();

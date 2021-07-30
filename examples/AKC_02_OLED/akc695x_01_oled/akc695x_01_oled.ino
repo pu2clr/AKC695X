@@ -18,6 +18,7 @@
  * |    5        |   12        | You can use the Arduino RST pin. In this case set RESET_PIN to -1 |
  * |    6 (SCL)  |   A5 SCL    | I2C bus clock | 
  * |    7 (SDA)  |   A4 SDA    | I2C bus data  | 
+ * 
  *    
  * @see schematic on https://github.com/pu2clr/AKC695X#schematic
  * 
