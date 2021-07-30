@@ -1,12 +1,10 @@
 /*
-
-  UNDER CONSTRUNCTION......
-   
-  
+  It is a FM and AM (LW, MW and SW) receiver based on AKC6955 controlled by Arduino 3.3V/8MHz (Arduino Pro Mini or standalone ATmega328).
+  This sketch uses a regular LCD16x2 converted to 3.3V. 
 
   See user_manual.txt before operating the receiver. 
 
-   Wire up on Arduino UNO, Pro mini and AKC6955
+  Wire up on Arduino UNO, Pro mini and AKC6955
   | Device name               | Device Pin / Description      |  Arduino Pin  |
   | ----------------          | ----------------------------- | ------------  |
   |    LCD 16x2 or 20x4       |                               |               |
@@ -38,14 +36,7 @@
 #include <EEPROM.h>
 #include <LiquidCrystal.h>
 #include "Rotary.h"
-#include "patch_init.h" // SSB patch for whole SSBRX initialization string
 
-const uint16_t size_content = sizeof ssb_patch_content; // see patch_init.h
-
-#define FM_BAND_TYPE 0
-#define MW_BAND_TYPE 1
-#define SW_BAND_TYPE 2
-#define LW_BAND_TYPE 3
 
 #define RESET_PIN 9
 
@@ -143,6 +134,20 @@ akc_band band[] = {
 const int lastBand = (sizeof band / sizeof(akc_band)) - 1;
 int bandIdx = 0; // FM
 
+typedef struct
+{
+  uint8_t idx;      
+  const char *desc; 
+} Bandwidth;
+
+Bandwidth bandwidthFM[] = {
+    {2, " 50"},   // 0
+    {3, "100"},   // 1 - default BW
+    {0, "150"},   // 2 
+    {1, "200"}};  // 3 
+
+int8_t bwIdxFM = 1;
+const int8_t maxFmBw = 3;    
 
 
 // Devices class declarations
@@ -243,7 +248,6 @@ void readAllReceiverInformation()
 {
   uint8_t volume;
   int addr_offset;
-  int bwIdx;
 
   volume = EEPROM.read(eeprom_address + 1); // Gets the stored volume;
   bandIdx = EEPROM.read(eeprom_address + 2);
@@ -349,7 +353,7 @@ void showFrequency()
 
   currentFrequency = rx.getFrequency();
 
-  if (band[bandIdx].mode == 1) { // FM
+  if (band[bandIdx].mode == AKC_FM) { // FM
     convertToChar(currentFrequency, freqDisplay, 5, 4, ',');
     unit = (char *)"MHz";    
   } else {
@@ -370,6 +374,8 @@ void showStatus()
 {
   lcd.clear();
   showFrequency();
+  lcd.setCursor(0, 0);
+  lcd.print((band[bandIdx].mode == AKC_FM)? "FM":"AM"); 
   showRSSI();
 }
 
@@ -378,7 +384,11 @@ void showStatus()
  */
 void showBandwidth()
 {
-  // TO DO
+  char bwAux[12];
+  sprintf(bwAux, "BW: %s", bandwidthFM[bwIdxFM].desc);
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print(bwAux);  
 }
 
 /**
@@ -415,7 +425,11 @@ void showRSSI()
  */
 void showStep()
 {
-  // TO DO
+  char stepAux[12];
+  sprintf(stepAux, "STEP: %2u", band[bandIdx].step);
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print(stepAux);  
 }
 
 
@@ -454,7 +468,7 @@ void setBand(int8_t up_down)
 void useBand()
 {
 
-  if (band[bandIdx].mode == 1)
+  if (band[bandIdx].mode == AKC_FM)
   {
     rx.setFM(band[bandIdx].band, band[bandIdx].minimum_frequency, band[bandIdx].maximum_frequency, band[bandIdx].currentFreq, band[bandIdx].step);
     rx.setFmSeekStep(0); // 25KHz.
@@ -476,8 +490,16 @@ void useBand()
  */
 void doBandwidth(int8_t v)
 {
-  // TO DO
-  showBandwidth();
+  if (band[bandIdx].mode == AKC_FM) {  
+    bwIdxFM = (v == 1) ? bwIdxFM + 1 : bwIdxFM - 1;
+    if (bwIdxFM > maxFmBw)
+      bwIdxFM = 0;
+    else if (bwIdxFM < 0)
+      bwIdxFM = maxFmBw;
+      
+   rx.setFmBandwidth(bandwidthFM[bwIdxFM].idx);
+   showBandwidth();
+  }
   delay(MIN_ELAPSED_TIME); // waits a little more for releasing the button.
 }
 
@@ -508,7 +530,12 @@ void showMenu() {
  */
 void doStep(int8_t v)
 {
-    // TO DO
+    uint8_t step; 
+    if (band[bandIdx].mode == AKC_AM) {
+      step = (v == 1)? 3: 5;
+      rx.setStep(step);
+      band[bandIdx].step = step; 
+    }
     showStep();
     delay(MIN_ELAPSED_TIME); // waits a little more for releasing the button.
     elapsedCommand = millis();
@@ -534,6 +561,7 @@ void doVolume( int8_t v ) {
  */
 void doSeek()
 {
+  lcd.clear();
   rx.seekStation(seekDirection, showFrequency);
   currentFrequency = rx.getFrequency();
   showStatus();
@@ -585,10 +613,12 @@ void doCurrentMenuCmd() {
       break;
     case 3:
       seekDirection = AKC_SEEK_UP; // SEEK UP
+      rx.frequencyUp();
       doSeek();
       break;  
     case 4:
       seekDirection = AKC_SEEK_DOWN; // SEEK DOWN
+      rx.frequencyDown();
       doSeek();
       break;    
     default:
