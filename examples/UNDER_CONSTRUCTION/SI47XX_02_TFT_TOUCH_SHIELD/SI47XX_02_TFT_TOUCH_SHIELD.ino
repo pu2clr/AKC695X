@@ -1,20 +1,12 @@
 /*
+  UNDER CONSTRUCTION....
+  
   This sketch uses the mcufriend TFT touch Display Shield.
-  You can use it on Mega2560 and Arduino DUE
-  The SSB support works on SI4735-D60 and SI4732-A10 devices. 
+  You can use it on Mega2560 or Arduino DUE
+  If you are using an Arduino Meha2560, you have to use a bidirectional voltage converter. 
 
-  It is a complete radio capable to tune LW, MW, SW on AM and SSB mode and also receive the
-  regular comercial stations. If you are using the same circuit used on examples with OLED and LCD,
-  you have to change some buttons wire up. 
+  It is a complete radio capable to tune FM and AM (LW, MW, SW) based on AKC6955
 
-  Features:
-  1) This sketch has been successfully tested on Arduino Mega2560 and DUE;
-  2) It uses the touch screen interface provided by mcufriend TFT;
-  3) Encoder;
-  4) FM, AM (MW and SW) and SSB (LSB and USB);
-  5) Audio bandwidth filter 0.5, 1, 1.2, 2.2, 3 and 4kHz;
-  6) BFO Control; and
-  7) Frequency step switch (1, 5 and 10kHz).
 
   Wire up
 
@@ -28,31 +20,20 @@
   RESET                   22
 
 
-  ABOUT SSB PATCH:  
-  This sketch will download a SSB patch to your SI4735-D60 or Si4732-A10 devices (patch_init.h). It will take about 8KB of the Arduino memory.
+  Libraries used: AKC695X; Adafruit_GFX; MCUFRIEND_kbv; FreeDefaultFonts; TouchScreen;
 
-  First of all, it is important to say that the SSB patch content is not part of this library. The paches used here were made available by Mr. 
-  Vadim Afonkin on his Dropbox repository. It is important to note that the author of this library does not encourage anyone to use the SSB patches 
-  content for commercial purposes. In other words, this library only supports SSB patches, the patches themselves are not part of this library.
-  
-  Read more about SSB patch documentation on https://pu2clr.github.io/SI4735/
-
-  Libraries used: SI4735; Adafruit_GFX; MCUFRIEND_kbv; FreeDefaultFonts; TouchScreen;
-
-  Prototype documentation : https://pu2clr.github.io/SI4735/
-  PU2CLR Si47XX API documentation: https://pu2clr.github.io/SI4735/extras/apidoc/html/
+  Prototype documentation : https://pu2clr.github.io/AKC695X/
+  PU2CLR Si47XX API documentation: https://pu2clr.github.io/AKC695X/extras/docs/html/index.html
 
   By Ricardo Lima Caratti, Feb 2020
 */
 
-#include <SI4735.h>
+#include <AKC695X.h>
 #include <Adafruit_GFX.h>
 #include <MCUFRIEND_kbv.h>
 #include <TouchScreen.h>
 
 #include "Rotary.h"
-
-#include "patch_init.h" // SSB patch for whole SSBRX initialization string
 
 #define MINPRESSURE 200
 #define MAXPRESSURE 1000
@@ -75,16 +56,8 @@
 
 #define MIN_ELAPSED_TIME 100
 #define MIN_ELAPSED_RSSI_TIME 150
-#define DEFAULT_VOLUME 45 // change it for your favorite sound volume
+#define DEFAULT_VOLUME 38 // change it for your favorite sound volume
 
-#define FM 0
-#define LSB 1
-#define USB 2
-#define AM 3
-#define LW 4
-#define SSB 1
-
-const uint16_t size_content = sizeof ssb_patch_content; // see ssb_patch_content in patch_full.h or patch_init.h
 
 bool bfoOn = false;
 bool audioMute = false;
@@ -105,62 +78,45 @@ uint8_t rssi = 0;
 // Encoder control variables
 volatile int encoderCount = 0;
 
-
 typedef struct
 {
-  const char *bandName;
-  uint8_t bandType;     // Band type (FM, MW or SW)
-  uint16_t minimumFreq; // Minimum frequency of the band
-  uint16_t maximumFreq; // maximum frequency of the band
-  uint16_t currentFreq; // Default frequency or current frequency
-  uint16_t currentStep; // Defeult step (increment and decrement)
+  uint8_t mode;               // 0 = AM; 1 = FM
+  uint8_t band;               // AKC695X band (see AKC695X manual)
+  char *  bandName; 
+  uint16_t minimum_frequency; // Minimum frequency to the band
+  uint16_t maximum_frequency; // Maximum frequency to the band
+  uint16_t currentFreq;       // default frequency or current frequency
+  uint8_t step;               // step used
 } Band;
 
 /*
    Band table
 */
+
 Band band[] = {
-  {"FM  ", FM_BAND_TYPE, 8400, 10800, 10390, 10},
-  {"LW  ", LW_BAND_TYPE, 100, 510, 300, 1},
-  {"AM  ", MW_BAND_TYPE, 520, 1720, 810, 10},
-  {"160m", SW_BAND_TYPE, 1800, 3500, 1900, 1}, // 160 meters
-  {"80m ", SW_BAND_TYPE, 3500, 4500, 3700, 1}, // 80 meters
-  {"60m ", SW_BAND_TYPE, 4500, 5500, 4850, 5},
-  {"49m ", SW_BAND_TYPE, 5600, 6300, 6000, 5},
-  {"41m ", SW_BAND_TYPE, 6800, 7800, 7100, 5}, // 40 meters
-  {"31m ", SW_BAND_TYPE, 9200, 10000, 9600, 5},
-  {"30m ", SW_BAND_TYPE, 10000, 11000, 10100, 1}, // 30 meters
-  {"25m ", SW_BAND_TYPE, 11200, 12500, 11940, 5},
-  {"22m ", SW_BAND_TYPE, 13400, 13900, 13600, 5},
-  {"20m ", SW_BAND_TYPE, 14000, 14500, 14200, 1}, // 20 meters
-  {"19m ", SW_BAND_TYPE, 15000, 15900, 15300, 5},
-  {"18m ", SW_BAND_TYPE, 17200, 17900, 17600, 5},
-  {"17m ", SW_BAND_TYPE, 18000, 18300, 18100, 1},  // 17 meters
-  {"15m ", SW_BAND_TYPE, 21000, 21900, 21200, 1},  // 15 mters
-  {"12m ", SW_BAND_TYPE, 24890, 26200, 24940, 1},  // 12 meters
-  {"CB  ", SW_BAND_TYPE, 26200, 27900, 27500, 1},  // CB band (11 meters)
-  {"10m ", SW_BAND_TYPE, 28000, 30000, 28400, 1},
-  {"All HF",SW_BAND_TYPE, 100, 30000, 15000, 1}  // All HF in one band
-};
+    {1, 1, "FM ", 760, 1080, 1039, 1},
+    {0, 3, "MW ", 400, 1710, 810, 10},
+    {0, 6, "60m", 4700, 5600, 4885, 5},
+    {0, 7, "49m", 5700, 6400, 6100, 5},
+    {0, 8, "41m", 6800, 7600, 7205, 5},
+    {0, 9, "31m", 9200, 10500, 9600, 5},
+    {0, 10,"25m", 11400, 12200, 11940, 5},
+    {0, 11,"22m", 13500, 14300, 13600, 5},
+    {0, 12,"19m", 15000, 15900, 15300, 5},
+    {0, 13,"16m", 17400, 17900, 17600, 5},
+    {0, 15,"13m", 21400, 21900, 21525, 5},
+    {0, 18,"CB ", 27000, 28000, 27500, 3},
+    {0, 0, "LW ", 150, 285, 200, 3},     // LW
+    {1, 7, "VHF", 1400, 1480, 1450, 1}}; // VHF / FM
 
 const int lastBand = (sizeof band / sizeof(Band)) - 1;
-int bandIdx = 0;
-int lastSwBand = 7;  // Saves the last SW band used 
+int bandIdx = 0; // FM
+int lastSwBand = 6;  // Saves the last SW band used 
 
 uint16_t currentFrequency;
 uint16_t previousFrequency;
-uint8_t bandwidthIdx = 0;
 uint16_t currentStep = 1;
-uint8_t currentBFOStep = 25;
 
-uint8_t bwIdxSSB = 2;
-const char *bandwidthSSB[] = {"1.2", "2.2", "3.0", "4.0", "0.5", "1.0"};
-
-uint8_t bwIdxAM = 1;
-const char *bandwidthAM[] = {"6", "4", "3", "2", "1", "1.8", "2.5"};
-
-const char *bandModeDesc[] = {"FM ", "LSB", "USB", "AM "};
-uint8_t currentMode = FM;
 
 char buffer[64];
 char bufferFreq[10];
@@ -168,7 +124,7 @@ char bufferStereo[10];
 
 Rotary encoder = Rotary(ENCODER_PIN_A, ENCODER_PIN_B);
 MCUFRIEND_kbv tft;
-SI4735 si4735;
+AKC695X rx;
 
 // ALL Touch panels and wiring is DIFFERENT
 // copy-paste results from TouchScreen_Calibr_native.ino
@@ -222,20 +178,10 @@ void setup(void)
 
 
   // tft.setFont(&FreeSans12pt7b);
-  showText(55, 30, 2, NULL, GREEN, "SI4735");
+  showText(55, 30, 2, NULL, GREEN, "AKC695C");
   showText(55, 90, 2, NULL, YELLOW, "Arduino");
   showText(55, 160, 2, NULL, YELLOW, "Library");
   showText(55, 240, 2, NULL, WHITE, "By PU2CLR");
-  int16_t si4735Addr = si4735.getDeviceI2CAddress(RESET_PIN);
-  if ( si4735Addr == 0 ) {
-    tft.fillScreen(BLACK);
-    showText(0, 160, 2, NULL, RED, "Si473X not");
-    showText(0, 240, 2, NULL, RED, "detected!!");
-    while (1);
-  } else {
-    sprintf(buffer, "The Si473X I2C address is 0x%x ", si4735Addr);
-    showText(25, 290, 1, NULL, RED, buffer);
-  }
   delay(3000);
 
   tft.fillScreen(BLACK);
@@ -247,12 +193,11 @@ void setup(void)
   attachInterrupt(digitalPinToInterrupt(ENCODER_PIN_A), rotaryEncoder, CHANGE);
   attachInterrupt(digitalPinToInterrupt(ENCODER_PIN_B), rotaryEncoder, CHANGE);
 
-  si4735.setup(RESET_PIN, 1);
-  // Set up the radio for the current band (see index table variable bandIdx )
+  rx.setup(RESET_PIN, CRYSTAL_32KHz);
   delay(100);
   useBand();
-  currentFrequency = previousFrequency = si4735.getFrequency();
-  si4735.setVolume(DEFAULT_VOLUME);
+  currentFrequency = previousFrequency = rx.getFrequency();
+  rx.setVolume(DEFAULT_VOLUME);
   tft.setFont(NULL); // default font
 }
 
@@ -416,7 +361,7 @@ void showFrequency()
   int iFreq, dFreq;
   uint16_t color;
 
-  if (si4735.isCurrentTuneFM())
+  if (rx.isCurrentTuneFM())
   {
     freq = currentFrequency / 100.0;
     dtostrf(freq, 3, 1, buffer);
@@ -443,14 +388,14 @@ char bufferAGC[10];
 void showStatus()
 {
   char unit[5];
-  si4735.getStatus();
-  si4735.getCurrentReceivedSignalQuality();
+  rx.getStatus();
+  rx.getCurrentReceivedSignalQuality();
   // SRN
-  si4735.getFrequency();
+  rx.getFrequency();
   showFrequency();
 
   tft.fillRect(155, 2, 83, 36, BLACK);
-  if (si4735.isCurrentTuneFM()) {
+  if (band[bandIdx].mode == AKC_FM) {
     showText(170, 30, 2, NULL, WHITE, "MHz");
   } else {
     sprintf(buffer, "Step:%2d", currentStep);
@@ -470,8 +415,8 @@ void showStatus()
   }
 
   showText(70, 85, 1, NULL, BLACK, bufferAGC);
-  si4735.getAutomaticGainControl();
-  sprintf(buffer, "AGC %s", (si4735.isAgcEnabled()) ? "ON" : "OFF");
+  rx.getAutomaticGainControl();
+  sprintf(buffer, "AGC %s", (rx.isAgcEnabled()) ? "ON" : "OFF");
   strcpy(bufferAGC, buffer);
 
   if (currentMode == LSB || currentMode == USB)
@@ -500,7 +445,7 @@ void showRSSI() {
 
   if (  currentMode == FM ) {
     showText(5, 85, 1, NULL, BLACK, bufferStereo );
-    sprintf(buffer, "%s", (si4735.getCurrentPilot()) ? "STEREO" : "MONO");
+    sprintf(buffer, "%s", (rx.getCurrentPilot()) ? "STEREO" : "MONO");
     showText(5, 85, 1, NULL, GREEN, buffer );
     strcpy(bufferStereo, buffer);
   }
@@ -585,14 +530,14 @@ void bandDown()
 */
 void loadSSB()
 {
-  si4735.reset();
-  si4735.queryLibraryId(); // Is it really necessary here? I will check it.
-  si4735.patchPowerUp();
+  rx.reset();
+  rx.queryLibraryId(); // Is it really necessary here? I will check it.
+  rx.patchPowerUp();
   delay(50);
-  si4735.setI2CFastMode(); // Recommended
-  // si4735.setI2CFastModeCustom(500000); // It is a test and may crash.
-  si4735.downloadPatch(ssb_patch_content, size_content);
-  si4735.setI2CStandardMode(); // goes back to default (100kHz)
+  rx.setI2CFastMode(); // Recommended
+  // rx.setI2CFastModeCustom(500000); // It is a test and may crash.
+  rx.downloadPatch(ssb_patch_content, size_content);
+  rx.setI2CStandardMode(); // goes back to default (100kHz)
 
   // delay(50);
   // Parameters
@@ -602,7 +547,7 @@ void loadSSB()
   // AVCEN - SSB Automatic Volume Control (AVC) enable; 0=disable; 1=enable (default).
   // SMUTESEL - SSB Soft-mute Based on RSSI or SNR (0 or 1).
   // DSP_AFCDIS - DSP AFC Disable or enable; 0=SYNC MODE, AFC enable; 1=SSB MODE, AFC disable.
-  si4735.setSSBConfig(bwIdxSSB, 1, 0, 0, 0, 1);
+  rx.setSSBConfig(bwIdxSSB, 1, 0, 0, 0, 1);
   delay(25);
   ssbLoaded = true;
 }
@@ -616,40 +561,38 @@ void useBand()
   if (band[bandIdx].bandType == FM_BAND_TYPE)
   {
     currentMode = FM;
-    si4735.setTuneFrequencyAntennaCapacitor(0);
-    si4735.setFM(band[bandIdx].minimumFreq, band[bandIdx].maximumFreq, band[bandIdx].currentFreq, band[bandIdx].currentStep);
+    rx.setTuneFrequencyAntennaCapacitor(0);
+    rx.setFM(band[bandIdx].minimumFreq, band[bandIdx].maximumFreq, band[bandIdx].currentFreq, band[bandIdx].currentStep);
     bfoOn = ssbLoaded = false;
   }
   else
   {
     if (band[bandIdx].bandType == MW_BAND_TYPE || band[bandIdx].bandType == LW_BAND_TYPE)
-      si4735.setTuneFrequencyAntennaCapacitor(0);
+      rx.setTuneFrequencyAntennaCapacitor(0);
     else {
       lastSwBand =  bandIdx;
-      si4735.setTuneFrequencyAntennaCapacitor(1);
+      rx.setTuneFrequencyAntennaCapacitor(1);
     }
 
     if (ssbLoaded)
     {
-      si4735.setSSB(band[bandIdx].minimumFreq, band[bandIdx].maximumFreq, band[bandIdx].currentFreq, band[bandIdx].currentStep, currentMode);
-      si4735.setSSBAutomaticVolumeControl(1);
-      si4735.setSsbSoftMuteMaxAttenuation(0); // Disable Soft Mute for SSB
+      rx.setSSB(band[bandIdx].minimumFreq, band[bandIdx].maximumFreq, band[bandIdx].currentFreq, band[bandIdx].currentStep, currentMode);
+      rx.setSSBAutomaticVolumeControl(1);
+      rx.setSsbSoftMuteMaxAttenuation(0); // Disable Soft Mute for SSB
     }
     else
     {
       currentMode = AM;
-      si4735.setAM(band[bandIdx].minimumFreq, band[bandIdx].maximumFreq, band[bandIdx].currentFreq, band[bandIdx].currentStep);
-      si4735.setAutomaticGainControl(1, 0);
-      si4735.setAmSoftMuteMaxAttenuation(0); // // Disable Soft Mute for AM
-      si4735.setSeekAmLimits(band[bandIdx].minimumFreq, band[bandIdx].maximumFreq);
-      si4735.setSeekAmSpacing(5);
+      rx.setAM(band[bandIdx].minimumFreq, band[bandIdx].maximumFreq, band[bandIdx].currentFreq, band[bandIdx].currentStep);
+      rx.setAutomaticGainControl(1, 0);
+      rx.setAmSoftMuteMaxAttenuation(0); // // Disable Soft Mute for AM
+      rx.setSeekAmLimits(band[bandIdx].minimumFreq, band[bandIdx].maximumFreq);
+      rx.setSeekAmSpacing(5);
       bfoOn = false;
     }
-
-    
-    
+ 
     // Set the botton and top limit frequencies for the Si47XX seek function
-    si4735.setSeekAmLimits(band[bandIdx].minimumFreq, band[bandIdx].maximumFreq);
+    rx.setSeekAmLimits(band[bandIdx].minimumFreq, band[bandIdx].maximumFreq);
   }
   delay(100);
   currentFrequency = band[bandIdx].currentFreq;
@@ -688,18 +631,18 @@ void loop(void)
     if (bfoOn)
     {
       currentBFO = (encoderCount == 1) ? (currentBFO + currentBFOStep) : (currentBFO - currentBFOStep);
-      si4735.setSSBBfo(currentBFO);
+      rx.setSSBBfo(currentBFO);
       showBFO();
     }
     else
     {
       if (encoderCount == 1)
-        si4735.frequencyUp();
+        rx.frequencyUp();
       else
-        si4735.frequencyDown();
+        rx.frequencyDown();
 
       // Show the current frequency only if it has changed
-      currentFrequency = si4735.getFrequency();
+      currentFrequency = rx.getFrequency();
       showFrequency();
     }
     encoderCount = 0;
@@ -729,7 +672,7 @@ void loop(void)
   if (bVolumeUp.justPressed())
   {
     // bVolumeUp.drawButton(true);
-    si4735.volumeUp();
+    rx.volumeUp();
     delay(MIN_ELAPSED_TIME);
   }
 
@@ -739,7 +682,7 @@ void loop(void)
   if (bVolumeDown.justPressed())
   {
     // bVolumeDown.drawButton(true);
-    si4735.volumeDown();
+    rx.volumeDown();
     delay(MIN_ELAPSED_TIME);
   }
 
@@ -751,9 +694,9 @@ void loop(void)
   {
     // bSeekUp.drawButton(true);
     // if (currentMode == FM) {
-      si4735.seekStationUp();
+      rx.seekStationUp();
       delay(15);
-      currentFrequency = si4735.getFrequency();
+      currentFrequency = rx.getFrequency();
     // }
     delay(MIN_ELAPSED_TIME); // waits a little more for releasing the button.
     showStatus();
@@ -764,9 +707,9 @@ void loop(void)
   {
     // bSeekUp.drawButton(true);
     // if (currentMode == FM) {
-      si4735.seekStationDown();
+      rx.seekStationDown();
       delay(15);
-      currentFrequency = si4735.getFrequency();
+      currentFrequency = rx.getFrequency();
     // }
     delay(MIN_ELAPSED_TIME); // waits a little more for releasing the button.
     showStatus();
@@ -776,38 +719,9 @@ void loop(void)
   if (bAudioMute.justPressed())
   {
     audioMute = !audioMute;
-    si4735.setAudioMute(audioMute);
+    rx.setAudioMute(audioMute);
     delay(MIN_ELAPSED_TIME); // waits a little more for releasing the button.
   }
-
-  // if (bMode.justReleased())
-  //   bMode.drawButton(true);
-  /*
-    if (bMode.justPressed())
-    {
-    if (currentMode != FM ) {
-      if (currentMode == AM)
-      {
-        // If you were in AM mode, it is necessary to load SSB patch (avery time)
-        loadSSB();
-        currentMode = LSB;
-      }
-      else if (currentMode == LSB)
-      {
-        currentMode = USB;
-      }
-      else if (currentMode == USB)
-      {
-        currentMode = AM;
-        ssbLoaded = false;
-        bfoOn = false;
-      }
-      // Nothing to do if you are in FM mode
-      band[bandIdx].currentFreq = currentFrequency;
-      band[bandIdx].currentStep = currentStep;
-      useBand();
-    }
-    } */
 
   if (bAM.justPressed())
   {
@@ -892,7 +806,7 @@ void loop(void)
   {
     disableAgc = !disableAgc;
     // siwtch on/off ACG; AGC Index = 0. It means Minimum attenuation (max gain)
-    si4735.setAutomaticGainControl(disableAgc, 1);
+    rx.setAutomaticGainControl(disableAgc, 1);
     showStatus();
     delay(MIN_ELAPSED_TIME); // waits a little more for releasing the button.
   }
@@ -905,19 +819,19 @@ void loop(void)
       bwIdxSSB++;
       if (bwIdxSSB > 5)
         bwIdxSSB = 0;
-      si4735.setSSBAudioBandwidth(bwIdxSSB);
+      rx.setSSBAudioBandwidth(bwIdxSSB);
       // If audio bandwidth selected is about 2 kHz or below, it is recommended to set Sideband Cutoff Filter to 0.
       if (bwIdxSSB == 0 || bwIdxSSB == 4 || bwIdxSSB == 5)
-        si4735.setSBBSidebandCutoffFilter(0);
+        rx.setSBBSidebandCutoffFilter(0);
       else
-        si4735.setSBBSidebandCutoffFilter(1);
+        rx.setSBBSidebandCutoffFilter(1);
     }
     else if (currentMode == AM)
     {
       bwIdxAM++;
       if (bwIdxAM > 6)
         bwIdxAM = 0;
-      si4735.setBandwidth(bwIdxAM, 1);
+      rx.setBandwidth(bwIdxAM, 1);
     }
     showStatus();
     delay(MIN_ELAPSED_TIME); // waits a little more for releasing the button.
@@ -929,9 +843,9 @@ void loop(void)
     if ( currentMode == FM) {
       fmStereo = !fmStereo;
       if ( fmStereo )
-        si4735.setFmStereoOn();
+        rx.setFmStereoOn();
       else
-        si4735.setFmStereoOff(); // It is not working so far.
+        rx.setFmStereoOff(); // It is not working so far.
     } else {
 
       // This command should work only for SSB mode
@@ -952,7 +866,7 @@ void loop(void)
           currentStep = 500;
         else
           currentStep = 1;
-        si4735.setFrequencyStep(currentStep);
+        rx.setFrequencyStep(currentStep);
         band[bandIdx].currentStep = currentStep;
         showStatus();
       }
@@ -976,8 +890,8 @@ void loop(void)
   // Show RSSI status only if this condition has changed
   if ((millis() - elapsedRSSI) > MIN_ELAPSED_RSSI_TIME * 12)
   {
-    si4735.getCurrentReceivedSignalQuality();
-    int aux = si4735.getCurrentRSSI();
+    rx.getCurrentReceivedSignalQuality();
+    int aux = rx.getCurrentRSSI();
     if (rssi != aux)
     {
       rssi = aux;
