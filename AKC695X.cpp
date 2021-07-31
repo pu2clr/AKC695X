@@ -906,7 +906,7 @@ float AKC695X::getSupplyVoltage()
  * @ingroup GA05
  * @brief Converts a number to a char array 
  * @details It is useful to mitigate memory space used by functions like sprintf or othetr generic similar functions
- * @details You can use it to format frequency using decimal or tousand separator and also to convert smalm numbers.      
+ * @details You can use it to format frequency using decimal or tousand separator and also to convert small numbers.      
  * 
  * @param value  value to be converted
  * @param strValue char array that will be receive the converted value 
