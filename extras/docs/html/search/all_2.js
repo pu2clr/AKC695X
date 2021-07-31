@@ -7,7 +7,7 @@ var searchData=
   ['conditions_52',['conditions',['../license_8txt.html#a044015f5b936eb88da66708aa08bd4ac',1,'license.txt']]],
   ['contract_53',['CONTRACT',['../license_8txt.html#a11bbb92d08ed0375aed257ed87428ab5',1,'license.txt']]],
   ['contributing_2emd_54',['CONTRIBUTING.md',['../_c_o_n_t_r_i_b_u_t_i_n_g_8md.html',1,'']]],
-  ['converttochar_55',['convertToChar',['../group___g_a04.html#ga9188ca28aff45b2e876fb80c8ce4e6f3',1,'AKC695X']]],
+  ['converttochar_55',['convertToChar',['../group___g_a05.html#ga9188ca28aff45b2e876fb80c8ce4e6f3',1,'AKC695X']]],
   ['copy_56',['copy',['../license_8txt.html#a5fc027ff17a37592346d4ce949961132',1,'license.txt']]],
   ['copyright_57',['Copyright',['../license_8txt.html#a6d046fad0357ac1277fe46baca5cc7de',1,'license.txt']]],
   ['crystal_5f12mhz_58',['CRYSTAL_12MHZ',['../_a_k_c695_x_8h.html#a74c62040d9bf060c6281703c49412772',1,'AKC695X.h']]],

@@ -149,9 +149,6 @@ Functions</h2></td></tr>
 <tr class="memitem:ga580389b4740ed5cabcba28e481344a64"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#ga580389b4740ed5cabcba28e481344a64">AKC695X::getSupplyVoltage</a> ()</td></tr>
 <tr class="memdesc:ga580389b4740ed5cabcba28e481344a64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the supply voltage.  <a href="group___g_a04.html#ga580389b4740ed5cabcba28e481344a64">More...</a><br /></td></tr>
 <tr class="separator:ga580389b4740ed5cabcba28e481344a64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9188ca28aff45b2e876fb80c8ce4e6f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___g_a04.html#ga9188ca28aff45b2e876fb80c8ce4e6f3">AKC695X::convertToChar</a> (uint16_t value, char *strValue, uint8_t len, uint8_t dot, uint8_t separator, bool remove_leading_zeros=true)</td></tr>
-<tr class="memdesc:ga9188ca28aff45b2e876fb80c8ce4e6f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a number to a char array.  <a href="group___g_a04.html#ga9188ca28aff45b2e876fb80c8ce4e6f3">More...</a><br /></td></tr>
-<tr class="separator:ga9188ca28aff45b2e876fb80c8ce4e6f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h1><a class="anchor" id="Receiver"></a>
@@ -815,74 +812,6 @@ AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio documentation; page 1
 
 <p>Gets the supply voltage. </p>
 <p>Gets the current supply voltage </p><dl class="section return"><dt>Returns</dt><dd>float the supply voltage </dd></dl>
-
-</div>
-</div>
-<a id="ga9188ca28aff45b2e876fb80c8ce4e6f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga9188ca28aff45b2e876fb80c8ce4e6f3">&#9670;&nbsp;</a></span>convertToChar()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void AKC695X::convertToChar </td>
-          <td>(</td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>value</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>strValue</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>len</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>dot</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>separator</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>remove_leading_zeros</em> = <code>true</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Converts a number to a char array. </p>
-<p>It is useful to mitigate memory space used by functions like sprintf or othetr generic similar functions</p>
-<p>You can use it to format frequency using decimal or tousand separator and also to convert smalm numbers. <br  />
-</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">value</td><td>value to be converted </td></tr>
-    <tr><td class="paramname">strValue</td><td>char array that will be receive the converted value </td></tr>
-    <tr><td class="paramname">len</td><td>final string size (in bytes) </td></tr>
-    <tr><td class="paramname">dot</td><td>the decimal or tousand separator position </td></tr>
-    <tr><td class="paramname">separator</td><td>symbol "." or "," </td></tr>
-    <tr><td class="paramname">remove_leading_zeros</td><td>if true removes up to two leading zeros </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>

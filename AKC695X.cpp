@@ -895,8 +895,15 @@ float AKC695X::getSupplyVoltage()
     return (1.8 + 0.05 * reg25.refined.vbat);
 }
 
+
+
 /**
- * @ingroup GA04
+ * @defgroup GA05 Tools Methods
+ * @section  GA05 Format 
+ */
+
+/**
+ * @ingroup GA05
  * @brief Converts a number to a char array 
  * @details It is useful to mitigate memory space used by functions like sprintf or othetr generic similar functions
  * @details You can use it to format frequency using decimal or tousand separator and also to convert smalm numbers.      

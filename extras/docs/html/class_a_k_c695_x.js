@@ -42,7 +42,7 @@ var class_a_k_c695_x =
     [ "getCurrentMode", "class_a_k_c695_x.html#a2bb0dab82de260b79371da6df6e0954c", null ],
     [ "setMode3k", "group___g_a03_a.html#gaafde8fa9c0e8aad2e427fdd15d0a7afc", null ],
     [ "commitTune", "group___g_a04.html#ga735ce923f793b2cc437ff4c09cd4f026", null ],
-    [ "convertToChar", "group___g_a04.html#ga9188ca28aff45b2e876fb80c8ce4e6f3", null ],
+    [ "convertToChar", "group___g_a05.html#ga9188ca28aff45b2e876fb80c8ce4e6f3", null ],
     [ "deviceAddress", "class_a_k_c695_x.html#ab7cd32a73bfe5345422dbebcd6b54ca7", null ],
     [ "resetPin", "class_a_k_c695_x.html#a53464dde83a8625917655865af8ef53d", null ],
     [ "volume", "class_a_k_c695_x.html#a6eeb46370dd33c3336d4a228a61c4f12", null ],
