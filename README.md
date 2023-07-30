@@ -10,6 +10,9 @@ The PU2CLR AKC695X Arduino Library also intend to be used on __all members of th
 
 Contact: __pu2clr@gmail.com__.
 
+__If you find this project useful, consider making a donation so that the author can purchase components and modules for improvements and testing of this library.__
+[Click here to donate](https://www.paypal.com/donate/?business=LLV4PHKTXC4JW&no_recurring=0&item_name=Consider+making+a+donation.++So+I+can+purchase+components+and+modules+for+improvements+and+testing+of+this+library.&currency_code=USD)
+
 
 Be a member of Facebook group [DSP receivers for hobbyists](https://www.facebook.com/groups/2655942598067211)
 
