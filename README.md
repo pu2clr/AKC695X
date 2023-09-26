@@ -1,15 +1,17 @@
 # [PU2CLR AKC695X Arduino Library](https://pu2clr.github.io/AKC695X/)
 
-This is an Arduino Library to control the AKC695X / M695X DSP radio devices. 
+This library facilitates control over the AKC6955 / M6955 DSP radio devices using Arduino.
 
-This library was built based on [AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio](http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf) document from "AKC technology".  Others sources help the author to build this library. You can check these sources on [References](https://pu2clr.github.io/AKC695X/#references). 
+The development was primarily based on the [AKC6955 stereo FM / TV / MW / SW / LW digital tuning radio](http://maximradio.altervista.org/akc6955/AKC6955-datasheet-english.pdf) documentation provided by **AKC technology**. Additionally, various other sources assisted the author in crafting this library. More information about these can be found in the [References section](https://pu2clr.github.io/AKC695X/#references).
 
-The PU2CLR AKC695X Arduino Library also intend to be used on __all members of the AKC695X family with I²C  bus interface__ respecting, of course, the features available for each IC version. __Please, check the Datasheet of the divice before starting your project__. Finally, it can be freely distributed using the [MIT Free Software model](https://pu2clr.github.io/AKC695X/#mit-license). 
+Intended to be compatible with __all AKC695X family members featuring an I²C bus interface__, this library accommodates the unique features inherent to each IC variant. It's imperative to __review the device's datasheet before initiating your project__.
+
+Furthermore, distribution of this library is permitted under the [MIT Free Software license](https://pu2clr.github.io/AKC695X/#mit-license).
+
 
 [Copyright (c) 2020 Ricardo Lima Caratti](https://pu2clr.github.io/AKC695X/#mit-license). 
 
 Contact: __pu2clr@gmail.com__.
-
 
 ## Donate 
 
