@@ -764,7 +764,7 @@ void AKC695X::frequencyDown()
  * @details This method sets the AKC695X device audio behaviour
  *
  * @param phase_inv if 0, audio output inphase; if 1, audio output inverted
- * @param line      if 0, audio input mode; if 1, radio mode.
+ * @param line      if 0, radio mode; if 1, audio input mode.
  * @param volume    if 25 a 63, audio volume; if <= 24 mute
  */
 void AKC695X::setAudio(uint8_t phase_inv, uint8_t line, uint8_t volume)
